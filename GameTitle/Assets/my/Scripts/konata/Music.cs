@@ -90,7 +90,7 @@ public class Music : MonoBehaviour
     #endregion
 
     #region public static properties
-    //ƒIƒŠƒWƒiƒ‹
+    //ï¿½Iï¿½ï¿½ï¿½Wï¿½iï¿½ï¿½
     public static List<Section> MyInspectorList { get { return Current_.Sections; } }
 
     public static bool IsPlaying { get { return Current_.IsPlaying_; } }
