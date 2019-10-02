@@ -276,7 +276,7 @@ Transform:
   m_GameObject: {fileID: 370554853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -483,7 +483,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txt: {fileID: 0}
   image: {fileID: 1944059926}
-  leftFoodImg: []
+  leftFoodImg:
+  - {fileID: 21300000, guid: 9c09314cc6665cd42bcaff7bcc72c5c5, type: 3}
+  - {fileID: 21300000, guid: 3c19cd5ea5eb1334ea22799017ecec25, type: 3}
+  - {fileID: 21300000, guid: 702fecd126ad5f641b4baf7476c71157, type: 3}
+  - {fileID: 21300000, guid: f274699b94a4f784e9cfd2c98ed2fa61, type: 3}
+  - {fileID: 21300000, guid: 8e8588ea12980d3488971f73cd0b8e0c, type: 3}
+  - {fileID: 21300000, guid: dfc38c23cfdca9c4eb3b8c45939e10f0, type: 3}
+  - {fileID: 21300000, guid: 53286329f2259094f986e1c58b7c5b9b, type: 3}
+  - {fileID: 21300000, guid: 840de8a50f815f34da88d013ea4288b5, type: 3}
 --- !u!1 &849613262
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +523,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_Children: []
+  m_Children:
+  - {fileID: 866769231}
   m_Father: {fileID: 1368552193}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -639,16 +648,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866769230}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 0.0139999995, y: 0.014000007, z: 0.014000007}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000047683716}
+  m_LocalScale: {x: 1.4, y: 1.4000015, z: 1.4000015}
   m_Children:
   - {fileID: 1299537731}
-  m_Father: {fileID: 1368552193}
-  m_RootOrder: 3
+  m_Father: {fileID: 849613263}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 4.710005}
+  m_AnchoredPosition: {x: 0, y: -18.999512}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &866769232
@@ -924,7 +933,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1325020144
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1101,7 +1110,6 @@ Transform:
   - {fileID: 604677166}
   - {fileID: 1336233449}
   - {fileID: 849613263}
-  - {fileID: 866769231}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -1342,7 +1350,6 @@ GameObject:
   - component: {fileID: 1718596247}
   - component: {fileID: 1718596246}
   - component: {fileID: 1718596245}
-  - component: {fileID: 1718596244}
   - component: {fileID: 1718596243}
   m_Layer: 0
   m_Name: GameManager
@@ -1365,22 +1372,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plAttacManagerObj: {fileID: 6033327791449643016, guid: 051c68c4dacf6544e9631f3762a53c74,
     type: 3}
---- !u!114 &1718596244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718596242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1704e44af4521a4ab7e567ac2908b76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftFoot: {fileID: 481446453}
-  rightFoot: {fileID: 481446450}
-  groundPos: {x: 0, y: 0, z: 0}
-  cutNum: 8
 --- !u!114 &1718596245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1414,7 +1405,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7fab0b4bdbbe52a439948b3eb14c83d5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1580,6 +1571,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 354564624678739040, guid: 3c94cd8e20e2cc748a88bc312cb9ec0f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c94cd8e20e2cc748a88bc312cb9ec0f, type: 3}

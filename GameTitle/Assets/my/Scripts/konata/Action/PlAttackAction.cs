@@ -54,6 +54,8 @@ public class PlAttackAction : MonoBehaviour
     {
         //生成時に剣の生成数を決める
         RSP.swordCount = rollSwordCount;
+
+        transform.position = JumpStart.groundPosition;
     }
 
     // Update is called once per frame

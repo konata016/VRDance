@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class JumpStart : MonoBehaviour
 {
-    private Vector3 groundPosition;                 // 地面の位置
+    public static Vector3 groundPosition;           // 地面の位置
     private Vector3 lowFootPosition;                // 足の位置
-    private bool onGroundL, onGroundR;              // 足が地面についているか否か
+    public static bool onGroundL, onGroundR;        // 足が地面についているか否か
     private float timeCheck;                        // 地面変更経過時間
     private float timeRegulary = 0.5f;              // 地面の位置をチェックする周期
     public int groundPosSaveCapacity = 2;           // 地面の位置の保存数
@@ -159,5 +159,6 @@ public class JumpStart : MonoBehaviour
         //Debug.Log("onGroundR" + onGroundR);// 右足の位置のログ
         //Debug.Log("jumpSwtich" + jumpSwtich);// ジャンプの位置のログ
         //Debug.Log("landingSwtich" + landingSwtich);// 着地の位置のログ
+
     }
 }

@@ -48,7 +48,8 @@ public class FootPosCenter : MonoBehaviour
     void Update()
     {
         //両足の中間にポジションをとる
-        transform.position = CenterPos(transform.position);
+        transform.position = new Vector3(CenterPos(transform.position).x, JumpStart.groundPosition.y, CenterPos(transform.position).z);
+        
 
         //初めに地面についた足の方向を見る
         GroundJudge();
@@ -65,41 +66,45 @@ public class FootPosCenter : MonoBehaviour
     {
         //どっちも判定をとってしまう
 
-        float yR, yL;
+        //float yR, yL;
 
-        yR = Mathf.Floor(rightFoot.transform.position.y * numUP) / numUP;
-        yL = Mathf.Floor(leftFoot.transform.position.y * numUP) / numUP;
+        ////地面の座標を取得
+        //groundPos = JumpStart.groundPosition;
 
-        //足を上げたとき
-        if (groundPos.y < yR)
-        {
-            footPos.isFootUpR = true;
-            footPos.isGroundR = false;
-        }
-        if (groundPos.y < yL)
-        {
-            footPos.isFootUpL = true;
-            footPos.isGroundL = false;
-        }
 
-        //地面と接触したとき
-        if (groundPos.y >= yR)
-        {
-            footPos.isFootDownR = true;
-            footPos.isGroundR = true;
-        }
-        if (groundPos.y >= yL)
-        {
-            footPos.isFootDownL = true;
-            footPos.isGroundL = true;
-        }
+        //yR = Mathf.Floor(rightFoot.transform.position.y * numUP) / numUP;
+        //yL = Mathf.Floor(leftFoot.transform.position.y * numUP) / numUP;
+
+        ////足を上げたとき
+        //if (groundPos.y < yR)
+        //{
+        //    footPos.isFootUpR = true;
+        //    footPos.isGroundR = false;
+        //}
+        //if (groundPos.y < yL)
+        //{
+        //    footPos.isFootUpL = true;
+        //    footPos.isGroundL = false;
+        //}
+
+        ////地面と接触したとき
+        //if (groundPos.y >= yR)
+        //{
+        //    footPos.isFootDownR = true;
+        //    footPos.isGroundR = true;
+        //}
+        //if (groundPos.y >= yL)
+        //{
+        //    footPos.isFootDownL = true;
+        //    footPos.isGroundL = true;
+        //}
 
         //方向を向かせる
-        if (footPos.isFootDownR && !footPos.isFootDownL)
+        if (!JumpStart.onGroundR && JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing)
         {
             transform.rotation = Quaternion.LookRotation(Vector3.up, rightFoot.transform.position - transform.position);
         }
-        if (footPos.isFootDownL && !footPos.isFootDownR)
+        if (!JumpStart.onGroundL && JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing)
         {
             transform.rotation = Quaternion.LookRotation(Vector3.up, leftFoot.transform.position - transform.position);
         }
