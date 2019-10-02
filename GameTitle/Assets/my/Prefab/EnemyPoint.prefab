@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7490861783191674354}
   - component: {fileID: 4305885742129645949}
-  - component: {fileID: 354564624678739040}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,15 +44,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 10, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &354564624678739040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7490861783191674365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe6985a852bcbe94daa08124d8d575ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
