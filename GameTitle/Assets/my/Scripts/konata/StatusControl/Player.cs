@@ -28,13 +28,14 @@ public class Player : MonoBehaviour
         //コンボ計算
         if (Music.IsPlaying && Music.IsJustChangedBeat())
         {
-            if(HitPos.rankJudge== HitPos.RANK.Excellent|| HitPos.rankJudge == HitPos.RANK.Good)
+            if (HitPos.rankJudge == HitPos.RANK.Excellent ||
+                HitPos.rankJudge == HitPos.RANK.Good)
             {
                 comboCount++;
             }
             else
             {
-                comboCount = 0;
+                if (HitPos.rankJudge != HitPos.RANK.Through) comboCount = 0;
             }
         }
 
@@ -48,5 +49,6 @@ public class Player : MonoBehaviour
         DebugPanel.text2 = "攻撃力  ：" + damagePoint;
         DebugPanel.text3 = "コンボ数：" + comboCount;
         DebugPanel.text4 = "判定    ：" + HitPos.rankJudge;
+        //DebugPanel.text4 = ""+JumpStart.isGroundTouch;
     }
 }

@@ -6,7 +6,7 @@ public class JumpStart : MonoBehaviour
 {
     public static Vector3 groundPosition;           // 地面の位置
     private Vector3 lowFootPosition;                // 足の位置
-    public static bool onGroundL, onGroundR;        // 足が地面についているか否か
+    public bool onGroundL, onGroundR;               // 足が地面についているか否か
     private float timeCheck;                        // 地面変更経過時間
     private float timeRegulary = 0.5f;              // 地面の位置をチェックする周期
     public int groundPosSaveCapacity = 2;           // 地面の位置の保存数
@@ -24,7 +24,7 @@ public class JumpStart : MonoBehaviour
     public AudioClip landing;   // 着地
 
     // 受け渡す変数
-    public enum ISGROUNDTOUCH { Landing, EndProcess, JumpWait}// 0:着地した後 1:判定取った後 2:ジャンプする前
+    public enum ISGROUNDTOUCH { Landing_R, Landing_L, EndProcess, JumpWait_R, JumpWait_L }// 0:着地した後_右足 1:着地した後_左足 2:判定取った後 3:ジャンプする前_右足 4:ジャンプする前_左足
     public static ISGROUNDTOUCH isGroundTouch { get; set; }
 
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class JumpStart : MonoBehaviour
         footPosL = GameObject.Find("LeftHandAnchor").transform.position;
         footPosR = GameObject.Find("RightHandAnchor").transform.position;
 
-        isGroundTouch = ISGROUNDTOUCH.JumpWait;
+        isGroundTouch = ISGROUNDTOUCH.EndProcess;
 
         audioSource = gameObject.GetComponent<AudioSource>();
     }
@@ -111,13 +111,17 @@ public class JumpStart : MonoBehaviour
             onGroundL = false;
             //Debug.Log("左足");// 左足上げたのログ
             if (isGroundTouch == ISGROUNDTOUCH.EndProcess)
-                isGroundTouch = ISGROUNDTOUCH.JumpWait;
+            {
+                isGroundTouch = ISGROUNDTOUCH.JumpWait_L;
+            }
         }
         else
         {
                onGroundL = true;
-            if (isGroundTouch == ISGROUNDTOUCH.JumpWait)
-                isGroundTouch = ISGROUNDTOUCH.Landing;
+            if (isGroundTouch == ISGROUNDTOUCH.JumpWait_L)
+            {
+                isGroundTouch = ISGROUNDTOUCH.Landing_L;
+            }
         }
 
         if (groundPosition.y + 0.03f < Mathf.Floor(footPosR.y * roundedDown) / roundedDown)// 右足上げているか否か
@@ -128,13 +132,17 @@ public class JumpStart : MonoBehaviour
             onGroundR = false;
             //Debug.Log("右足");// 右足上げたのログ
             if (isGroundTouch == ISGROUNDTOUCH.EndProcess)
-                isGroundTouch = ISGROUNDTOUCH.JumpWait;
+            {
+                isGroundTouch = ISGROUNDTOUCH.JumpWait_R;
+            }
         }
         else
         {
             onGroundR = true;
-            if (isGroundTouch == ISGROUNDTOUCH.JumpWait)
-                isGroundTouch = ISGROUNDTOUCH.Landing;
+            if (isGroundTouch == ISGROUNDTOUCH.JumpWait_R)
+            {
+                isGroundTouch = ISGROUNDTOUCH.Landing_R;
+            }
         }
 
         if (onGroundL == false && onGroundR == false && jumpSwtich == false)

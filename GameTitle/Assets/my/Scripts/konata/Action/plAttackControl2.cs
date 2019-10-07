@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//攻撃を発動させる処理
+//ゲームが重いのであれば改善の余地あり
+
 public class plAttackControl2 : MonoBehaviour
 {
     //マネージャーを生成してスキルを出すためのオブジェクトを入れる

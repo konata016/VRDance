@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//両足の中間位ブロックを置き、足が地面に接触したときにブロックが、着地した足の方向を向く
+
 public class FootPosCenter : MonoBehaviour
 {
     public static int hitPosNum { get; set; }
@@ -39,16 +41,15 @@ public class FootPosCenter : MonoBehaviour
     //地面に接触したときに一番初めについた足の方向を見る
     void GroundJudge()
     {
-        //方向を向かせる
-        if (!JumpStart.onGroundR && JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing)
+        //片足が地面と接触したときに、両足の中央から見たときの方向をブロックに向かせる
+        if (JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_R)
         {
-            transform.rotation = Quaternion.LookRotation(Vector3.up, rightFoot.transform.position - transform.position);
+                transform.rotation = Quaternion.LookRotation(Vector3.up, rightFoot.transform.position - transform.position);
         }
-        if (!JumpStart.onGroundL && JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing)
+        if (JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_L)
         {
-            transform.rotation = Quaternion.LookRotation(Vector3.up, leftFoot.transform.position - transform.position);
+                transform.rotation = Quaternion.LookRotation(Vector3.up, leftFoot.transform.position - transform.position);
         }
-        Debug.Log(hitPosNum);
     }
 
     //足の置いてある方向を決める
