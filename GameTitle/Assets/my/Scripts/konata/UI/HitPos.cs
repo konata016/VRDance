@@ -42,9 +42,11 @@ public class HitPos : MonoBehaviour
             notesLeftPos = BeatUi.notesLefts[0].GetComponent<RectTransform>().localPosition.x;
             notesRightPos = BeatUi.notesRights[0].GetComponent<RectTransform>().localPosition.x;
 
+            if (Input.GetButton("ジャンプ")) ;
+
             //ボタン判定
-            //footPosNum = FootPosNumDebug();
-            footPosNum = FootPosNum();
+            footPosNum = FootPosNumDebug();
+            //footPosNum = FootPosNum();
 
             //左のノーツの処理
             if (notesLeftPos >= -150f && notesLeftPos < 100f)
@@ -133,16 +135,26 @@ public class HitPos : MonoBehaviour
     //デバッグ用ボタン判定
     int FootPosNumDebug()
     {
-        int Num = footPosNum;
-        if (Input.GetKeyDown(KeyCode.Alpha0)) Num = 0;
-        if (Input.GetKeyDown(KeyCode.Alpha1)) Num = 1;
-        if (Input.GetKeyDown(KeyCode.Alpha2)) Num = 2;
-        if (Input.GetKeyDown(KeyCode.Alpha3)) Num = 3;
-        if (Input.GetKeyDown(KeyCode.Alpha4)) Num = 4;
-        if (Input.GetKeyDown(KeyCode.Alpha5)) Num = 5;
-        if (Input.GetKeyDown(KeyCode.Alpha6)) Num = 6;
-        if (Input.GetKeyDown(KeyCode.Alpha7)) Num = 7;
-        return Num;
+        int num = footPosNum;
+
+        //キーボード入力
+        if (Input.GetKeyDown(KeyCode.Alpha0)) num = 0;
+        if (Input.GetKeyDown(KeyCode.Alpha1)) num = 1;
+        if (Input.GetKeyDown(KeyCode.Alpha2)) num = 2;
+        if (Input.GetKeyDown(KeyCode.Alpha3)) num = 3;
+        if (Input.GetKeyDown(KeyCode.Alpha4)) num = 4;
+        if (Input.GetKeyDown(KeyCode.Alpha5)) num = 5;
+        if (Input.GetKeyDown(KeyCode.Alpha6)) num = 6;
+        if (Input.GetKeyDown(KeyCode.Alpha7)) num = 7;
+
+        //足の入力
+        if (JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_R ||
+            JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_L)
+        {
+            num = FootPosCenter.hitPosNum;
+        }
+
+        return num;
     }
 
     //足の角度判定用

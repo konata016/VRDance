@@ -5,7 +5,7 @@ using UnityEngine;
 //攻撃を発動させる処理
 //ゲームが重いのであれば改善の余地あり
 
-public class plAttackControl2 : MonoBehaviour
+public class PlActionControl : MonoBehaviour
 {
     //マネージャーを生成してスキルを出すためのオブジェクトを入れる
     public GameObject plAttacManagerObj;
@@ -27,9 +27,12 @@ public class plAttackControl2 : MonoBehaviour
     }
     public static PlayerAction plAct = new PlayerAction();
 
+    //デバッグ用リスト
+    public static List<int> melodySaveList = new List<int>();
+
     // Start is called before the first frame update
     void Start()
-    {       
+    {
         plAct.melodyList = new List<int>();
     }
 
@@ -76,6 +79,10 @@ public class plAttackControl2 : MonoBehaviour
                 Instantiate(plAttacManagerObj, transform);
                 PlAttackAction.rollSwordCount = plAct.attackStep;
             }
+
+            //メロディーを一端保存する
+            Save();
+
             //すべて消す
             plAct.melodyList.Clear();
 
@@ -90,5 +97,10 @@ public class plAttackControl2 : MonoBehaviour
             //Debug.Log(HitPos.footPosNum);
             HitPos.footPosNum = 8;
         }
+    }
+
+    void Save()
+    {
+        melodySaveList = new List<int>(plAct.melodyList);
     }
 }

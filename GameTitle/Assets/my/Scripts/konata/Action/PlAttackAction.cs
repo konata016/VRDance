@@ -12,7 +12,6 @@ public class PlAttackAction : MonoBehaviour
     //攻撃入力時の受け渡し用
     public static int rollSwordCount { get; set; }
 
-
     //くるくると回ってからターゲットに向かって放たれる
     [System.Serializable]
     public class RollSwordParameter
@@ -26,10 +25,20 @@ public class PlAttackAction : MonoBehaviour
 
         [HideInInspector] public Vector3 target;
         [HideInInspector] public List<GameObject> swordList = new List<GameObject>();
+        [HideInInspector] public List<bool> onSwordMoveList = new List<bool>();
         [HideInInspector] public bool onSword = true;
+
+
+        //タイミングを合わせるほうに使う
+        [HideInInspector] public bool[] onSwordMoveArray = new bool[4];
+        [HideInInspector] public bool isStart;
+        [HideInInspector] public int timingCount;
     }
     public RollSwordParameter RSP = new RollSwordParameter();
 
+    //攻撃の種類
+    enum ACTIONTYPE { Attack, Healing, Support, Through }
+    //ACTIONTYPE actionType = new ACTIONTYPE();
 
     //王の宝物庫
     [System.Serializable]
@@ -132,6 +141,58 @@ public class PlAttackAction : MonoBehaviour
         }
     }
 
+    public void RollSword2()
+    {
+
+        //遅延
+        timer += 1.0f * Time.deltaTime;
+
+        if (!RSP.onSword)
+        {
+            for (int i = 0; i < RSP.swordCount; i++)
+            {
+                //半円上に剣を生成する
+                Vector3 v3 = CirclePos(RSP.swordCount - 1, RSP.radius, i, Vector3.zero);
+                RSP.swordList.Add(Instantiate(RSP.swordObj, v3, new Quaternion()));
+            }
+            //次から生成しないようにする
+            RSP.onSword = true;
+        }
+
+        //カウントのリセット
+        if (Music.IsPlaying && Music.IsJustChangedBar()) RSP.timingCount = 0;
+
+        //回す処理
+        for (int i = 0; i < RSP.swordList.Count; i++)
+        {
+            //回す処理
+            if (!RSP.isStart) RSP.swordList[i].transform.Rotate(RSP.rollSpeed, 0, 0);
+
+        }
+
+
+        if (Music.IsPlaying && Music.IsJustChangedBeat())
+        {
+            RSP.timingCount++;
+            RSP.isStart = true;
+
+            //向ける処理
+            for (int i = 0; i < RSP.swordList.Count; i++)
+            {
+                RSP.swordList[i].transform.position =
+                    Vector3.MoveTowards(RSP.swordList[i].transform.position, RSP.target, RSP.speed * RSP.speed * Time.deltaTime);
+            }
+
+            if (FootPosCheck(RSP.timingCount) == ACTIONTYPE.Attack)
+            {
+                //途中
+            }
+
+        }
+        
+
+        //向ける
+    }
 
     //配置用
     Vector3 CirclePos(int count, float radius, int swordNum, Vector3 pos)
@@ -154,4 +215,40 @@ public class PlAttackAction : MonoBehaviour
         return pos;
     }
 
+    ACTIONTYPE FootPosCheck(int count)
+    {
+        ACTIONTYPE actionType = new ACTIONTYPE();
+
+        switch (PlActionControl.melodySaveList[count])
+        {
+            // 攻撃
+            case 3:
+            case 4:
+            case 5:
+                actionType = ACTIONTYPE.Attack;
+                break;
+
+            //ヒール
+            case 0:
+            case 1:
+            case 7:
+                actionType = ACTIONTYPE.Healing;
+                break;
+
+            //サポート
+            case 2:
+            case 6:
+                actionType = ACTIONTYPE.Support;
+                break;
+
+            //スルーした場合
+            case 8:
+                actionType = ACTIONTYPE.Through;
+                break;
+
+            default: break;
+        }
+
+        return actionType;
+    }
 }
