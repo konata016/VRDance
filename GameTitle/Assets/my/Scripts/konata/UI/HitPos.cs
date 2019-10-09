@@ -42,10 +42,9 @@ public class HitPos : MonoBehaviour
             notesLeftPos = BeatUi.notesLefts[0].GetComponent<RectTransform>().localPosition.x;
             notesRightPos = BeatUi.notesRights[0].GetComponent<RectTransform>().localPosition.x;
 
-            if (Input.GetButton("ジャンプ")) ;
-
             //ボタン判定
             footPosNum = FootPosNumDebug();
+            //Debug.Log(footPosNum);
             //footPosNum = FootPosNum();
 
             //左のノーツの処理
@@ -151,20 +150,19 @@ public class HitPos : MonoBehaviour
         if (JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_R ||
             JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_L)
         {
-            num = FootPosCenter.hitPosNum;
+            //num = FootPosCenter.hitPosNum;
         }
-
         return num;
     }
 
     //足の角度判定用
-    int FootPosNum()
-    {
-        int num = footPosNum;
+    //int FootPosNum()
+    //{
+    //    int num = footPosNum;
 
-        //踏んだ瞬間を取得
-        num = FootPosCenter.hitPosNum;
+    //    //踏んだ瞬間を取得
+    //    num = FootPosCenter.hitPosNum;
 
-        return num;
-    }
+    //    return num;
+    //}
 }

@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4fb01148c3404b4d8a62b6aa42a76cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centerTarget: {fileID: 6033327791449643016}
   targetName: EnemyPoint
   RSP:
     swordObj: {fileID: 59502128127131975, guid: 55283a92aea805f4bba4edd6d25739e0,
@@ -54,10 +53,13 @@ MonoBehaviour:
     waitTime: 0.5
     swordCount: 4
     radius: 8
-    target: {fileID: 7490861783191674365, guid: 3c94cd8e20e2cc748a88bc312cb9ec0f,
-      type: 3}
+    target: {x: 0, y: 0, z: 0}
     swordList: []
+    onSwordMoveList: 
     onSword: 0
+    onSwordMoveArray: 00000000
+    isStart: 0
+    timingCount: 0
   GOBP:
     target: {fileID: 0}
     gateObj: {fileID: 0}

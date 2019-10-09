@@ -34,6 +34,11 @@ public class PlActionControl : MonoBehaviour
     void Start()
     {
         plAct.melodyList = new List<int>();
+
+        for (int i = 0; i < 8; i++)
+        {
+            melodySaveList.Add(8);
+        }
     }
 
     // Update is called once per frame
@@ -81,7 +86,7 @@ public class PlActionControl : MonoBehaviour
             }
 
             //メロディーを一端保存する
-            Save();
+            //Save();
 
             //すべて消す
             plAct.melodyList.Clear();
@@ -92,15 +97,26 @@ public class PlActionControl : MonoBehaviour
         if (Music.IsPlaying && Music.IsJustChangedBeat())
         {
             plAct.melodyList.Add(HitPos.footPosNum);
+            //Debug.Log(HitPos.footPosNum);
 
+
+            HitPos.footPosNum = 8;
             //キーボード入力（デバッグ用）
             //Debug.Log(HitPos.footPosNum);
-            HitPos.footPosNum = 8;
         }
+        
     }
 
     void Save()
     {
-        melodySaveList = new List<int>(plAct.melodyList);
+        if (plAct.melodyList.Count > 3)
+        {
+            melodySaveList = new List<int>(plAct.melodyList);
+        }
+        else
+        {
+            //melodySaveList
+        }
+
     }
 }

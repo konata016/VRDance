@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//バグあり
+//テンポどうりに動かない
+
 public class PlAttackAction : MonoBehaviour
 {
 
     float timer;
-    public GameObject centerTarget;
     public string targetName;
 
     //攻撃入力時の受け渡し用
@@ -30,9 +32,9 @@ public class PlAttackAction : MonoBehaviour
 
 
         //タイミングを合わせるほうに使う
-        [HideInInspector] public bool[] onSwordMoveArray = new bool[4];
+        public bool[] onSwordMoveArray = new bool[4];
         [HideInInspector] public bool isStart;
-        [HideInInspector] public int timingCount;
+        [HideInInspector] public int timingCount = 0;
     }
     public RollSwordParameter RSP = new RollSwordParameter();
 
@@ -61,20 +63,33 @@ public class PlAttackAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //メロデイーリストからフラグを作成
+        for (int i = 0; i < PlActionControl.plAct.melodyList.Count; i++)
+        {
+            if (FootPosCheck(i) == ACTIONTYPE.Support)
+            {
+                RSP.onSwordMoveArray[i] = true;
+            }
+
+        }
+
         //生成時に剣の生成数を決める
         RSP.swordCount = rollSwordCount;
 
+        //地面の位置から計算
         transform.position = JumpStart.groundPosition;
 
+        Debug.Log(targetName);
+
         //ターゲットを決める
-        RSP.target = GameObject.Find(targetName).transform.position;
+        RSP.target = GameObject.Find("EnemyPoint").transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        RollSword();
+        RollSword2();
     }
 
     //途中
@@ -141,6 +156,8 @@ public class PlAttackAction : MonoBehaviour
         }
     }
 
+    //くるくると回ってからターゲットに向かって放たれる
+    //テンポに合わせて剣が飛んでいくバージョン
     public void RollSword2()
     {
 
@@ -159,39 +176,40 @@ public class PlAttackAction : MonoBehaviour
             RSP.onSword = true;
         }
 
-        //カウントのリセット
-        if (Music.IsPlaying && Music.IsJustChangedBar()) RSP.timingCount = 0;
-
         //回す処理
-        for (int i = 0; i < RSP.swordList.Count; i++)
+        if (!RSP.isStart)
         {
-            //回す処理
-            if (!RSP.isStart) RSP.swordList[i].transform.Rotate(RSP.rollSpeed, 0, 0);
-
-        }
-
-
-        if (Music.IsPlaying && Music.IsJustChangedBeat())
-        {
-            RSP.timingCount++;
-            RSP.isStart = true;
-
-            //向ける処理
             for (int i = 0; i < RSP.swordList.Count; i++)
             {
-                RSP.swordList[i].transform.position =
-                    Vector3.MoveTowards(RSP.swordList[i].transform.position, RSP.target, RSP.speed * RSP.speed * Time.deltaTime);
+                //回す処理
+                RSP.swordList[i].transform.Rotate(RSP.rollSpeed, 0, 0);
             }
-
-            if (FootPosCheck(RSP.timingCount) == ACTIONTYPE.Attack)
-            {
-                //途中
-            }
-
         }
-        
 
-        //向ける
+        //１拍後にカウントを進める
+        if (Music.IsPlaying && Music.IsJustChangedBeat())
+        {
+            if (RSP.timingCount - 1 > 3) RSP.timingCount++;           
+            RSP.isStart = true;
+        }
+
+        if (RSP.isStart)
+        {
+            for (int i=0;i<RSP.swordList.Count;i++)
+            {
+                //敵の方を向く
+                RSP.swordList[i].transform.LookAt(RSP.target);
+
+                //フラグが立っているものだけ動かす
+                if (RSP.onSwordMoveArray[i])
+                {
+                    RSP.swordList[i].transform.position =
+                        Vector3.MoveTowards(RSP.swordList[i].transform.position, RSP.target, RSP.speed * RSP.speed * Time.deltaTime);
+                }
+            }
+        }
+
+        //Debug.Log(RSP.timingCount);
     }
 
     //配置用
@@ -215,10 +233,10 @@ public class PlAttackAction : MonoBehaviour
         return pos;
     }
 
+    //アクションの種類判別用
     ACTIONTYPE FootPosCheck(int count)
     {
         ACTIONTYPE actionType = new ACTIONTYPE();
-
         switch (PlActionControl.melodySaveList[count])
         {
             // 攻撃

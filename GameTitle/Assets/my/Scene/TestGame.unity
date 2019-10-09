@@ -1390,6 +1390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f32c50b958c8044c8bac03bfb7a2ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onGroundL: 0
+  onGroundR: 0
   groundPosSaveCapacity: 2
   leftFoot: {fileID: 8300000, guid: fd0e3e707be16d84fbb6b1aa9ab2b203, type: 3}
   rightFoot: {fileID: 8300000, guid: e1220bd492ea81f40ac3140cf8c6b427, type: 3}
@@ -1973,7 +1975,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336233448}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1336233451
 Camera:
   m_ObjectHideFlags: 0
@@ -2539,7 +2541,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1718596242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7dfc260a650f9e49b52fd38d6d52901, type: 3}
+  m_Script: {fileID: 11500000, guid: 9538c51ed776e5e488edfcf76d786ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   plAttacManagerObj: {fileID: 6033327791449643016, guid: 051c68c4dacf6544e9631f3762a53c74,
