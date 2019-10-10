@@ -14,6 +14,10 @@ public class PlAttackAction : MonoBehaviour
     //攻撃入力時の受け渡し用
     public static int rollSwordCount { get; set; }
 
+    //攻撃の種類
+    enum ACTIONTYPE { Attack, Healing, Support, Through }
+    List<ACTIONTYPE> actionTypeList = new List<ACTIONTYPE>();
+
     //くるくると回ってからターゲットに向かって放たれる
     [System.Serializable]
     public class RollSwordParameter
@@ -27,20 +31,14 @@ public class PlAttackAction : MonoBehaviour
 
         [HideInInspector] public Vector3 target;
         [HideInInspector] public List<GameObject> swordList = new List<GameObject>();
-        [HideInInspector] public List<bool> onSwordMoveList = new List<bool>();
         [HideInInspector] public bool onSword = true;
 
 
         //タイミングを合わせるほうに使う
-        public bool[] onSwordMoveArray = new bool[4];
         [HideInInspector] public bool isStart;
         [HideInInspector] public int timingCount = 0;
     }
     public RollSwordParameter RSP = new RollSwordParameter();
-
-    //攻撃の種類
-    enum ACTIONTYPE { Attack, Healing, Support, Through }
-    //ACTIONTYPE actionType = new ACTIONTYPE();
 
     //王の宝物庫
     [System.Serializable]
@@ -63,12 +61,20 @@ public class PlAttackAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        Debug.Log(PlActionControl.melodySaveList.Count);
+
         //メロデイーリストからフラグを作成
-        for (int i = 0; i < PlActionControl.plAct.melodyList.Count; i++)
+        for (int i = 0; i < PlActionControl.melodySaveList.Count; i++)
         {
-            if (FootPosCheck(i) == ACTIONTYPE.Support)
+            switch (FootPosCheck(i, PlActionControl.melodySaveList))
             {
-                RSP.onSwordMoveArray[i] = true;
+                case ACTIONTYPE.Attack: actionTypeList.Add(ACTIONTYPE.Attack); break;
+                case ACTIONTYPE.Healing: actionTypeList.Add(ACTIONTYPE.Healing); break;
+                case ACTIONTYPE.Support: actionTypeList.Add(ACTIONTYPE.Support); break;
+                case ACTIONTYPE.Through: actionTypeList.Add(ACTIONTYPE.Through); break;
+
+                default: actionTypeList.Add(ACTIONTYPE.Through); break;
             }
 
         }
@@ -79,7 +85,7 @@ public class PlAttackAction : MonoBehaviour
         //地面の位置から計算
         transform.position = JumpStart.groundPosition;
 
-        Debug.Log(targetName);
+        //Debug.Log(targetName);
 
         //ターゲットを決める
         RSP.target = GameObject.Find("EnemyPoint").transform.position;
@@ -177,34 +183,39 @@ public class PlAttackAction : MonoBehaviour
         }
 
         //回す処理
-        if (!RSP.isStart)
+        for (int i = 0; i < RSP.swordList.Count; i++)
         {
-            for (int i = 0; i < RSP.swordList.Count; i++)
-            {
-                //回す処理
-                RSP.swordList[i].transform.Rotate(RSP.rollSpeed, 0, 0);
-            }
+            if (!RSP.isStart)RSP.swordList[i].transform.Rotate(RSP.rollSpeed, 0, 0);//回す処理
+            else RSP.swordList[i].transform.LookAt(RSP.target);                     //敵の方向を向く
         }
 
         //１拍後にカウントを進める
         if (Music.IsPlaying && Music.IsJustChangedBeat())
         {
-            if (RSP.timingCount - 1 > 3) RSP.timingCount++;           
+            if (RSP.timingCount < actionTypeList.Count) RSP.timingCount++;
             RSP.isStart = true;
         }
 
+        //Debug.Log(RSP.timingCount);
+
+        //1拍のタイミングで動き始める
         if (RSP.isStart)
         {
-            for (int i=0;i<RSP.swordList.Count;i++)
-            {
-                //敵の方を向く
-                RSP.swordList[i].transform.LookAt(RSP.target);
+            //swordListの配列用
+            int count = 0;
 
-                //フラグが立っているものだけ動かす
-                if (RSP.onSwordMoveArray[i])
+            for (int i = 0; i < RSP.timingCount; i++)
+            {
+                //1小節の中の攻撃を調べる
+                if (actionTypeList[i] == ACTIONTYPE.Attack)
                 {
-                    RSP.swordList[i].transform.position =
-                        Vector3.MoveTowards(RSP.swordList[i].transform.position, RSP.target, RSP.speed * RSP.speed * Time.deltaTime);
+
+                    //敵に向かって剣が飛んでいく
+                    RSP.swordList[count].transform.position =
+                        Vector3.MoveTowards(RSP.swordList[count].transform.position, RSP.target, RSP.speed * RSP.speed * Time.deltaTime);
+
+
+                    count++;
                 }
             }
         }
@@ -234,10 +245,10 @@ public class PlAttackAction : MonoBehaviour
     }
 
     //アクションの種類判別用
-    ACTIONTYPE FootPosCheck(int count)
+    ACTIONTYPE FootPosCheck(int count, List<int> list)
     {
         ACTIONTYPE actionType = new ACTIONTYPE();
-        switch (PlActionControl.melodySaveList[count])
+        switch (list[count])
         {
             // 攻撃
             case 3:

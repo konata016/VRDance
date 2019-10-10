@@ -35,9 +35,9 @@ public class PlActionControl : MonoBehaviour
     {
         plAct.melodyList = new List<int>();
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 4; i++)
         {
-            melodySaveList.Add(8);
+            melodySaveList.Add(4);
         }
     }
 
@@ -86,7 +86,7 @@ public class PlActionControl : MonoBehaviour
             }
 
             //メロディーを一端保存する
-            //Save();
+            Save();
 
             //すべて消す
             plAct.melodyList.Clear();
