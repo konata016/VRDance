@@ -9,6 +9,8 @@ public class PlActionControl : MonoBehaviour
 {
     //マネージャーを生成してスキルを出すためのオブジェクトを入れる
     public GameObject plAttacManagerObj;
+    //SE読み込みオブジェクト
+    private GameObject seObj;
 
     //[System.Serializable]
     public struct PlayerAction      //スキルカウント用
@@ -33,6 +35,7 @@ public class PlActionControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        seObj = GameObject.Find("SE");
         plAct.melodyList = new List<int>();
 
         for (int i = 0; i < 4; i++)
@@ -104,6 +107,8 @@ public class PlActionControl : MonoBehaviour
             plAct.melodyList.Add(HitPos.footPosNum);
             //Debug.Log(HitPos.footPosNum);
 
+            //MainGame_SE mainGame_SE = seObj.GetComponent<MainGame_SE>();
+            //mainGame_SE.SwordSound();// 効果音＿剣
 
             HitPos.footPosNum = 8;
             //キーボード入力（デバッグ用）
