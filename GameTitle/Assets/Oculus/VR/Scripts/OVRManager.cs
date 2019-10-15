@@ -1874,7 +1874,7 @@ public class OVRManager : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("[OVRManager] OnApplicationFocus(false)");
+			//Debug.Log("[OVRManager] OnApplicationFocus(false)");
 		}
 	}
 

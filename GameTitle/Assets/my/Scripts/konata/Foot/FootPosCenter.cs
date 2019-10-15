@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//両足の中間位ブロックを置き、足が地面に接触したときにブロックが、着地した足の方向を向く
+
 public class FootPosCenter : MonoBehaviour
 {
     public static int hitPosNum { get; set; }
@@ -13,29 +15,7 @@ public class FootPosCenter : MonoBehaviour
     public int cutNum = 8;
 
     Quaternion foodQuaternion;
-    float numUP = 100;
     float ang;
-
-    public struct FootPosParameter
-    {
-        public bool isFootUpR;
-        public bool isFootUpL;
-
-        public bool isFootDownR;
-        public bool isFootDownL;
-
-        public bool isGroundR;
-        public bool isGroundL;
-
-        public void refresh()
-        {
-            isFootUpR = false;
-            isFootUpL = false;
-            isFootDownR = false;
-            isFootDownL = false;
-        }
-    }
-    public FootPosParameter footPos = new FootPosParameter();
 
 
     // Start is called before the first frame update
@@ -56,59 +36,20 @@ public class FootPosCenter : MonoBehaviour
 
         //方向を記録する
         FootDirection();
-
-        //フラグの初期化
-        footPos.refresh();
     }
 
     //地面に接触したときに一番初めについた足の方向を見る
     void GroundJudge()
     {
-        //どっちも判定をとってしまう
-
-        //float yR, yL;
-
-        ////地面の座標を取得
-        //groundPos = JumpStart.groundPosition;
-
-
-        //yR = Mathf.Floor(rightFoot.transform.position.y * numUP) / numUP;
-        //yL = Mathf.Floor(leftFoot.transform.position.y * numUP) / numUP;
-
-        ////足を上げたとき
-        //if (groundPos.y < yR)
-        //{
-        //    footPos.isFootUpR = true;
-        //    footPos.isGroundR = false;
-        //}
-        //if (groundPos.y < yL)
-        //{
-        //    footPos.isFootUpL = true;
-        //    footPos.isGroundL = false;
-        //}
-
-        ////地面と接触したとき
-        //if (groundPos.y >= yR)
-        //{
-        //    footPos.isFootDownR = true;
-        //    footPos.isGroundR = true;
-        //}
-        //if (groundPos.y >= yL)
-        //{
-        //    footPos.isFootDownL = true;
-        //    footPos.isGroundL = true;
-        //}
-
-        //方向を向かせる
-        if (!JumpStart.onGroundR && JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing)
+        //片足が地面と接触したときに、両足の中央から見たときの方向をブロックに向かせる
+        if (JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_R)
         {
-            transform.rotation = Quaternion.LookRotation(Vector3.up, rightFoot.transform.position - transform.position);
+                transform.rotation = Quaternion.LookRotation(Vector3.up, rightFoot.transform.position - transform.position);
         }
-        if (!JumpStart.onGroundL && JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing)
+        if (JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_L)
         {
-            transform.rotation = Quaternion.LookRotation(Vector3.up, leftFoot.transform.position - transform.position);
+                transform.rotation = Quaternion.LookRotation(Vector3.up, leftFoot.transform.position - transform.position);
         }
-        Debug.Log(hitPosNum);
     }
 
     //足の置いてある方向を決める

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//ノーツの処理と着地のタイミングから導き出されるランクの判定
+
 public class HitPos : MonoBehaviour
 {
     //判定を渡すよう
-    public enum RANK { Bad, Good, Excellent }
+    public enum RANK { Bad, Good, Excellent,Through }
 
     float notesLeftPos;
     float notesRightPos;
@@ -23,11 +25,11 @@ public class HitPos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //ボタン
-        NotesKeyName = KeyCode.Space;
-        footPosNum = 0;
+        
+        NotesKeyName = KeyCode.Space;   //判定するボタン
+        footPosNum = 0;                 //足の位置の初期向き
 
-        rankJudge = RANK.Bad;
+        rankJudge = RANK.Through;       //ランクの初期化
     }
 
     // Update is called once per frame
@@ -41,16 +43,22 @@ public class HitPos : MonoBehaviour
             notesRightPos = BeatUi.notesRights[0].GetComponent<RectTransform>().localPosition.x;
 
             //ボタン判定
-            //footPosNum = FootPosNumDebug();
-            footPosNum = FootPosNum();
+            footPosNum = FootPosNumDebug();
+            //Debug.Log(footPosNum);
+            //footPosNum = FootPosNum();
 
             //左のノーツの処理
             if (notesLeftPos >= -150f && notesLeftPos < 100f)
             {
                 obj = BeatUi.notesLefts[0];
 
-                if (Input.GetKeyDown(NotesKeyName) || Input.anyKeyDown)
+                //足が地面に接触したときまたはキーボードから入力されたときに処理する
+                if (Input.GetKeyDown(NotesKeyName) ||
+                    JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_R ||
+                    JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_L)
                 {
+
+                    //タイミングのランクを登録する
                     if (notesLeftPos <= 50f && notesLeftPos >= -30f)
                     {
                         Debug.Log("Excellent!!");
@@ -70,12 +78,11 @@ public class HitPos : MonoBehaviour
 
                     BeatUi.notesLefts.RemoveAt(0);
                     Destroy(obj);
-
                 }
             }
 
 
-            //消す
+            //ノーツを消す
             if (notesLeftPos > 2f)
             {
                 obj.GetComponent<Image>().color = Color.clear;
@@ -92,10 +99,17 @@ public class HitPos : MonoBehaviour
             {
                 obj1 = BeatUi.notesRights[0];
 
-                if (Input.GetKeyDown(NotesKeyName) || Input.anyKeyDown)
+                if (Input.GetKeyDown(NotesKeyName) ||
+                    JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_R ||
+                    JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_L)
                 {
                     BeatUi.notesRights.RemoveAt(0);
                     Destroy(obj1);
+
+
+                    //処理を返す(地面に接触したときにフラグを返す)
+                    Debug.Log("来てます");
+                    JumpStart.isGroundTouch = JumpStart.ISGROUNDTOUCH.EndProcess;
                 }
             }
             if (!Input.GetKeyDown(NotesKeyName) || !Input.anyKeyDown)
@@ -108,6 +122,9 @@ public class HitPos : MonoBehaviour
                 {
                     BeatUi.notesRights.RemoveAt(0);
                     Destroy(obj1);
+
+                    //スルーした時のランク
+                    rankJudge = RANK.Through;
                 }
             }
         }
@@ -117,30 +134,35 @@ public class HitPos : MonoBehaviour
     //デバッグ用ボタン判定
     int FootPosNumDebug()
     {
-        int Num = footPosNum;
-        if (Input.GetKeyDown(KeyCode.Alpha0)) Num = 0;
-        if (Input.GetKeyDown(KeyCode.Alpha1)) Num = 1;
-        if (Input.GetKeyDown(KeyCode.Alpha2)) Num = 2;
-        if (Input.GetKeyDown(KeyCode.Alpha3)) Num = 3;
-        if (Input.GetKeyDown(KeyCode.Alpha4)) Num = 4;
-        if (Input.GetKeyDown(KeyCode.Alpha5)) Num = 5;
-        if (Input.GetKeyDown(KeyCode.Alpha6)) Num = 6;
-        if (Input.GetKeyDown(KeyCode.Alpha7)) Num = 7;        
-        return Num;
+        int num = footPosNum;
+
+        //キーボード入力
+        if (Input.GetKeyDown(KeyCode.Alpha0)) num = 0;
+        if (Input.GetKeyDown(KeyCode.Alpha1)) num = 1;
+        if (Input.GetKeyDown(KeyCode.Alpha2)) num = 2;
+        if (Input.GetKeyDown(KeyCode.Alpha3)) num = 3;
+        if (Input.GetKeyDown(KeyCode.Alpha4)) num = 4;
+        if (Input.GetKeyDown(KeyCode.Alpha5)) num = 5;
+        if (Input.GetKeyDown(KeyCode.Alpha6)) num = 6;
+        if (Input.GetKeyDown(KeyCode.Alpha7)) num = 7;
+
+        //足の入力
+        if (JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_R ||
+            JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_L)
+        {
+            //num = FootPosCenter.hitPosNum;
+        }
+        return num;
     }
 
     //足の角度判定用
-    int FootPosNum()
-    {
-        int num = footPosNum;
+    //int FootPosNum()
+    //{
+    //    int num = footPosNum;
 
-        if (JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing)
-        {
-            //踏んだ瞬間を取得
-            num = FootPosCenter.hitPosNum;
-            JumpStart.isGroundTouch = JumpStart.ISGROUNDTOUCH.EndProcess;
-        }
+    //    //踏んだ瞬間を取得
+    //    num = FootPosCenter.hitPosNum;
 
-        return num;
-    }
+    //    return num;
+    //}
 }

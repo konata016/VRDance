@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//左と右のノーツの移送処理
+
 public class Notes : MonoBehaviour
 {
     RectTransform rect;

@@ -87,10 +87,13 @@ public class Music : MonoBehaviour
 	public TextMesh DebugText;
 
 	public bool CreateSectionClips;
-	#endregion
+    #endregion
 
-	#region public static properties
-	public static bool IsPlaying { get { return Current_.IsPlaying_; } }
+    #region public static properties
+    //�I���W�i��
+    public static List<Section> MyInspectorList { get { return Current_.Sections; } }
+
+    public static bool IsPlaying { get { return Current_.IsPlaying_; } }
 	/// <summary>
 	/// last timing.
 	/// </summary>

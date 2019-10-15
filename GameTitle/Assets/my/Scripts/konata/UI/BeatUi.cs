@@ -23,6 +23,7 @@ public class BeatUi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //何たら拍子のタイミングで、ノーツを生成する
         if (Music.IsPlaying && Music.IsJustChangedBeat())
         {
             GameObject prefab = Instantiate(notesLeft) as GameObject;
