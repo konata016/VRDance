@@ -58,6 +58,17 @@ public class PlAttackAction : MonoBehaviour
     }
     public GateOfBabylonParameter GOBP = new GateOfBabylonParameter();
 
+    //回復のやつ
+    [System.Serializable]
+    public class HealEffect
+    {
+        public GameObject materialObj;
+
+        public int count;
+        public List<GameObject> healList = new List<GameObject>();
+    }
+    public HealEffect healEffect = new HealEffect();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -94,7 +105,7 @@ public class PlAttackAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Heal();
         RollSword2();
     }
 
@@ -214,13 +225,31 @@ public class PlAttackAction : MonoBehaviour
                     RSP.swordList[count].transform.position =
                         Vector3.MoveTowards(RSP.swordList[count].transform.position, RSP.target, RSP.speed * RSP.speed * Time.deltaTime);
 
-
                     count++;
                 }
             }
         }
+    }
 
-        //Debug.Log(RSP.timingCount);
+    //回復
+    public void Heal()
+    {
+
+        if (healEffect.count < actionTypeList.Count)
+        {
+            //テンポごとの判定
+            if (Music.IsPlaying && Music.IsJustChangedBeat())
+            {
+                //1小節の中の回復を調べる
+                if (actionTypeList[healEffect.count] == ACTIONTYPE.Healing)
+                {
+                    //回復エフェクトのリストの作成
+                    healEffect.healList.Add(Instantiate(healEffect.materialObj, transform));
+                }
+                healEffect.count++;
+            }
+        }
+        
     }
 
     //配置用

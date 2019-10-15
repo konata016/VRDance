@@ -55,9 +55,7 @@ MonoBehaviour:
     radius: 8
     target: {x: 0, y: 0, z: 0}
     swordList: []
-    onSwordMoveList: 
     onSword: 0
-    onSwordMoveArray: 00000000
     isStart: 0
     timingCount: 0
   GOBP:
@@ -70,6 +68,14 @@ MonoBehaviour:
     sword: []
     onGate: 0
     onSword: 0
+  healEffect:
+    materialObj: {fileID: 8941811846020631171, guid: c19c03db66e2e8040b73c539dfeb2645,
+      type: 3}
+    maxPos: 1
+    popSpeed: 0.1
+    count: 0
+    healList: []
+    disList: []
 --- !u!114 &8414283960533562994
 MonoBehaviour:
   m_ObjectHideFlags: 0

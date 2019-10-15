@@ -1566,7 +1566,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 481446449}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1068411107
+--- !u!114 &1068411105
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1575,10 +1575,57 @@ MonoBehaviour:
   m_GameObject: {fileID: 1068411104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: f23a2ed235a38574e866af0f835f8e6c, type: 2}
+  volumeTrigger: {fileID: 481446454}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 1
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1001 &1185054649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2723,6 +2770,7 @@ GameObject:
   - component: {fileID: 1718596246}
   - component: {fileID: 1718596245}
   - component: {fileID: 1718596243}
+  - component: {fileID: 1718596244}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2744,6 +2792,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plAttacManagerObj: {fileID: 6033327791449643016, guid: 051c68c4dacf6544e9631f3762a53c74,
     type: 3}
+--- !u!114 &1718596244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718596242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 1dfe3a9351f3afb4aa161f6b0dda3f48, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!114 &1718596245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2779,7 +2844,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e57111e5575908a4f860b04cecde6d0e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.365
   m_Pitch: 1
   Loop: 1
   Mute: 0

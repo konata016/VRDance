@@ -37,7 +37,7 @@ public class PlActionControl : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            melodySaveList.Add(4);
+            melodySaveList.Add(8);
         }
     }
 
@@ -83,6 +83,11 @@ public class PlActionControl : MonoBehaviour
             {
                 Instantiate(plAttacManagerObj, transform);
                 PlAttackAction.rollSwordCount = plAct.attackStep;
+            }
+            if (plAct.healing > 0)
+            {
+                Instantiate(plAttacManagerObj, transform);
+                //PlAttackAction.rollSwordCount = plAct.healing;
             }
 
             //メロディーを一端保存する
