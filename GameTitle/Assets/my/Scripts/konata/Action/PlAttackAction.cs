@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class PlAttackAction : MonoBehaviour
 {
+    //SE読み込みオブジェクト
+    private GameObject seObj;
 
     float timer;
     public string targetName;
@@ -61,6 +63,7 @@ public class PlAttackAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        seObj = GameObject.Find("SE");
 
         Debug.Log(PlActionControl.melodySaveList.Count);
 
@@ -192,11 +195,15 @@ public class PlAttackAction : MonoBehaviour
         //１拍後にカウントを進める
         if (Music.IsPlaying && Music.IsJustChangedBeat())
         {
-            if (RSP.timingCount < actionTypeList.Count) RSP.timingCount++;
+            if (RSP.timingCount < actionTypeList.Count)
+            {
+                SE(RSP.timingCount);
+                RSP.timingCount++;
+            }
             RSP.isStart = true;
         }
 
-        //Debug.Log(RSP.timingCount);
+        Debug.Log(RSP.timingCount);
 
         //1拍のタイミングで動き始める
         if (RSP.isStart)
@@ -214,13 +221,23 @@ public class PlAttackAction : MonoBehaviour
                     RSP.swordList[count].transform.position =
                         Vector3.MoveTowards(RSP.swordList[count].transform.position, RSP.target, RSP.speed * RSP.speed * Time.deltaTime);
 
-
                     count++;
                 }
             }
         }
 
         //Debug.Log(RSP.timingCount);
+    }
+
+    void SE(int count)
+    {
+        //インデックス外になる
+        if(count< actionTypeList.Count)
+        if (actionTypeList[count] == ACTIONTYPE.Attack)
+        {
+            MainGame_SE mainGame_SE = seObj.GetComponent<MainGame_SE>();
+            mainGame_SE.SwordSound();// 効果音＿剣
+        }
     }
 
     //配置用

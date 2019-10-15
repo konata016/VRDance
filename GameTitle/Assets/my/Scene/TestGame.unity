@@ -1425,6 +1425,7 @@ GameObject:
   - component: {fileID: 1024292120}
   - component: {fileID: 1024292119}
   - component: {fileID: 1024292118}
+  - component: {fileID: 1024292121}
   m_Layer: 0
   m_Name: SE
   m_TagString: Untagged
@@ -1560,6 +1561,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1024292121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024292117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af546fd40430b340a6d9304b676a301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sword_SE: {fileID: 8300000, guid: 5ac10b28c1e11c8429af794a74d53ce5, type: 3}
+  step_SE: {fileID: 8300000, guid: 4c77de52ce968ac4892d4e2dfab505c8, type: 3}
 --- !u!1 &1068411104 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 126d619cf4daa52469682f85c1378b4a,
@@ -2779,7 +2794,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e57111e5575908a4f860b04cecde6d0e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.775
   m_Pitch: 1
   Loop: 1
   Mute: 0

@@ -15,6 +15,7 @@ public class HitPos : MonoBehaviour
 
     GameObject obj;
     GameObject obj1;
+    private GameObject seObj;//SE読み込みオブジェクト
 
     public static int footPosNum { get; set; }
     public static RANK rankJudge { get; set; }
@@ -25,7 +26,8 @@ public class HitPos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        seObj = GameObject.Find("SE");
+
         NotesKeyName = KeyCode.Space;   //判定するボタン
         footPosNum = 0;                 //足の位置の初期向き
 
@@ -75,6 +77,9 @@ public class HitPos : MonoBehaviour
                         Debug.Log("Bad!!");
                         rankJudge = RANK.Bad;
                     }
+
+                    MainGame_SE mainGame_SE = seObj.GetComponent<MainGame_SE>();
+                    mainGame_SE.StepSound();//足音
 
                     BeatUi.notesLefts.RemoveAt(0);
                     Destroy(obj);
@@ -129,7 +134,6 @@ public class HitPos : MonoBehaviour
             }
         }
     }
-
 
     //デバッグ用ボタン判定
     int FootPosNumDebug()
