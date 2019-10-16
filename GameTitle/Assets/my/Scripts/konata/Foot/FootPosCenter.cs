@@ -12,7 +12,7 @@ public class FootPosCenter : MonoBehaviour
     public GameObject rightFoot;
     public Vector3 groundPos;
 
-    public int cutNum = 8;
+    //public int cutNum = 8;
 
     Quaternion foodQuaternion;
     float ang;
@@ -21,7 +21,7 @@ public class FootPosCenter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ang = 360 / cutNum;
+        ang = 360 / PlActionControl.FootCircleCutNum;
     }
 
     // Update is called once per frame
@@ -30,7 +30,6 @@ public class FootPosCenter : MonoBehaviour
         //両足の中間にポジションをとる
         transform.position = new Vector3(CenterPos(transform.position).x, JumpStart.groundPosition.y, CenterPos(transform.position).z);
         
-
         //初めに地面についた足の方向を見る
         GroundJudge();
 
@@ -60,13 +59,13 @@ public class FootPosCenter : MonoBehaviour
         float minAng = ang / 2;
 
         //中心から見た足の角度を出す
-        if (FoodAng <= minAng || FoodAng > minAng + ang * (cutNum - 1))
+        if (FoodAng <= minAng || FoodAng > minAng + ang * (PlActionControl.FootCircleCutNum - 1))
         {
             hitPosNum = 0;
         }
         else
         {
-            for (int i = 1; i < cutNum; i++)
+            for (int i = 1; i < PlActionControl.FootCircleCutNum; i++)
             {
                 if (FoodAng > minAng && FoodAng <= minAng + ang)
                 {

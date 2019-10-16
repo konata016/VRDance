@@ -17,8 +17,8 @@ public class PlAttackAction : MonoBehaviour
     public static int rollSwordCount { get; set; }
 
     //攻撃の種類
-    enum ACTIONTYPE { Attack, Healing, Support, Through }
-    List<ACTIONTYPE> actionTypeList = new List<ACTIONTYPE>();
+    //enum ACTIONTYPE { Attack, Healing, Support, Through }
+    List<PlActionControl.ACTIONTYPE> actionTypeList = new List<PlActionControl.ACTIONTYPE>();
 
     //くるくると回ってからターゲットに向かって放たれる
     [System.Serializable]
@@ -79,19 +79,7 @@ public class PlAttackAction : MonoBehaviour
         Debug.Log(PlActionControl.melodySaveList.Count);
 
         //メロデイーリストからフラグを作成
-        for (int i = 0; i < PlActionControl.melodySaveList.Count; i++)
-        {
-            switch (FootPosCheck(i, PlActionControl.melodySaveList))
-            {
-                case ACTIONTYPE.Attack: actionTypeList.Add(ACTIONTYPE.Attack); break;
-                case ACTIONTYPE.Healing: actionTypeList.Add(ACTIONTYPE.Healing); break;
-                case ACTIONTYPE.Support: actionTypeList.Add(ACTIONTYPE.Support); break;
-                case ACTIONTYPE.Through: actionTypeList.Add(ACTIONTYPE.Through); break;
-
-                default: actionTypeList.Add(ACTIONTYPE.Through); break;
-            }
-
-        }
+        actionTypeList = new List<PlActionControl.ACTIONTYPE>(PlActionControl.melodySaveList);
 
         //生成時に剣の生成数を決める
         RSP.swordCount = rollSwordCount;
@@ -199,7 +187,7 @@ public class PlAttackAction : MonoBehaviour
         //回す処理
         for (int i = 0; i < RSP.swordList.Count; i++)
         {
-            if (!RSP.isStart)RSP.swordList[i].transform.Rotate(RSP.rollSpeed, 0, 0);//回す処理
+            if (!RSP.isStart) RSP.swordList[i].transform.Rotate(RSP.rollSpeed, 0, 0);//回す処理
             else RSP.swordList[i].transform.LookAt(RSP.target);                     //敵の方向を向く
         }
 
@@ -225,7 +213,7 @@ public class PlAttackAction : MonoBehaviour
             for (int i = 0; i < RSP.timingCount; i++)
             {
                 //1小節の中の攻撃を調べる
-                if (actionTypeList[i] == ACTIONTYPE.Attack)
+                if (actionTypeList[i] == PlActionControl.ACTIONTYPE.Attack)
                 {
 
                     //敵に向かって剣が飛んでいく
@@ -248,7 +236,7 @@ public class PlAttackAction : MonoBehaviour
             if (Music.IsPlaying && Music.IsJustChangedBeat())
             {
                 //1小節の中の回復を調べる
-                if (actionTypeList[healEffect.count] == ACTIONTYPE.Healing)
+                if (actionTypeList[healEffect.count] == PlActionControl.ACTIONTYPE.Healing)
                 {
                     //回復エフェクトのリストの作成
                     healEffect.healList.Add(Instantiate(healEffect.materialObj, transform));
@@ -256,18 +244,18 @@ public class PlAttackAction : MonoBehaviour
                 healEffect.count++;
             }
         }
-        
+
     }
 
     void SE(int count)
     {
         //インデックス外になる
-        if(count< actionTypeList.Count)
-        if (actionTypeList[count] == ACTIONTYPE.Attack)
-        {
-            MainGame_SE mainGame_SE = seObj.GetComponent<MainGame_SE>();
-            mainGame_SE.SwordSound();// 効果音＿剣
-        }
+        if (count < actionTypeList.Count)
+            if (actionTypeList[count] == PlActionControl.ACTIONTYPE.Attack)
+            {
+                MainGame_SE mainGame_SE = seObj.GetComponent<MainGame_SE>();
+                mainGame_SE.SwordSound();// 効果音＿剣
+            }
     }
 
     //配置用
@@ -289,42 +277,5 @@ public class PlAttackAction : MonoBehaviour
         }
 
         return pos;
-    }
-
-    //アクションの種類判別用
-    ACTIONTYPE FootPosCheck(int count, List<int> list)
-    {
-        ACTIONTYPE actionType = new ACTIONTYPE();
-        switch (list[count])
-        {
-            // 攻撃
-            case 3:
-            case 4:
-            case 5:
-                actionType = ACTIONTYPE.Attack;
-                break;
-
-            //ヒール
-            case 0:
-            case 1:
-            case 7:
-                actionType = ACTIONTYPE.Healing;
-                break;
-
-            //サポート
-            case 2:
-            case 6:
-                actionType = ACTIONTYPE.Support;
-                break;
-
-            //スルーした場合
-            case 8:
-                actionType = ACTIONTYPE.Through;
-                break;
-
-            default: break;
-        }
-
-        return actionType;
     }
 }

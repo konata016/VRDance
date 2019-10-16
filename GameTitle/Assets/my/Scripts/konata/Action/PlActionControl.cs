@@ -7,15 +7,30 @@ using UnityEngine;
 
 public class PlActionControl : MonoBehaviour
 {
+    //アクションの種類
+    public enum ACTIONTYPE { Attack, Healing, Support, Through }
+
     //マネージャーを生成してスキルを出すためのオブジェクトを入れる
     public GameObject plAttacManagerObj;
+
+    public int footCircleCutNum = 8;
+
+    [System.Serializable]
+    public class FootActionNum {
+        public List<int> attackNum = new List<int>() { 3, 4, 5 };
+        public List<int> healNum = new List<int>() { 0, 1, 7 };
+        public List<int> supportNum = new List<int>() { 2, 6 };
+        public List<int> throughNUm = new List<int>() { 8 };
+    }
+    public FootActionNum footActionNum = new FootActionNum();
+
     //SE読み込みオブジェクト
     private GameObject seObj;
 
     //[System.Serializable]
     public struct PlayerAction      //スキルカウント用
     {
-        public List<int> melodyList;
+        public List<ACTIONTYPE> melodyList;
         public int attackStep;
         public int healing;
         public int supportStep;
@@ -29,18 +44,21 @@ public class PlActionControl : MonoBehaviour
     }
     public static PlayerAction plAct = new PlayerAction();
 
-    //デバッグ用リスト
-    public static List<int> melodySaveList = new List<int>();
+    //一時保存
+    public static List<ACTIONTYPE> melodySaveList = new List<ACTIONTYPE>();
+
+    static PlActionControl PlActionControl_ = new PlActionControl();
 
     // Start is called before the first frame update
     void Start()
     {
         seObj = GameObject.Find("SE");
-        plAct.melodyList = new List<int>();
+
+        plAct.melodyList = new List<ACTIONTYPE>();
 
         for (int i = 0; i < 4; i++)
         {
-            melodySaveList.Add(8);
+            melodySaveList.Add(ACTIONTYPE.Through);
         }
     }
 
@@ -57,27 +75,10 @@ public class PlActionControl : MonoBehaviour
             {
                 switch (plAct.melodyList[i])
                 {
-                    //攻撃
-                    case 3:
-                    case 4:
-                    case 5:
-                        plAct.attackStep++;
-                        break;
-
-                    //ヒール
-                    case 0:
-                    case 1:
-                    case 7:
-                        plAct.healing++;
-                        break;
-
-                    //サポート
-                    case 2:
-                    case 6:
-                        plAct.supportStep++;
-                        break;
-
-                    default: break;
+                    case ACTIONTYPE.Attack:plAct.attackStep++;break;    //攻撃
+                    case ACTIONTYPE.Healing: plAct.healing++; break;    //回復
+                    case ACTIONTYPE.Support: plAct.supportStep++; break;//サポート
+                    default:break;
                 }
             }
 
@@ -104,24 +105,33 @@ public class PlActionControl : MonoBehaviour
         //入力した番号を保存
         if (Music.IsPlaying && Music.IsJustChangedBeat())
         {
-            plAct.melodyList.Add(HitPos.footPosNum);
-            //Debug.Log(HitPos.footPosNum);
+            plAct.melodyList.Add(GetActionType(HitPos.footPosNum));
 
-            //MainGame_SE mainGame_SE = seObj.GetComponent<MainGame_SE>();
-            //mainGame_SE.SwordSound();// 効果音＿剣
 
             HitPos.footPosNum = 8;
             //キーボード入力（デバッグ用）
             //Debug.Log(HitPos.footPosNum);
         }
-        
+
+    }
+
+    ACTIONTYPE GetActionType(int num)
+    {
+        ACTIONTYPE actionType = new ACTIONTYPE();
+
+        if (footActionNum.attackNum.Contains(num)) actionType = ACTIONTYPE.Attack;
+        else if (footActionNum.healNum.Contains(num)) actionType = ACTIONTYPE.Healing;
+        else if(footActionNum.supportNum.Contains(num)) actionType = ACTIONTYPE.Support;
+        else if(footActionNum.throughNUm.Contains(num)) actionType = ACTIONTYPE.Through;
+
+        return actionType;
     }
 
     void Save()
     {
         if (plAct.melodyList.Count > 3)
         {
-            melodySaveList = new List<int>(plAct.melodyList);
+            melodySaveList = new List<ACTIONTYPE>(plAct.melodyList);
         }
         else
         {
@@ -129,4 +139,7 @@ public class PlActionControl : MonoBehaviour
         }
 
     }
+
+    //判定用の円の分割数
+    public static int FootCircleCutNum { get { return PlActionControl_.footCircleCutNum; } }
 }

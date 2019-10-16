@@ -371,7 +371,6 @@ MonoBehaviour:
   leftFoot: {fileID: 481446453}
   rightFoot: {fileID: 481446450}
   groundPos: {x: 0, y: 0, z: 0}
-  cutNum: 8
 --- !u!65 &370554855
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2807,6 +2806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plAttacManagerObj: {fileID: 6033327791449643016, guid: 051c68c4dacf6544e9631f3762a53c74,
     type: 3}
+  footCircleCutNum: 8
 --- !u!114 &1718596244
 MonoBehaviour:
   m_ObjectHideFlags: 0
