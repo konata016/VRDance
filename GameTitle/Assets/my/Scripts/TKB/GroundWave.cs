@@ -49,7 +49,7 @@ public class GroundWave : MonoBehaviour
             {
                 flag = false;
                 rad = 0;
-                this.transform.position = new Vector3(pos.x, 0.0f, pos.z);
+                this.transform.position = new Vector3(pos.x, JumpStart.groundPosition.y, pos.z);
             }
         }
     }

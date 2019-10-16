@@ -154,7 +154,7 @@ public class HitPos : MonoBehaviour
         if (JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_R ||
             JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_L)
         {
-            //num = FootPosCenter.hitPosNum;
+            num = FootPosCenter.hitPosNum;
         }
         return num;
     }

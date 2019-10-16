@@ -454,6 +454,7 @@ GameObject:
   - component: {fileID: 430141008}
   - component: {fileID: 430141007}
   - component: {fileID: 430141006}
+  - component: {fileID: 430141009}
   m_Layer: 0
   m_Name: verticalW
   m_TagString: wave
@@ -505,6 +506,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &430141009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430141005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37456099ad60e40408e0aabccb76d825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onFriezePosX: 1
+  onFriezePosY: 0
+  onFriezePosZ: 1
 --- !u!1001 &481446449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -995,6 +1011,7 @@ GameObject:
   m_Component:
   - component: {fileID: 826780834}
   - component: {fileID: 826780833}
+  - component: {fileID: 826780835}
   m_Layer: 0
   m_Name: StageGenerater
   m_TagString: Untagged
@@ -1024,12 +1041,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826780832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4300223, y: 1.0216333, z: 4.7304497}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &826780835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826780832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37456099ad60e40408e0aabccb76d825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onFriezePosX: 1
+  onFriezePosY: 0
+  onFriezePosZ: 1
 --- !u!1 &837352313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,7 +1731,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: f23a2ed235a38574e866af0f835f8e6c, type: 2}
+  volumeTrigger: {fileID: 481446454}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 279
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 1
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &1101465337
 GameObject:
   m_ObjectHideFlags: 0
@@ -2307,7 +2386,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336233448}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &1336233451
 Camera:
   m_ObjectHideFlags: 0
@@ -2928,6 +3007,11 @@ MonoBehaviour:
   plAttacManagerObj: {fileID: 6033327791449643016, guid: 051c68c4dacf6544e9631f3762a53c74,
     type: 3}
   footCircleCutNum: 8
+  footActionNum:
+    attackNum: 030000000400000005000000
+    healNum: 000000000100000007000000
+    supportNum: 0200000006000000
+    throughNUm: 08000000
 --- !u!114 &1718596244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2980,7 +3064,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e57111e5575908a4f860b04cecde6d0e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.365
+  m_Volume: 0.787
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3253,6 +3337,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 69c56d4101c922e4d9a357ae401ca663, type: 3}
       propertyPath: m_Name
       value: MenuItemFlyer
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 69c56d4101c922e4d9a357ae401ca663, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 69c56d4101c922e4d9a357ae401ca663, type: 3}
       propertyPath: m_LocalPosition.x

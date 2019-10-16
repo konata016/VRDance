@@ -66,7 +66,7 @@ public class VerticalWaveNote : Note
 
         if (note.transform.position.z < -2.0f)
         {
-            note.transform.position =new Vector3(0.0f, 0.0f,  24.0f);
+            note.transform.position =new Vector3(0.0f, JumpStart.groundPosition.y,  24.0f);
             return false;
         }
         else

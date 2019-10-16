@@ -123,7 +123,8 @@ public class GenerateStage : MonoBehaviour
             for (z = -1.4f; z <= maxZ; z += dist)
             {
                 pos = new Vector3(x, y, z);
-                Instantiate(groundCube, pos, Quaternion.identity);
+                GameObject obj = Instantiate(groundCube, pos, Quaternion.identity) as GameObject;
+                obj.transform.parent = transform;
             }
         }
     }
@@ -207,7 +208,12 @@ public class GenerateStage : MonoBehaviour
                     laser.NoteMove(0);
                     break;
             }
-            n++;
+            
+        
+            if(n < rowL - 1)
+            {
+                n++;
+            }
         }
     }
 }
