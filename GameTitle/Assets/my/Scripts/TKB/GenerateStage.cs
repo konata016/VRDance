@@ -15,7 +15,8 @@ public class GenerateStage : MonoBehaviour
     }
 
     private const string WIDE = "w";
-    private string VERTICAL = "v";
+    private string VERTICAL_R = "vr";
+    private string VERTICAL_L = "vl";
     private const string PUNCH = "p";
     private const string LASER = "l";
 
@@ -25,10 +26,10 @@ public class GenerateStage : MonoBehaviour
         public float time;
     }
 
-    [SerializeField] GameObject wideNote;
-    [SerializeField] GameObject verticalNote;
-    [SerializeField] GameObject punchNote;
-    [SerializeField] GameObject laserNote;
+    //[SerializeField] GameObject wideNote;
+    //[SerializeField] GameObject verticalNote;
+    //[SerializeField] GameObject punchNote;
+    //[SerializeField] GameObject laserNote;
 
     [SerializeField] GameObject groundCube;
 
@@ -55,14 +56,19 @@ public class GenerateStage : MonoBehaviour
     PunchNote punch;
     LaserNote laser;
 
+    GameObject nmo;
+    NoteMover mover;
+
     // Start is called before the first frame update
     void Start()
     {
 
         LoadNotes();
 
+        nmo = GameObject.Find("NoteMover");
+        mover = nmo.GetComponent<NoteMover>();
         //wide = new WideWaveNote(3.0f, Vector3.zero, wideNote);
-        vertical = new VerticalWaveNote(3.0f, Vector3.zero, verticalNote);
+        //vertical = new VerticalWaveNote(3.0f, Vector3.zero, verticalNote);
         //punch = new PunchNote(3.0f, Vector3.zero, punchNote);
         //laser = new LaserNote(3.0f, Vector3.zero, laserNote);
 
@@ -107,14 +113,14 @@ public class GenerateStage : MonoBehaviour
     {
         float dist = 0.4f;
         float maxX = 1.0f;
-        float maxZ = 3.0f;
+        float maxZ = 19.0f;
 
         float x = -1.0f, y = 0.0f, z = 1.4f;
         Vector3 pos;
 
-        for (x = -1.0f; x < maxX; x += dist)
+        for (x = -1.0f; x <= maxX; x += dist)
         {
-            for (z = 1.4f; z <= maxZ; z += dist)
+            for (z = -1.4f; z <= maxZ; z += dist)
             {
                 pos = new Vector3(x, y, z);
                 Instantiate(groundCube, pos, Quaternion.identity);
@@ -134,21 +140,25 @@ public class GenerateStage : MonoBehaviour
         {
             type = 0;
         }
-        else if (tn.Equals(VERTICAL))
+        else if (tn.Equals(VERTICAL_R))
         {
             type = 1;
         }
-        else if (tn.Equals(PUNCH))
+        else if (tn.Equals(VERTICAL_L))
         {
             type = 2;
         }
-        else if (tn.Equals(LASER))
+        else if (tn.Equals(PUNCH))
         {
             type = 3;
         }
-        else
+        else if (tn.Equals(LASER))
         {
             type = 4;
+        }
+        else
+        {
+            type = 5;
         }
 
         //Debug.Log(type);
@@ -178,19 +188,22 @@ public class GenerateStage : MonoBehaviour
 
             switch (type)
             {
-                case (int)NoteType.wideWave:
-                    wide.NoteMove(0);
+                case (int)NotesType.wideWave:
+                    mover.FlagSet(NotesType.wideWave);
                     break;
 
-                case (int)NoteType.verticalWave:
-                    vertical.NoteMove(0);
+                case (int)NotesType.verticalWaveRight:
+                    mover.FlagSet(NotesType.verticalWaveRight);
+                    break;
+                case (int)NotesType.verticalWaveLeft:
+                    mover.FlagSet(NotesType.verticalWaveLeft);
                     break;
 
-                case (int)NoteType.punch:
+                case (int)NotesType.punch:
                     punch.NoteMove(0);
                     break;
 
-                case (int)NoteType.laser:
+                case (int)NotesType.laser:
                     laser.NoteMove(0);
                     break;
             }

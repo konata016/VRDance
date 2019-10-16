@@ -13,3 +13,13 @@ public class NoteType : MonoBehaviour
         none
     }
 }
+
+public enum NotesType
+{
+    wideWave,
+    verticalWaveRight,
+    verticalWaveLeft,
+    punch,
+    laser,
+    none
+}

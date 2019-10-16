@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class GroundWave : MonoBehaviour
 {
-    [SerializeField] GameObject cube;
+    GameObject cube;
 
     float rad = 0;
 
-    bool frag = false;
+    bool flag = false;
 
-    float speed = 6f;
-    float max = 1.5f;
+    float speed = 5.5f;
+    float max = 2.0f;
 
     Vector3 pos;
 
     // Start is called before the first frame update
     void Start()
     {
-        cube.GetComponent<GameObject>();
-        pos = cube.transform.position;
+        //cube.GetComponent<GameObject>();
+        pos = this.transform.position;
 
         speed *= Mathf.Deg2Rad;
     }
@@ -32,20 +32,24 @@ public class GroundWave : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "wave")
-            frag = true;
+        if (other.tag == "wave")
+        {
+            flag = true;
+            Debug.Log("ok");
+        }
     }
 
     private void WaveMove()
     {
-        if (frag)
+        if (flag)
         {
-            cube.transform.position = new Vector3(pos.x, max * Mathf.Sin(rad), pos.z);
+           this.transform.position = new Vector3(pos.x, max * Mathf.Sin(rad), pos.z);
             rad += speed;
             if (rad >= Mathf.PI)
             {
-                frag = false;
-                cube.transform.position = new Vector3(pos.x, 0.0f, pos.z);
+                flag = false;
+                rad = 0;
+                this.transform.position = new Vector3(pos.x, 0.0f, pos.z);
             }
         }
     }

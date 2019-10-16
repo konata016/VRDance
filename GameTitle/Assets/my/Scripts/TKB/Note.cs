@@ -19,7 +19,7 @@ public abstract class Note : MonoBehaviour
         this.note.GetComponent<GameObject>();
     }
 
-    public abstract void NoteMove(int pos);
+    public abstract bool NoteMove(int pos);
 }
 
 public class WideWaveNote : Note
@@ -33,16 +33,17 @@ public class WideWaveNote : Note
         moveVector = note.transform.position.normalized;
     }
     
-    public override void NoteMove(int pos)
+    public override bool NoteMove(int pos)
     {
         note.transform.position -= moveVector * noteSpeed;
+        return false;
     }
 }
 
 public class VerticalWaveNote : Note
 {
     private const float animTime = 3.0f;
-    private const float noteSpeed = 3.0f;
+    private const float noteSpeed = 0.1f;
 
     public VerticalWaveNote(float reachTime, Vector3 position, GameObject note) : base(reachTime, position, note)
     {
@@ -50,9 +51,28 @@ public class VerticalWaveNote : Note
         moveVector = note.transform.position.normalized;
     }
 
-    public override void NoteMove(int pos)
+    public override bool NoteMove(int pos)
     {
+        if(pos == 1 && note.transform.position.x < 0.6f)
+        {
+            note.transform.position += new Vector3(0.6f, 0f, 0f);
+        }
+        else if (pos == 2 && note.transform.position.x > -0.5f)
+        {
+            note.transform.position += new Vector3(-0.5f, 0f, 0f);
+        }
+
         note.transform.position -= moveVector * noteSpeed;
+
+        if (note.transform.position.z < -2.0f)
+        {
+            note.transform.position =new Vector3(0.0f, 0.0f,  24.0f);
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 }
 
@@ -65,9 +85,9 @@ public class PunchNote : Note
         generateTime = this.reachTime - animTime;
     }
 
-    public override void NoteMove(int pos)
+    public override bool NoteMove(int pos)
     {
-        Debug.Log("拳");
+        return false;
     }
 }
 
@@ -80,8 +100,8 @@ public class LaserNote : Note
         generateTime = this.reachTime - animTime;
     }
 
-    public override void NoteMove(int pos)
+    public override bool NoteMove(int pos)
     {
-        Debug.Log("レーザー");
+        return false;
     }
 }
