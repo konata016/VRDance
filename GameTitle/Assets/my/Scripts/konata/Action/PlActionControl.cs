@@ -13,8 +13,10 @@ public class PlActionControl : MonoBehaviour
     //マネージャーを生成してスキルを出すためのオブジェクトを入れる
     public GameObject plAttacManagerObj;
 
+    //足で取る判定、円の分割数
     public int footCircleCutNum = 8;
 
+    //分割した場所のアクション内容を取得するクラス
     [System.Serializable]
     public class FootActionNum {
         public List<int> attackNum = new List<int>() { 3, 4, 5 };
@@ -32,13 +34,13 @@ public class PlActionControl : MonoBehaviour
     {
         public List<ACTIONTYPE> melodyList;
         public int attackStep;
-        public int healing;
+        public int healingStep;
         public int supportStep;
 
         public void Refresh()
         {
             attackStep = 0;
-            healing = 0;
+            healingStep = 0;
             supportStep = 0;
         }
     }
@@ -75,23 +77,25 @@ public class PlActionControl : MonoBehaviour
             {
                 switch (plAct.melodyList[i])
                 {
-                    case ACTIONTYPE.Attack:plAct.attackStep++;break;    //攻撃
-                    case ACTIONTYPE.Healing: plAct.healing++; break;    //回復
-                    case ACTIONTYPE.Support: plAct.supportStep++; break;//サポート
-                    default:break;
+                    case ACTIONTYPE.Attack: plAct.attackStep++; break;      //攻撃
+                    case ACTIONTYPE.Healing: plAct.healingStep++; break;    //回復
+                    case ACTIONTYPE.Support: plAct.supportStep++; break;    //サポート
+                    default: break;
                 }
             }
 
-            //攻撃
+            //処理を行うプレハブを生成//
+                //攻撃
             if (plAct.attackStep > 0)
             {
                 Instantiate(plAttacManagerObj, transform);
                 PlAttackAction.rollSwordCount = plAct.attackStep;
             }
-            if (plAct.healing > 0)
+                //回復
+            if (plAct.healingStep > 0)
             {
                 Instantiate(plAttacManagerObj, transform);
-                //PlAttackAction.rollSwordCount = plAct.healing;
+                //PlAttackAction.rollSwordCount = plAct.healingStep;
             }
 
             //メロディーを一端保存する

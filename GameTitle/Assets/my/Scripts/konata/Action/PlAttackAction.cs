@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//バグあり
-//テンポどうりに動かない
+//バグあるかも？デバッグ確認順位高い
+//1テンポごとに発動させる処理の関数を作った方が良い！
 
 public class PlAttackAction : MonoBehaviour
 {
@@ -20,7 +20,7 @@ public class PlAttackAction : MonoBehaviour
     //enum ACTIONTYPE { Attack, Healing, Support, Through }
     List<PlActionControl.ACTIONTYPE> actionTypeList = new List<PlActionControl.ACTIONTYPE>();
 
-    //くるくると回ってからターゲットに向かって放たれる
+    #region クラス(くるくると回ってからターゲットに向かって放たれる)
     [System.Serializable]
     public class RollSwordParameter
     {
@@ -40,9 +40,10 @@ public class PlAttackAction : MonoBehaviour
         [HideInInspector] public bool isStart;
         [HideInInspector] public int timingCount = 0;
     }
+    #endregion
     public RollSwordParameter RSP = new RollSwordParameter();
 
-    //王の宝物庫
+    #region クラス途中(王の宝物庫)
     [System.Serializable]
     public class GateOfBabylonParameter
     {
@@ -58,9 +59,10 @@ public class PlAttackAction : MonoBehaviour
         public bool onGate;
         public bool onSword;
     }
+    #endregion
     public GateOfBabylonParameter GOBP = new GateOfBabylonParameter();
 
-    //回復のやつ
+    #region クラス(回復のやつ)
     [System.Serializable]
     public class HealEffect
     {
@@ -69,6 +71,7 @@ public class PlAttackAction : MonoBehaviour
         public int count;
         public List<GameObject> healList = new List<GameObject>();
     }
+    #endregion
     public HealEffect healEffect = new HealEffect();
 
     // Start is called before the first frame update
@@ -76,7 +79,7 @@ public class PlAttackAction : MonoBehaviour
     {
         seObj = GameObject.Find("SE");
 
-        Debug.Log(PlActionControl.melodySaveList.Count);
+        //Debug.Log(PlActionControl.melodySaveList.Count);
 
         //メロデイーリストからフラグを作成
         actionTypeList = new List<PlActionControl.ACTIONTYPE>(PlActionControl.melodySaveList);
@@ -100,7 +103,7 @@ public class PlAttackAction : MonoBehaviour
         RollSword2();
     }
 
-    //途中
+    #region 途中
     void GateOfBabylon()
     {
         //遅延
@@ -119,8 +122,10 @@ public class PlAttackAction : MonoBehaviour
             GOBP.onGate = true;
         }
     }
+    #endregion
 
-    //くるくると回ってからターゲットに向かって放たれる
+    //現在は使っていない
+    #region くるくると回ってからターゲットに向かって放たれる
     public void RollSword()
     {
         float wait = 0.5f;
@@ -163,9 +168,10 @@ public class PlAttackAction : MonoBehaviour
             }
         }
     }
+    #endregion
 
     //くるくると回ってからターゲットに向かって放たれる
-    //テンポに合わせて剣が飛んでいくバージョン
+    #region テンポに合わせて剣が飛んでいくバージョン
     public void RollSword2()
     {
 
@@ -225,8 +231,9 @@ public class PlAttackAction : MonoBehaviour
             }
         }
     }
+    #endregion
 
-    //回復
+    #region 回復
     public void Heal()
     {
 
@@ -246,7 +253,9 @@ public class PlAttackAction : MonoBehaviour
         }
 
     }
+    #endregion
 
+    #region 効果音(剣の処理)
     void SE(int count)
     {
         //インデックス外になる
@@ -257,8 +266,9 @@ public class PlAttackAction : MonoBehaviour
                 mainGame_SE.SwordSound();// 効果音＿剣
             }
     }
+    #endregion
 
-    //配置用
+    #region 配置用(半円上にものを出す処理)
     Vector3 CirclePos(int count, float radius, int swordNum, Vector3 pos)
     {
         if (count != 0)
@@ -278,4 +288,5 @@ public class PlAttackAction : MonoBehaviour
 
         return pos;
     }
+    #endregion
 }

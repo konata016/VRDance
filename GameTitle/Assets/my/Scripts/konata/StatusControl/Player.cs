@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
         if (Music.IsPlaying && Music.IsJustChangedBar())
         {
             damagePoint = (PlActionControl.plAct.attackStep * comboCount) + status.STR;
-            status.HP += PlActionControl.plAct.healing + status.INT;
+            status.HP += PlActionControl.plAct.healingStep + status.INT;
         }
 
         //コンボ計算
