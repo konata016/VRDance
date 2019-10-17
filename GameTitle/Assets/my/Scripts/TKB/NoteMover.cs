@@ -5,7 +5,8 @@ using UnityEngine;
 public class NoteMover : MonoBehaviour
 {
     [SerializeField] GameObject wideNote;
-    [SerializeField] GameObject verticalNote;
+    [SerializeField] GameObject verticalNoteR;
+    [SerializeField] GameObject verticalNoteL;
     [SerializeField] GameObject punchNote;
     [SerializeField] GameObject laserNote;
 
@@ -26,7 +27,7 @@ public class NoteMover : MonoBehaviour
     void Start()
     {
         wide = new WideWaveNote(3.0f, Vector3.zero, wideNote);
-        vertical = new VerticalWaveNote(3.0f, Vector3.zero, verticalNote);
+        vertical = new VerticalWaveNote(3.0f, Vector3.zero, verticalNoteR);
         punch = new PunchNote(3.0f, Vector3.zero, punchNote);
         laser = new LaserNote(3.0f, Vector3.zero, laserNote);
     }
@@ -42,10 +43,10 @@ public class NoteMover : MonoBehaviour
         {
             rightFlag = vertical.NoteMove(1);
         }
-        if (leftFlag)
-        {
-            leftFlag = vertical.NoteMove(2);
-        }
+        //if (leftFlag)
+        //{
+        //    leftFlag = vertical.NoteMove(2);
+        //}
         if (punchFlag)
         {
             punchFlag = punch.NoteMove(0);
@@ -65,10 +66,12 @@ public class NoteMover : MonoBehaviour
         if (type == NotesType.verticalWaveRight)
         {
             rightFlag = true;
+            vertical.NoteGenerate(verticalNoteR, 1);
         }
         if (type == NotesType.verticalWaveLeft)
         {
             leftFlag = true;
+            vertical.NoteGenerate(verticalNoteL, 2);
         }
         if (type == NotesType.punch)
         {
