@@ -4,28 +4,29 @@ using UnityEngine;
 
 public class JumpStart : MonoBehaviour
 {
-    public static Vector3 groundPosition;           // 地面の位置
-    private Vector3 lowFootPosition;                // 足の位置
-    public bool onGroundL, onGroundR;               // 足が地面についているか否か
-    private float timeCheck;                        // 地面変更経過時間
-    private float timeRegulary = 0.5f;              // 地面の位置をチェックする周期
-    public int groundPosSaveCapacity = 2;           // 地面の位置の保存数
-    private Vector3 groundPosSave;                  // 地面の位置(保存)
-    private Vector3 groundPosSaveSave;              // 地面の位置(保存)
-    private Vector3 footPosL, footPosR;             // コントローラの取得
-    private bool only1Time;                         // 一度だけ実行
-    private int roundedDown = 100;                  // 小数点以下切り捨て
-    private bool jumpSwtich = false;                // ジャンプしたらスイッチ
-    private bool landingSwtich = false;             // 着地したらスイッチ
+    public static Vector3 groundPosition;// 地面の位置
+    private Vector3 lowFootPosition;     // 足の位置
+    public bool onGroundL, onGroundR;    // 足が地面についているか否か
+    private float timeCheck;             // 地面変更経過時間
+    private float timeRegulary = 0.5f;   // 地面の位置をチェックする周期
+    public int groundPosSaveCapacity = 2;// 地面の位置の保存数
+    private Vector3 groundPosSave;       // 地面の位置(保存)
+    private Vector3 groundPosSaveSave;   // 地面の位置(保存)
+    private Vector3 footPosL, footPosR;  // コントローラの取得
+    private bool only1Time;              // 一度だけ実行
+    private int roundedDown = 100;       // 小数点以下切り捨て
+    private bool jumpSwtich = false;     // ジャンプしたらスイッチ
+    private bool landingSwtich = false;  // 着地したらスイッチ
     
-    private AudioSource audioSource;    // 音源
-    public AudioClip leftFoot;  // 左足
-    public AudioClip rightFoot; // 右足
-    public AudioClip landing;   // 着地
+    private AudioSource audioSource;// 音源
+    public AudioClip leftFoot;      // 左足
+    public AudioClip rightFoot;     // 右足
+    public AudioClip landing;       // 着地
 
     // 受け渡す変数
-    public enum ISGROUNDTOUCH { Landing_R, Landing_L, EndProcess, JumpWait_R, JumpWait_L }// 0:着地した後_右足 1:着地した後_左足 2:判定取った後 3:ジャンプする前_右足 4:ジャンプする前_左足
-    public static ISGROUNDTOUCH isGroundTouch { get; set; }
+    public enum ISGROUNDTOUCH { Landing, EndProcess, JumpWait }// 0:着地 1:判定後 2:ジャンプ中
+    public static ISGROUNDTOUCH isGroundTouch_R { get; set; }
+    public static ISGROUNDTOUCH isGroundTouch_L { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,8 @@ public class JumpStart : MonoBehaviour
         footPosL = GameObject.Find("LeftHandAnchor").transform.position;
         footPosR = GameObject.Find("RightHandAnchor").transform.position;
 
-        isGroundTouch = ISGROUNDTOUCH.EndProcess;
+        isGroundTouch_R = ISGROUNDTOUCH.EndProcess;
+        isGroundTouch_L = ISGROUNDTOUCH.EndProcess;
 
         audioSource = gameObject.GetComponent<AudioSource>();
     }
@@ -110,17 +112,17 @@ public class JumpStart : MonoBehaviour
 
             onGroundL = false;
             //Debug.Log("左足");// 左足上げたのログ
-            if (isGroundTouch == ISGROUNDTOUCH.EndProcess)
+            if (isGroundTouch_L == ISGROUNDTOUCH.EndProcess)
             {
-                isGroundTouch = ISGROUNDTOUCH.JumpWait_L;
+                isGroundTouch_L = ISGROUNDTOUCH.JumpWait;
             }
         }
         else
         {
                onGroundL = true;
-            if (isGroundTouch == ISGROUNDTOUCH.JumpWait_L)
+            if (isGroundTouch_L == ISGROUNDTOUCH.JumpWait)
             {
-                isGroundTouch = ISGROUNDTOUCH.Landing_L;
+                isGroundTouch_L = ISGROUNDTOUCH.Landing;
             }
         }
 
@@ -131,17 +133,17 @@ public class JumpStart : MonoBehaviour
 
             onGroundR = false;
             //Debug.Log("右足");// 右足上げたのログ
-            if (isGroundTouch == ISGROUNDTOUCH.EndProcess)
+            if (isGroundTouch_R == ISGROUNDTOUCH.EndProcess)
             {
-                isGroundTouch = ISGROUNDTOUCH.JumpWait_R;
+                isGroundTouch_R = ISGROUNDTOUCH.JumpWait;
             }
         }
         else
         {
             onGroundR = true;
-            if (isGroundTouch == ISGROUNDTOUCH.JumpWait_R)
+            if (isGroundTouch_R == ISGROUNDTOUCH.JumpWait)
             {
-                isGroundTouch = ISGROUNDTOUCH.Landing_R;
+                isGroundTouch_R = ISGROUNDTOUCH.Landing;
             }
         }
 
