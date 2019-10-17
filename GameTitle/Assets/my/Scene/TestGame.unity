@@ -2544,7 +2544,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8600000, guid: 0efd6b79b43aec54aadb51fe782bdedb, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 1805e148a62e60c42b2b05935f5134f6, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -3588,7 +3588,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 69c56d4101c922e4d9a357ae401ca663, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 663d6c9933bc90c4997772ebd68eac3e, type: 2}
+      objectReference: {fileID: 2100000, guid: 7905ffbde0c369f44ba9dfcf711984bd, type: 2}
     - target: {fileID: 2300000, guid: 69c56d4101c922e4d9a357ae401ca663, type: 3}
       propertyPath: m_LightProbeUsage
       value: 1
