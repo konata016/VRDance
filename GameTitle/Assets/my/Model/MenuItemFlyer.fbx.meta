@@ -9,7 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: MenuItemFlyer
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MenuItems
+    second: {fileID: 2100000, guid: ecbe1e3c430add64aba9b7d47da08f7a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

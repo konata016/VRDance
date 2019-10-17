@@ -97,6 +97,11 @@ public class PlActionControl : MonoBehaviour
                 Instantiate(plAttacManagerObj, transform);
                 //PlAttackAction.rollSwordCount = plAct.healingStep;
             }
+                //サポート
+            if (plAct.supportStep > 0)
+            {
+                Instantiate(plAttacManagerObj, transform);
+            }
 
             //メロディーを一端保存する
             Save();

@@ -68,11 +68,23 @@ public class PlAttackAction : MonoBehaviour
     {
         public GameObject materialObj;
 
-        public int count;
-        public List<GameObject> healList = new List<GameObject>();
+        [HideInInspector] public int count;
+        [HideInInspector] public List<GameObject> healList = new List<GameObject>();
     }
     #endregion
     public HealEffect healEffect = new HealEffect();
+
+    #region クラス(サポートのやつ)
+    [System.Serializable]
+    public class SupportEffect
+    {
+        public GameObject materialObj;
+
+        [HideInInspector] public int count;
+        [HideInInspector] public List<GameObject> supportList = new List<GameObject>();
+    }
+    #endregion
+    public SupportEffect supportEffect = new SupportEffect();
 
     // Start is called before the first frame update
     void Start()
@@ -100,6 +112,7 @@ public class PlAttackAction : MonoBehaviour
     void Update()
     {
         Heal();
+        Support();
         RollSword2();
     }
 
@@ -208,7 +221,7 @@ public class PlAttackAction : MonoBehaviour
             RSP.isStart = true;
         }
 
-        Debug.Log(RSP.timingCount);
+        //Debug.Log(RSP.timingCount);
 
         //1拍のタイミングで動き始める
         if (RSP.isStart)
@@ -254,6 +267,24 @@ public class PlAttackAction : MonoBehaviour
 
     }
     #endregion
+
+    void Support()
+    {
+        if (supportEffect.count < actionTypeList.Count)
+        {
+            //テンポごとの判定
+            if (Music.IsPlaying && Music.IsJustChangedBeat())
+            {
+                //1小節の中の回復を調べる
+                if (actionTypeList[supportEffect.count] == PlActionControl.ACTIONTYPE.Support)
+                {
+                    //回復エフェクトのリストの作成
+                    supportEffect.supportList.Add(Instantiate(supportEffect.materialObj, transform));
+                }
+                supportEffect.count++;
+            }
+        }
+    }
 
     #region 効果音(剣の処理)
     void SE(int count)

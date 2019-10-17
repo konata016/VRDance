@@ -71,11 +71,13 @@ MonoBehaviour:
   healEffect:
     materialObj: {fileID: 8941811846020631171, guid: c19c03db66e2e8040b73c539dfeb2645,
       type: 3}
-    maxPos: 1
-    popSpeed: 0.1
     count: 0
     healList: []
-    disList: []
+  supportEffect:
+    materialObj: {fileID: 251880766492169844, guid: af57609b1af8e5e4999ef0ecd68fac51,
+      type: 3}
+    count: 0
+    healList: []
 --- !u!114 &8414283960533562994
 MonoBehaviour:
   m_ObjectHideFlags: 0
