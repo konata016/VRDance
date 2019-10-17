@@ -42,6 +42,7 @@ public class WideWaveNote : Note
 
 public class VerticalWaveNote : Note
 {
+    private float vertPos = 0.8f;
     private const float animTime = 3.0f;
     private const float noteSpeed = 0.1f;
 
@@ -53,13 +54,13 @@ public class VerticalWaveNote : Note
 
     public override bool NoteMove(int pos)
     {
-        if(pos == 1 && note.transform.position.x < 0.6f)
+        if(pos == 1 && note.transform.position.x < vertPos)
         {
-            note.transform.position += new Vector3(0.6f, 0f, 0f);
+            note.transform.position += new Vector3(vertPos, 0f, 0f);
         }
-        else if (pos == 2 && note.transform.position.x > -0.5f)
+        else if (pos == 2 && note.transform.position.x > -vertPos)
         {
-            note.transform.position += new Vector3(-0.5f, 0f, 0f);
+            note.transform.position += new Vector3(-vertPos, 0f, 0f);
         }
 
         note.transform.position -= moveVector * noteSpeed;
