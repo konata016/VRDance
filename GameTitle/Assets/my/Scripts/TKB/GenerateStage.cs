@@ -104,7 +104,7 @@ public class GenerateStage : MonoBehaviour
             for (int j = 0; j < colL; j++)
             {             
                 textNotes[i, j] = tempNote[j];
-                Debug.Log(textNotes[i,j]);
+                Debug.Log(textNotes[i,0]);
             }
         }
     }
@@ -166,27 +166,6 @@ public class GenerateStage : MonoBehaviour
 
         if (time >= noteTime)
         {
-            //if (type == 0)
-            //{
-            //    wide.NoteMove();
-            //}
-            //else if (type == 1)
-            //{
-            //    vertical.NoteMove();
-            //}
-            //else if (type == 2)
-            //{
-            //    punch.NoteMove();
-            //}
-            //else if (type == 3)
-            //{
-            //    laser.NoteMove();
-            //}
-            //else
-            //{
-            //    type = 4;
-            //}
-
             switch (type)
             {
                 case (int)NotesType.wideWave:
@@ -210,7 +189,12 @@ public class GenerateStage : MonoBehaviour
             }
             
         
-            if(n < rowL - 1)
+            if(n >= rowL - 1)
+            {
+                n = 0;
+                time = 0;
+            }
+            else
             {
                 n++;
             }
