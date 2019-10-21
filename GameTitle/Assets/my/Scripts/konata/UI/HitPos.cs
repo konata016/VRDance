@@ -55,34 +55,10 @@ public class HitPos : MonoBehaviour
                 obj = BeatUi.notesLefts[0];
 
                 //足が地面に接触したときまたはキーボードから入力されたときに処理する
-                if (Input.GetKeyDown(NotesKeyName) ||
-                    JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_R ||
-                    JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_L)
+                if (Input.GetKeyDown(NotesKeyName))
                 {
-
-                    //タイミングのランクを登録する
-                    if (notesLeftPos <= 50f && notesLeftPos >= -30f)
-                    {
-                        Debug.Log("Excellent!!");
-                        rankJudge = RANK.Excellent;
-
-                    }
-                    if (notesLeftPos < -30f && notesLeftPos >= -60f)
-                    {
-                        Debug.Log("Good!!");
-                        rankJudge = RANK.Good;
-                    }
-                    if (notesLeftPos < -60f && notesLeftPos >= -150f)
-                    {
-                        Debug.Log("Bad!!");
-                        rankJudge = RANK.Bad;
-                    }
-
-                    MainGame_SE mainGame_SE = seObj.GetComponent<MainGame_SE>();
-                    mainGame_SE.StepSound();//足音
-
-                    BeatUi.notesLefts.RemoveAt(0);
-                    Destroy(obj);
+                    if (JumpStart.isGroundTouch_R == JumpStart.ISGROUNDTOUCH.Landing) NotesProcess();
+                    if(JumpStart.isGroundTouch_L == JumpStart.ISGROUNDTOUCH.Landing) NotesProcess();
                 }
             }
 
@@ -104,18 +80,21 @@ public class HitPos : MonoBehaviour
             {
                 obj1 = BeatUi.notesRights[0];
 
-                if (Input.GetKeyDown(NotesKeyName) ||
-                    JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_R ||
-                    JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_L)
+                if (Input.GetKeyDown(NotesKeyName))
                 {
-                    BeatUi.notesRights.RemoveAt(0);
-                    Destroy(obj1);
-
-
-                    //処理を返す(地面に接触したときにフラグを返す)
-                    Debug.Log("来てます");
-                    JumpStart.isGroundTouch = JumpStart.ISGROUNDTOUCH.EndProcess;
+                    if (JumpStart.isGroundTouch_R == JumpStart.ISGROUNDTOUCH.Landing)
+                    {
+                        //処理を返す(地面に接触したときにフラグを返す)
+                        JumpStart.isGroundTouch_R = JumpStart.ISGROUNDTOUCH.EndProcess;
+                    }
+                    else if (JumpStart.isGroundTouch_L == JumpStart.ISGROUNDTOUCH.Landing)
+                    {
+                        //処理を返す(地面に接触したときにフラグを返す)
+                        JumpStart.isGroundTouch_L = JumpStart.ISGROUNDTOUCH.EndProcess;
+                    }
                 }
+                BeatUi.notesRights.RemoveAt(0);
+                Destroy(obj1);
             }
             if (!Input.GetKeyDown(NotesKeyName) || !Input.anyKeyDown)
             {
@@ -135,6 +114,34 @@ public class HitPos : MonoBehaviour
         }
     }
 
+
+    void NotesProcess()
+    {
+        //タイミングのランクを登録する
+        if (notesLeftPos <= 50f && notesLeftPos >= -30f)
+        {
+            Debug.Log("Excellent!!");
+            rankJudge = RANK.Excellent;
+
+        }
+        if (notesLeftPos < -30f && notesLeftPos >= -60f)
+        {
+            Debug.Log("Good!!");
+            rankJudge = RANK.Good;
+        }
+        if (notesLeftPos < -60f && notesLeftPos >= -150f)
+        {
+            Debug.Log("Bad!!");
+            rankJudge = RANK.Bad;
+        }
+
+        MainGame_SE mainGame_SE = seObj.GetComponent<MainGame_SE>();
+        mainGame_SE.StepSound();//足音
+
+        BeatUi.notesLefts.RemoveAt(0);
+        Destroy(obj);
+    }
+
     //デバッグ用ボタン判定
     int FootPosNumDebug()
     {
@@ -151,11 +158,9 @@ public class HitPos : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha7)) num = 7;
 
         //足の入力
-        if (JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_R ||
-            JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_L)
-        {
-            num = FootPosCenter.hitPosNum;
-        }
+        if (JumpStart.isGroundTouch_R == JumpStart.ISGROUNDTOUCH.Landing) num = FootPosCenter.hitPosNum;
+        if (JumpStart.isGroundTouch_L == JumpStart.ISGROUNDTOUCH.Landing) num = FootPosCenter.hitPosNum;
+
         return num;
     }
 
