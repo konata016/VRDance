@@ -41,11 +41,11 @@ public class FootPosCenter : MonoBehaviour
     void GroundJudge()
     {
         //片足が地面と接触したときに、両足の中央から見たときの方向をブロックに向かせる
-        if (JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_R)
+        if (JumpStart.isGroundTouch_R == JumpStart.ISGROUNDTOUCH.Landing)
         {
                 transform.rotation = Quaternion.LookRotation(Vector3.up, rightFoot.transform.position - transform.position);
         }
-        if (JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_L)
+        if (JumpStart.isGroundTouch_L == JumpStart.ISGROUNDTOUCH.Landing)
         {
                 transform.rotation = Quaternion.LookRotation(Vector3.up, leftFoot.transform.position - transform.position);
         }
