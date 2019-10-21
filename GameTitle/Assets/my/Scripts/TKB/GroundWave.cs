@@ -50,7 +50,7 @@ public class GroundWave : MonoBehaviour
             {
                 flag = false;
                 rad = 0;
-                this.transform.position = new Vector3(pos.x, JumpStart.groundPosition.y, pos.z);
+                this.transform.position = new Vector3(pos.x, StepDetermination.groundPosition.y, pos.z);
             }
         }
     }

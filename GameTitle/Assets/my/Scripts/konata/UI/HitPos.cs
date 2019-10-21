@@ -57,9 +57,10 @@ public class HitPos : MonoBehaviour
                 //足が地面に接触したときまたはキーボードから入力されたときに処理する
                 if (Input.GetKeyDown(NotesKeyName))
                 {
-                    if (JumpStart.isGroundTouch_R == JumpStart.ISGROUNDTOUCH.Landing) NotesProcess();
-                    if(JumpStart.isGroundTouch_L == JumpStart.ISGROUNDTOUCH.Landing) NotesProcess();
+                    
                 }
+                if (StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing) NotesProcess();
+                if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing) NotesProcess();
             }
 
 
@@ -82,19 +83,23 @@ public class HitPos : MonoBehaviour
 
                 if (Input.GetKeyDown(NotesKeyName))
                 {
-                    if (JumpStart.isGroundTouch_R == JumpStart.ISGROUNDTOUCH.Landing)
-                    {
-                        //処理を返す(地面に接触したときにフラグを返す)
-                        JumpStart.isGroundTouch_R = JumpStart.ISGROUNDTOUCH.EndProcess;
-                    }
-                    else if (JumpStart.isGroundTouch_L == JumpStart.ISGROUNDTOUCH.Landing)
-                    {
-                        //処理を返す(地面に接触したときにフラグを返す)
-                        JumpStart.isGroundTouch_L = JumpStart.ISGROUNDTOUCH.EndProcess;
-                    }
                 }
-                BeatUi.notesRights.RemoveAt(0);
-                Destroy(obj1);
+                if (StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing)
+                {
+                    //処理を返す(地面に接触したときにフラグを返す)
+                    StepDetermination.isGroundTouch_R = StepDetermination.ISGROUNDTOUCH.EndProcess;
+                    BeatUi.notesRights.RemoveAt(0);
+                    Destroy(obj1);
+                }
+                else if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing)
+                {
+                    //処理を返す(地面に接触したときにフラグを返す)
+                    StepDetermination.isGroundTouch_L = StepDetermination.ISGROUNDTOUCH.EndProcess;
+                    BeatUi.notesRights.RemoveAt(0);
+                    Destroy(obj1);
+                }
+                //BeatUi.notesRights.RemoveAt(0);
+                //Destroy(obj1);
             }
             if (!Input.GetKeyDown(NotesKeyName) || !Input.anyKeyDown)
             {
@@ -158,8 +163,8 @@ public class HitPos : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha7)) num = 7;
 
         //足の入力
-        if (JumpStart.isGroundTouch_R == JumpStart.ISGROUNDTOUCH.Landing) num = FootPosCenter.hitPosNum;
-        if (JumpStart.isGroundTouch_L == JumpStart.ISGROUNDTOUCH.Landing) num = FootPosCenter.hitPosNum;
+        if (StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing) num = FootPosCenter.hitPosNum;
+        if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing) num = FootPosCenter.hitPosNum;
 
         return num;
     }

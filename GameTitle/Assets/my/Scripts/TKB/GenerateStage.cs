@@ -104,7 +104,7 @@ public class GenerateStage : MonoBehaviour
             for (int j = 0; j < colL; j++)
             {             
                 textNotes[i, j] = tempNote[j];
-                Debug.Log(textNotes[i,0]);
+                //Debug.Log(textNotes[i,0]);
             }
         }
     }

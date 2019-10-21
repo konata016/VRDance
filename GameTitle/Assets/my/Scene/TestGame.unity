@@ -1653,6 +1653,7 @@ GameObject:
   - component: {fileID: 1024292119}
   - component: {fileID: 1024292118}
   - component: {fileID: 1024292121}
+  - component: {fileID: 1024292122}
   m_Layer: 0
   m_Name: SE
   m_TagString: Untagged
@@ -1763,14 +1764,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024292117}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f32c50b958c8044c8bac03bfb7a2ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onGroundL: 0
   onGroundR: 0
-  groundPosSaveCapacity: 2
   leftFoot: {fileID: 8300000, guid: fd0e3e707be16d84fbb6b1aa9ab2b203, type: 3}
   rightFoot: {fileID: 8300000, guid: e1220bd492ea81f40ac3140cf8c6b427, type: 3}
   landing: {fileID: 8300000, guid: 298033a86835a894c9d69e428712b8fb, type: 3}
@@ -1802,6 +1802,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sword_SE: {fileID: 8300000, guid: 5ac10b28c1e11c8429af794a74d53ce5, type: 3}
   step_SE: {fileID: 8300000, guid: 4c77de52ce968ac4892d4e2dfab505c8, type: 3}
+--- !u!114 &1024292122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024292117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1baf2ebf64e327043872cd7dcb16932f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftFoot: {fileID: 8300000, guid: fd0e3e707be16d84fbb6b1aa9ab2b203, type: 3}
+  rightFoot: {fileID: 8300000, guid: e1220bd492ea81f40ac3140cf8c6b427, type: 3}
+  landing: {fileID: 8300000, guid: 298033a86835a894c9d69e428712b8fb, type: 3}
 --- !u!1 &1068411104 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 126d619cf4daa52469682f85c1378b4a,

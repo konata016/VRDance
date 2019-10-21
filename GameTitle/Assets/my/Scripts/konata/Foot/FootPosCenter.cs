@@ -28,7 +28,7 @@ public class FootPosCenter : MonoBehaviour
     void Update()
     {
         //両足の中間にポジションをとる
-        transform.position = new Vector3(CenterPos(transform.position).x, JumpStart.groundPosition.y, CenterPos(transform.position).z);
+        transform.position = new Vector3(CenterPos(transform.position).x, StepDetermination.groundPosition.y, CenterPos(transform.position).z);
         
         //初めに地面についた足の方向を見る
         GroundJudge();
@@ -41,11 +41,11 @@ public class FootPosCenter : MonoBehaviour
     void GroundJudge()
     {
         //片足が地面と接触したときに、両足の中央から見たときの方向をブロックに向かせる
-        if (JumpStart.isGroundTouch_R == JumpStart.ISGROUNDTOUCH.Landing)
+        if (StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing)
         {
                 transform.rotation = Quaternion.LookRotation(Vector3.up, rightFoot.transform.position - transform.position);
         }
-        if (JumpStart.isGroundTouch_L == JumpStart.ISGROUNDTOUCH.Landing)
+        if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing)
         {
                 transform.rotation = Quaternion.LookRotation(Vector3.up, leftFoot.transform.position - transform.position);
         }

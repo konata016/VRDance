@@ -113,11 +113,11 @@ public class VerticalWaveNote : Note
 
         if(pos == 1)
         {
-            p = new Vector3(0.8f, JumpStart.groundPosition.y, 24);
+            p = new Vector3(0.8f, StepDetermination.groundPosition.y, 24);
         }
         else
         {
-            p = new Vector3(-0.8f, JumpStart.groundPosition.y, 24);
+            p = new Vector3(-0.8f, StepDetermination.groundPosition.y, 24);
         }
 
         if (noteColli[vNum] == null)

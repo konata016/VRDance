@@ -26,6 +26,9 @@ public class StepDetermination : MonoBehaviour
 
     void Start()
     {
+        footPosL = GameObject.Find("LeftHandAnchor").transform.position;
+        footPosR = GameObject.Find("RightHandAnchor").transform.position;
+
         isGroundTouch_L = ISGROUNDTOUCH.Wait;
         isGroundTouch_R = ISGROUNDTOUCH.Wait;
 
@@ -35,8 +38,6 @@ public class StepDetermination : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        footPosL = GameObject.Find("LeftHandAnchor").transform.position;
-        footPosR = GameObject.Find("RightHandAnchor").transform.position;
         if (only1Time)
         {
             if (footPosL.y <= footPosR.y)// 地面の位置を取得（初期値）
@@ -49,7 +50,10 @@ public class StepDetermination : MonoBehaviour
 
             only1Time = false;
         }
+        footPosL = GameObject.Find("LeftHandAnchor").transform.position;
+        footPosR = GameObject.Find("RightHandAnchor").transform.position;
 
+        timeCheck += Time.deltaTime;
         if (timeCheck >= timeRegulary)// 地面の位置を取得（更新）
         {
             timeCheck = 0.0f;

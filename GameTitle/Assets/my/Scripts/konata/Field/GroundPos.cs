@@ -24,16 +24,18 @@ public class GroundPos : MonoBehaviour
         Vector3 pos = transform.position;
         if (!onFriezePosX)
         {
-            pos.x = JumpStart.groundPosition.x;
+            pos.x = StepDetermination.groundPosition.x;
         }
         if (!onFriezePosY)
         {
-            pos.y = JumpStart.groundPosition.y;
+            pos.y = StepDetermination.groundPosition.y;
         }
         if (!onFriezePosZ)
         {
-            pos.z = JumpStart.groundPosition.z;
+            pos.z = StepDetermination.groundPosition.z;
         }
         transform.position = pos;
+
+        Debug.Log(StepDetermination.groundPosition);
     }
 }

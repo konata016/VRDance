@@ -9,7 +9,6 @@ public class JumpStart : MonoBehaviour
     public bool onGroundL, onGroundR;    // 足が地面についているか否か
     private float timeCheck;             // 地面変更経過時間
     private float timeRegulary = 0.5f;   // 地面の位置をチェックする周期
-    public int groundPosSaveCapacity = 2;// 地面の位置の保存数
     private Vector3 groundPosSave;       // 地面の位置(保存)
     private Vector3 groundPosSaveSave;   // 地面の位置(保存)
     private Vector3 footPosL, footPosR;  // コントローラの取得
