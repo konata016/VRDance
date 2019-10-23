@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class HitPos : MonoBehaviour
 {
     //判定を渡すよう
-    public enum RANK { Bad, Good, Excellent,Through }
+    public enum RANK { Bad, Good, Excellent, Through }
 
     float notesLeftPos;
     float notesRightPos;
@@ -57,7 +57,7 @@ public class HitPos : MonoBehaviour
                 //足が地面に接触したときまたはキーボードから入力されたときに処理する
                 if (Input.GetKeyDown(NotesKeyName))
                 {
-                    
+
                 }
                 if (StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing) NotesProcess();
                 if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing) NotesProcess();
@@ -83,14 +83,23 @@ public class HitPos : MonoBehaviour
 
                 if (Input.GetKeyDown(NotesKeyName))
                 {
+                }
+                if (StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing)
+                {
+                    //処理を返す(地面に接触したときにフラグを返す)
+                    StepDetermination.isGroundTouch_R = StepDetermination.ISGROUNDTOUCH.EndProcess;
                     BeatUi.notesRights.RemoveAt(0);
                     Destroy(obj1);
-
-
-                    //処理を返す(地面に接触したときにフラグを返す)
-                    Debug.Log("来てます");
-                    JumpStart.isGroundTouch = JumpStart.ISGROUNDTOUCH.EndProcess;
                 }
+                else if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing)
+                {
+                    //処理を返す(地面に接触したときにフラグを返す)
+                    StepDetermination.isGroundTouch_L = StepDetermination.ISGROUNDTOUCH.EndProcess;
+                    BeatUi.notesRights.RemoveAt(0);
+                    Destroy(obj1);
+                }
+                //BeatUi.notesRights.RemoveAt(0);
+                //Destroy(obj1);
             }
             if (!Input.GetKeyDown(NotesKeyName) || !Input.anyKeyDown)
             {
@@ -154,8 +163,8 @@ public class HitPos : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha7)) num = 7;
 
         //足の入力
-        if (JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_R ||
-            JumpStart.isGroundTouch == JumpStart.ISGROUNDTOUCH.Landing_L)
+        if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing ||
+            StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing)
         {
             num = FootPosCenter.hitPosNum;
         }
@@ -173,3 +182,4 @@ public class HitPos : MonoBehaviour
     //    return num;
     //}
 }
+

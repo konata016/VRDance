@@ -26,6 +26,9 @@ public class PlActionControl : MonoBehaviour
     }
     public FootActionNum footActionNum = new FootActionNum();
 
+    //足の位置
+    int footPosNum;
+
     //SE読み込みオブジェクト
     private GameObject seObj;
 
@@ -58,6 +61,7 @@ public class PlActionControl : MonoBehaviour
 
         plAct.melodyList = new List<ACTIONTYPE>();
 
+        //リスト初期化
         for (int i = 0; i < 4; i++)
         {
             melodySaveList.Add(ACTIONTYPE.Through);
@@ -67,12 +71,16 @@ public class PlActionControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //入力
+        footPosNum = FootPosNum();
+
         // 保存した番号に何のスキルが割り振られているか一小節ごとに確認する
         if (Music.IsPlaying && Music.IsJustChangedBar())
         {
             //初期化
             plAct.Refresh();
 
+            //1小節の中のデータを分ける
             for (int i = 0; i < plAct.melodyList.Count; i++)
             {
                 switch (plAct.melodyList[i])
@@ -84,24 +92,8 @@ public class PlActionControl : MonoBehaviour
                 }
             }
 
-            //処理を行うプレハブを生成//
-                //攻撃
-            if (plAct.attackStep > 0)
-            {
-                Instantiate(plAttacManagerObj, transform);
-                PlAttackAction.rollSwordCount = plAct.attackStep;
-            }
-                //回復
-            if (plAct.healingStep > 0)
-            {
-                Instantiate(plAttacManagerObj, transform);
-                //PlAttackAction.rollSwordCount = plAct.healingStep;
-            }
-                //サポート
-            if (plAct.supportStep > 0)
-            {
-                Instantiate(plAttacManagerObj, transform);
-            }
+            //処理を行うプレハブを生成
+            SpawnPrefab();
 
             //メロディーを一端保存する
             Save();
@@ -114,39 +106,83 @@ public class PlActionControl : MonoBehaviour
         //入力した番号を保存
         if (Music.IsPlaying && Music.IsJustChangedBeat())
         {
-            plAct.melodyList.Add(GetActionType(HitPos.footPosNum));
+            //1小節分の入力データの保存
+            plAct.melodyList.Add(GetActionType(footPosNum));
+            //初期化
+            footPosNum = footActionNum.throughNUm[0];
 
-
-            HitPos.footPosNum = 8;
             //キーボード入力（デバッグ用）
             //Debug.Log(HitPos.footPosNum);
         }
 
     }
 
-    ACTIONTYPE GetActionType(int num)
+    //処理を行うプレハブを生成
+    void SpawnPrefab()
     {
-        ACTIONTYPE actionType = new ACTIONTYPE();
-
-        if (footActionNum.attackNum.Contains(num)) actionType = ACTIONTYPE.Attack;
-        else if (footActionNum.healNum.Contains(num)) actionType = ACTIONTYPE.Healing;
-        else if(footActionNum.supportNum.Contains(num)) actionType = ACTIONTYPE.Support;
-        else if(footActionNum.throughNUm.Contains(num)) actionType = ACTIONTYPE.Through;
-
-        return actionType;
+        //攻撃
+        if (plAct.attackStep > 0)
+        {
+            Instantiate(plAttacManagerObj, transform);
+            PlAttackAction.rollSwordCount = plAct.attackStep;
+        }
+        //回復
+        if (plAct.healingStep > 0)
+        {
+            Instantiate(plAttacManagerObj, transform);
+            //PlAttackAction.rollSwordCount = plAct.healingStep;
+        }
+        //サポート
+        if (plAct.supportStep > 0)
+        {
+            Instantiate(plAttacManagerObj, transform);
+        }
     }
 
+    //1時的に1小節の"攻撃"回復"サポート"のデータを保存
     void Save()
     {
         if (plAct.melodyList.Count > 3)
         {
             melodySaveList = new List<ACTIONTYPE>(plAct.melodyList);
         }
-        else
-        {
-            //melodySaveList
-        }
+    }
 
+    //踏んだ位置の入力
+    int FootPosNum()
+    {
+        int num = footPosNum;
+
+        //キーボード入力
+        if (Input.GetKeyDown(KeyCode.Alpha0)) num = 0;
+        if (Input.GetKeyDown(KeyCode.Alpha1)) num = 1;
+        if (Input.GetKeyDown(KeyCode.Alpha2)) num = 2;
+        if (Input.GetKeyDown(KeyCode.Alpha3)) num = 3;
+        if (Input.GetKeyDown(KeyCode.Alpha4)) num = 4;
+        if (Input.GetKeyDown(KeyCode.Alpha5)) num = 5;
+        if (Input.GetKeyDown(KeyCode.Alpha6)) num = 6;
+        if (Input.GetKeyDown(KeyCode.Alpha7)) num = 7;
+
+        //足の入力
+        if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing ||
+            StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing)
+        {
+            num = FootPosCenter.hitPosNum;
+        }
+        return num;
+    }
+
+    //入力された数値を"攻撃"回復"サポート"に分ける
+    ACTIONTYPE GetActionType(int num)
+    {
+        ACTIONTYPE actionType = new ACTIONTYPE();
+
+        if (footActionNum.attackNum.Contains(num)) actionType = ACTIONTYPE.Attack;
+        else if (footActionNum.healNum.Contains(num)) actionType = ACTIONTYPE.Healing;
+        else if (footActionNum.supportNum.Contains(num)) actionType = ACTIONTYPE.Support;
+        else if (footActionNum.throughNUm.Contains(num)) actionType = ACTIONTYPE.Through;
+
+        return actionType;
     }
 
     //判定用の円の分割数

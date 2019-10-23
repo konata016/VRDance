@@ -28,14 +28,14 @@ public class Player : MonoBehaviour
         //コンボ計算
         if (Music.IsPlaying && Music.IsJustChangedBeat())
         {
-            if (HitPos.rankJudge == HitPos.RANK.Excellent ||
-                HitPos.rankJudge == HitPos.RANK.Good)
+            if (NotesManager.rank == NotesManager.RANK.Excellent ||
+                NotesManager.rank == NotesManager.RANK.Good)
             {
                 comboCount++;
             }
             else
             {
-                if (HitPos.rankJudge != HitPos.RANK.Through) comboCount = 0;
+                if (NotesManager.rank != NotesManager.RANK.Bad) comboCount = 0;
             }
         }
 

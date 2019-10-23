@@ -36,6 +36,6 @@ public class GroundPos : MonoBehaviour
         }
         transform.position = pos;
 
-        Debug.Log(StepDetermination.groundPosition);
+        //Debug.Log(StepDetermination.groundPosition);
     }
 }
