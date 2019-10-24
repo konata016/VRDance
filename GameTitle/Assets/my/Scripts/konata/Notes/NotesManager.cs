@@ -77,7 +77,7 @@ public class NotesManager : MonoBehaviour
             GameObject obj = Instantiate(notesObj, transform.position, q * rot) as GameObject;
 
             //自信の子オブジェクトとして登録する
-            obj.transform.transform.parent = transform;
+            obj.transform.parent = transform;
 
             return obj;
         }

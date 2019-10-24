@@ -142,6 +142,7 @@ public class PlActionControl : MonoBehaviour
     //1時的に1小節の"攻撃"回復"サポート"のデータを保存
     void Save()
     {
+        melodySaveList.Clear();
         if (plAct.melodyList.Count > 3)
         {
             melodySaveList = new List<ACTIONTYPE>(plAct.melodyList);
