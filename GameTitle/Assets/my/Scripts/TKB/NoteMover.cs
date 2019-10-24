@@ -57,33 +57,14 @@ public class NoteMover : MonoBehaviour
         {
             laserFlag = laser.NoteMove(0);
         }
+        if (throwFlag)
+        {
+            throwFlag = throwCube.NoteMove(0);
+        }
     }
 
     public void FlagSet(NotesType type)
     {   
-        //if(type == NotesType.wideWave)
-        //{
-        //    wideFlag = true;
-        //}
-        //if (type == NotesType.verticalWaveRight)
-        //{
-        //    rightFlag = true;
-        //    vertical.NoteGenerate(verticalNoteR, 1);
-        //}
-        //if (type == NotesType.verticalWaveLeft)
-        //{
-        //    leftFlag = true;
-        //    vertical.NoteGenerate(verticalNoteL, 2);
-        //}
-        //if (type == NotesType.punch)
-        //{
-        //    punchFlag = true;
-        //}
-        //if (type == NotesType.laser)
-        //{
-        //    laserFlag = true;
-        //}
-
         switch (type)
         {
             case NotesType.wideWave:
@@ -110,6 +91,8 @@ public class NoteMover : MonoBehaviour
 
             case NotesType.throwCube:
                 throwFlag = true;
+                int p = Random.Range(0, 2);
+                throwCube.NoteGenerate(throwNote, p);
                 break;
         }
     }

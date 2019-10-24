@@ -27,11 +27,6 @@ public class GenerateStage : MonoBehaviour
         public float time;
     }
 
-    //[SerializeField] GameObject wideNote;
-    //[SerializeField] GameObject verticalNote;
-    //[SerializeField] GameObject punchNote;
-    //[SerializeField] GameObject laserNote;
-
     [SerializeField] GameObject groundCube;
 
     private List<Note> noteTime = new List<Note>();
@@ -63,15 +58,10 @@ public class GenerateStage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         LoadNotes();
 
         nmo = GameObject.Find("NoteMover");
         mover = nmo.GetComponent<NoteMover>();
-        //wide = new WideWaveNote(3.0f, Vector3.zero, wideNote);
-        //vertical = new VerticalWaveNote(3.0f, Vector3.zero, verticalNote);
-        //punch = new PunchNote(3.0f, Vector3.zero, punchNote);
-        //laser = new LaserNote(3.0f, Vector3.zero, laserNote);
 
         GenerateGround();
     }

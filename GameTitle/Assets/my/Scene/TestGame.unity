@@ -3775,6 +3775,8 @@ MonoBehaviour:
     type: 3}
   punchNote: {fileID: 1101465337}
   laserNote: {fileID: 1101465337}
+  throwNote: {fileID: 6624734182455286549, guid: 20e4947e52227e54dbbe29d988755ef8,
+    type: 3}
 --- !u!4 &2086584538
 Transform:
   m_ObjectHideFlags: 0

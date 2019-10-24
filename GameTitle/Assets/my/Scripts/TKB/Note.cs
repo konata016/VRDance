@@ -11,7 +11,7 @@ public abstract class Note : MonoBehaviour
     protected GameObject note;
 
     protected GameObject[] noteObj;
-    protected int colNum = 3;
+    //protected int colNum = 3;
 
     public Note(float reachTime, Vector3 position, GameObject note)
     {
@@ -20,7 +20,7 @@ public abstract class Note : MonoBehaviour
         this.note = note;
         this.note.GetComponent<GameObject>();
 
-        noteObj = new GameObject[colNum];
+        //noteObj = new GameObject[colNum];
     }
 
     public abstract bool NoteMove(int pos);
@@ -56,12 +56,14 @@ public class VerticalWaveNote : Note
     private const float animTime = 3.0f;
     private const float noteSpeed = 0.1f;
 
+    int colNum = 3;
     int vNum = 0;
 
     public VerticalWaveNote(float reachTime, Vector3 position, GameObject note) : base(reachTime, position, note)
     {
         generateTime = this.reachTime - animTime;
         moveVector = new Vector3(0,0,1);
+        noteObj = new GameObject[colNum];
     }
 
     public override bool NoteMove(int pos)
@@ -80,7 +82,6 @@ public class VerticalWaveNote : Note
                 }
             }
         }
-
         return true;      
     }
 
@@ -153,24 +154,85 @@ public class ThrowCubeNote : Note
 {
     private float cubePos = 0;
     private const float animTime = 3.0f;
-    private const float noteSpeed = 0.1f;
+    private const float noteSpeed = 0.2f;
+    private float[] upSpeed;
+    private Vector3[] moveVec;
 
     int cNum = 0;
+    int cubeNum = 4;
+    float[] target = new float[4]; //飛んでくる場所へ補正
 
     public ThrowCubeNote(float reachTime, Vector3 position, GameObject note) : base(reachTime, position, note)
     {
         generateTime = this.reachTime - animTime;
         moveVector = note.transform.position.normalized;
+        noteObj = new GameObject[cubeNum];
+        moveVec = new Vector3[cubeNum];
+        upSpeed = new float[cubeNum];
     }
 
     public override bool NoteMove(int pos)
     {
-        
+        for(int i = 0; i < cubeNum; i++)
+        {
+            if (noteObj[i] != null)
+            {
+                if (upSpeed[i] >= 0.0001f)
+                {
+                    noteObj[i].transform.position += new Vector3(0, upSpeed[i], 0);
+                    upSpeed[i] *= 0.9f;
+                    moveVec[i] = noteObj[i].transform.position 
+                                 - new Vector3(target[i], JumpStart.groundPosition.y +0.5f, 0);
+                    moveVec[i] = moveVec[i].normalized;
+                }
+                else
+                {
+                    if (noteObj[i].transform.position.z <= 0)
+                    {
+                        Destroy(noteObj[i]);
+                    }
+                    else
+                    {
+                        noteObj[i].transform.position -= moveVec[i] * noteSpeed;
+                    }
+
+                }
+            }
+        }
         return true;
     }
 
     public override void NoteGenerate(GameObject cube, int pos)
     {
+        Vector3 p;
+        
 
+        if(pos == 0)
+        {
+            float x = Random.value;
+            p = new Vector3(5.0f + x, JumpStart.groundPosition.y-0.2f, 22.0f);
+            target[cNum] = 0.8f;
+        }
+        else
+        {
+            float x = Random.value;
+            p = new Vector3(-5.0f - x, JumpStart.groundPosition.y - 0.2f, 22.0f);
+            target[cNum] = -0.8f;
+        }
+
+        if (noteObj[cNum] == null)
+        {
+            noteObj[cNum] = Instantiate(cube, p, Quaternion.identity);
+            //moveVec[cNum] = noteObj[cNum].transform.position - new Vector3(target[cNum], 0, 0);
+            //moveVec[cNum] = moveVec[cNum].normalized;
+       
+            upSpeed[cNum] = 0.5f;
+
+            cNum++;
+        }
+        if (cNum >= 4)
+        {
+            cNum = 0;
+        }
     }
 }
