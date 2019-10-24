@@ -19,6 +19,7 @@ public class GenerateStage : MonoBehaviour
     private string VERTICAL_L = "vl";
     private const string PUNCH = "p";
     private const string LASER = "l";
+    private const string THROW = "t";
 
     private struct Date
     {
@@ -157,7 +158,7 @@ public class GenerateStage : MonoBehaviour
         {
             type = 4;
         }
-        else
+        else if (tn.Equals(THROW))
         {
             type = 5;
         }
@@ -180,11 +181,15 @@ public class GenerateStage : MonoBehaviour
                     break;
 
                 case (int)NotesType.punch:
-                    punch.NoteMove(0);
+                    
                     break;
 
                 case (int)NotesType.laser:
-                    laser.NoteMove(0);
+                    
+                    break;
+
+                case (int)NotesType.throwCube:
+                    mover.FlagSet(NotesType.throwCube);
                     break;
             }
             

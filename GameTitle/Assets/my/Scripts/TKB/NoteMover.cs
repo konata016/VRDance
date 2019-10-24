@@ -9,27 +9,29 @@ public class NoteMover : MonoBehaviour
     [SerializeField] GameObject verticalNoteL;
     [SerializeField] GameObject punchNote;
     [SerializeField] GameObject laserNote;
+    [SerializeField] GameObject throwNote;
 
-    WideWaveNote wide;
-    VerticalWaveNote vertical;
-    PunchNote punch;
-    LaserNote laser;
+    private WideWaveNote wide;
+    private VerticalWaveNote vertical;
+    private PunchNote punch;
+    private LaserNote laser;
+    private ThrowCubeNote throwCube;
 
-    bool wideFlag = false;
-    bool rightFlag = false;
-    bool leftFlag = false;
-    bool punchFlag = false;
-    bool laserFlag = false;
-
-    NoteType nt = new NoteType();
+    private bool wideFlag = false;
+    private bool rightFlag = false;
+    private bool leftFlag = false;
+    private bool punchFlag = false;
+    private bool laserFlag = false;
+    private bool throwFlag = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        wide = new WideWaveNote(3.0f, Vector3.zero, wideNote);
-        vertical = new VerticalWaveNote(3.0f, Vector3.zero, verticalNoteR);
-        punch = new PunchNote(3.0f, Vector3.zero, punchNote);
-        laser = new LaserNote(3.0f, Vector3.zero, laserNote);
+        wide = new WideWaveNote(0.0f, Vector3.zero, wideNote);
+        vertical = new VerticalWaveNote(0.0f, Vector3.zero, verticalNoteR);
+        punch = new PunchNote(0.0f, Vector3.zero, punchNote);
+        laser = new LaserNote(0.0f, Vector3.zero, laserNote);
+        throwCube = new ThrowCubeNote(0.0f, Vector3.zero, throwNote);
     }
 
     // Update is called once per frame
@@ -59,27 +61,56 @@ public class NoteMover : MonoBehaviour
 
     public void FlagSet(NotesType type)
     {   
-        if(type == NotesType.wideWave)
+        //if(type == NotesType.wideWave)
+        //{
+        //    wideFlag = true;
+        //}
+        //if (type == NotesType.verticalWaveRight)
+        //{
+        //    rightFlag = true;
+        //    vertical.NoteGenerate(verticalNoteR, 1);
+        //}
+        //if (type == NotesType.verticalWaveLeft)
+        //{
+        //    leftFlag = true;
+        //    vertical.NoteGenerate(verticalNoteL, 2);
+        //}
+        //if (type == NotesType.punch)
+        //{
+        //    punchFlag = true;
+        //}
+        //if (type == NotesType.laser)
+        //{
+        //    laserFlag = true;
+        //}
+
+        switch (type)
         {
-            wideFlag = true;
-        }
-        if (type == NotesType.verticalWaveRight)
-        {
-            rightFlag = true;
-            vertical.NoteGenerate(verticalNoteR, 1);
-        }
-        if (type == NotesType.verticalWaveLeft)
-        {
-            leftFlag = true;
-            vertical.NoteGenerate(verticalNoteL, 2);
-        }
-        if (type == NotesType.punch)
-        {
-            punchFlag = true;
-        }
-        if (type == NotesType.laser)
-        {
-            laserFlag = true;
+            case NotesType.wideWave:
+                wideFlag = true;
+                break;
+
+            case NotesType.verticalWaveRight:
+                rightFlag = true;
+                vertical.NoteGenerate(verticalNoteR, 1);
+                break;
+
+            case NotesType.verticalWaveLeft:
+                leftFlag = true;
+                vertical.NoteGenerate(verticalNoteL, 2);
+                break;
+
+            case NotesType.punch:
+                punchFlag = true;
+                break;
+
+            case NotesType.laser:
+                laserFlag = true;
+                break;
+
+            case NotesType.throwCube:
+                throwFlag = true;
+                break;
         }
     }
 }
