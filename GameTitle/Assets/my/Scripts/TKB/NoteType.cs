@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NoteType : MonoBehaviour
-{
-    public enum Type
-    {
-        wideWave,
-        verticalWave,
-        punch,
-        laser,
-        none
-    }
-}
+//public class NoteType : MonoBehaviour
+//{
+//    public enum Type
+//    {
+//        wideWave,
+//        verticalWave,
+//        punch,
+//        laser,
+//        none
+//    }
+//}
 
 public enum NotesType
 {
@@ -21,5 +21,6 @@ public enum NotesType
     verticalWaveLeft,
     punch,
     laser,
+    throwCube,
     none
 }

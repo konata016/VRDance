@@ -19,17 +19,13 @@ public class GenerateStage : MonoBehaviour
     private string VERTICAL_L = "vl";
     private const string PUNCH = "p";
     private const string LASER = "l";
+    private const string THROW = "t";
 
     private struct Date
     {
         public NoteType type;
         public float time;
     }
-
-    //[SerializeField] GameObject wideNote;
-    //[SerializeField] GameObject verticalNote;
-    //[SerializeField] GameObject punchNote;
-    //[SerializeField] GameObject laserNote;
 
     [SerializeField] GameObject groundCube;
 
@@ -62,15 +58,10 @@ public class GenerateStage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         LoadNotes();
 
         nmo = GameObject.Find("NoteMover");
         mover = nmo.GetComponent<NoteMover>();
-        //wide = new WideWaveNote(3.0f, Vector3.zero, wideNote);
-        //vertical = new VerticalWaveNote(3.0f, Vector3.zero, verticalNote);
-        //punch = new PunchNote(3.0f, Vector3.zero, punchNote);
-        //laser = new LaserNote(3.0f, Vector3.zero, laserNote);
 
         GenerateGround();
     }
@@ -157,7 +148,7 @@ public class GenerateStage : MonoBehaviour
         {
             type = 4;
         }
-        else
+        else if (tn.Equals(THROW))
         {
             type = 5;
         }
@@ -180,11 +171,15 @@ public class GenerateStage : MonoBehaviour
                     break;
 
                 case (int)NotesType.punch:
-                    punch.NoteMove(0);
+                    
                     break;
 
                 case (int)NotesType.laser:
-                    laser.NoteMove(0);
+                    
+                    break;
+
+                case (int)NotesType.throwCube:
+                    mover.FlagSet(NotesType.throwCube);
                     break;
             }
             
