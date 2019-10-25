@@ -24,7 +24,7 @@ public class ControllerControl : MonoBehaviour
     void Start()
     {
         infoObj = Instantiate(textObj, headDisplay.transform);
-        infoObj.transform.parent = transform;
+        infoObj.transform.parent = headDisplay.transform;
         infoObj.transform.localPosition = new Vector3(0, -1, 5);
     }
 
@@ -68,11 +68,11 @@ public class ControllerControl : MonoBehaviour
         float num = 0;
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            num -= 0.1f;
+            num -= 0.01f;
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            num += 0.1f;
+            num += 0.01f;
         }
 
         return num;
