@@ -37,7 +37,7 @@ public class ControllerControl : MonoBehaviour
         if (objData > TRANSFORM.SizZ) objData = TRANSFORM.PosX;
         if (objData < TRANSFORM.PosX) objData = TRANSFORM.SizZ;
 
-        Vector3 pos = transform.position;
+        Vector3 pos = transform.localPosition;
         Vector3 siz = transform.localScale;
         Quaternion p = transform.rotation;
 
@@ -57,7 +57,7 @@ public class ControllerControl : MonoBehaviour
                 break;
         }
 
-        transform.position = pos;
+        transform.localPosition = pos;
         transform.localScale = siz;
 
         TextOutput();
