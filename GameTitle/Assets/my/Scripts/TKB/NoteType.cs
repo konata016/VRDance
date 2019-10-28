@@ -22,5 +22,5 @@ public enum NotesType
     punch,
     laser,
     throwCube,
-    none
+    none,
 }

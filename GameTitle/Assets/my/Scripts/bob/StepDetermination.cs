@@ -81,13 +81,13 @@ public class StepDetermination : MonoBehaviour
         /* 左足の判定 */
         if (isGroundTouch_L == ISGROUNDTOUCH.Wait)// 待ち
         {
-            Debug.Log("待ち");
+            //Debug.Log("待ち");
             if (groundPosition.y + 0.03f < Mathf.Floor(footPosL.y * roundedDown) / roundedDown)// 足を上げた
                 isGroundTouch_L = ISGROUNDTOUCH.Jump;
         }
         else if (isGroundTouch_L == ISGROUNDTOUCH.Jump)// ジャンプ
         {
-            Debug.Log("ジャンプ");
+            //Debug.Log("ジャンプ");
             if (groundPosition.y + 0.03f >= Mathf.Floor(footPosL.y * roundedDown) / roundedDown)// 足を地面につけた
             {
                 isGroundTouch_L = ISGROUNDTOUCH.Landing;
@@ -97,23 +97,23 @@ public class StepDetermination : MonoBehaviour
         }
         else if (isGroundTouch_L == ISGROUNDTOUCH.Landing)// 着地
         {
-            Debug.Log("着地");
+            //Debug.Log("着地");
         }
         else if (isGroundTouch_L == ISGROUNDTOUCH.EndProcess)// 判定後
         {
-            Debug.Log("判定後");
+            //Debug.Log("判定後");
             isGroundTouch_L = ISGROUNDTOUCH.Wait;
         }
         /* 右足の判定 */
         if (isGroundTouch_R == ISGROUNDTOUCH.Wait)// 待ち
         {
-            Debug.Log("待ち");
+            //Debug.Log("待ち");
             if (groundPosition.y + 0.03f < Mathf.Floor(footPosR.y * roundedDown) / roundedDown)// 足を上げた
                 isGroundTouch_R = ISGROUNDTOUCH.Jump;
         }
         else if (isGroundTouch_R == ISGROUNDTOUCH.Jump)// ジャンプ
         {
-            Debug.Log("ジャンプ");
+            //Debug.Log("ジャンプ");
             if (groundPosition.y + 0.03f >= Mathf.Floor(footPosR.y * roundedDown) / roundedDown)// 足を地面につけた
             {
                 isGroundTouch_R = ISGROUNDTOUCH.Landing;
@@ -123,11 +123,11 @@ public class StepDetermination : MonoBehaviour
         }
         else if (isGroundTouch_R == ISGROUNDTOUCH.Landing)// 着地
         {
-            Debug.Log("着地");
+            //Debug.Log("着地");
         }
         else if (isGroundTouch_R == ISGROUNDTOUCH.EndProcess)// 判定後
         {
-            Debug.Log("判定後");
+            //Debug.Log("判定後");
             isGroundTouch_R = ISGROUNDTOUCH.Wait;
         }
     }

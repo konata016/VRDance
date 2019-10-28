@@ -22,7 +22,7 @@ public class PlActionControl : MonoBehaviour
         public List<int> attackNum = new List<int>() { 3, 4, 5 };
         public List<int> healNum = new List<int>() { 0, 1, 7 };
         public List<int> supportNum = new List<int>() { 2, 6 };
-        public List<int> throughNUm = new List<int>() { 8 };
+        public List<int> throughNum = new List<int>() { 8 };
     }
     public FootActionNum footActionNum = new FootActionNum();
 
@@ -53,6 +53,7 @@ public class PlActionControl : MonoBehaviour
     public static List<ACTIONTYPE> melodySaveList = new List<ACTIONTYPE>();
 
     static PlActionControl PlActionControl_ = new PlActionControl();
+
 
     // Start is called before the first frame update
     void Start()
@@ -88,6 +89,7 @@ public class PlActionControl : MonoBehaviour
                     case ACTIONTYPE.Attack: plAct.attackStep++; break;      //攻撃
                     case ACTIONTYPE.Healing: plAct.healingStep++; break;    //回復
                     case ACTIONTYPE.Support: plAct.supportStep++; break;    //サポート
+                    case ACTIONTYPE.Through:break;
                     default: break;
                 }
             }
@@ -109,7 +111,7 @@ public class PlActionControl : MonoBehaviour
             //1小節分の入力データの保存
             plAct.melodyList.Add(GetActionType(footPosNum));
             //初期化
-            footPosNum = footActionNum.throughNUm[0];
+            footPosNum = footActionNum.throughNum[0];
 
             //キーボード入力（デバッグ用）
             //Debug.Log(HitPos.footPosNum);
@@ -121,19 +123,19 @@ public class PlActionControl : MonoBehaviour
     void SpawnPrefab()
     {
         //攻撃
-        if (plAct.attackStep > 0)
+        if (plAct.attackStep != 0)
         {
             Instantiate(plAttacManagerObj, transform);
             PlAttackAction.rollSwordCount = plAct.attackStep;
         }
         //回復
-        if (plAct.healingStep > 0)
+        if (plAct.healingStep != 0)
         {
             Instantiate(plAttacManagerObj, transform);
             //PlAttackAction.rollSwordCount = plAct.healingStep;
         }
         //サポート
-        if (plAct.supportStep > 0)
+        if (plAct.supportStep != 0)
         {
             Instantiate(plAttacManagerObj, transform);
         }
@@ -181,7 +183,7 @@ public class PlActionControl : MonoBehaviour
         if (footActionNum.attackNum.Contains(num)) actionType = ACTIONTYPE.Attack;
         else if (footActionNum.healNum.Contains(num)) actionType = ACTIONTYPE.Healing;
         else if (footActionNum.supportNum.Contains(num)) actionType = ACTIONTYPE.Support;
-        else if (footActionNum.throughNUm.Contains(num)) actionType = ACTIONTYPE.Through;
+        else if (footActionNum.throughNum.Contains(num)) actionType = ACTIONTYPE.Through;
 
         return actionType;
     }

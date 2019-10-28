@@ -116,26 +116,35 @@ public class PlAttackAction : MonoBehaviour
         RollSword2();
     }
 
-    #region 途中
-    void GateOfBabylon()
+    //RollSwordの2～3の音に合わせて飛ぶ剣の"生成""回転""カウントの進め"までのテンプレ
+    void RollSwordTemplate()
     {
-        //遅延
-        timer += 1.0f * Time.deltaTime;
-
-        if (!GOBP.onGate)
+        if (!RSP.onSword)
         {
-            for (int i = 0; i < RSP.swordCount; i++)
-            {
-                //距離の変数を用意すること
-                Vector3 v3 = CirclePos(GOBP.swordCount, 50, i, Vector3.zero);
-                GOBP.gate.Add(Instantiate(GOBP.swordObj, v3, new Quaternion()));
-            }
+            //オブジェクトの生成
+            RSP.swordList = new List<GameObject>(InstantCirclePos(RSP.swordCount, RSP.swordObj, RSP.radius));
+            //次から生成しないようにする
+            RSP.onSword = true;
+        }
 
-            //無限生成防ぐやつ
-            GOBP.onGate = true;
+        //回した後に敵の方を向く
+        for (int i = 0; i < RSP.swordList.Count; i++)
+        {
+            if (!RSP.isStart) RSP.swordList[i].transform.Rotate(RSP.rollSpeed, 0, 0);//回す処理
+            else RSP.swordList[i].transform.LookAt(RSP.target);                     //敵の方向を向く
+        }
+
+        //１拍後にカウントを進める
+        if (Music.IsPlaying && Music.IsJustChangedBeat())
+        {
+            if (RSP.timingCount < actionTypeList.Count)
+            {
+                SE(RSP.timingCount);
+                RSP.timingCount++;
+            }
+            RSP.isStart = true;
         }
     }
-    #endregion
 
     //現在は使っていない
     #region くるくると回ってからターゲットに向かって放たれる
@@ -148,12 +157,8 @@ public class PlAttackAction : MonoBehaviour
 
         if (!RSP.onSword)
         {
-            for (int i = 0; i < RSP.swordCount; i++)
-            {
-                //半円上に剣を生成する
-                Vector3 v3 = CirclePos(RSP.swordCount - 1, RSP.radius, i, Vector3.zero);
-                RSP.swordList.Add(Instantiate(RSP.swordObj, v3, new Quaternion()));
-            }
+            //オブジェクトの生成
+            RSP.swordList = new List<GameObject>(InstantCirclePos(RSP.swordCount, RSP.swordObj, RSP.radius));
             //次から生成しないようにする
             RSP.onSword = true;
         }
@@ -187,41 +192,10 @@ public class PlAttackAction : MonoBehaviour
     #region テンポに合わせて剣が飛んでいくバージョン
     public void RollSword2()
     {
-
         //遅延
         timer += 1.0f * Time.deltaTime;
 
-        if (!RSP.onSword)
-        {
-            for (int i = 0; i < RSP.swordCount; i++)
-            {
-                //半円上に剣を生成する
-                Vector3 v3 = CirclePos(RSP.swordCount - 1, RSP.radius, i, Vector3.zero);
-                RSP.swordList.Add(Instantiate(RSP.swordObj, v3, new Quaternion()));
-            }
-            //次から生成しないようにする
-            RSP.onSword = true;
-        }
-
-        //回す処理
-        for (int i = 0; i < RSP.swordList.Count; i++)
-        {
-            if (!RSP.isStart) RSP.swordList[i].transform.Rotate(RSP.rollSpeed, 0, 0);//回す処理
-            else RSP.swordList[i].transform.LookAt(RSP.target);                     //敵の方向を向く
-        }
-
-        //１拍後にカウントを進める
-        if (Music.IsPlaying && Music.IsJustChangedBeat())
-        {
-            if (RSP.timingCount < actionTypeList.Count)
-            {
-                SE(RSP.timingCount);
-                RSP.timingCount++;
-            }
-            RSP.isStart = true;
-        }
-
-        //Debug.Log(RSP.timingCount);
+        RollSwordTemplate();
 
         //1拍のタイミングで動き始める
         if (RSP.isStart)
@@ -245,6 +219,19 @@ public class PlAttackAction : MonoBehaviour
         }
     }
     #endregion
+
+    public void RollSword3()
+    {
+        //遅延
+        timer += 1.0f * Time.deltaTime;
+
+        RollSwordTemplate();
+
+        if (RSP.isStart)
+        {
+
+        }
+    }
 
     #region 回復
     public void Heal()
@@ -286,6 +273,40 @@ public class PlAttackAction : MonoBehaviour
         }
     }
 
+    //半円上にオブジェクトを生成する
+    List<GameObject> InstantCirclePos(int count, GameObject obj, float radius)
+    {
+        List<GameObject> objList = new List<GameObject>();
+        for (int i = 0; i < count; i++)
+        {
+            //半円上に生成する
+            Vector3 v3 = CirclePos(count - 1,radius, i, Vector3.zero);
+            objList.Add(Instantiate(obj, v3, new Quaternion()));
+        }
+        return objList;
+
+        //半円上のポジションを取得
+        Vector3 CirclePos(int maxNum,float rad, int currentNum, Vector3 pos)
+        {
+            if (maxNum != 0)
+            {
+                //きれいに半円状にに出すやつ
+                float r = (180 / maxNum) * currentNum;
+
+                float angle = r * Mathf.Deg2Rad;
+                pos.x = rad * Mathf.Cos(angle);
+                pos.y = rad * Mathf.Sin(angle);
+            }
+            else
+            {
+                pos.x = 0;
+                pos.y = rad;
+            }
+
+            return pos;
+        }
+    }
+
     #region 効果音(剣の処理)
     void SE(int count)
     {
@@ -296,28 +317,6 @@ public class PlAttackAction : MonoBehaviour
                 MainGame_SE mainGame_SE = seObj.GetComponent<MainGame_SE>();
                 mainGame_SE.SwordSound();// 効果音＿剣
             }
-    }
-    #endregion
-
-    #region 配置用(半円上にものを出す処理)
-    Vector3 CirclePos(int count, float radius, int swordNum, Vector3 pos)
-    {
-        if (count != 0)
-        {
-            //きれいに半円状にに出すやつ
-            float r = (180 / count) * swordNum;
-
-            float angle = r * Mathf.Deg2Rad;
-            pos.x = radius * Mathf.Cos(angle);
-            pos.y = radius * Mathf.Sin(angle);
-        }
-        else
-        {
-            pos.x = 0;
-            pos.y = radius;
-        }
-
-        return pos;
     }
     #endregion
 }

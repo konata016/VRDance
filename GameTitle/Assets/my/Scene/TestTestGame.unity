@@ -3455,7 +3455,7 @@ MonoBehaviour:
     attackNum: 030000000400000005000000
     healNum: 000000000100000007000000
     supportNum: 0200000006000000
-    throughNUm: 08000000
+    throughNum: 08000000
 --- !u!114 &1718596244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3508,7 +3508,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e57111e5575908a4f860b04cecde6d0e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.787
+  m_Volume: 0.272
   m_Pitch: 1
   Loop: 1
   Mute: 0
