@@ -83,19 +83,19 @@ public class GenerateStage : MonoBehaviour
 
         textLoad = textAll.Split(del, StringSplitOptions.None);
 
-        colL = textLoad[0].Split('\t').Length;
+        colL = textLoad[0].Split(',').Length;
         rowL = textLoad.Length;
 
         textNotes = new string[rowL, colL];
 
         for (int i = 0; i < rowL; i++)
         {
-            string[] tempNote = textLoad[i].Split('\t');
+            string[] tempNote = textLoad[i].Split(',');
 
             for (int j = 0; j < colL; j++)
             {             
                 textNotes[i, j] = tempNote[j];
-                //Debug.Log(textNotes[i,0]);
+                Debug.Log(textNotes[i,0]);
             }
         }
     }

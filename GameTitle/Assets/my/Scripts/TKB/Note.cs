@@ -194,6 +194,7 @@ public class ThrowCubeNote : Note
                     else
                     {
                         noteObj[i].transform.position -= moveVec[i] * noteSpeed;
+                        noteObj[i].transform.Rotate(new Vector3(180f, 60f,180f) * Time.deltaTime);
                     }
 
                 }
