@@ -3456,7 +3456,7 @@ MonoBehaviour:
     attackNum: 030000000400000005000000
     healNum: 000000000100000007000000
     supportNum: 0200000006000000
-    throughNUm: 08000000
+    throughNum: 08000000
 --- !u!114 &1718596244
 MonoBehaviour:
   m_ObjectHideFlags: 0
