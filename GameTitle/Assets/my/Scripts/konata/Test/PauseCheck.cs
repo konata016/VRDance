@@ -31,9 +31,19 @@ public class PauseCheck : MonoBehaviour
     void Update()
     {
         //足の間にオブジェクトを置く
-        transform.position = CenterPos(footCheck.Right.transform.position,
-                                       footCheck.Left.transform.position,
-                                       StepDetermination.groundPosition.z);
+        footCheck.Right.transform.position = CenterPos
+        (
+         foot.Right.transform.position,
+         foot.Left.transform.position,
+        StepDetermination.groundPosition.z
+        );
+        footCheck.Left.transform.position = CenterPos
+       (
+        foot.Right.transform.position,
+        foot.Left.transform.position,
+       StepDetermination.groundPosition.z
+       );
+
         //足の方向を監視させる
         GroundJudge();
 
@@ -51,8 +61,8 @@ public class PauseCheck : MonoBehaviour
     //踏んだ時にどんなポーズをしているかを出す
     PAUSE_ACTION PauseAction()
     {
-        FOOT_POS right = (FOOT_POS)AngFromCircleCutNum(foot.Right.transform.rotation.eulerAngles.y, footCircleCutNum);
-        FOOT_POS left = (FOOT_POS)AngFromCircleCutNum(foot.Left.transform.rotation.eulerAngles.y, footCircleCutNum);
+        FOOT_POS right = (FOOT_POS)AngFromCircleCutNum(footCheck.Right.transform.rotation.eulerAngles.y, footCircleCutNum);
+        FOOT_POS left = (FOOT_POS)AngFromCircleCutNum(footCheck.Left.transform.rotation.eulerAngles.y, footCircleCutNum);
 
         if (OnTriggerArrayLR()[(int)FOOT_RL.R] || OnTriggerArrayLR()[(int)FOOT_RL.L])
         {
