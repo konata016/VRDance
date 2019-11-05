@@ -47,7 +47,7 @@ public class PlActionControl : MonoBehaviour
             supportStep = 0;
         }
     }
-    public static PlayerAction plAct = new PlayerAction();
+    public PlayerAction plAct = new PlayerAction();
 
     //一時保存
     public static List<ACTIONTYPE> melodySaveList = new List<ACTIONTYPE>();
@@ -89,7 +89,7 @@ public class PlActionControl : MonoBehaviour
                     case ACTIONTYPE.Attack: plAct.attackStep++; break;      //攻撃
                     case ACTIONTYPE.Healing: plAct.healingStep++; break;    //回復
                     case ACTIONTYPE.Support: plAct.supportStep++; break;    //サポート
-                    case ACTIONTYPE.Through:break;
+                    case ACTIONTYPE.Through: break;
                     default: break;
                 }
             }
@@ -189,5 +189,6 @@ public class PlActionControl : MonoBehaviour
     }
 
     //判定用の円の分割数
-    public static int FootCircleCutNum { get { return PlActionControl_.footCircleCutNum; } }
+    public static int GetFootCircleCutNum { get { return PlActionControl_.footCircleCutNum; } }
+    public static PlayerAction GetPlAct { get { return PlActionControl_.plAct; } }
 }

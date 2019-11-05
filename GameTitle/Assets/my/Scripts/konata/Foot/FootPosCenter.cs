@@ -21,7 +21,7 @@ public class FootPosCenter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ang = 360 / PlActionControl.FootCircleCutNum;
+        ang = 360 / PlActionControl.GetFootCircleCutNum;
     }
 
     // Update is called once per frame
@@ -59,13 +59,13 @@ public class FootPosCenter : MonoBehaviour
         float minAng = ang / 2;
 
         //中心から見た足の角度を出す
-        if (FoodAng <= minAng || FoodAng > minAng + ang * (PlActionControl.FootCircleCutNum - 1))
+        if (FoodAng <= minAng || FoodAng > minAng + ang * (PlActionControl.GetFootCircleCutNum - 1))
         {
             hitPosNum = 0;
         }
         else
         {
-            for (int i = 1; i < PlActionControl.FootCircleCutNum; i++)
+            for (int i = 1; i < PlActionControl.GetFootCircleCutNum; i++)
             {
                 if (FoodAng > minAng && FoodAng <= minAng + ang)
                 {
