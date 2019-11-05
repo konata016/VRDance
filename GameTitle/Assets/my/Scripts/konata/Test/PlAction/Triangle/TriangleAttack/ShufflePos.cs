@@ -16,6 +16,11 @@ public class ShufflePos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //マネージャーからの数値変更
+        correctionY = PlAttackManager.GetTriangle.changefixPosY;
+        speed = PlAttackManager.GetTriangle.posChangeSpeed;
+        randomSeed = PlAttackManager.GetTriangle.randomSeed;
+
         Random.InitState(randomSeed);   //シード値をセット
         Vector3 v3 = Vector3.zero;
         int count = 0;

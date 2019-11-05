@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4163,7 +4163,7 @@ GameObject:
   - component: {fileID: 2029629432}
   - component: {fileID: 2029629431}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4182,7 +4182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rollSword:
-    swordObj: {fileID: 0}
+    swordObj: {fileID: 59502128127131975, guid: 55283a92aea805f4bba4edd6d25739e0,
+      type: 3}
     rollSpeed: 25
     speed: 5
     swordCount: 4
@@ -4190,12 +4191,25 @@ MonoBehaviour:
     targetPos: {x: 0, y: 0, z: 0}
     swordList: []
   meteorShower:
-    showerObj: {fileID: 3353577075511821124, guid: a72019ce3aa2d704db2ff3211eb25052,
+    meteorShowerObj: {fileID: 3353577075511821124, guid: a72019ce3aa2d704db2ff3211eb25052,
       type: 3}
     speed: 100
     interval: 0.1
     spawnCount: 50
     targetPos: {x: 0, y: 0, z: 0}
+  triangle:
+    TriangleObj: {fileID: 4254696941119007254, guid: b60221c84ad946d47bdfbbc45a91c63a,
+      type: 3}
+    beaconSpeed: 50
+    myMeshMaterial: {fileID: 2100000, guid: f161c8b8e5648194eb17ae44f3fe7529, type: 2}
+    beamObj: {fileID: 6958884385085793861, guid: 99652c4209f63a4499e14ed213f7dd37,
+      type: 3}
+    beamSpeed: 35
+    explosionParticle: {fileID: 1988067787168445160, guid: 8847ef133d388a644a1640e1fb783dfe,
+      type: 3}
+    changefixPosY: 1
+    posChangeSpeed: 15
+    randomSeed: 13
 --- !u!4 &2029629432
 Transform:
   m_ObjectHideFlags: 0
@@ -4204,7 +4218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029629430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -22.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

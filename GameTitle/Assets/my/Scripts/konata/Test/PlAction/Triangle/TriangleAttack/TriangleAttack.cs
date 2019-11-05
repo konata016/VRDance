@@ -28,6 +28,12 @@ public class TriangleAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //マネージャーからの数値変更
+        material = PlAttackManager.GetTriangle.myMeshMaterial;
+        beamObj = PlAttackManager.GetTriangle.beamObj;
+        speed = PlAttackManager.GetTriangle.beamSpeed;
+        effectObj = PlAttackManager.GetTriangle.explosionParticle;
+
         //動的メッシュ作成用オブジェクト準備
         myMeshObj = new GameObject("test");
         myMeshObj.AddComponent<MeshRenderer>();
@@ -102,7 +108,7 @@ public class TriangleAttack : MonoBehaviour
             if (timer < 1)
             {
                 timer += Time.deltaTime;
-                material.SetFloat("_Timer", timer);
+                myMeshObj.GetComponent<Renderer>().material.SetFloat("_Timer", timer);
             }
             else if (!onEffect)
             {

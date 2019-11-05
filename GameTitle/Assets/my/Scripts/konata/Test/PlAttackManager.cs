@@ -23,7 +23,8 @@ public class PlAttackManager : MonoBehaviour
     [System.Serializable]
     public class MeteorShowerParameter
     {
-        public GameObject showerObj;
+        public GameObject meteorShowerObj;
+
         public float speed = 10;
         public float interval = 0.1f;
         public int spawnCount = 50;
@@ -32,16 +33,41 @@ public class PlAttackManager : MonoBehaviour
     }
     public MeteorShowerParameter meteorShower = new MeteorShowerParameter();
 
+    [System.Serializable]
+    public class TriangleParameter
+    {
+        public GameObject TriangleObj;
+
+        public float beaconSpeed = 30;
+
+        public Material myMeshMaterial;
+        public GameObject beamObj;
+        public float beamSpeed = 35;
+        public GameObject explosionParticle;
+
+        public float changefixPosY = 1;
+        public float posChangeSpeed = 15;
+        public int randomSeed = 13;
+    }
+    public TriangleParameter triangle = new TriangleParameter();
+
     static PlAttackManager PlAttackManager_ = new PlAttackManager();
+
+    //Startより前に呼び出される
+    void Awake()
+    {
+        PlAttackManager_.triangle = triangle;
+        PlAttackManager_.meteorShower = meteorShower;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        //剣を生成
         //rollSword.swordList = new List<GameObject>
         //    (
         //    InstantCirclePos(rollSword.swordCount, rollSword.swordObj, rollSword.radius, false)
         //    );
-
     }
 
     // Update is called once per frame
@@ -49,9 +75,12 @@ public class PlAttackManager : MonoBehaviour
     {
         if (!isAttack)
         {
-            MeteorShower();
-
-            if (Music.IsPlaying && Music.IsJustChangedBeat()) isAttack = false;
+            if (Music.IsPlaying && Music.IsJustChangedBeat())
+            {
+                Triangle();
+                //MeteorShower();
+                isAttack = true;
+            }
         }
 
     }
@@ -62,10 +91,12 @@ public class PlAttackManager : MonoBehaviour
         {
             if (isAttack)
             {
+                //回す処理
                 rollSword.swordList[i].transform.Rotate(rollSword.rollSpeed, 0, 0);
             }
             else
             {
+                //飛んでいく処理
                 rollSword.swordList[i].transform.position = Vector3.MoveTowards
                     (
                     rollSword.swordList[i].transform.position, rollSword.targetPos, rollSword.speed * Time.deltaTime
@@ -78,11 +109,18 @@ public class PlAttackManager : MonoBehaviour
     {
         if (Music.IsPlaying && Music.IsJustChangedBeat())
         {
-            GameObject obj = Instantiate(meteorShower.showerObj, meteorShower.targetPos, new Quaternion());
+            GameObject obj = Instantiate(meteorShower.meteorShowerObj, meteorShower.targetPos, new Quaternion());
         }
     }
 
-
+    void Triangle()
+    {
+        GameObject obj = Instantiate(triangle.TriangleObj, transform);
+        if (Music.IsPlaying && Music.IsJustChangedBeat())
+        {
+            //GameObject obj = Instantiate(triangle.TriangleObj, transform);
+        }
+    }
 
 
 
@@ -125,5 +163,10 @@ public class PlAttackManager : MonoBehaviour
     public static MeteorShowerParameter GetMeteorShower
     {
         get { return PlAttackManager_.meteorShower; }
+    }
+
+    public static TriangleParameter GetTriangle
+    {
+        get { return PlAttackManager_.triangle; }
     }
 }

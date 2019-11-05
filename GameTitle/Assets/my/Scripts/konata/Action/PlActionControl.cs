@@ -54,6 +54,10 @@ public class PlActionControl : MonoBehaviour
 
     static PlActionControl PlActionControl_ = new PlActionControl();
 
+    void Awake()
+    {
+        PlActionControl_.footCircleCutNum = footCircleCutNum;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -93,6 +97,8 @@ public class PlActionControl : MonoBehaviour
                     default: break;
                 }
             }
+            //おかしくなったら変える
+            PlActionControl_.plAct = plAct;
 
             //処理を行うプレハブを生成
             SpawnPrefab();
