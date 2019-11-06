@@ -9,12 +9,12 @@ public class EnemyPosSynchronize : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.localPosition = GameObject.Find("EnemyPoint").transform.position + fixPos;
+        //transform.position = GameObject.Find("EnemyPoint").transform.position + fixPos;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position = GameObject.Find("EnemyPoint").transform.position + fixPos;
     }
 }
