@@ -11,7 +11,7 @@ public class PauseCheck : MonoBehaviour
         public GameObject Left;
     }
     public Foot footCheck = new Foot();                             //足を監視するオブジェクト
-    public Foot foot = new Foot();                                   //リアル足オブジェクト
+    public Foot foot = new Foot();                                  //リアル足オブジェクト
 
     public int footCircleCutNum = 4;                                //割った数
 
@@ -49,7 +49,6 @@ public class PauseCheck : MonoBehaviour
 
         //どんなポーズがされたかを見る
         actionPause = PauseAction();
-        Debug.Log(PauseAction());
     }
 
     //対応する足の方向をずっと監視している
