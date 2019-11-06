@@ -88,7 +88,7 @@ public class AudioWaveform : MonoBehaviour
                 preScale.y = Mathf.Lerp(preScale.y, 1 + samples[0] * 5, Time.deltaTime * 30);
                 preScale.z = Mathf.Lerp(preScale.z, 1 + samples[0] * 5, Time.deltaTime * 30);
                 pikupikuCube[i].transform.localScale = preScale;
-                Debug.Log(preScale);
+                //Debug.Log(preScale);
             }
 
             timeCount = 0.0f;
