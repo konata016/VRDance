@@ -43,11 +43,13 @@ public class FootPosCenter : MonoBehaviour
         //片足が地面と接触したときに、両足の中央から見たときの方向をブロックに向かせる
         if (StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing)
         {
-                transform.rotation = Quaternion.LookRotation(Vector3.up, rightFoot.transform.position - transform.position);
+            transform.rotation = Quaternion.LookRotation(Vector3.up, rightFoot.transform.position - transform.position);
+            StepDetermination.isGroundTouch_R = StepDetermination.ISGROUNDTOUCH.EndProcess;
         }
         if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing)
         {
-                transform.rotation = Quaternion.LookRotation(Vector3.up, leftFoot.transform.position - transform.position);
+            transform.rotation = Quaternion.LookRotation(Vector3.up, leftFoot.transform.position - transform.position);
+            StepDetermination.isGroundTouch_L = StepDetermination.ISGROUNDTOUCH.EndProcess;
         }
     }
 
