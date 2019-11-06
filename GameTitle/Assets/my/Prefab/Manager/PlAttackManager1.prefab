@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6045179325453370385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6045179325453370399}
+  - component: {fileID: 6045179325453370384}
+  - component: {fileID: 6045179325453370398}
+  m_Layer: 0
+  m_Name: PlAttackManager1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6045179325453370399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045179325453370385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6045179325453370384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045179325453370385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c549870aa23d243a4911b54c6845c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDamage: 1000
+  damageRank: 0
+  rollSword:
+    swordObj: {fileID: 59502128127131975, guid: 55283a92aea805f4bba4edd6d25739e0,
+      type: 3}
+    rollSpeed: 25
+    speed: 50
+    swordCount: 4
+    radius: 5
+    targetPos: {x: 0, y: 0, z: 0}
+    swordList: []
+    onAttack: 0
+    onInstant: 0
+  meteorShower:
+    meteorShowerObj: {fileID: 3353577075511821124, guid: a72019ce3aa2d704db2ff3211eb25052,
+      type: 3}
+    speed: 30
+    interval: 0.1
+    spawnCount: 50
+    fixPos: {x: 0, y: 15, z: 0}
+    targetPos: {x: 0, y: 0, z: 0}
+  triangle:
+    TriangleObj: {fileID: 6729847186869474623, guid: b60221c84ad946d47bdfbbc45a91c63a,
+      type: 3}
+    beaconSpeed: 50
+    myMeshMaterial: {fileID: 2100000, guid: f161c8b8e5648194eb17ae44f3fe7529, type: 2}
+    beamObj: {fileID: 6958884385085793861, guid: 99652c4209f63a4499e14ed213f7dd37,
+      type: 3}
+    beamSpeed: 35
+    explosionParticle: {fileID: 1988067787168445160, guid: 8847ef133d388a644a1640e1fb783dfe,
+      type: 3}
+    changefixPosY: 7
+    posChangeSpeed: 15
+    randomSeed: 13
+--- !u!114 &6045179325453370398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045179325453370385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37456099ad60e40408e0aabccb76d825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onFriezePosX: 1
+  onFriezePosY: 0
+  onFriezePosZ: 1

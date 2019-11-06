@@ -5,15 +5,17 @@ using UnityEngine;
 public class PlActionControl2 : MonoBehaviour
 {
     public Status status;
-    public List<PauseCheck.PAUSE_ACTION> melodyList;
+    public GameObject instantAttackManager;
+    public List<PauseCheck.PAUSE_ACTION> melodyList = new List<PauseCheck.PAUSE_ACTION>();
 
-    float damage;
+    static float damage;
     int comboCount;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        damage = 0;
+        for (int i = 0; i < 8; i++) melodyList.Add(PauseCheck.PAUSE_ACTION.Through);
     }
 
     // Update is called once per frame
@@ -22,6 +24,7 @@ public class PlActionControl2 : MonoBehaviour
         if (Music.IsPlaying && Music.IsJustChangedBar())
         {
             float tmpDamage = 0;
+            int throughCount = 0;
             Combo();
             for (int i = 0; i < melodyList.Count; i++)
             {
@@ -37,15 +40,20 @@ public class PlActionControl2 : MonoBehaviour
                     case PauseCheck.PAUSE_ACTION.Cross:
                         tmpDamage *= 2 + comboCount;
                         break;
-                    case PauseCheck.PAUSE_ACTION.Miss:
+                    case PauseCheck.PAUSE_ACTION.Through:
+                        throughCount++;
                         break;
                     default: break;
                 }
             }
             damage = tmpDamage + status.STR;
 
-            //攻撃力によって繰り出される技の処理を書くこと
-            //技のバリエーションを管理するclassを作った方が良い？
+            //攻撃用のマネージャーを生成
+            if (throughCount != melodyList.Count)
+            {
+                GameObject obj = Instantiate(instantAttackManager, transform);
+                Destroy(obj, 5);
+            }
 
 
             melodyList.Clear();
@@ -55,6 +63,7 @@ public class PlActionControl2 : MonoBehaviour
         if (Music.IsPlaying && Music.IsJustChangedBeat())
         {
             melodyList.Add(PauseCheck.actionPause);
+            PauseCheck.actionPause = PauseCheck.PAUSE_ACTION.Through;
         }
     }
 
@@ -71,4 +80,6 @@ public class PlActionControl2 : MonoBehaviour
             if (NotesManager.GetRank != NotesManager.RANK.Bad) comboCount = 0;
         }
     }
+
+    public static float GetDamage { get{ return damage; } }
 }

@@ -29,6 +29,8 @@ public class MagicCircleGenerator : MonoBehaviour
     }
     [SerializeField] MoveListParameter moveList = new MoveListParameter();
 
+    bool onStart;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,17 @@ public class MagicCircleGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!onStart)
+        {
+            for (int i = 0; i < objList.Count; i++)
+            {
+                Vector3 v3 = objList[i].transform.position;
+                v3.y = transform.position.y;
+                objList[i].transform.position = v3;
+            }
+            onStart = true;
+        }
+
         //回転させる式
         if (rangeSiz.sizMin != 0)
         {

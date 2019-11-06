@@ -11,14 +11,14 @@ public class PauseCheck : MonoBehaviour
         public GameObject Left;
     }
     public Foot footCheck = new Foot();                             //足を監視するオブジェクト
-    public Foot foot= new Foot();                                   //リアル足オブジェクト
+    public Foot foot = new Foot();                                   //リアル足オブジェクト
 
     public int footCircleCutNum = 4;                                //割った数
 
     enum FOOT_RL { R, L, RL }                                       //左右を記す
     enum FOOT_POS { Down, Left, Up, Right }                         //足の間から見て片足の向きを記す
-    public enum PAUSE_ACTION { Side, Vertical, Cross, Miss }        //攻撃方法を記す
-    public static PAUSE_ACTION actionPause = new PAUSE_ACTION();    //攻撃データを渡すよう
+    public enum PAUSE_ACTION { Side, Vertical, Cross, Through }     //攻撃方法を記す
+    public static PAUSE_ACTION actionPause { get; set; }            //攻撃データを渡すよう
 
     public bool onBothFeet;
 
@@ -49,6 +49,7 @@ public class PauseCheck : MonoBehaviour
 
         //どんなポーズがされたかを見る
         actionPause = PauseAction();
+        Debug.Log(PauseAction());
     }
 
     //対応する足の方向をずっと監視している
@@ -69,9 +70,9 @@ public class PauseCheck : MonoBehaviour
             if (right == FOOT_POS.Right && left == FOOT_POS.Left) return PAUSE_ACTION.Side;
             else if (right == FOOT_POS.Left && left == FOOT_POS.Right) return PAUSE_ACTION.Cross;
             else if (right == FOOT_POS.Up && left == FOOT_POS.Down || right == FOOT_POS.Down && left == FOOT_POS.Up) return PAUSE_ACTION.Vertical;
-            else return PAUSE_ACTION.Miss;
+            else return actionPause;
         }
-        else return PAUSE_ACTION.Miss;
+        else return actionPause;
     }
 
     //向きから対応した割った数の値を返す
@@ -119,8 +120,23 @@ public class PauseCheck : MonoBehaviour
     //トリガーの処理をここに入れる
     bool[] OnTriggerArrayLR()
     {
-        bool bR = Input.GetKeyDown(KeyCode.RightArrow);
-        bool bL = Input.GetKeyDown(KeyCode.LeftArrow);
-        return new bool[(int)FOOT_RL.RL] { bR, bL };
+        bool onR = false, onL = false;
+
+        if (Input.GetKeyDown(KeyCode.RightArrow)) onR = true;
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) onL = true;
+
+
+        if (StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing)
+        {
+            onR = true;
+            StepDetermination.isGroundTouch_R = StepDetermination.ISGROUNDTOUCH.EndProcess;
+        }
+        if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing)
+        {
+            onL = true;
+            StepDetermination.isGroundTouch_L = StepDetermination.ISGROUNDTOUCH.EndProcess;
+        }
+
+        return new bool[(int)FOOT_RL.RL] { onR, onL };
     }
 }

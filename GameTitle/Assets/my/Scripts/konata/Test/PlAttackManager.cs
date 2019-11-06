@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PlAttackManager : MonoBehaviour
 {
-    bool isAttack;
+    //public float debugNum;
+    public float maxDamage = 1000;
+    public int damageRank;
+
+    int cutNum = 3;
 
     [System.Serializable]
     public class RollSwordParameter
@@ -17,6 +21,8 @@ public class PlAttackManager : MonoBehaviour
 
         [HideInInspector] public Vector3 targetPos;
         [HideInInspector] public List<GameObject> swordList = new List<GameObject>();
+        [HideInInspector] public bool onAttack;
+        [HideInInspector] public bool onInstant;
     }
     public RollSwordParameter rollSword = new RollSwordParameter();
 
@@ -28,6 +34,8 @@ public class PlAttackManager : MonoBehaviour
         public float speed = 10;
         public float interval = 0.1f;
         public int spawnCount = 50;
+
+        public Vector3 fixPos = new Vector3(0, 10, 0);
 
         [HideInInspector] public Vector3 targetPos;
     }
@@ -63,39 +71,51 @@ public class PlAttackManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //剣を生成
-        //rollSword.swordList = new List<GameObject>
-        //    (
-        //    InstantCirclePos(rollSword.swordCount, rollSword.swordObj, rollSword.radius, false)
-        //    );
+        rollSword.targetPos = GameObject.Find("EnemyPoint").transform.position;
+        meteorShower.targetPos = GameObject.Find("EnemyPoint").transform.position + meteorShower.fixPos;
+
+        //damageRank = 0;
+        //ダメージ量によって攻撃手段がわかる前置き
+        for (int i = 0; i < cutNum; i++)
+        {
+            if (PlActionControl2.GetDamage > (maxDamage / cutNum) * i) damageRank++;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isAttack)
+        switch (damageRank)
         {
-            if (Music.IsPlaying && Music.IsJustChangedBeat())
-            {
-                Triangle();
-                //MeteorShower();
-                isAttack = true;
-            }
+            case 1: RollSword();break;
+            case 2: MeteorShower(); ; break;
+            case 3: Triangle(); break;
+            default:break;
         }
-
     }
 
+    //剣が現れ、回転してから敵に向かって飛んでいく
     void RollSword()
     {
+        if (Music.IsPlaying && Music.IsJustChangedBeat()) rollSword.onAttack = true;
+
+        if (!rollSword.onInstant)
+        {
+            rollSword.swordList = new List<GameObject>(InstantCirclePos(rollSword.swordCount, rollSword.swordObj, rollSword.radius, false));
+            rollSword.onInstant = true;
+        }
+
         for (int i = 0; i < rollSword.swordList.Count; i++)
         {
-            if (isAttack)
+            if (!rollSword.onAttack)
             {
                 //回す処理
                 rollSword.swordList[i].transform.Rotate(rollSword.rollSpeed, 0, 0);
             }
             else
             {
+                rollSword.swordList[i].transform.LookAt(rollSword.targetPos);
+
                 //飛んでいく処理
                 rollSword.swordList[i].transform.position = Vector3.MoveTowards
                     (
@@ -105,6 +125,7 @@ public class PlAttackManager : MonoBehaviour
         }
     }
 
+    //敵上に魔法陣が現れ、真下に光の槍が降る
     void MeteorShower()
     {
         if (Music.IsPlaying && Music.IsJustChangedBeat())
@@ -113,12 +134,12 @@ public class PlAttackManager : MonoBehaviour
         }
     }
 
+    //敵の周りを囲み爆発する
     void Triangle()
     {
-        GameObject obj = Instantiate(triangle.TriangleObj, transform);
         if (Music.IsPlaying && Music.IsJustChangedBeat())
         {
-            //GameObject obj = Instantiate(triangle.TriangleObj, transform);
+            GameObject obj = Instantiate(triangle.TriangleObj, transform);
         }
     }
 
