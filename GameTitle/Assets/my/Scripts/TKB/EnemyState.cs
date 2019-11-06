@@ -9,12 +9,17 @@ public class EnemyState : MonoBehaviour
     float musicTime;
     float leftTime;
 
-    AudioSource music;
+    //AudioSource music;
+    //Music music;
+    GameObject musicObj;
 
     // Start is called before the first frame update
     void Start()
     {
-        music = gameObject.GetComponent<AudioSource>();
+        //music = gameObject.GetComponent<AudioSource>();
+
+        musicObj = GameObject.Find("GameManager");
+        
 
         
     }
@@ -35,7 +40,11 @@ public class EnemyState : MonoBehaviour
 
     private void DamageCal(float damage)
     {
-        if(enemyHP >= enemyHP * 0.2f)
-        enemyHP -= damage;
+        if(enemyHP >= enemyHP * 0.2f) //80%以上
+            enemyHP -= damage;
+        else
+        {
+
+        }
     }
 }

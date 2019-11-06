@@ -39,7 +39,7 @@ public class GenerateStage : MonoBehaviour
 
     private string[] notes;
     private string[] textLoad;   //１行毎
-    private string[,] textNotes; //わけわけ用 0:時間　1:種類
+    private string[][] textNotes; //わけわけ用 0:時間　1:種類
 
     private int rowL; //行
     private int colL; //列
@@ -86,16 +86,19 @@ public class GenerateStage : MonoBehaviour
         colL = textLoad[0].Split(',').Length;
         rowL = textLoad.Length;
 
-        textNotes = new string[rowL, colL];
+        textNotes = new string[rowL][];
 
         for (int i = 0; i < rowL; i++)
         {
             string[] tempNote = textLoad[i].Split(',');
+            colL = textLoad[i].Split(',').Length;
+            textNotes[i] = new string[colL];
 
             for (int j = 0; j < colL; j++)
-            {             
-                textNotes[i, j] = tempNote[j];
-                Debug.Log(textNotes[i,0]);
+            {            
+                
+                textNotes[i][j] = tempNote[j];
+                Debug.Log(textNotes[i][0]);
             }
         }
     }
@@ -124,8 +127,8 @@ public class GenerateStage : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        float noteTime = float.Parse(textNotes[n, 0]);
-        string tn = textNotes[n, 1];
+        float noteTime = float.Parse(textNotes[n][0]);
+        string tn = textNotes[n][1];
         int type = 0;
 
         if (tn.Equals(WIDE))
@@ -160,15 +163,15 @@ public class GenerateStage : MonoBehaviour
             switch (type)
             {
                 case (int)NotesType.wideWave:
-                    mover.FlagSet(NotesType.wideWave);
+                    mover.NoteSet(NotesType.wideWave, textNotes[n]);
                     break;
 
                 case (int)NotesType.verticalWaveRight:
-                    mover.FlagSet(NotesType.verticalWaveRight);
+                    mover.NoteSet(NotesType.verticalWaveRight, textNotes[n]);
                     break;
-                case (int)NotesType.verticalWaveLeft:
-                    mover.FlagSet(NotesType.verticalWaveLeft);
-                    break;
+                //case (int)NotesType.verticalWaveLeft:
+                //    mover.NoteSet(NotesType.verticalWaveLeft, textNotes[n]);
+                //    break;
 
                 case (int)NotesType.punch:
                     
@@ -179,7 +182,7 @@ public class GenerateStage : MonoBehaviour
                     break;
 
                 case (int)NotesType.throwCube:
-                    mover.FlagSet(NotesType.throwCube);
+                    mover.NoteSet(NotesType.throwCube, textNotes[n]);
                     break;
             }
             

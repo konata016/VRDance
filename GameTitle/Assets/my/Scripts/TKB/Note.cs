@@ -24,7 +24,7 @@ public abstract class Note : MonoBehaviour
     }
 
     public abstract bool NoteMove(int pos);
-    public abstract void NoteGenerate(GameObject obj, int pos);
+    public abstract void NoteGenerate(GameObject obj, Vector3 pos);
 }
 
 public class WideWaveNote : Note
@@ -44,7 +44,7 @@ public class WideWaveNote : Note
         return false;
     }
 
-    public override void NoteGenerate(GameObject colli, int pos)
+    public override void NoteGenerate(GameObject colli, Vector3 pos)
     {
         
     }
@@ -85,22 +85,20 @@ public class VerticalWaveNote : Note
         return true;      
     }
 
-    public override void NoteGenerate(GameObject colli, int pos)
-    {
-        Vector3 p;
-
-        if(pos == 1)
-        {
-            p = new Vector3(0.8f, StepDetermination.groundPosition.y, 24);
-        }
-        else
-        {
-            p = new Vector3(-0.8f, StepDetermination.groundPosition.y, 24);
-        }
+    public override void NoteGenerate(GameObject colli, Vector3 pos)
+    { 
+        //if(pos == 1)
+        //{
+        //    p = new Vector3(0.8f, StepDetermination.groundPosition.y, 24);
+        //}
+        //else
+        //{
+        //    p = new Vector3(-0.8f, StepDetermination.groundPosition.y, 24);
+        //}
 
         if (noteObj[vNum] == null)
         {
-            noteObj[vNum] = Instantiate(colli, p, Quaternion.identity);
+            noteObj[vNum] = Instantiate(colli, pos, Quaternion.identity);
             vNum++;
         }
         if(vNum >= colNum)
@@ -124,7 +122,7 @@ public class PunchNote : Note
         return false;
     }
 
-    public override void NoteGenerate(GameObject colli, int pos)
+    public override void NoteGenerate(GameObject colli, Vector3 pos)
     {
 
     }
@@ -144,7 +142,7 @@ public class LaserNote : Note
         return false;
     }
 
-    public override void NoteGenerate(GameObject colli, int pos)
+    public override void NoteGenerate(GameObject colli, Vector3 pos)
     {
 
     }
@@ -203,12 +201,11 @@ public class ThrowCubeNote : Note
         return true;
     }
 
-    public override void NoteGenerate(GameObject cube, int pos)
+    public override void NoteGenerate(GameObject cube, Vector3 pos)
     {
-        Vector3 p;
-        
+        Vector3 p; 
 
-        if(pos == 0)
+        if(pos.x == 0)
         {
             float x = Random.value;
             p = new Vector3(5.0f + x, JumpStart.groundPosition.y-0.2f, 22.0f);
