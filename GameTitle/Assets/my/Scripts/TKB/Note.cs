@@ -62,16 +62,16 @@ public class VerticalWaveNote : Note
     public VerticalWaveNote(float reachTime, Vector3 position, GameObject note) : base(reachTime, position, note)
     {
         generateTime = this.reachTime - animTime;
-        moveVector = new Vector3(0,0,1);
+        moveVector = new Vector3(0, 0, 1);
         noteObj = new GameObject[colNum];
     }
 
     public override bool NoteMove(int pos)
     {
         for (int i = 0; i < colNum; i++)
-        {       
+        {
             if (noteObj[i] != null)
-            {            
+            {
                 if (noteObj[i].transform.position.z < -2.0f)
                 {
                     Destroy(noteObj[i]);
@@ -82,11 +82,11 @@ public class VerticalWaveNote : Note
                 }
             }
         }
-        return true;      
+        return true;
     }
 
     public override void NoteGenerate(GameObject colli, Vector3 pos)
-    { 
+    {
         //if(pos == 1)
         //{
         //    p = new Vector3(0.8f, StepDetermination.groundPosition.y, 24);
@@ -98,10 +98,10 @@ public class VerticalWaveNote : Note
 
         if (noteObj[vNum] == null)
         {
-            noteObj[vNum] = Instantiate(colli, pos, Quaternion.identity);
+            noteObj[vNum] = Instantiate(colli, new Vector3(pos.x, StepDetermination.groundPosition.y, pos.z), Quaternion.identity);
             vNum++;
         }
-        if(vNum >= colNum)
+        if (vNum >= colNum)
         {
             vNum = 0;
         }
