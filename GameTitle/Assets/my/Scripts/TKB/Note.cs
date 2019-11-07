@@ -56,7 +56,7 @@ public class VerticalWaveNote : Note
     private const float animTime = 3.0f;
     private const float noteSpeed = 0.1f;
 
-    int colNum = 3;
+    int colNum = 12;
     int vNum = 0;
 
     public VerticalWaveNote(float reachTime, Vector3 position, GameObject note) : base(reachTime, position, note)
@@ -78,7 +78,7 @@ public class VerticalWaveNote : Note
                 }
                 else
                 {
-                    noteObj[i].transform.position -= new Vector3(0, 0, 0.1f);                    
+                    noteObj[i].transform.position -= new Vector3(0, 0, noteSpeed);
                 }
             }
         }
@@ -185,7 +185,7 @@ public class ThrowCubeNote : Note
                 }
                 else
                 {
-                    if (noteObj[i].transform.position.z <= 0)
+                    if (noteObj[i].transform.position.z <= -1.0f)
                     {
                         Destroy(noteObj[i]);
                     }

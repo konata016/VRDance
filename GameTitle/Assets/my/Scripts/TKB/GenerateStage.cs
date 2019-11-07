@@ -7,19 +7,19 @@ public class GenerateStage : MonoBehaviour
 {
     private enum NoteType
     {
+        none,
         wideWave,
         verticalWave,
         punch,
-        laser,
-        none
+        laser
     }
 
     private const string WIDE = "w";
-    private string VERTICAL_R = "vr";
+    private string VERTICAL_R = "1";
     private string VERTICAL_L = "vl";
     private const string PUNCH = "p";
     private const string LASER = "l";
-    private const string THROW = "t";
+    private const string THROW = "2";
 
     private struct Date
     {
@@ -133,7 +133,7 @@ public class GenerateStage : MonoBehaviour
 
         if (tn.Equals(WIDE))
         {
-            type = 0;
+            type = 5;
         }
         else if (tn.Equals(VERTICAL_R))
         {
@@ -141,22 +141,23 @@ public class GenerateStage : MonoBehaviour
         }
         else if (tn.Equals(VERTICAL_L))
         {
-            type = 2;
+            type = 5;
         }
         else if (tn.Equals(PUNCH))
         {
-            type = 3;
+            type = 5;
         }
         else if (tn.Equals(LASER))
         {
-            type = 4;
+            type = 5;
         }
         else if (tn.Equals(THROW))
         {
-            type = 5;
+            type = 2;
         }
 
-        //Debug.Log(type);
+        Debug.Log(textNotes[n][1]);
+        Debug.Log(type);
 
         if (time >= noteTime)
         {

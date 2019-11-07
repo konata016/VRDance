@@ -87,7 +87,8 @@ public class NoteMover : MonoBehaviour
                 {
                     if (posBool[i] == "true")
                     {
-                        vertical.NoteGenerate(verticalNoteR, notePos[i]);
+                        vertical.NoteGenerate(verticalNoteR, notePos[i-2]);
+                        //Debug.Log(posBool[i]);
                     }
                 }
                 break;
@@ -108,7 +109,19 @@ public class NoteMover : MonoBehaviour
             case NotesType.throwCube:
                 throwFlag = true;
                 //int p = Random.Range(0, 2);
-                //throwCube.NoteGenerate(throwNote, p);
+                bool R = false;
+                bool L = false;
+                for (int i = 2; i < posBool.Length; i++)
+                {
+                    if (posBool[i] == "true")
+                    {
+                        if (i-2 <= 2) R = true;
+                        if (i-2 >= 3) L = true;                       
+                        //Debug.Log(posBool[i]);
+                    }
+                }
+                if (R == true) throwCube.NoteGenerate(throwNote, new Vector3(0, 0, 0));
+                if (L == true) throwCube.NoteGenerate(throwNote, new Vector3(1, 0, 0));
                 break;
         }
     }
