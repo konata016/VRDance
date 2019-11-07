@@ -16,11 +16,11 @@ using UnityEngine;
 
 public enum NotesType
 {
-    wideWave,
-    verticalWaveRight,
-    verticalWaveLeft,
-    punch,
-    laser,
-    throwCube,
     none,
+    verticalWaveRight,
+    throwCube,
+    verticalWaveLeft,
+    wideWave,
+    punch,
+    laser
 }

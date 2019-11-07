@@ -24,6 +24,8 @@ public class NoteMover : MonoBehaviour
     private bool laserFlag = false;
     private bool throwFlag = false;
 
+    private Vector3[] notePos = new Vector3[6];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,13 @@ public class NoteMover : MonoBehaviour
         punch = new PunchNote(0.0f, Vector3.zero, punchNote);
         laser = new LaserNote(0.0f, Vector3.zero, laserNote);
         throwCube = new ThrowCubeNote(0.0f, Vector3.zero, throwNote);
+
+        float x = -1.0f;
+        for (int i = 0; i < 6; i++)
+        {
+            notePos[i] = new Vector3(x, JumpStart.groundPosition.y, 22);
+            x += 0.4f;
+        }
     }
 
     // Update is called once per frame
@@ -63,7 +72,7 @@ public class NoteMover : MonoBehaviour
         }
     }
 
-    public void FlagSet(NotesType type)
+    public void NoteSet(NotesType type, string[] posBool)
     {   
         switch (type)
         {
@@ -73,12 +82,20 @@ public class NoteMover : MonoBehaviour
 
             case NotesType.verticalWaveRight:
                 rightFlag = true;
-                vertical.NoteGenerate(verticalNoteR, 1);
+                //vertical.NoteGenerate(verticalNoteR, 1);
+                for (int i = 2; i < posBool.Length; i++)
+                {
+                    if (posBool[i] == "true")
+                    {
+                        vertical.NoteGenerate(verticalNoteR, notePos[i-2]);
+                        //Debug.Log(posBool[i]);
+                    }
+                }
                 break;
 
             case NotesType.verticalWaveLeft:
                 leftFlag = true;
-                vertical.NoteGenerate(verticalNoteL, 2);
+                //vertical.NoteGenerate(verticalNoteL, 2);
                 break;
 
             case NotesType.punch:
@@ -91,9 +108,30 @@ public class NoteMover : MonoBehaviour
 
             case NotesType.throwCube:
                 throwFlag = true;
-                int p = Random.Range(0, 2);
-                throwCube.NoteGenerate(throwNote, p);
+                //int p = Random.Range(0, 2);
+                bool R = false;
+                bool L = false;
+                for (int i = 2; i < posBool.Length; i++)
+                {
+                    if (posBool[i] == "true")
+                    {
+                        if (i-2 <= 2) R = true;
+                        if (i-2 >= 3) L = true;                       
+                        //Debug.Log(posBool[i]);
+                    }
+                }
+                if (R == true) throwCube.NoteGenerate(throwNote, new Vector3(0, 0, 0));
+                if (L == true) throwCube.NoteGenerate(throwNote, new Vector3(1, 0, 0));
                 break;
         }
+    }
+
+    public void PositionSet(string[] posBool)
+    {
+        for(int i = 2; i < posBool.Length; i++)
+        if (posBool[i] == "true")
+        {
+            vertical.NoteGenerate(verticalNoteR, notePos[i]);
+        }      
     }
 }
