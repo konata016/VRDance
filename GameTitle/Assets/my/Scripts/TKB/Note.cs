@@ -54,9 +54,9 @@ public class VerticalWaveNote : Note
 {
     private float vertPos = 0;
     private const float animTime = 3.0f;
-    private const float noteSpeed = 0.1f;
+    private const float noteSpeed = 0.18f;
 
-    int colNum = 12;
+    int colNum = 40;
     int vNum = 0;
 
     public VerticalWaveNote(float reachTime, Vector3 position, GameObject note) : base(reachTime, position, note)

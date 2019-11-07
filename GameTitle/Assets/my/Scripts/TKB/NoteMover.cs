@@ -24,6 +24,9 @@ public class NoteMover : MonoBehaviour
     private bool laserFlag = false;
     private bool throwFlag = false;
 
+    private string TRUE = "True";
+    private string FALSE = "False";
+
     private Vector3[] notePos = new Vector3[6];
 
     // Start is called before the first frame update
@@ -73,7 +76,7 @@ public class NoteMover : MonoBehaviour
     }
 
     public void NoteSet(NotesType type, string[] posBool)
-    {   
+    {
         switch (type)
         {
             case NotesType.wideWave:
@@ -82,13 +85,14 @@ public class NoteMover : MonoBehaviour
 
             case NotesType.verticalWaveRight:
                 rightFlag = true;
+                Debug.Log(posBool[3]);
                 //vertical.NoteGenerate(verticalNoteR, 1);
                 for (int i = 2; i < posBool.Length; i++)
                 {
-                    if (posBool[i] == "true")
+                    if (posBool[i] == TRUE)
                     {
                         vertical.NoteGenerate(verticalNoteR, notePos[i-2]);
-                        //Debug.Log(posBool[i]);
+                        Debug.Log(posBool[i]);
                     }
                 }
                 break;
@@ -113,7 +117,7 @@ public class NoteMover : MonoBehaviour
                 bool L = false;
                 for (int i = 2; i < posBool.Length; i++)
                 {
-                    if (posBool[i] == "true")
+                    if (posBool[i] == TRUE)
                     {
                         if (i-2 <= 2) R = true;
                         if (i-2 >= 3) L = true;                       

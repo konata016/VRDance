@@ -45,7 +45,7 @@ public class GroundWave : MonoBehaviour
         if (flag)
         {
            this.transform.position = new Vector3(pos.x, max * Mathf.Sin(rad) + pos.y, pos.z);
-            rad += speed;
+            rad += speed * Time.deltaTime;
             if (rad >= Mathf.PI)
             {
                 flag = false;
