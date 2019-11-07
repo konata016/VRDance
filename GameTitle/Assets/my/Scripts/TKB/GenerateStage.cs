@@ -168,6 +168,7 @@ public class GenerateStage : MonoBehaviour
                     break;
 
                 case (int)NotesType.verticalWaveRight:
+                    Debug.Log("okmaru");
                     mover.NoteSet(NotesType.verticalWaveRight, textNotes[n]);
                     break;
                 //case (int)NotesType.verticalWaveLeft:
@@ -184,6 +185,7 @@ public class GenerateStage : MonoBehaviour
 
                 case (int)NotesType.throwCube:
                     mover.NoteSet(NotesType.throwCube, textNotes[n]);
+                    
                     break;
             }
             
