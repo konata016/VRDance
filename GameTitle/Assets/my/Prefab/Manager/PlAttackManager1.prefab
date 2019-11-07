@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1c549870aa23d243a4911b54c6845c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDamage: 1000
+  maxDamage: 100
   damageRank: 0
   rollSword:
     swordObj: {fileID: 59502128127131975, guid: 55283a92aea805f4bba4edd6d25739e0,
@@ -62,7 +62,7 @@ MonoBehaviour:
       type: 3}
     speed: 30
     interval: 0.1
-    spawnCount: 50
+    spawnCount: 10
     fixPos: {x: 0, y: 15, z: 0}
     targetPos: {x: 0, y: 0, z: 0}
   triangle:

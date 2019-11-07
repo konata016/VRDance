@@ -189,7 +189,7 @@ public class NotesManager : MonoBehaviour
     {
         if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing ||
             StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing ||
-           OnDebugKey())
+           OnDebugKey() || PauseCheck.GetOnStep)
         {
             return true;
         }

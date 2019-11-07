@@ -22,6 +22,8 @@ public class PauseCheck : MonoBehaviour
 
     public bool onBothFeet;
 
+    static bool onStep;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,10 @@ public class PauseCheck : MonoBehaviour
 
         //どんなポーズがされたかを見る
         actionPause = PauseAction();
+
+        onStep = OnTriggerArrayLR()[(int)FOOT_RL.R] || OnTriggerArrayLR()[(int)FOOT_RL.L];
+
+        StepEndProcess();
     }
 
     //対応する足の方向をずっと監視している
@@ -128,14 +134,26 @@ public class PauseCheck : MonoBehaviour
         if (StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing)
         {
             onR = true;
-            StepDetermination.isGroundTouch_R = StepDetermination.ISGROUNDTOUCH.EndProcess;
         }
         if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing)
         {
             onL = true;
-            StepDetermination.isGroundTouch_L = StepDetermination.ISGROUNDTOUCH.EndProcess;
         }
 
         return new bool[(int)FOOT_RL.RL] { onR, onL };
     }
+
+    void StepEndProcess()
+    {
+        if (StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing)
+        {
+            StepDetermination.isGroundTouch_R = StepDetermination.ISGROUNDTOUCH.EndProcess;
+        }
+        if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing)
+        {
+            StepDetermination.isGroundTouch_L = StepDetermination.ISGROUNDTOUCH.EndProcess;
+        }
+    }
+
+    public static bool GetOnStep { get{ return onStep; } }
 }

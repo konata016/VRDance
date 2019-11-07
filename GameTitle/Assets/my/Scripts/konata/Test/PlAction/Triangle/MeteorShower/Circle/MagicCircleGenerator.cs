@@ -71,11 +71,11 @@ public class MagicCircleGenerator : MonoBehaviour
 
         for (int i = 0; i < objList.Count; i++)
         {
-            //子にする
-            objList[i].transform.parent = transform;
             //最小値がゼロの時に、指定したサイズにする
             if (rangeSiz.sizMin == 0) objList[i].transform.localScale = new Vector3(siz, 1, siz);
             else objList[i].transform.localScale = divideSiz[i];
+            //子にする
+            objList[i].transform.parent = transform;
         }
     }
 

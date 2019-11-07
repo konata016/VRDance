@@ -50,7 +50,7 @@ public class AudioWaveform : MonoBehaviour
         }
 
         cubes = GameObject.FindGameObjectsWithTag("AudioWaveformCube");
-        pikupikuCube = GameObject.FindGameObjectsWithTag("PikupikuCube");
+        //pikupikuCube = GameObject.FindGameObjectsWithTag("PikupikuCube");
 
         AS.time = currentTime;
 
@@ -80,16 +80,16 @@ public class AudioWaveform : MonoBehaviour
                 cubes[i * 2 + 1].transform.localScale = previousScale_L;
             }
 
-            for (int i = 0; i < pikupikuCubes; i++)
-            {
-                //単体オブジェクトを音に合わせてぴくぴくさせる
-                Vector3 preScale = pikupikuCube[i].transform.localScale;
-                preScale.x = Mathf.Lerp(preScale.x, 1 + samples[0] * 5, Time.deltaTime * 30);
-                preScale.y = Mathf.Lerp(preScale.y, 1 + samples[0] * 5, Time.deltaTime * 30);
-                preScale.z = Mathf.Lerp(preScale.z, 1 + samples[0] * 5, Time.deltaTime * 30);
-                pikupikuCube[i].transform.localScale = preScale;
-                Debug.Log(preScale);
-            }
+            //for (int i = 0; i < pikupikuCubes; i++)
+            //{
+            //    //単体オブジェクトを音に合わせてぴくぴくさせる
+            //    Vector3 preScale = pikupikuCube[i].transform.localScale;
+            //    preScale.x = Mathf.Lerp(preScale.x, 1 + samples[0] * 5, Time.deltaTime * 30);
+            //    preScale.y = Mathf.Lerp(preScale.y, 1 + samples[0] * 5, Time.deltaTime * 30);
+            //    preScale.z = Mathf.Lerp(preScale.z, 1 + samples[0] * 5, Time.deltaTime * 30);
+            //    pikupikuCube[i].transform.localScale = preScale;
+            //    Debug.Log(preScale);
+            //}
 
             timeCount = 0.0f;
         }

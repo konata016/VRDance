@@ -16,9 +16,12 @@ public class FixPos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!onStart)
+        if (onStart)
         {
             transform.position = instantPos.transform.position;
+        }
+        if (!onStart)
+        {
             onStart = true;
         }
     }
