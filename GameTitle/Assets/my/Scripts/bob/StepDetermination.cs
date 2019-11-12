@@ -14,6 +14,8 @@ public class StepDetermination : MonoBehaviour
     private float timeRegulary = 0.5f;   // 地面の位置をチェックする周期
     private int roundedDown = 100;       // 小数点以下切り捨て
     private bool only1Time;              // 一度だけ実行
+    /* オブジェクト */
+    public GameObject ripplesObj;
     /* サウンド関係 */
     private AudioSource audioSource;// 音源
     public AudioClip leftFoot;      // 左足
@@ -102,6 +104,7 @@ public class StepDetermination : MonoBehaviour
         else if (isGroundTouch_L == ISGROUNDTOUCH.EndProcess)// 判定後
         {
             //Debug.Log("判定後");
+            Instantiate(ripplesObj, footPosL, Quaternion.identity);// 波紋の生成
             isGroundTouch_L = ISGROUNDTOUCH.Wait;
         }
         /* 右足の判定 */
@@ -128,6 +131,8 @@ public class StepDetermination : MonoBehaviour
         else if (isGroundTouch_R == ISGROUNDTOUCH.EndProcess)// 判定後
         {
             //Debug.Log("判定後");
+            Instantiate(ripplesObj, footPosR, Quaternion.identity);// 波紋の生成
+            Debug.Log("波紋！");
             isGroundTouch_R = ISGROUNDTOUCH.Wait;
         }
     }

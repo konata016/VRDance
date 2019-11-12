@@ -2143,6 +2143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1baf2ebf64e327043872cd7dcb16932f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ripplesObj: {fileID: 1170762512017600387, guid: 9a9031a04b689924c935ec8d9cb69417,
+    type: 3}
   leftFoot: {fileID: 8300000, guid: fd0e3e707be16d84fbb6b1aa9ab2b203, type: 3}
   rightFoot: {fileID: 8300000, guid: e1220bd492ea81f40ac3140cf8c6b427, type: 3}
   landing: {fileID: 8300000, guid: 298033a86835a894c9d69e428712b8fb, type: 3}
