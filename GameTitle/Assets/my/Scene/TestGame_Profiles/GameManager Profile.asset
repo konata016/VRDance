@@ -47,10 +47,10 @@ MonoBehaviour:
     value: 7
   anamorphicRatio:
     overrideState: 0
-    value: 0
+    value: -0.09
   color:
     overrideState: 0
-    value: {r: 1.8113208, g: 0.9654681, b: 0.9654681, a: 1}
+    value: {r: 0.66819656, g: 1.2996117, b: 1.202031, a: 1}
   fastMode:
     overrideState: 0
     value: 0
