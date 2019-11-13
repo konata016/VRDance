@@ -669,6 +669,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 481446449}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &487329372 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400004, guid: 92d73b8c710537c4d965a874ac1db277,
+    type: 3}
+  m_PrefabInstance: {fileID: 1364995257}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &501117873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,6 +1773,7 @@ Transform:
   - {fileID: 1654994852}
   - {fileID: 844051430}
   - {fileID: 997288072}
+  - {fileID: 487329372}
   m_Father: {fileID: 1634813153}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -2600,6 +2607,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1364995257
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 962885503}
+    m_Modifications:
+    - target: {fileID: 100004, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
+      propertyPath: m_Name
+      value: stage08_beberubrock
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
 --- !u!1001 &1368307170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2610,6 +2678,10 @@ PrefabInstance:
     - target: {fileID: 101012, guid: 57bb1872bef722a4798a272cff618d88, type: 3}
       propertyPath: m_Name
       value: stage07_beberubrock
+      objectReference: {fileID: 0}
+    - target: {fileID: 101012, guid: 57bb1872bef722a4798a272cff618d88, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 401012, guid: 57bb1872bef722a4798a272cff618d88, type: 3}
       propertyPath: m_LocalPosition.x
