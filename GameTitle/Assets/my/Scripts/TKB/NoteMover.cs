@@ -87,7 +87,7 @@ public class NoteMover : MonoBehaviour
                 rightFlag = true;
                 Debug.Log(posBool[3]);
                 //vertical.NoteGenerate(verticalNoteR, 1);
-                for (int i = 2; i < posBool.Length; i++)
+                for (int i = 2; i < 8; i++)
                 {
                     if (posBool[i] == TRUE)
                     {
@@ -115,7 +115,7 @@ public class NoteMover : MonoBehaviour
                 //int p = Random.Range(0, 2);
                 bool R = false;
                 bool L = false;
-                for (int i = 2; i < posBool.Length; i++)
+                for (int i = 2; i < 8; i++)
                 {
                     if (posBool[i] == TRUE)
                     {
@@ -137,5 +137,35 @@ public class NoteMover : MonoBehaviour
         {
             vertical.NoteGenerate(verticalNoteR, notePos[i]);
         }      
+    }
+
+    public float GetNoteAnimTime(float time, int type)
+    {
+        float gTime = 0;
+
+        switch (type)
+        {
+            case (int)NotesType.wideWave:
+                
+                break;
+
+            case (int)NotesType.verticalWaveRight:
+                gTime = time - vertical.generateTime;
+                break;
+
+            case (int)NotesType.punch:
+                
+                break;
+
+            case (int)NotesType.laser:
+                
+                break;
+
+            case (int)NotesType.throwCube:
+                
+                break;
+        }
+
+        return gTime;
     }
 }

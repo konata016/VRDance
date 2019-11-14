@@ -12,6 +12,7 @@ public class EnemyState : MonoBehaviour
     //AudioSource music;
     //Music music;
     GameObject musicObj;
+    AudioClip clip;
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +20,8 @@ public class EnemyState : MonoBehaviour
         //music = gameObject.GetComponent<AudioSource>();
 
         musicObj = GameObject.Find("GameManager");
-        
-
-        
+        musicTime = musicObj.GetComponent<AudioClip>().length;
+        leftTime =  musicTime - musicObj.GetComponent<AudioSource>().time;
     }
 
     // Update is called once per frame

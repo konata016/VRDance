@@ -54,14 +54,15 @@ public class VerticalWaveNote : Note
 {
     private float vertPos = 0;
     private const float animTime = 3.0f;
-    private const float noteSpeed = 0.18f;
+    private const float noteSpeed = 10.0f;
+    float[] checkTime = new float[40];
 
     int colNum = 40;
     int vNum = 0;
 
     public VerticalWaveNote(float reachTime, Vector3 position, GameObject note) : base(reachTime, position, note)
     {
-        generateTime = this.reachTime - animTime;
+        generateTime = 2.0f;
         moveVector = new Vector3(0, 0, 1);
         noteObj = new GameObject[colNum];
     }
@@ -73,12 +74,13 @@ public class VerticalWaveNote : Note
             if (noteObj[i] != null)
             {
                 if (noteObj[i].transform.position.z < -2.0f)
-                {
+                {                 
                     Destroy(noteObj[i]);
                 }
                 else
                 {
-                    noteObj[i].transform.position -= new Vector3(0, 0, noteSpeed);
+                    checkTime[0] += Time.deltaTime;
+                    noteObj[i].transform.position -= new Vector3(0, 0, Time.deltaTime * noteSpeed);                
                 }
             }
         }
@@ -87,17 +89,9 @@ public class VerticalWaveNote : Note
 
     public override void NoteGenerate(GameObject colli, Vector3 pos)
     {
-        //if(pos == 1)
-        //{
-        //    p = new Vector3(0.8f, StepDetermination.groundPosition.y, 24);
-        //}
-        //else
-        //{
-        //    p = new Vector3(-0.8f, StepDetermination.groundPosition.y, 24);
-        //}
-
         if (noteObj[vNum] == null)
         {
+            checkTime[0] = 0;
             noteObj[vNum] = Instantiate(colli, new Vector3(pos.x, StepDetermination.groundPosition.y, pos.z), Quaternion.identity);
             vNum++;
         }
@@ -152,9 +146,11 @@ public class ThrowCubeNote : Note
 {
     private float cubePos = 0;
     private const float animTime = 3.0f;
-    private const float noteSpeed = 0.2f;
+    private const float noteSpeed = 12.0f;
     private float[] upSpeed;
     private Vector3[] moveVec;
+
+    float ct = 0;
 
     int cNum = 0;
     int cubeNum = 4;
@@ -162,7 +158,7 @@ public class ThrowCubeNote : Note
 
     public ThrowCubeNote(float reachTime, Vector3 position, GameObject note) : base(reachTime, position, note)
     {
-        generateTime = this.reachTime - animTime;
+        generateTime = 1.85f;
         moveVector = note.transform.position.normalized;
         noteObj = new GameObject[cubeNum];
         moveVec = new Vector3[cubeNum];
@@ -191,10 +187,14 @@ public class ThrowCubeNote : Note
                     }
                     else
                     {
-                        noteObj[i].transform.position -= moveVec[i] * noteSpeed;
+                        noteObj[i].transform.position -= moveVec[i] * noteSpeed * Time.deltaTime;
                         noteObj[i].transform.Rotate(new Vector3(180f, 60f,180f) * Time.deltaTime);
+                        ct += Time.deltaTime;
+                        //if (noteObj[i].transform.position.z <= 0.5f)
+                        //{
+                        //    Debug.Log(ct);
+                        //}
                     }
-
                 }
             }
         }

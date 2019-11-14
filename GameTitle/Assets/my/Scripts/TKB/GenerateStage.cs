@@ -55,6 +55,13 @@ public class GenerateStage : MonoBehaviour
     GameObject nmo;
     NoteMover mover;
 
+    float musicTime;
+    float leftTime;
+
+    GameObject musicObj;
+    AudioClip clip;
+    AudioSource music;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +71,13 @@ public class GenerateStage : MonoBehaviour
         mover = nmo.GetComponent<NoteMover>();
 
         GenerateGround();
+
+        musicObj = GameObject.Find("GameManager");
+        music = musicObj.GetComponent<AudioSource>();
+        musicTime = music.clip.length;
+        leftTime = musicTime - musicObj.GetComponent<AudioSource>().time;
+
+        Debug.Log(musicTime);
     }
 
     void InitializePreset()
@@ -126,7 +140,11 @@ public class GenerateStage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
+        if (music.isPlaying)
+        {
+            time += Time.deltaTime;
+        }
+
         float noteTime = float.Parse(textNotes[n][0]);
         string tn = textNotes[n][1];
         int type = 0;
@@ -155,6 +173,7 @@ public class GenerateStage : MonoBehaviour
         {
             type = 2;
         }
+        noteTime = mover.GetNoteAnimTime(noteTime, type);
 
         Debug.Log(textNotes[n][1]);
         Debug.Log(type);
@@ -168,12 +187,9 @@ public class GenerateStage : MonoBehaviour
                     break;
 
                 case (int)NotesType.verticalWaveRight:
-                    Debug.Log("okmaru");
+                    Debug.Log(time);
                     mover.NoteSet(NotesType.verticalWaveRight, textNotes[n]);
                     break;
-                //case (int)NotesType.verticalWaveLeft:
-                //    mover.NoteSet(NotesType.verticalWaveLeft, textNotes[n]);
-                //    break;
 
                 case (int)NotesType.punch:
                     
