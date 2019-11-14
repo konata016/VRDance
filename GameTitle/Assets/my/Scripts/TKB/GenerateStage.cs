@@ -98,7 +98,7 @@ public class GenerateStage : MonoBehaviour
             {            
                 
                 textNotes[i][j] = tempNote[j];
-                Debug.Log(textNotes[i][0]);
+                //Debug.Log(textNotes[i][0]);
             }
         }
     }
@@ -156,8 +156,8 @@ public class GenerateStage : MonoBehaviour
             type = 2;
         }
 
-        Debug.Log(textNotes[n][1]);
-        Debug.Log(type);
+        //Debug.Log(textNotes[n][1]);
+        //Debug.Log(type);
 
         if (time >= noteTime)
         {
