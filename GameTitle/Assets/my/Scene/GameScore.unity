@@ -1299,8 +1299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81ea4be21f2e324693469b6f461b87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalDamage_Nomber: 10
-  maxCombo_Nomber: 99
+  totalDamage_Nomber: 1
+  maxCombo_Nomber: 99999
 --- !u!114 &1789262934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1317,7 +1317,7 @@ MonoBehaviour:
   totalDamage: {fileID: 81281823}
   maxCombo: {fileID: 1055122075}
   score: {fileID: 1779671708}
-  second: 4
+  second: 1
 --- !u!114 &1789262935
 MonoBehaviour:
   m_ObjectHideFlags: 0

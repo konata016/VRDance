@@ -18,7 +18,6 @@ public class ScoreText : MonoBehaviour
     public int second = 4;      // 秒数
     private int scoreCount;     // フレーム数
     private int timeLapse = 0;  // 時間の流れ
-    private int height;         // スコア上昇の最高値
 
     private bool onlyOne = true;// 一度だけ読み込む
 
@@ -39,7 +38,6 @@ public class ScoreText : MonoBehaviour
             Debug.Log("number_SCORE : " + number_SCORE);
 
             scoreCount = 60 * second;// フレーム数
-            height = (2 * number_SCORE) / (scoreCount / 2);
 
             onlyOne = false;
             scorePlus = 0;
@@ -56,31 +54,10 @@ public class ScoreText : MonoBehaviour
 
         if (scorePlus < number_SCORE)
         {
-            //if (timeLapse < scoreCount / 2) // 最終スコアが大きければ大きいほど増える値が増える
-            //{
-            //    scorePlus += (height * timeLapse) / (scoreCount / 2);
-            //}
-            //else　                          // 最終スコアが大きければ大きいほど増える値が減る
-            //{
-            //    if (0 < height - ((height * timeLapse) / (scoreCount / 2)))
-            //        scorePlus += height - ((height * timeLapse) / (scoreCount / 2));
-            //    else// スコアの誤差を埋める
-            //    {
-            //        if (number_SCORE < 1000)
-            //            scorePlus++;
-            //        else if (number_SCORE < 10000)
-            //            scorePlus += 10;
-            //        else if (number_SCORE < 100000)
-            //            scorePlus += 100;
-            //        else
-            //            scorePlus += 1000;
-            //    }
-            //}
-            //timeLapse++;
+            scorePlus = (number_SCORE / scoreCount) * timeLapse;
 
-
+            timeLapse++;
         }
-
         else if (scorePlus >= number_SCORE)// 最終スコアをオーバーした場合最終スコアに合わせる
         {
             scorePlus = number_SCORE;
