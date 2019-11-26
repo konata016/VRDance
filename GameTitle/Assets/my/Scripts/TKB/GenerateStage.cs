@@ -38,13 +38,13 @@ public class GenerateStage : MonoBehaviour
     private Vector3[] laserPositionPreset = new Vector3[3];
 
     private string[] notes;
-    private string[] textLoad;   //１行毎
+    private string[] textLoad;    //１行毎
     private string[][] textNotes; //わけわけ用 0:時間　1:種類
 
     private int rowL; //行
     private int colL; //列
 
-    private int n = 0; //譜面の何番目？
+    private int n = 0;      //譜面の何番目？
     private float time = 0; //経過時間
 
     WideWaveNote wide;
@@ -55,8 +55,8 @@ public class GenerateStage : MonoBehaviour
     GameObject nmo;
     NoteMover mover;
 
-    float musicTime;
-    float leftTime;
+    //float musicTime;
+    //float leftTime;
 
     GameObject musicObj;
     AudioClip clip;
@@ -74,10 +74,10 @@ public class GenerateStage : MonoBehaviour
 
         musicObj = GameObject.Find("GameManager");
         music = musicObj.GetComponent<AudioSource>();
-        musicTime = music.clip.length;
-        leftTime = musicTime - musicObj.GetComponent<AudioSource>().time;
+        //musicTime = music.clip.length;
+        //leftTime = musicTime - musicObj.GetComponent<AudioSource>().time;
 
-        Debug.Log(musicTime);
+        //Debug.Log(musicTime);
     }
 
     void InitializePreset()
@@ -112,7 +112,7 @@ public class GenerateStage : MonoBehaviour
             {            
                 
                 textNotes[i][j] = tempNote[j];
-                Debug.Log(textNotes[i][0]);
+                //Debug.Log(textNotes[i][0]);
             }
         }
     }
@@ -175,8 +175,8 @@ public class GenerateStage : MonoBehaviour
         }
         noteTime = mover.GetNoteAnimTime(noteTime, type);
 
-        Debug.Log(textNotes[n][1]);
-        Debug.Log(type);
+        //Debug.Log(textNotes[n][1]);
+        //Debug.Log(type);
 
         if (time >= noteTime)
         {
@@ -187,7 +187,6 @@ public class GenerateStage : MonoBehaviour
                     break;
 
                 case (int)NotesType.verticalWaveRight:
-                    Debug.Log(time);
                     mover.NoteSet(NotesType.verticalWaveRight, textNotes[n]);
                     break;
 

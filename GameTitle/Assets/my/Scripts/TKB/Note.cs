@@ -6,6 +6,7 @@ public abstract class Note : MonoBehaviour
 {
     public float generateTime;
     protected float reachTime;
+    protected Color[] mColor;
     protected Vector3 position;
     protected Vector3 moveVector;
     protected GameObject note;
@@ -15,10 +16,15 @@ public abstract class Note : MonoBehaviour
 
     public Note(float reachTime, Vector3 position, GameObject note)
     {
-        this.reachTime = reachTime;
+        this.generateTime = reachTime;
         this.position = position;
         this.note = note;
         this.note.GetComponent<GameObject>();
+        mColor = new Color[40];
+        for (int i = 0; i < 40; i++)
+        {
+            mColor[i] = new Color(59.0f, 199.0f, 229.0f, 1);
+        }
 
         //noteObj = new GameObject[colNum];
     }
@@ -62,7 +68,7 @@ public class VerticalWaveNote : Note
 
     public VerticalWaveNote(float reachTime, Vector3 position, GameObject note) : base(reachTime, position, note)
     {
-        generateTime = 2.0f;
+        generateTime = reachTime;
         moveVector = new Vector3(0, 0, 1);
         noteObj = new GameObject[colNum];
     }
@@ -153,12 +159,12 @@ public class ThrowCubeNote : Note
     float ct = 0;
 
     int cNum = 0;
-    int cubeNum = 4;
+    int cubeNum = 40;
     float[] target = new float[4]; //飛んでくる場所へ補正
 
     public ThrowCubeNote(float reachTime, Vector3 position, GameObject note) : base(reachTime, position, note)
     {
-        generateTime = 1.85f;
+        generateTime = reachTime;
         moveVector = note.transform.position.normalized;
         noteObj = new GameObject[cubeNum];
         moveVec = new Vector3[cubeNum];
@@ -178,6 +184,13 @@ public class ThrowCubeNote : Note
                     moveVec[i] = noteObj[i].transform.position 
                                  - new Vector3(target[i], JumpStart.groundPosition.y +0.5f, 0);
                     moveVec[i] = moveVec[i].normalized;
+
+                    mColor[i].r += 10.1f;
+                    mColor[i].g -= 10.1f;
+                    mColor[i].b -= 10.1f;
+
+                    noteObj[i].GetComponent<Renderer>().material.color = mColor[i];
+                    noteObj[i].GetComponent<Renderer>().material.SetColor("_EmissionColor", mColor[i]);
                 }
                 else
                 {
@@ -189,11 +202,7 @@ public class ThrowCubeNote : Note
                     {
                         noteObj[i].transform.position -= moveVec[i] * noteSpeed * Time.deltaTime;
                         noteObj[i].transform.Rotate(new Vector3(180f, 60f,180f) * Time.deltaTime);
-                        ct += Time.deltaTime;
-                        //if (noteObj[i].transform.position.z <= 0.5f)
-                        //{
-                        //    Debug.Log(ct);
-                        //}
+                        ct += Time.deltaTime;                       
                     }
                 }
             }
@@ -228,7 +237,7 @@ public class ThrowCubeNote : Note
 
             cNum++;
         }
-        if (cNum >= 4)
+        if (cNum >= cubeNum)
         {
             cNum = 0;
         }
