@@ -8,7 +8,7 @@ using System;
 public class StepData : MonoBehaviour
 {
     public string scoreName = "aaa";
-    public string fileName = "Assets/SoundEditor2/Score/";
+    public string fileName = "Assets/my/Scripts/konata/Notes/new/Score/";
 
     public AudioSource source;      //サウンド
 

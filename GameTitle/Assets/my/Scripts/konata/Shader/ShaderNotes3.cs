@@ -35,7 +35,7 @@ public class ShaderNotes3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        material = GetComponent<Renderer>().materials[1];                       //シェーダー参照用
+        material = GetComponent<Renderer>().materials[1];                   //シェーダー参照用
         worldStartPos = startPosObj.transform.position;                     //ノーツが放たれる場所の変換
         startPos = transform.GetChild(0).gameObject.transform.position;     //子オブジェクトの頭にあるオブジェクトの位置をノーツの開始ポイントとする
         endPos = transform.GetChild(1).gameObject.transform.position * -1;  //子オブジェクトの頭の次にあるオブジェクトの位置をノーツのエンドポイントとする
