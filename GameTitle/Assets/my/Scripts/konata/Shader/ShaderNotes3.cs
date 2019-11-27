@@ -17,7 +17,7 @@ public class ShaderNotes3 : MonoBehaviour
     float interval;                 //ノーツが放たれてから自分のオブジェクトに達したかどうかの計算用
 
     int stepDataCount;
-    float fixTime;          //音に合うタイミングにする用
+    float fixTime;                  //音に合うタイミングにする用
 
     class Notes
     {
@@ -33,7 +33,7 @@ public class ShaderNotes3 : MonoBehaviour
     Notes[] notesArr = new Notes[4];    //最大シェーダー上で4つのノーツしか動かすことができないので4
 
     //時間のリストを読む場合、いらない
-    List<float> timeList = new List<float>();
+    //List<float> timeList = new List<float>();
 
     // Start is called before the first frame update
     void Start()
@@ -44,20 +44,7 @@ public class ShaderNotes3 : MonoBehaviour
         endPos = transform.GetChild(1).gameObject.transform.position * -1;  //子オブジェクトの頭の次にあるオブジェクトの位置をノーツのエンドポイントとする
 
         //生成のタイミングをずらす
-        fixTime = (startPosObj.transform.position.z - StepDetermination.groundPosition.z) / speed;
-
-        //for(; ; )
-        //{
-        //    if(0 >= StepData.GetStepData[stepDataCount].musicScore - fixTime)
-        //    {
-        //        stepDataCount++;
-        //    }
-        //    else
-        //    {
-        //        break;
-        //    }
-        //}
-        Debug.Log(fixTime);
+        fixTime = (startPos.z - StepDetermination.groundPosition.z) / speed;
 
 
         //ノーツが放たれる場所から自身がどれだけ離れているかの計算
@@ -75,25 +62,10 @@ public class ShaderNotes3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //時間のリストを読む場合、いらない
-        if (OnTrigger())
+        if (StepData.GetSoundPlayTime >= StepData.GetStepData[stepDataCount].musicScore - fixTime)
         {
-            timeList.Add(0f);
-            stepDataCount++;
-        }
-
-        //時間のリストが入る場合これがいらない
-        for (int i = 0; i < timeList.Count; i++)
-        {
-            timeList[i] += Time.deltaTime;
-        }
-
-        if (timeList.Count != 0)        //時間のリストを読む場合、いらない
-        {
-            if (timeList[0] > interval) //時間のリストを読む場合ここに入れ替わりで入る
+            if (StepData.GetStepData[stepDataCount].plStep != StepData.PL_STEP_TIMING.Nothing)
             {
-                timeList.RemoveAt(0);   //時間のリストを読む場合、いらない
-
                 //グラグが立っていないものを探す
                 for (int f = 0; f < notesArr.Length; f++)
                 {
@@ -104,6 +76,7 @@ public class ShaderNotes3 : MonoBehaviour
                     }
                 }
             }
+            stepDataCount++;
         }
         
         for (int i = 0; i < notesArr.Length; i++)
@@ -127,25 +100,11 @@ public class ShaderNotes3 : MonoBehaviour
         
     }
 
-    bool on;
     //トリガーの処理
     bool OnTrigger()
     {
         bool onTrigger;
         onTrigger=Input.GetKeyDown(KeyCode.Space);
-
-       
-        
-        //時間が来たら信号を出す
-        if(StepData.GetSoundPlayTime >= StepData.GetStepData[stepDataCount].musicScore - fixTime)
-        {
-            if (!on)
-            {
-                on = true;
-                return true;
-            }
-        }
-
         return onTrigger;
     }
 }
