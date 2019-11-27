@@ -53,7 +53,7 @@ public class NotesManager2 : MonoBehaviour
         if (StepData.GetSoundPlayTime >= StepData.GetStepData[stepDataCount].musicScore - fixTime)
         {
             float a = StepData.GetStepData[stepDataCount].musicScore - fixTime;
-            Debug.Log("Sound" + StepData.GetSoundPlayTime + "テキスト" + StepData.GetStepData[stepDataCount].musicScore + "リスト" + stepDataCount);
+            //Debug.Log("Sound" + StepData.GetSoundPlayTime + "テキスト" + StepData.GetStepData[stepDataCount].musicScore + "リスト" + stepDataCount);
 
             //ステップの指示がされている場合ノーツを生成
             if (StepData.GetStepData[stepDataCount].plStep != StepData.PL_STEP_TIMING.Nothing)

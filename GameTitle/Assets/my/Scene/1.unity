@@ -2022,7 +2022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5faaff59aaf31ae439d47c8f1dc28a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 50
   startPosObj: {fileID: 1465962433}
 --- !u!1 &962885502
 GameObject:
@@ -2084,7 +2084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5faaff59aaf31ae439d47c8f1dc28a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 50
   startPosObj: {fileID: 1465962433}
 --- !u!4 &997288072 stripped
 Transform:
@@ -3673,7 +3673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5faaff59aaf31ae439d47c8f1dc28a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 50
   startPosObj: {fileID: 1465962433}
 --- !u!4 &1622504600 stripped
 Transform:
@@ -4435,7 +4435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5faaff59aaf31ae439d47c8f1dc28a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 50
   startPosObj: {fileID: 1465962433}
 --- !u!1 &2086584536
 GameObject:

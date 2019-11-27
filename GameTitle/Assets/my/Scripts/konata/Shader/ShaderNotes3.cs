@@ -16,6 +16,9 @@ public class ShaderNotes3 : MonoBehaviour
     Vector3 endPos;                 //個々のオブジェクトのノーツのエンドポイント(個々のシェーダー処理用)
     float interval;                 //ノーツが放たれてから自分のオブジェクトに達したかどうかの計算用
 
+    int stepDataCount;
+    float fixTime;          //音に合うタイミングにする用
+
     class Notes
     {
         public bool onTimeStart;        //シェーダー内の「_Pos」に空きがあるかどうかのフラグ
@@ -40,6 +43,23 @@ public class ShaderNotes3 : MonoBehaviour
         startPos = transform.GetChild(0).gameObject.transform.position;     //子オブジェクトの頭にあるオブジェクトの位置をノーツの開始ポイントとする
         endPos = transform.GetChild(1).gameObject.transform.position * -1;  //子オブジェクトの頭の次にあるオブジェクトの位置をノーツのエンドポイントとする
 
+        //生成のタイミングをずらす
+        fixTime = (startPosObj.transform.position.z - StepDetermination.groundPosition.z) / speed;
+
+        //for(; ; )
+        //{
+        //    if(0 >= StepData.GetStepData[stepDataCount].musicScore - fixTime)
+        //    {
+        //        stepDataCount++;
+        //    }
+        //    else
+        //    {
+        //        break;
+        //    }
+        //}
+        Debug.Log(fixTime);
+
+
         //ノーツが放たれる場所から自身がどれだけ離れているかの計算
         //もしかしたらstartPosにした方がいいかもしれない
         float dis = worldStartPos.z - (transform.position.z + transform.localScale.z / 2); 
@@ -59,6 +79,7 @@ public class ShaderNotes3 : MonoBehaviour
         if (OnTrigger())
         {
             timeList.Add(0f);
+            stepDataCount++;
         }
 
         //時間のリストが入る場合これがいらない
@@ -106,9 +127,25 @@ public class ShaderNotes3 : MonoBehaviour
         
     }
 
+    bool on;
     //トリガーの処理
     bool OnTrigger()
     {
-        return Input.GetKeyDown(KeyCode.Space);
+        bool onTrigger;
+        onTrigger=Input.GetKeyDown(KeyCode.Space);
+
+       
+        
+        //時間が来たら信号を出す
+        if(StepData.GetSoundPlayTime >= StepData.GetStepData[stepDataCount].musicScore - fixTime)
+        {
+            if (!on)
+            {
+                on = true;
+                return true;
+            }
+        }
+
+        return onTrigger;
     }
 }
