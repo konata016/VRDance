@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4549566306961458706}
   m_Layer: 0
   m_Name: M
-  m_TagString: wave
+  m_TagString: wide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

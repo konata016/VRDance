@@ -23,7 +23,7 @@ public abstract class Note : MonoBehaviour
         mColor = new Color[40];
         for (int i = 0; i < 40; i++)
         {
-            mColor[i] = new Color(59.0f, 199.0f, 229.0f, 1);
+            mColor[i] = new Color(59.0f, 199.0f, 229.0f, 0.0f);
         }
 
         //noteObj = new GameObject[colNum];
@@ -160,7 +160,7 @@ public class ThrowCubeNote : Note
 
     int cNum = 0;
     int cubeNum = 40;
-    float[] target = new float[4]; //飛んでくる場所へ補正
+    float[] target = new float[40]; //飛んでくる場所へ補正
 
     public ThrowCubeNote(float reachTime, Vector3 position, GameObject note) : base(reachTime, position, note)
     {
@@ -185,12 +185,16 @@ public class ThrowCubeNote : Note
                                  - new Vector3(target[i], JumpStart.groundPosition.y +0.5f, 0);
                     moveVec[i] = moveVec[i].normalized;
 
-                    mColor[i].r += 10.1f;
-                    mColor[i].g -= 10.1f;
-                    mColor[i].b -= 10.1f;
+                    if (upSpeed[i] <= 0.01f)
+                    {
+                        mColor[i].r += 3.0f;
+                        mColor[i].g -= 6.0f;
+                        mColor[i].b -= 6.0f;
+                    }
 
-                    noteObj[i].GetComponent<Renderer>().material.color = mColor[i];
-                    noteObj[i].GetComponent<Renderer>().material.SetColor("_EmissionColor", mColor[i]);
+                    //noteObj[i].GetComponent<Renderer>().material.color = mColor[i];
+
+                    noteObj[i].GetComponent<Renderer>().material.SetColor("_EmissionColor", mColor[i] * 0.005f);
                 }
                 else
                 {
