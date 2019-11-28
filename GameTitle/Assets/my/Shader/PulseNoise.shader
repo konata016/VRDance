@@ -51,7 +51,7 @@
 				else {
 					tr = phase;          // そうでなければそのまま
 				}
-				tr *= 2.0;               // 2倍して 0.0～1.0 の範囲に
+				tr = tr * 2.0; // 2倍して 0.0～1.0 の範囲に
 				return 2.0 * (tr - 0.5); // -1.0～1.0 の範囲に
 			}
 
@@ -67,8 +67,8 @@
             {
 				float2 uv = i.uv;
 				float x = 2 * uv.y;
-				///uv.x += _Amount * sin(10 * x)*(-(x - 1)*(x - 1) + _Random);
-				uv.x += _Amount * sankakuha(2 * x + sin(_Time.x * 100), 0.8);
+				//uv.x += _Amount * sin(10 * x)*(-(x - 1)*(x - 1) + _Random);
+				uv.x += _Amount * sankakuha(2 * x + sin(_Time.x * 100), 0.01);
                 fixed4 col = tex2D(_MainTex, uv);
 				if (col.a < 0.1)
 					discard;
