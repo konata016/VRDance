@@ -122,4 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 670
-  max: 2.3
+  max: 2
+  colorSpeed: 130

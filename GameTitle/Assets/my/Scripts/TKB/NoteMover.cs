@@ -11,6 +11,9 @@ public class NoteMover : MonoBehaviour
     [SerializeField] GameObject laserNote;
     [SerializeField] GameObject throwNote;
 
+    [SerializeField] float vertcalAnimTime = 2.15f;
+    [SerializeField] float throwAnimTime = 1.85f;
+
     private WideWaveNote wide;
     private VerticalWaveNote vertical;
     private PunchNote punch;
@@ -33,10 +36,10 @@ public class NoteMover : MonoBehaviour
     void Start()
     {
         wide = new WideWaveNote(0.0f, Vector3.zero, wideNote);
-        vertical = new VerticalWaveNote(0.0f, Vector3.zero, verticalNoteR);
+        vertical = new VerticalWaveNote(vertcalAnimTime, Vector3.zero, verticalNoteR);
         punch = new PunchNote(0.0f, Vector3.zero, punchNote);
         laser = new LaserNote(0.0f, Vector3.zero, laserNote);
-        throwCube = new ThrowCubeNote(0.0f, Vector3.zero, throwNote);
+        throwCube = new ThrowCubeNote(throwAnimTime, Vector3.zero, throwNote);
 
         float x = -1.0f;
         for (int i = 0; i < 6; i++)
@@ -85,9 +88,9 @@ public class NoteMover : MonoBehaviour
 
             case NotesType.verticalWaveRight:
                 rightFlag = true;
-                Debug.Log(posBool[3]);
+                //Debug.Log(posBool[3]);
                 //vertical.NoteGenerate(verticalNoteR, 1);
-                for (int i = 2; i < posBool.Length; i++)
+                for (int i = 2; i < 8; i++)
                 {
                     if (posBool[i] == TRUE)
                     {
@@ -115,7 +118,7 @@ public class NoteMover : MonoBehaviour
                 //int p = Random.Range(0, 2);
                 bool R = false;
                 bool L = false;
-                for (int i = 2; i < posBool.Length; i++)
+                for (int i = 2; i < 8; i++)
                 {
                     if (posBool[i] == TRUE)
                     {
@@ -137,5 +140,35 @@ public class NoteMover : MonoBehaviour
         {
             vertical.NoteGenerate(verticalNoteR, notePos[i]);
         }      
+    }
+
+    public float GetNoteAnimTime(float time, int type)
+    {
+        float gTime = 0;
+
+        switch (type)
+        {
+            case (int)NotesType.wideWave:
+                
+                break;
+
+            case (int)NotesType.verticalWaveRight:
+                gTime = time - vertical.generateTime;
+                break;
+
+            case (int)NotesType.punch:
+                
+                break;
+
+            case (int)NotesType.laser:
+                
+                break;
+
+            case (int)NotesType.throwCube:
+                
+                break;
+        }
+
+        return gTime;
     }
 }
