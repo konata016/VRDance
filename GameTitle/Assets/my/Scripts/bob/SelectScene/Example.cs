@@ -7,16 +7,16 @@ public class Example : MonoBehaviour
 {
     private void Update()
     {
-        // 小節に来たフレームで true になる
-        if (Music.IsJustChangedBar())
-        {
-            DOTween
-                .To(value => OnRotate(value), 0, 1, 0.5f)
-                .SetEase(Ease.OutCubic);
-                //.OnComplete(() => transform.localEulerAngles = new Vector3(45, 45, 0));
-        }
+        //// 小節に来たフレームで true になる
+        //if (Music.IsJustChangedBar())
+        //{
+        //    DOTween
+        //        .To(value => OnRotate(value), 0, 1, 0.5f)
+        //        .SetEase(Ease.OutCubic);
+        //        //.OnComplete(() => transform.localEulerAngles = new Vector3(45, 45, 0));
+        //}
         // 拍に来たフレームで true になる
-        else if (Music.IsJustChangedBeat())
+        if (Music.IsJustChangedBeat())
         {
             DOTween
                 .To(value => OnScale(value), 0, 1, 0.1f)
@@ -27,7 +27,7 @@ public class Example : MonoBehaviour
 
     private void OnScale(float value)
     {
-        var scale = Mathf.Lerp(2, 2.4f, value);
+        var scale = Mathf.Lerp(2, 2.1f, value);
         transform.localScale = new Vector3(scale, scale, scale);
     }
     
