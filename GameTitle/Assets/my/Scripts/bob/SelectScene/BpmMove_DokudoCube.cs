@@ -32,8 +32,8 @@ public class BpmMove_DokudoCube : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.A))// 上から見て時計回転
                 {
                     DOTween
-                        .To(value => Y_AxisRotate(value, 1), 0, 90, 0.5f)
-                        .SetEase(Ease.OutCubic)
+                        .To(value => Y_AxisRotate(value, 1), 0, 90, 0.4f)
+                        .SetEase(Ease.OutElastic)
                         .OnStart(() => {// アニメーション開始時によばれる
                             moveSwitch = false;
                             value_Old = 0;
@@ -47,8 +47,8 @@ public class BpmMove_DokudoCube : MonoBehaviour
                 else if (Input.GetKeyDown(KeyCode.D))// 上から見て反時計回転
                 {
                     DOTween
-                        .To(value => Y_AxisRotate(value, -1), 0, 90, 0.5f)
-                        .SetEase(Ease.OutCubic)
+                        .To(value => Y_AxisRotate(value, -1), 0, 90, 0.4f)
+                        .SetEase(Ease.OutElastic)
                         .OnStart(() => {
                             moveSwitch = false;
                             value_Old = 0;
@@ -60,8 +60,8 @@ public class BpmMove_DokudoCube : MonoBehaviour
                 else if (Input.GetKeyDown(KeyCode.W))// 曲詳細へ
                 {
                     DOTween
-                        .To(value => SoundName_AxisRotate(value), 0, -450, 0.5f)
-                        .SetEase(Ease.OutCubic)
+                        .To(value => SoundName_AxisRotate(value), 0, 270, 0.5f)
+                        .SetEase(Ease.OutBack)
                         .OnStart(() => {
                             moveSwitch = false;
                             value_Old = 0;
@@ -78,8 +78,8 @@ public class BpmMove_DokudoCube : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.S))// 戻る
                 {
                     DOTween
-                        .To(value => Reset_AxisRotate(value), 0, -450, 0.5f)
-                        .SetEase(Ease.OutCubic)
+                        .To(value => Reset_AxisRotate(value), 0, 270, 0.5f)
+                        .SetEase(Ease.OutBack)
                         .OnStart(() => {
                             moveSwitch = false;
                             value_Old = 0;

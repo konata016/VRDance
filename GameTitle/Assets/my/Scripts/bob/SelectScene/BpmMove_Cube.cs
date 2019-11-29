@@ -14,6 +14,7 @@ public class BpmMove_Cube : MonoBehaviour
     public BOXORIENTATION boxOrientation_Old;
     float value_Old;    //回転した差分を引く用
     private MusicManagement musicManagement;
+    private CanvasAlpha canvasAlpha;
 
     void Start()
     {
@@ -21,6 +22,8 @@ public class BpmMove_Cube : MonoBehaviour
         boxOrientation_Old = boxOrientation;
         bpmOld = bpm;
         musicManagement = GetComponent<MusicManagement>();
+        GameObject childObject = transform.Find("SoundInformation").gameObject;
+        canvasAlpha = childObject.GetComponent<CanvasAlpha>();
     }
     
     void Update()
@@ -33,49 +36,54 @@ public class BpmMove_Cube : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.A))// 上から見て時計回転
                 {
                     DOTween
-                        .To(value => Y_AxisRotate(value, 1), 0, 90, 0.5f)
-                        .SetEase(Ease.OutCubic)
+                        .To(value => Y_AxisRotate(value, 1), 0, 90, 0.4f)
+                        .SetEase(Ease.OutElastic)
                         .OnStart(() => {// アニメーション開始時によばれる
+                            Y_AxisRotate_Number(1);
+                            musicManagement.nomberOfMusic++;
+                            if (musicManagement.nomberOfMusic == musicManagement.musicInfoList.Count)
+                                musicManagement.nomberOfMusic = 0;
+                            musicManagement.MusicInformationSet();
+
                             moveSwitch = false;
                             value_Old = 0;
                         })
                         .OnUpdate(() => {// 対象の値が変更される度によばれる
                         })
                         .OnComplete(() => {// アニメーションが終了時によばれる
-                            Y_AxisRotate_Number(1);
                             moveSwitch = true;
-                            musicManagement.nomberOfMusic++;
-                            if (musicManagement.nomberOfMusic == musicManagement.musicInfoList.Count)
-                                musicManagement.nomberOfMusic = 0;
-                            musicManagement.MusicInformationSet();
                         });
                 }
                 else if (Input.GetKeyDown(KeyCode.D))// 上から見て反時計回転
                 {
                     DOTween
-                        .To(value => Y_AxisRotate(value, -1), 0, 90, 0.5f)
-                        .SetEase(Ease.OutCubic)
+                        .To(value => Y_AxisRotate(value, -1), 0, 90, 0.4f)
+                        .SetEase(Ease.OutElastic)
                         .OnStart(() => {
-                            moveSwitch = false;
-                            value_Old = 0;
-                        })
-                        .OnComplete(() => {
                             Y_AxisRotate_Number(-1);
-                            moveSwitch = true;
                             musicManagement.nomberOfMusic--;
                             if (musicManagement.nomberOfMusic == -1)
                                 musicManagement.nomberOfMusic = musicManagement.musicInfoList.Count - 1;
                             musicManagement.MusicInformationSet();
+
+                            moveSwitch = false;
+                            value_Old = 0;
+                        })
+                        .OnComplete(() => {
+                            moveSwitch = true;
                         });
                 }
                 else if (Input.GetKeyDown(KeyCode.W))// 曲詳細へ
                 {
                     DOTween
-                        .To(value => SoundName_AxisRotate(value), 0, -450, 0.5f)
-                        .SetEase(Ease.OutCubic)
+                        .To(value => SoundName_AxisRotate(value), 0, 270, 0.5f)
+                        .SetEase(Ease.OutBack)
                         .OnStart(() => {
                             moveSwitch = false;
                             value_Old = 0;
+                        })
+                        .OnUpdate(() => {// 対象の値が変更される度によばれる
+                            canvasAlpha.MusicInformation_Alpha(0.4f);
                         })
                         .OnComplete(() => {
                             boxOrientation_Old = boxOrientation;
@@ -89,11 +97,14 @@ public class BpmMove_Cube : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.S))// 戻る
                 {
                     DOTween
-                        .To(value => Reset_AxisRotate(value), 0, -450, 0.5f)
-                        .SetEase(Ease.OutCubic)
+                        .To(value => Reset_AxisRotate(value), 0, 270, 0.5f)
+                        .SetEase(Ease.OutBack)
                         .OnStart(() => {
                             moveSwitch = false;
                             value_Old = 0;
+                        })
+                        .OnUpdate(() => {// 対象の値が変更される度によばれる
+                            canvasAlpha.MusicInformation_Alpha(-0.4f);
                         })
                         .OnComplete(() => {
                             boxOrientation = boxOrientation_Old;
