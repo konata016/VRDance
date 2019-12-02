@@ -13,86 +13,123 @@ public class BpmMove_DokudoCube : MonoBehaviour
     public static BOXORIENTATION boxOrientation { get; set; }
     public  BOXORIENTATION boxOrientation_Old;
     float value_Old;    //回転した差分を引く用
-    private MusicManagement musicManagement;
+    public static bool Set_LeftJudgment { private get; set; }
+    public static bool Set_RightJudgment { private get; set; }
+    public static bool Set_JumpJudgment { private get; set; }
 
     void Start()
     {
         boxOrientation = BOXORIENTATION.soundBox_1;
         boxOrientation_Old = boxOrientation;
         bpmOld = bpm;
+        Set_LeftJudgment = false;
+        Set_RightJudgment = false;
+        Set_JumpJudgment = false;
     }
 
     void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A) || Set_LeftJudgment)// 上から見て時計回転
+        {
+            LeftJudgment();
+            Set_LeftJudgment = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.D) || Set_RightJudgment)// 上から見て反時計回転
+        {
+            RightJudgment();
+            Set_RightJudgment = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.W) || Set_JumpJudgment)// 曲詳細へ
+        {
+            JumpJudgment();
+            Set_JumpJudgment = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.S))// 戻る
+        {
+            LeftJudgment();
+        }
+    }
+
+    public void JumpJudgment()
     {
         if (moveSwitch)
         {
             // セレクトボックス回転
             if (boxOrientation != BOXORIENTATION.SoundName)
             {
-                if (Input.GetKeyDown(KeyCode.A))// 上から見て時計回転
-                {
-                    DOTween
-                        .To(value => Y_AxisRotate(value, 1), 0, 90, 0.4f)
-                        .SetEase(Ease.OutElastic)
-                        .OnStart(() => {// アニメーション開始時によばれる
-                            moveSwitch = false;
-                            value_Old = 0;
-                        })
-                        .OnUpdate(() => {// 対象の値が変更される度によばれる
-                        })
-                        .OnComplete(() => {// アニメーションが終了時によばれる
-                            moveSwitch = true;
-                        });
-                }
-                else if (Input.GetKeyDown(KeyCode.D))// 上から見て反時計回転
-                {
-                    DOTween
-                        .To(value => Y_AxisRotate(value, -1), 0, 90, 0.4f)
-                        .SetEase(Ease.OutElastic)
-                        .OnStart(() => {
-                            moveSwitch = false;
-                            value_Old = 0;
-                        })
-                        .OnComplete(() => {
-                            moveSwitch = true;
-                        });
-                }
-                else if (Input.GetKeyDown(KeyCode.W))// 曲詳細へ
-                {
-                    DOTween
-                        .To(value => SoundName_AxisRotate(value), 0, 270, 0.5f)
-                        .SetEase(Ease.OutBack)
-                        .OnStart(() => {
-                            moveSwitch = false;
-                            value_Old = 0;
-                        })
-                        .OnComplete(() => {
-                            boxOrientation_Old = boxOrientation;
-                            boxOrientation = BOXORIENTATION.SoundName;
-                            moveSwitch = true;
-                        });
-                }
+                DOTween
+                    .To(value => SoundName_AxisRotate(value), 0, 270, 0.5f)
+                    .SetEase(Ease.OutBack)
+                    .OnStart(() => {
+                        moveSwitch = false;
+                        value_Old = 0;
+                    })
+                    .OnComplete(() => {
+                        boxOrientation_Old = boxOrientation;
+                        boxOrientation = BOXORIENTATION.SoundName;
+                        moveSwitch = true;
+                    });
+            }
+        }
+    }
+    public void RightJudgment()
+    {
+        if (moveSwitch)
+        {
+            // セレクトボックス回転
+            if (boxOrientation != BOXORIENTATION.SoundName)
+            {
+                DOTween
+                    .To(value => Y_AxisRotate(value, -1), 0, 90, 0.4f)
+                    .SetEase(Ease.OutBack)
+                    .OnStart(() => {
+                        moveSwitch = false;
+                        value_Old = 0;
+                    })
+                    .OnComplete(() => {
+                        moveSwitch = true;
+                    });
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.S))// 戻る
-                {
-                    DOTween
-                        .To(value => Reset_AxisRotate(value), 0, 270, 0.5f)
-                        .SetEase(Ease.OutBack)
-                        .OnStart(() => {
-                            moveSwitch = false;
-                            value_Old = 0;
-                        })
-                        .OnComplete(() => {
-                            boxOrientation = boxOrientation_Old;
-                            moveSwitch = true;
-                        });
-                }
+                // 曲選択
             }
         }
-        else
+    }
+    public void LeftJudgment()
+    {
+        if (moveSwitch)
         {
+            // セレクトボックス回転
+            if (boxOrientation != BOXORIENTATION.SoundName)
+            {
+                DOTween
+                    .To(value => Y_AxisRotate(value, 1), 0, 90, 0.4f)
+                    .SetEase(Ease.OutBack)
+                    .OnStart(() => {// アニメーション開始時によばれる
+                            moveSwitch = false;
+                        value_Old = 0;
+                    })
+                    .OnUpdate(() => {// 対象の値が変更される度によばれる
+                        })
+                    .OnComplete(() => {// アニメーションが終了時によばれる
+                            moveSwitch = true;
+                    });
+            }
+            else
+            {
+                DOTween
+                    .To(value => Reset_AxisRotate(value), 0, 270, 0.5f)
+                    .SetEase(Ease.OutBack)
+                    .OnStart(() => {
+                        moveSwitch = false;
+                        value_Old = 0;
+                    })
+                    .OnComplete(() => {
+                        boxOrientation = boxOrientation_Old;
+                        moveSwitch = true;
+                    });
+            }
         }
     }
 
