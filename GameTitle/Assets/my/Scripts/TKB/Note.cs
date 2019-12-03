@@ -35,30 +35,59 @@ public abstract class Note : MonoBehaviour
 
 public class WideWaveNote : Note
 {
+    private float widePos = 0;
     private const float animTime = 3.0f;
-    private const float noteSpeed = 3.0f;
+    private const float noteSpeed = 10.0f;
+    float[] checkTime = new float[40];
+
+    int colNum = 40;
+    int wNum = 0;
 
     public WideWaveNote(float reachTime, Vector3 position, GameObject note) : base(reachTime, position, note)
     {
-        generateTime = this.reachTime - animTime;
-        moveVector = note.transform.position.normalized;
+        generateTime = reachTime;
+        moveVector = new Vector3(0, 0, 1);
+        noteObj = new GameObject[colNum];
     }
-    
+
     public override bool NoteMove(int pos)
     {
-        note.transform.position -= moveVector * noteSpeed;
-        return false;
+        for (int i = 0; i < colNum; i++)
+        {
+            if (noteObj[i] != null)
+            {
+                if (noteObj[i].transform.position.z < -2.0f)
+                {
+                    Destroy(noteObj[i]);
+                }
+                else
+                {
+                    checkTime[0] += Time.deltaTime;
+                    noteObj[i].transform.position -= new Vector3(0, 0, Time.deltaTime * noteSpeed);
+                }
+            }
+        }
+        return true;
     }
 
     public override void NoteGenerate(GameObject colli, Vector3 pos)
     {
-        
+        if (noteObj[wNum] == null)
+        {
+            checkTime[0] = 0;
+            noteObj[wNum] = Instantiate(colli, new Vector3(pos.x, StepDetermination.groundPosition.y, pos.z), Quaternion.identity);
+            wNum++;
+        }
+        if (wNum >= colNum)
+        {
+            wNum = 0;
+        }
     }
 }
 
-public class VerticalWaveNote : Note
+    public class VerticalWaveNote : Note
 {
-    private float vertPos = 0;
+    //private float vertPos = 0;
     private const float animTime = 3.0f;
     private const float noteSpeed = 10.0f;
     float[] checkTime = new float[40];
@@ -182,7 +211,7 @@ public class ThrowCubeNote : Note
                     noteObj[i].transform.position += new Vector3(0, upSpeed[i], 0);
                     upSpeed[i] *= 0.9f;
                     moveVec[i] = noteObj[i].transform.position 
-                                 - new Vector3(target[i], JumpStart.groundPosition.y +0.5f, 0);
+                                 - new Vector3(target[i], JumpStart.groundPosition.y + 0.5f, 0);
                     moveVec[i] = moveVec[i].normalized;
 
                     if (upSpeed[i] <= 0.01f)
