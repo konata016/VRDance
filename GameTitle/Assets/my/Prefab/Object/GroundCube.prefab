@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8791930850437971242}
   - component: {fileID: 574634035250975685}
   - component: {fileID: 7511792049478062906}
-  - component: {fileID: 9139021520992690014}
   - component: {fileID: 6288695624059730802}
   m_Layer: 0
   m_Name: GroundCube
@@ -54,7 +53,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -62,7 +61,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 2ead60d17a1dc7c4293e87b716755cd1, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 351dda2bd01076149ba03767c4245f2a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,30 +110,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9139021520992690014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4032868416524613629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b8c4ce96b2ea4b44a020a585409a5f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pos:
-  - {x: 0, y: 0, z: -1.45}
-  - {x: 0, y: 0, z: 8}
-  - {x: 0, y: 0, z: 16.83}
-  - {x: 0, y: 0, z: 25}
-  materialArr:
-  - {fileID: 2100000, guid: c0b5ab9cd5d30d14ca75986d32549104, type: 2}
-  - {fileID: 2100000, guid: e01c4f079c19a9d45b7f65d095e262be, type: 2}
-  - {fileID: 2100000, guid: 59ef98b34556a2b4dbbe58f8e64f20e2, type: 2}
-  material0: {fileID: 0}
-  m: {fileID: 0}
-  mesh: {fileID: 0}
 --- !u!114 &6288695624059730802
 MonoBehaviour:
   m_ObjectHideFlags: 0
