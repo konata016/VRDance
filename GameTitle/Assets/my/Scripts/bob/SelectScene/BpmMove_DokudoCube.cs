@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class BpmMove_DokudoCube : MonoBehaviour
 {
-    public int bpm = 120;
-    private int bpmOld;
     private int bpmTiming = 0;
     private bool moveSwitch = true;
     public enum BOXORIENTATION { soundBox_1, soundBox_2, soundBox_3, soundBox_4, SoundName, Bottom, Other }// 0:正面 1:右面 2:背後 3:左面 4:曲名とか 5:底面 6:その他
@@ -21,7 +19,6 @@ public class BpmMove_DokudoCube : MonoBehaviour
     {
         boxOrientation = BOXORIENTATION.soundBox_1;
         boxOrientation_Old = boxOrientation;
-        bpmOld = bpm;
         Set_LeftJudgment = false;
         Set_RightJudgment = false;
         Set_JumpJudgment = false;
@@ -110,8 +107,6 @@ public class BpmMove_DokudoCube : MonoBehaviour
                             moveSwitch = false;
                         value_Old = 0;
                     })
-                    .OnUpdate(() => {// 対象の値が変更される度によばれる
-                        })
                     .OnComplete(() => {// アニメーションが終了時によばれる
                             moveSwitch = true;
                     });

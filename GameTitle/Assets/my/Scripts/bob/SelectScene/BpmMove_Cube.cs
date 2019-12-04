@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class BpmMove_Cube : MonoBehaviour
 {
-    public int bpm = 120;
-    private int bpmOld;
     private int bpmTiming = 0;
     private bool moveSwitch = true;
     public enum BOXORIENTATION { soundBox_1, soundBox_2, soundBox_3, soundBox_4, SoundName, Bottom, Other }// 0:正面 1:右面 2:背後 3:左面 4:曲名とか 5:底面 6:その他
@@ -23,7 +21,6 @@ public class BpmMove_Cube : MonoBehaviour
     {
         boxOrientation = BOXORIENTATION.soundBox_1;
         boxOrientation_Old = boxOrientation;
-        bpmOld = bpm;
         musicManagement = GetComponent<MusicManagement>();
         GameObject childObject = transform.Find("SoundInformation").gameObject;
         canvasAlpha = childObject.GetComponent<CanvasAlpha>();
@@ -68,6 +65,8 @@ public class BpmMove_Cube : MonoBehaviour
                         moveSwitch = false;
                         value_Old = 0;
                     })
+
+
                     .OnUpdate(() => {// 対象の値が変更される度によばれる
                             canvasAlpha.MusicInformation_Alpha(0.4f);
                     })
@@ -129,8 +128,6 @@ public class BpmMove_Cube : MonoBehaviour
                         moveSwitch = false;
                         value_Old = 0;
                     })
-                    .OnUpdate(() => {// 対象の値が変更される度によばれる
-                        })
                     .OnComplete(() => {// アニメーションが終了時によばれる
                             moveSwitch = true;
                     });
@@ -155,17 +152,17 @@ public class BpmMove_Cube : MonoBehaviour
         }
     }
 
-    private void Y_AxisRotate(float value, int a)
+    public void Y_AxisRotate(float value, int a)
     {
         transform.Rotate(new Vector3(0, a, 0), value - value_Old, Space.World);
         value_Old = value;
     }
-    private void SoundName_AxisRotate(float value)
+    public void SoundName_AxisRotate(float value)
     {
         transform.Rotate(new Vector3(1, 0, 0), value - value_Old, Space.World);
         value_Old = value;
     }
-    private void Reset_AxisRotate(float value)
+    public void Reset_AxisRotate(float value)
     {
         transform.Rotate(new Vector3(-1, 0, 0), value - value_Old, Space.World);
         value_Old = value;

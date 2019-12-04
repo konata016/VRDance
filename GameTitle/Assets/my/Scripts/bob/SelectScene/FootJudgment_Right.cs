@@ -16,6 +16,7 @@ public class FootJudgment_Right : MonoBehaviour
     private int roundedDown = 100;              // 小数点以下切り捨て
     private float tweak = 0.03f;                // 微調整
     private bool onlyOneTime = true;            // 一度だけ読み込む
+    private bool judgment;
     // 受け渡す変数
     public enum ISGROUNDTOUCH { Landing, Stoping, Jumping }// 0:着地後 1:静止中 2:ジャンプ中
     public static ISGROUNDTOUCH isGroundTouch_R { get; set; }
@@ -32,6 +33,7 @@ public class FootJudgment_Right : MonoBehaviour
         footConPos_R = GameObject.Find("RightHandAnchor").transform.position;
         footConPos_L = GameObject.Find("LeftHandAnchor").transform.position;
         onlyOneTime = true;
+        judgment = false;
         landingFlame = 0;
         bpmMove_Cube = GetComponent<BpmMove_Cube>();
         bpmMove_DokudoCube = GetComponent<BpmMove_DokudoCube>();
@@ -77,7 +79,12 @@ public class FootJudgment_Right : MonoBehaviour
             else// 地面と足の位置が違うとき
             {
                 if (myLowFootPos.y == groundPosSave.y && myLowFootPos.y == groundPosSaveSave.y)
+                {
                     groundPosition.y = myLowFootPos.y;
+                    judgment = true;
+                    isGroundTouch_R = ISGROUNDTOUCH.Stoping;
+                    isGroundTouch_L = ISGROUNDTOUCH.Stoping;
+                }
                 else if (myLowFootPos.y == groundPosSave.y)
                     groundPosSaveSave.y = myLowFootPos.y;
                 else
@@ -91,11 +98,12 @@ public class FootJudgment_Right : MonoBehaviour
             onGround_R = false;
             if (isGroundTouch_R == ISGROUNDTOUCH.Landing)
             {
-                RightJudgment();
+                if(judgment)
+                    RightJudgment();
 
                 isGroundTouch_R = ISGROUNDTOUCH.Jumping;
             }
-            else if(isGroundTouch_R == ISGROUNDTOUCH.Stoping)
+            else if (isGroundTouch_R == ISGROUNDTOUCH.Stoping)
             {
                 isGroundTouch_R = ISGROUNDTOUCH.Jumping;
             }
@@ -107,7 +115,8 @@ public class FootJudgment_Right : MonoBehaviour
             {
                 if (isGroundTouch_L == ISGROUNDTOUCH.Landing)
                 {
-                    JumpJudgment();
+                    if (judgment)
+                        JumpJudgment();
 
                     isGroundTouch_R = ISGROUNDTOUCH.Stoping;
                     isGroundTouch_L = ISGROUNDTOUCH.Stoping;
@@ -121,9 +130,10 @@ public class FootJudgment_Right : MonoBehaviour
             else if (isGroundTouch_R == ISGROUNDTOUCH.Landing)
             {
                 landingFlame += Time.deltaTime;
-                if(landingFlame >= landingFlameMax)
+                if (landingFlame >= landingFlameMax)
                 {
-                    RightJudgment();
+                    if (judgment)
+                        RightJudgment();
 
                     isGroundTouch_R = ISGROUNDTOUCH.Stoping;
                 }
@@ -136,7 +146,8 @@ public class FootJudgment_Right : MonoBehaviour
             onGround_L = false;
             if (isGroundTouch_L == ISGROUNDTOUCH.Landing)
             {
-                LeftJudgment();
+                if (judgment)
+                    LeftJudgment();
 
                 isGroundTouch_L = ISGROUNDTOUCH.Jumping;
             }
@@ -150,9 +161,10 @@ public class FootJudgment_Right : MonoBehaviour
             onGround_L = true;
             if (isGroundTouch_L == ISGROUNDTOUCH.Jumping)
             {
-                if(isGroundTouch_R == ISGROUNDTOUCH.Landing)
+                if (isGroundTouch_R == ISGROUNDTOUCH.Landing)
                 {
-                    JumpJudgment();
+                    if (judgment)
+                        JumpJudgment();
 
                     isGroundTouch_R = ISGROUNDTOUCH.Stoping;
                     isGroundTouch_L = ISGROUNDTOUCH.Stoping;
@@ -168,17 +180,22 @@ public class FootJudgment_Right : MonoBehaviour
                 landingFlame += Time.deltaTime;
                 if (landingFlame >= landingFlameMax)
                 {
-                    LeftJudgment();
+                    if (judgment)
+                        LeftJudgment();
 
                     isGroundTouch_L = ISGROUNDTOUCH.Stoping;
                 }
             }
         }
 
-        if(isGroundTouch_R_Old!= isGroundTouch_R)
-            Debug.Log(isGroundTouch_R);
+        if (isGroundTouch_R_Old != isGroundTouch_R)
+        {
+            //Debug.Log(isGroundTouch_R);
+        }
         if (isGroundTouch_L_Old != isGroundTouch_L)
-            Debug.Log(isGroundTouch_L);
+        {
+            //Debug.Log(isGroundTouch_L);
+        }
     }
 
     private void JumpJudgment()
