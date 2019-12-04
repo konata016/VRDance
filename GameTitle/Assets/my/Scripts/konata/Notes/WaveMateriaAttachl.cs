@@ -24,20 +24,20 @@ public class WaveMateriaAttachl : MonoBehaviour
             {
                 //デザさんにお願いしてMaterialの順番を変える
 
-                Material[] materials = transform.GetChild(i).gameObject.GetComponent<Renderer>().materials;
-                materials[1] = shaderObj[0].GetComponent<Renderer>().materials[1];
-                transform.GetChild(i).gameObject.GetComponent<Renderer>().materials = materials;
+                SetMaterial(i, shaderObj[0]);
             }
-            else if (v3.z <= pos[1].z && v3.z > pos[2].z)
+            else if (v3.z >= pos[1].z && v3.z < pos[2].z)
             {
-
+                SetMaterial(i, shaderObj[1]);
             }
 
         }
     }
 
-    void SetMaterial()
+    void SetMaterial(int count, GameObject obj)
     {
-
+        Material[] materials = transform.GetChild(count).gameObject.GetComponent<Renderer>().materials;
+        materials[1] = obj.GetComponent<Renderer>().materials[1];
+        transform.GetChild(count).gameObject.GetComponent<Renderer>().materials = materials;
     }
 }
