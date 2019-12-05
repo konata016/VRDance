@@ -2514,7 +2514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5faaff59aaf31ae439d47c8f1dc28a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 15
   startPosObj: {fileID: 1465962433}
 --- !u!114 &956908858
 MonoBehaviour:
@@ -2592,7 +2592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5faaff59aaf31ae439d47c8f1dc28a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 15
   startPosObj: {fileID: 1465962433}
 --- !u!114 &995416663
 MonoBehaviour:
@@ -4456,7 +4456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5faaff59aaf31ae439d47c8f1dc28a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 15
   startPosObj: {fileID: 1465962433}
 --- !u!114 &1612288258
 MonoBehaviour:
@@ -4983,7 +4983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreName: aaa
-  fileName: Assets/my/Scripts/konata/Notes/Score/
+  fileName: Assets/Resources/Notes/
   source: {fileID: 1718596246}
   textTime: []
 --- !u!1 &1723497826 stripped
@@ -5716,7 +5716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5faaff59aaf31ae439d47c8f1dc28a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 15
   startPosObj: {fileID: 1465962433}
 --- !u!114 &2067524947
 MonoBehaviour:
