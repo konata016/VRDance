@@ -84,7 +84,7 @@ public class GroundWave : MonoBehaviour
 
             colorT += rad;
             mColor = Color.Lerp(startC, endColor, colorT);
-            this.GetComponent<Renderer>().materials[0].SetColor("_EmissionColor", mColor * 0.005f);
+            this.GetComponent<Renderer>().material.SetColor("_EmissionColor", mColor * 0.005f);
 
             this.transform.position = new Vector3(pos.x, max / 2 * Mathf.Sin(rad) + pos.y, pos.z);
             this.transform.localScale = new Vector3(0.3f, max * Mathf.Sin(rad) + 0.3f, 0.3f);
@@ -101,11 +101,11 @@ public class GroundWave : MonoBehaviour
         {
             colorT -= Time.deltaTime * colorSpeed;
             mColor = Color.Lerp(startC, endColor, colorT);
-            this.GetComponent<Renderer>().materials[0].SetColor("_EmissionColor", mColor * 0.005f);
+            this.GetComponent<Renderer>().material.SetColor("_EmissionColor", mColor * 0.005f);
 
             if (colorT < 0.0f)
             {
-                this.GetComponent<Renderer>().materials[0].SetColor("_EmissionColor", startC * 0.005f);
+                this.GetComponent<Renderer>().material.SetColor("_EmissionColor", startC * 0.005f);
             }
         }
     }

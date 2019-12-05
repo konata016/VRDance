@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1178020956794969784}
   - component: {fileID: 8791930850437971242}
   - component: {fileID: 574634035250975685}
-  - component: {fileID: 7511792049478062906}
+  - component: {fileID: 2277772628671088869}
   - component: {fileID: 6288695624059730802}
   m_Layer: 0
   m_Name: GroundCube
@@ -61,7 +61,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 2ead60d17a1dc7c4293e87b716755cd1, type: 2}
-  - {fileID: 2100000, guid: 88c61af6b5358484b9982008f0a3d300, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +93,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &7511792049478062906
+--- !u!54 &2277772628671088869
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
