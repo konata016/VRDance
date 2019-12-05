@@ -5,36 +5,48 @@ using UnityEngine;
 
 public class Example : MonoBehaviour
 {
+    public float nowBPM = 120.0f;       // 取得するBPM
+    private float nowBPM_Old = 120.0f;   // 取得するBPM
+    public float timePuls = 0.0f;       // 経過時間
+    private bool onlyOneTime = true;    // 一度だけ読み込み
+    private float dondonTime;           // ４分音符の長さ
+    private float memoCount_Now = 0.0f; // 記録
+    private float memoCount_Old = 60.0f; // 記録
+
+    private void Start()
+    {
+        nowBPM = 120.0f;
+        nowBPM_Old = nowBPM;
+        timePuls = 0.0f;
+        onlyOneTime = true;
+        dondonTime = 60 * 1 / (float)nowBPM;
+        memoCount_Now = 0.0f;
+        memoCount_Old = 60.0f;
+    }
     private void Update()
     {
-        // 小節に来たフレームで true になる
-        if (Music.IsJustChangedBar())
+        if(nowBPM_Old != nowBPM)
         {
-            DOTween
-                .To(value => OnRotate(value), 0, 1, 0.5f)
-                .SetEase(Ease.OutCubic);
-                //.OnComplete(() => transform.localEulerAngles = new Vector3(45, 45, 0));
+            dondonTime = 60 * 1 / (float)nowBPM;
+            nowBPM_Old = nowBPM;
         }
-        // 拍に来たフレームで true になる
-        else if (Music.IsJustChangedBeat())
+        timePuls += Time.deltaTime;
+        memoCount_Now = timePuls % dondonTime;
+        if (memoCount_Now < memoCount_Old)
         {
             DOTween
                 .To(value => OnScale(value), 0, 1, 0.1f)
                 .SetEase(Ease.InQuad)
                 .SetLoops(2, LoopType.Yoyo);
         }
+        memoCount_Old = memoCount_Now;
+        if (timePuls >= 60.0f)// オーバーフロー防止
+            timePuls = 0.0f;
     }
 
     private void OnScale(float value)
     {
-        var scale = Mathf.Lerp(2, 2.4f, value);
+        var scale = Mathf.Lerp(2, 2.1f, value);
         transform.localScale = new Vector3(scale, scale, scale);
-    }
-    
-    private void OnRotate(float value)
-    {
-        var rot = transform.localEulerAngles;
-        rot.z = Mathf.Lerp(0, 90, value);
-        transform.localEulerAngles = rot;
     }
 }

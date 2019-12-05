@@ -86,7 +86,7 @@ public class Music : MonoBehaviour
 	/// </summary>
 	public TextMesh DebugText;
 
-	public bool CreateSectionClips;
+    public bool CreateSectionClips;
     #endregion
 
     #region public static properties
@@ -661,13 +661,13 @@ public class Music : MonoBehaviour
 			Stop();
 		}
 
-		Current_ = this;
+        Current_ = this;
 		Initialize();
 		if( sectionName != "" )
 		{
-			if( CreateSectionClips )
+            if ( CreateSectionClips )
 			{
-				int index = Sections.FindIndex((Section s) => s.Name == sectionName);
+                int index = Sections.FindIndex((Section s) => s.Name == sectionName);
 				if( index >= 0 )
 				{
 					musicSource_ = sectionSources_[index];
