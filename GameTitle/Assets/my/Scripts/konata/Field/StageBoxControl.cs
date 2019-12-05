@@ -5,42 +5,51 @@ using DG.Tweening;
 
 public class StageBoxControl : MonoBehaviour
 {
-    public GameObject[] objArr = new GameObject[5];
-    public Vector3 rotationAmount;
+    
+    public float rotationAmountZ;
     public float rollTime = 1f;
-    int count;
+
+    List<GameObject> objList = new List<GameObject>();
     int rollCount;
-    public Vector3 roll;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            objList.Add(transform.GetChild(i).gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Music.IsJustChangedBar())
+        if (Music.IsJustChangedBeat())
         {
-            count = 0;
-            roll = rotationAmount * rollCount;
+            AutoRotation(rollCount);
 
-            AutoRotation();
-
-            count++;
-            if (rollCount != 3) rollCount++;
+            if (rollCount != objList.Count - 1) rollCount++;
             else rollCount = 0;
         }
-        else if (Music.IsJustChangedBeat())
-        {
-            AutoRotation();
-            count++;
-        }
+        //else if (Music.IsJustChangedBeat())
+        //{
+        //    AutoRotation(count);
+        //    count++;
+        //}
     }
 
-    void AutoRotation()
+    void AutoRotation(int count)
     {
-        objArr[count].transform.DORotate(endValue: roll, duration: rollTime, mode: RotateMode.FastBeyond360);
+        //objArr[count].transform.DORotate(endValue: roll, duration: rollTime, mode: RotateMode.FastBeyond360);
+        DOTween
+                .To(value => OnRotate(value), 0, 1, rollTime)
+                .SetEase(Ease.OutCirc);
+
+        void OnRotate(float value)
+        {
+            var rot = objList[count].transform.localEulerAngles;
+            rot.z = Mathf.Lerp(rotationAmountZ* count, rotationAmountZ * (count + 1), value);
+            objList[count].transform.localEulerAngles = rot;
+        }
     }
 }
