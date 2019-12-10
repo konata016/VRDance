@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NotesManager2 : MonoBehaviour
 {
-    public enum RANK { Bad, Good, Excellent }           //ランクのenum
+    public enum RANK { Bad, Good, Excellent,Miss }           //ランクのenum
     public static RANK rank { get; set; }               //ランクを他のスクリプトに渡すよう
 
     public GameObject notesObj;                         //ノーツオブジェクト
@@ -180,6 +180,10 @@ public class NotesManager2 : MonoBehaviour
                 {
                     DestroyNotes(notesRightList);
                     DestroyNotes(notesLeftList);
+                }
+                else
+                {
+                    rank = RANK.Miss;
                 }
             }
         }

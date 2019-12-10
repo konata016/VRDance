@@ -28,14 +28,24 @@ public class WorldColorChange1 : MonoBehaviour
         {
             switch (NotesManager2.rank)
             {
-                case NotesManager2.RANK.Bad: GetComponent<Renderer>().material = badMaterial; break;
-                case NotesManager2.RANK.Good: GetComponent<Renderer>().material = goodMaterial; break;
-                case NotesManager2.RANK.Excellent: GetComponent<Renderer>().material = excellentMaterial; break;
+                case NotesManager2.RANK.Bad:
+                    GetComponent<Renderer>().material = badMaterial;
+                    ResetAlpha();
+                    break;
+
+                case NotesManager2.RANK.Good:
+                    GetComponent<Renderer>().material = goodMaterial;
+                    ResetAlpha();
+                    break;
+
+                case NotesManager2.RANK.Excellent:
+                    GetComponent<Renderer>().material = excellentMaterial;
+                    ResetAlpha();
+                    break;
+
                 default:break;
             }
-            Color color= GetComponent<Renderer>().material.color;
-            color.a = alpha;
-            GetComponent<Renderer>().material.color = color;
+            
         }
 
 
@@ -46,6 +56,13 @@ public class WorldColorChange1 : MonoBehaviour
             GetComponent<Renderer>().material.color = color;
         }
 
+    }
+
+    void ResetAlpha()
+    {
+        Color color = GetComponent<Renderer>().material.color;
+        color.a = alpha;
+        GetComponent<Renderer>().material.color = color;
     }
 
     bool OnTrigger()
