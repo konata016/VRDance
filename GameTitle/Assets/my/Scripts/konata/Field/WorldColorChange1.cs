@@ -10,22 +10,28 @@ public class WorldColorChange1 : MonoBehaviour
     public Material excellentMaterial;
 
     float alpha;
+    Color color;
 
     // Start is called before the first frame update
     void Start()
     {
+        //アルファ値の初期化用
         alpha = excellentMaterial.color.a;
 
-        Color color = GetComponent<Renderer>().material.color;
+        //はじめは透明にする
+        color = GetComponent<Renderer>().material.color;
         color.a = 0;
         GetComponent<Renderer>().material.color = color;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (OnTrigger())
         {
+            //評価によってワールド色を変える
             switch (NotesManager2.rank)
             {
                 case NotesManager2.RANK.Bad:
@@ -43,33 +49,39 @@ public class WorldColorChange1 : MonoBehaviour
                     ResetAlpha();
                     break;
 
-                default:break;
+                case NotesManager2.RANK.Miss:
+                    NotesManager2.rank = NotesManager2.RANK.Wait;
+                    break;
+
+                default: break;
             }
-            
         }
 
-
-        if(0< GetComponent<Renderer>().material.color.a)
+        //アルファ値を下げる
+        if (0 <= GetComponent<Renderer>().material.color.a)
         {
-            Color color = GetComponent<Renderer>().material.color;
             color.a -= speed * Time.deltaTime;
             GetComponent<Renderer>().material.color = color;
         }
-
     }
 
+    //マテリアルを入れ替える
     void ResetAlpha()
     {
-        Color color = GetComponent<Renderer>().material.color;
+        color = GetComponent<Renderer>().material.color;
         color.a = alpha;
         GetComponent<Renderer>().material.color = color;
+
+        //判定が終わったら判定を行っているスクリプトに判定が終わったことを伝える
+        NotesManager2.rank = NotesManager2.RANK.Wait;
     }
 
+    //トリガーの処理をここに入れる
     bool OnTrigger()
     {
         if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing ||
             StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing ||
-           OnDebugKey())
+           OnDebugKey() || PauseCheck.GetOnStep)
         {
             return true;
         }
