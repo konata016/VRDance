@@ -14,14 +14,16 @@ public class GenerateStage : MonoBehaviour
         laser
     }
 
-    private const string WIDE = "w";
     private string VERTICAL_R = "1";
+    private const string THROW = "2";
+    private const string WIDE = "3";
+
     private string VERTICAL_L = "vl";
     private const string PUNCH = "p";
     private const string LASER = "l";
-    private const string THROW = "2";
+    
 
-    private struct Date
+    private struct Data
     {
         public NoteType type;
         public float time;
@@ -30,8 +32,8 @@ public class GenerateStage : MonoBehaviour
     [SerializeField] GameObject groundCube;
 
     private List<Note> noteTime = new List<Note>();
-    private List<Date> noteDates = new List<Date>();
-    private Date[] dates = new Date[256];
+    private List<Data> noteDates = new List<Data>();
+    private Data[] dates = new Data[256];
 
     private Vector3[] wavePositionPreset = new Vector3[3];
     private Vector3[,] punchPositionPreset = new Vector3[3, 3];
@@ -151,7 +153,7 @@ public class GenerateStage : MonoBehaviour
 
         if (tn.Equals(WIDE))
         {
-            type = 5;
+            type = 3;
         }
         else if (tn.Equals(VERTICAL_R))
         {

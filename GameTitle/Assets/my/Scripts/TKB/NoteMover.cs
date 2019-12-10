@@ -13,6 +13,7 @@ public class NoteMover : MonoBehaviour
 
     [SerializeField] float vertcalAnimTime = 2.15f;
     [SerializeField] float throwAnimTime = 1.85f;
+    [SerializeField] float wideAnimTime = 2.15f;
 
     private WideWaveNote wide;
     private VerticalWaveNote vertical;
@@ -35,7 +36,7 @@ public class NoteMover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        wide = new WideWaveNote(0.0f, Vector3.zero, wideNote);
+        wide = new WideWaveNote(wideAnimTime, Vector3.zero, wideNote);
         vertical = new VerticalWaveNote(vertcalAnimTime, Vector3.zero, verticalNoteR);
         punch = new PunchNote(0.0f, Vector3.zero, punchNote);
         laser = new LaserNote(0.0f, Vector3.zero, laserNote);
@@ -84,6 +85,14 @@ public class NoteMover : MonoBehaviour
         {
             case NotesType.wideWave:
                 wideFlag = true;
+                for (int i = 2; i < 8; i++)
+                {
+                    if (posBool[i] == TRUE)
+                    {
+                        wide.NoteGenerate(wideNote, notePos[i - 2]);
+                        //Debug.Log(posBool[i]);
+                    }
+                }
                 break;
 
             case NotesType.verticalWaveRight:
@@ -95,7 +104,7 @@ public class NoteMover : MonoBehaviour
                     if (posBool[i] == TRUE)
                     {
                         vertical.NoteGenerate(verticalNoteR, notePos[i-2]);
-                        Debug.Log(posBool[i]);
+                        //Debug.Log(posBool[i]);
                     }
                 }
                 break;
@@ -149,7 +158,7 @@ public class NoteMover : MonoBehaviour
         switch (type)
         {
             case (int)NotesType.wideWave:
-                
+                gTime = time - vertical.generateTime;
                 break;
 
             case (int)NotesType.verticalWaveRight:
@@ -165,7 +174,7 @@ public class NoteMover : MonoBehaviour
                 break;
 
             case (int)NotesType.throwCube:
-                
+                gTime = time - vertical.generateTime;
                 break;
         }
 

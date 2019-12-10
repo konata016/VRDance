@@ -2133,7 +2133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &1101465338
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2855,6 +2855,10 @@ PrefabInstance:
     - target: {fileID: 400004, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92d73b8c710537c4d965a874ac1db277, type: 3}
@@ -4454,7 +4458,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee36f4fd12a9f2f45b0535c25d7a7eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wideNote: {fileID: 1101465337}
+  wideNote: {fileID: 3412485536573465233, guid: 44c2dbf3737d8874797dd04d612499e7,
+    type: 3}
   verticalNoteR: {fileID: 1240050052495636740, guid: b363dc3ec39354f4cbc3779c1debba07,
     type: 3}
   verticalNoteL: {fileID: 592079562874468166, guid: 4419aa7b41fb12848bc0a7bf33b64037,
@@ -4465,6 +4470,7 @@ MonoBehaviour:
     type: 3}
   vertcalAnimTime: 2.15
   throwAnimTime: 1.85
+  wideAnimTime: 2.15
 --- !u!4 &2086584538
 Transform:
   m_ObjectHideFlags: 0

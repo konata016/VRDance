@@ -11,8 +11,8 @@ public struct ATK //プレイヤーが与えられるダメージがここにあ
 }
 
 public class EnemyState : MonoBehaviour
-{  
-    [SerializeField] float enemyHPmax;
+{
+    [SerializeField] float enemyHPmax = 100.0f;
     private float enemyHP;
     private float konjoHP;
     private float konjoDamage;
@@ -34,6 +34,7 @@ public class EnemyState : MonoBehaviour
         audioSource = musicObj.GetComponent<AudioSource>();
         musicTime = audioSource.clip.length;
         leftTime = musicTime - musicObj.GetComponent<AudioSource>().time;
+        enemyHP = enemyHPmax;
     }
 
     // Update is called once per frame
@@ -52,6 +53,7 @@ public class EnemyState : MonoBehaviour
         if (other.gameObject.tag == atk.swordTag)
         {
             DamageCal(atk.swordDMG);
+            Debug.Log(enemyHP);
         }
     }
 
