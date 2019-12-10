@@ -67,7 +67,29 @@ public class WorldColorChange1 : MonoBehaviour
 
     bool OnTrigger()
     {
-        bool on = Input.GetKeyDown(KeyCode.Alpha3);
-        return on;
+        if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing ||
+            StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing ||
+           OnDebugKey())
+        {
+            return true;
+        }
+        else return false;
+
+        //ボタンの処理
+        bool OnDebugKey()
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha0) ||
+                Input.GetKeyDown(KeyCode.Alpha1) ||
+                Input.GetKeyDown(KeyCode.Alpha2) ||
+                Input.GetKeyDown(KeyCode.Alpha3) ||
+                Input.GetKeyDown(KeyCode.Alpha4) ||
+                Input.GetKeyDown(KeyCode.Alpha5) ||
+                Input.GetKeyDown(KeyCode.Alpha6) ||
+                Input.GetKeyDown(KeyCode.Alpha7))
+            {
+                return true;
+            }
+            else return false;
+        }
     }
 }

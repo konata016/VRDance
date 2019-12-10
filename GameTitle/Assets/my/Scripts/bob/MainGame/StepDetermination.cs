@@ -14,6 +14,7 @@ public class StepDetermination : MonoBehaviour
     private float timeRegulary = 0.5f;   // 地面の位置をチェックする周期
     private int roundedDown = 100;       // 小数点以下切り捨て
     private bool only1Time;              // 一度だけ実行
+    public float tweak = 0.03f;          // 微調整
     /* オブジェクト */
     public GameObject ripplesObj;
     /* サウンド関係 */
@@ -84,13 +85,13 @@ public class StepDetermination : MonoBehaviour
         if (isGroundTouch_L == ISGROUNDTOUCH.Wait)// 待ち
         {
             //Debug.Log("待ち");
-            if (groundPosition.y + 0.03f < Mathf.Floor(footPosL.y * roundedDown) / roundedDown)// 足を上げた
+            if (groundPosition.y + tweak < Mathf.Floor(footPosL.y * roundedDown) / roundedDown)// 足を上げた
                 isGroundTouch_L = ISGROUNDTOUCH.Jump;
         }
         else if (isGroundTouch_L == ISGROUNDTOUCH.Jump)// ジャンプ
         {
             //Debug.Log("ジャンプ");
-            if (groundPosition.y + 0.03f >= Mathf.Floor(footPosL.y * roundedDown) / roundedDown)// 足を地面につけた
+            if (groundPosition.y + tweak >= Mathf.Floor(footPosL.y * roundedDown) / roundedDown)// 足を地面につけた
             {
                 isGroundTouch_L = ISGROUNDTOUCH.Landing;
                 audioSource.clip = leftFoot;
@@ -104,20 +105,20 @@ public class StepDetermination : MonoBehaviour
         else if (isGroundTouch_L == ISGROUNDTOUCH.EndProcess)// 判定後
         {
             //Debug.Log("判定後");
-            Instantiate(ripplesObj, footPosL, Quaternion.identity);// 波紋の生成
+            //Instantiate(ripplesObj, footPosL, Quaternion.identity);// 波紋の生成
             isGroundTouch_L = ISGROUNDTOUCH.Wait;
         }
         /* 右足の判定 */
         if (isGroundTouch_R == ISGROUNDTOUCH.Wait)// 待ち
         {
             //Debug.Log("待ち");
-            if (groundPosition.y + 0.03f < Mathf.Floor(footPosR.y * roundedDown) / roundedDown)// 足を上げた
+            if (groundPosition.y + tweak < Mathf.Floor(footPosR.y * roundedDown) / roundedDown)// 足を上げた
                 isGroundTouch_R = ISGROUNDTOUCH.Jump;
         }
         else if (isGroundTouch_R == ISGROUNDTOUCH.Jump)// ジャンプ
         {
             //Debug.Log("ジャンプ");
-            if (groundPosition.y + 0.03f >= Mathf.Floor(footPosR.y * roundedDown) / roundedDown)// 足を地面につけた
+            if (groundPosition.y + tweak >= Mathf.Floor(footPosR.y * roundedDown) / roundedDown)// 足を地面につけた
             {
                 isGroundTouch_R = ISGROUNDTOUCH.Landing;
                 audioSource.clip = rightFoot;
@@ -131,7 +132,7 @@ public class StepDetermination : MonoBehaviour
         else if (isGroundTouch_R == ISGROUNDTOUCH.EndProcess)// 判定後
         {
             //Debug.Log("判定後");
-            Instantiate(ripplesObj, footPosR, Quaternion.identity);// 波紋の生成
+            //Instantiate(ripplesObj, footPosR, Quaternion.identity);// 波紋の生成
             Debug.Log("波紋！");
             isGroundTouch_R = ISGROUNDTOUCH.Wait;
         }
