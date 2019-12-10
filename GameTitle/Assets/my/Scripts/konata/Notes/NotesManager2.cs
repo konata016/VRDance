@@ -33,6 +33,7 @@ public class NotesManager2 : MonoBehaviour
 
         //生成のタイミングをずらす
         fixTime = angle / speed;
+        fixTime += GameDirector.GetGameDirector.uiNotesFixTime;
     }
 
     // Update is called once per frame
