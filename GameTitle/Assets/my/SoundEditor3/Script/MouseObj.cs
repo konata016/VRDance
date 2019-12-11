@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MouseObj : MonoBehaviour
 {
+    public Vector3 fixPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,10 +14,9 @@ public class MouseObj : MonoBehaviour
     void Update()
     {
         //マウスに
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = 10;
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-        transform.position = worldPos;
+        Vector3 screenPoint = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 a = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+        transform.position = Camera.main.ScreenToWorldPoint(a);
     }
 
    

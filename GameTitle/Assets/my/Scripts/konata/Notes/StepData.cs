@@ -35,6 +35,7 @@ public class StepData : MonoBehaviour
         Throw
     }
 
+    [System.Serializable]
     public class Data
     {
         public PL_STEP_TIMING plStep;               //プレイヤーノーツ
@@ -45,7 +46,7 @@ public class StepData : MonoBehaviour
         public float musicScore;                    //時間
     }
     public List<Data> stepData = new List<Data>();
-    public List<float> textTime = new List<float>();
+    List<float> textTime = new List<float>();
 
     static StepData StepData_;  //自身を参照用
 
