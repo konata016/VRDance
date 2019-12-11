@@ -8,7 +8,7 @@ public class PlDamageStage : MonoBehaviour
     public GameObject[] stageObjArr;
     public float lostPoint = -10;
     public float fallTime = 3;
-    int life;
+    public static int life { get; private set; }
     bool onFall;
 
     // Start is called before the first frame update
@@ -22,14 +22,17 @@ public class PlDamageStage : MonoBehaviour
     {
         if (OnTrigger())
         {
-            if (life != 0)
+            if (life != -1)
             {
                 life--;
                 onFall = true;
             }
         }
 
-        StageControl();
+        if (life != -1)
+        {
+            StageControl();
+        }
     }
 
     void StageControl()
