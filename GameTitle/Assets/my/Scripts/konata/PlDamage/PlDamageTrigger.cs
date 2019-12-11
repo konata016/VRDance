@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Head : MonoBehaviour
+public class PlDamageTrigger : MonoBehaviour
 {
-    public static bool OnDamageHit { get; set; }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +16,11 @@ public class Head : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "wave"|| other.gameObject.tag == "throw")
+        if (other.gameObject.tag == "wave" || other.gameObject.tag == "throw")
         {
-            OnDamageHit = true;
+            PlDamageStage.OnDamageTrigger = true;
         }
     }
 }

@@ -15,7 +15,7 @@ public class DebugTextManager : MonoBehaviour
     {
         DebugPanel.text1 = "ポーズ：" + PauseCheck.actionPause;
         DebugPanel.text2 = "攻撃力：" + PlActionControl2.GetDamage;
-        DebugPanel.text3 = "判　定：" + NotesManager.GetRank;
+        DebugPanel.text3 = "判　定：" + NotesManager2.rank;
 
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameDirector : MonoBehaviour
 {
+    [Header("プレイヤーノーツ")]
     public float uiNotesFixTime = -0.2f;
     public float groundNotesFixTime = -0.18f;
 
