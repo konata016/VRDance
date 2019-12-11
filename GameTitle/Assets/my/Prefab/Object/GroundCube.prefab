@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1178020956794969784}
   - component: {fileID: 8791930850437971242}
   - component: {fileID: 574634035250975685}
-  - component: {fileID: 7511792049478062906}
+  - component: {fileID: 2277772628671088869}
   - component: {fileID: 6288695624059730802}
   m_Layer: 0
   m_Name: GroundCube
@@ -53,7 +53,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -93,7 +93,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &7511792049478062906
+--- !u!54 &2277772628671088869
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,4 +122,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 670
-  max: 2.3
+  max: 2
+  wideMax: 0.5
+  colorSpeed: 130

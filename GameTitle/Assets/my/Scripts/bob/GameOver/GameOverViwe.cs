@@ -19,21 +19,22 @@ public class GameOverViwe : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        if (0>PlDamageStage.life)
         {
-            if (onOff)
-            {
-                onOff = false;
-                MainSound.volume = 0.272f;
-            }
-            else
+            //if (onOff)
+            //{
+            //    onOff = false;
+            //    MainSound.volume = 0.272f;
+            //}
+            if(!onOff)
             {
                 onOff = true;
                 MainSound.volume = 0.0f;
             }
-            timeCount = 0;
+            Time.timeScale = 0;
             GameObject.Find("GameOverUI").GetComponent<UnityEngine.UI.Image>().enabled = onOff;
             noiseController.noiseOnOff = onOff;
+
         }
 
         if (onOff)
@@ -42,6 +43,7 @@ public class GameOverViwe : MonoBehaviour
 
             if (timeCount >= timeCountMax * 60)
             {
+                Time.timeScale = 1;
                 SceneManager.LoadScene("SelectSecen");
             }
         }

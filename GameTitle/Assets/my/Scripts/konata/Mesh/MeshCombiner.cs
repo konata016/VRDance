@@ -11,7 +11,8 @@ public class MeshCombiner : MonoBehaviour
 
 
     //適当なマテリアルをセットするようにしておく
-    public Material targetMaterial;
+    //public Material targetMaterial;
+    public GameObject materialObj;
 
     void Start()
     {
@@ -23,7 +24,7 @@ public class MeshCombiner : MonoBehaviour
         {
             combine[i].mesh = ((MeshFilter)meshFilters[i]).sharedMesh;
             combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
-            meshFilters[i].gameObject.SetActive(false);
+            //meshFilters[i].gameObject.SetActive(false);
             i++;
         }
 
@@ -34,6 +35,6 @@ public class MeshCombiner : MonoBehaviour
         transform.gameObject.SetActive(true);
 
         //マテリアルを再設定
-        transform.gameObject.GetComponent<Renderer>().material = targetMaterial;
+        transform.gameObject.GetComponent<Renderer>().material = materialObj.GetComponent<Renderer>().materials[1];
     }
 }

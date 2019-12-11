@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/my/Scene/SelectSecen.unity
     guid: 203eaf262a6545444ab988fdc4d27924
+  - enabled: 1
+    path: Assets/my/Scene/1.unity
+    guid: 240435f9512e82d42baef4b536494eea
+  - enabled: 1
+    path: Assets/my/SoundEditor3/s.unity
+    guid: 1948f8dff1042504c8194f7d254b8f88
   m_configObjects: {}

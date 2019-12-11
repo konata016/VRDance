@@ -9,6 +9,7 @@ TagManager:
   - wave
   - AudioWaveformCube
   - PikupikuCube
+  - wide
   layers:
   - Default
   - TransparentFX

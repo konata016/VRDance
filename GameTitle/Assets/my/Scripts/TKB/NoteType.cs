@@ -19,8 +19,8 @@ public enum NotesType
     none,
     verticalWaveRight,
     throwCube,
-    verticalWaveLeft,
     wideWave,
+    verticalWaveLeft,
     punch,
     laser
 }
