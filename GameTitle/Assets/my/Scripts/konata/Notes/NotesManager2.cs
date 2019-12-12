@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NotesManager2 : MonoBehaviour
 {
-    public enum RANK { Bad, Good, Excellent,Miss }           //ランクのenum
+    public enum RANK { Bad, Good, Excellent, Miss, Wait }           //ランクのenum
     public static RANK rank { get; set; }               //ランクを他のスクリプトに渡すよう
 
     public GameObject notesObj;                         //ノーツオブジェクト
@@ -33,6 +33,7 @@ public class NotesManager2 : MonoBehaviour
 
         //生成のタイミングをずらす
         fixTime = angle / speed;
+        fixTime += GameDirector.GetGameDirector.uiNotesFixTime;
     }
 
     // Update is called once per frame
@@ -43,6 +44,7 @@ public class NotesManager2 : MonoBehaviour
         RankJudge();
         OverNotes();
 
+        DebugPanel.text4 = ""+rank;
         //Debug.Log(StepData.GetSoundPlayTime);
     }
 

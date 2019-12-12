@@ -34,6 +34,7 @@ public class StepData : MonoBehaviour
         Throw
     }
 
+    [System.Serializable]
     public class Data
     {
         public PL_STEP_TIMING plStep;               //プレイヤーノーツ
@@ -44,7 +45,7 @@ public class StepData : MonoBehaviour
         public float musicScore;                    //時間
     }
     public List<Data> stepData = new List<Data>();
-    public List<float> textTime = new List<float>();
+    List<float> textTime = new List<float>();
 
     static StepData StepData_;  //自身を参照用
 
@@ -58,23 +59,26 @@ public class StepData : MonoBehaviour
         //Debug.Log(File.Exists(fileName));
 
         //テキストの読み込み
-        foreach (string str in File.ReadLines(fileName))
+        if (File.Exists(fileName))
         {
-            string[] arr = str.Split(',');                           //（,）カンマで分ける
-            stepData.Add(new Data());
-
-            textTime.Add(float.Parse(arr[(int)INPUT_TEXT.MusicScore]));
-
-            stepData[count].musicScore = float.Parse(arr[(int)INPUT_TEXT.MusicScore]);
-            stepData[count].ememyAttackType = (ENEMY_ATTACK_TYPE)int.Parse(arr[(int)INPUT_TEXT.EnemyAttackType]);
-            stepData[count].plStep = (PL_STEP_TIMING)int.Parse(arr[(int)INPUT_TEXT.PlStep]);
-
-            for (int i = (int)INPUT_TEXT.EnemyAttackLane0; i <= (int)INPUT_TEXT.EnemyAttackLane5; i++)
+            foreach (string str in File.ReadLines(fileName))
             {
-                stepData[count].enemyAttackPos[i - (int)INPUT_TEXT.EnemyAttackLane0] = bool.Parse(arr[i]);
-            }
+                string[] arr = str.Split(',');                           //（,）カンマで分ける
+                stepData.Add(new Data());
 
-            count++;
+                textTime.Add(float.Parse(arr[(int)INPUT_TEXT.MusicScore]));
+
+                stepData[count].musicScore = float.Parse(arr[(int)INPUT_TEXT.MusicScore]);
+                stepData[count].ememyAttackType = (ENEMY_ATTACK_TYPE)int.Parse(arr[(int)INPUT_TEXT.EnemyAttackType]);
+                stepData[count].plStep = (PL_STEP_TIMING)int.Parse(arr[(int)INPUT_TEXT.PlStep]);
+
+                for (int i = (int)INPUT_TEXT.EnemyAttackLane0; i <= (int)INPUT_TEXT.EnemyAttackLane5; i++)
+                {
+                    stepData[count].enemyAttackPos[i - (int)INPUT_TEXT.EnemyAttackLane0] = bool.Parse(arr[i]);
+                }
+
+                count++;
+            }
         }
 
         StepData_ = this;   //初期化と数値の代入(thisしないとバグる)
@@ -92,9 +96,13 @@ public class StepData : MonoBehaviour
     //timeに一番近いテキスト内サウンド時間の配列番号を返す
     static public int GetTimeNearBeatTime(float time)
     {
+        int num = 0;
         //目的の値に最も近い値を返す
-        var min = StepData_.textTime.Min(c => Math.Abs(c - time));
-        int num = StepData_.textTime.IndexOf(StepData_.textTime.First(c => Math.Abs(c - time) == min));
+        if (File.Exists(StepData_.fileName))
+        {
+            var min = StepData_.textTime.Min(c => Math.Abs(c - time));
+            num = StepData_.textTime.IndexOf(StepData_.textTime.First(c => Math.Abs(c - time) == min));
+        }
         return num;
     }
 

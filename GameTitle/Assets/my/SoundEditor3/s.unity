@@ -414,6 +414,7 @@ GameObject:
   - component: {fileID: 197484687}
   - component: {fileID: 197484690}
   - component: {fileID: 197484686}
+  - component: {fileID: 197484689}
   - component: {fileID: 197484688}
   m_Layer: 0
   m_Name: GameObject
@@ -466,6 +467,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyCode: 101
   scene: 1
+--- !u!114 &197484689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197484685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdde2682b741a714f8a854b7288609f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bar: 4
+  beat: 16
+  tempo: 120
 --- !u!114 &197484690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,7 +731,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1862bdbe6ff4905438c68f46fe5cd65b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.269
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -828,7 +844,7 @@ MonoBehaviour:
   scoreName: aaa
   fileName: Assets/Resources/Notes/
   source: {fileID: 781165482}
-  textTime: []
+  stepData: []
 --- !u!1 &880503037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,8 +1082,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1075,7 +1091,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
+  m_TargetEye: 0
   m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
@@ -1208,11 +1224,11 @@ RectTransform:
   m_Father: {fileID: 191727694}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 66}
-  m_SizeDelta: {x: 300, y: 20}
-  m_Pivot: {x: 1, y: 0}
+  m_SizeDelta: {x: 230, y: 20}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1317464515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,6 +1381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d841174cff33144fb5841796721c4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fixPos: {x: 0, y: 0, z: 0}
 --- !u!135 &1579247506
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1562,7 +1579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1799005300
 MonoBehaviour:
   m_ObjectHideFlags: 0

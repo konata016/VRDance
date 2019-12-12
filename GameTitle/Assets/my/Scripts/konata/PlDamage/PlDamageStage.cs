@@ -8,56 +8,45 @@ public class PlDamageStage : MonoBehaviour
     public GameObject[] stageObjArr;
     public float lostPoint = -10;
     public float fallTime = 3;
-    public static int life { get; private set; }
-    bool onFall;
+
+    public static int Life { get;private set; }
+    public static bool OnDamageTrigger { private get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
-        life = stageObjArr.Length;
+        Life = stageObjArr.Length;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (OnTrigger())
-        {
-            if (life != -1)
-            {
-                life--;
-                onFall = true;
-            }
-        }
+        DebugTrigger();             //キーボード入力用
 
-        if (life != -1)
+        //敵の攻撃に当たった場合Lifeをマイナスする
+        if (OnDamageTrigger)
         {
-            StageControl();
+            Life--;
+            if (Life != -1) FallMove(stageObjArr[Life]);
+            OnDamageTrigger = false;
         }
     }
 
-    void StageControl()
+    //ステージが一定の距離まで動いたら非表示にする
+    void StageHidden()
     {
-        if (onFall)
+        for (int i = 0; i < stageObjArr.Length; i++)
         {
-            FallMove(stageObjArr[life]);
-            onFall = false; 
-        }
-        HiddenObj();
-
-        void HiddenObj()
-        {
-            for (int i = 0; i < stageObjArr.Length; i++)
+            var obj = stageObjArr[i];
+            var pos = obj.transform.position;
+            if (lostPoint > pos.y - 1)
             {
-                var obj = stageObjArr[i];
-                var pos = obj.transform.position;
-                if (lostPoint > pos.y - 1)
-                {
-                    obj.GetComponent<MeshRenderer>().enabled = false;
-                }
+                obj.GetComponent<MeshRenderer>().enabled = false;
             }
         }
     }
 
+    //ステージが落ちるモーション
     void FallMove(GameObject obj)
     {
         DOTween
@@ -72,9 +61,9 @@ public class PlDamageStage : MonoBehaviour
         }
     }
 
-    bool OnTrigger()
+    //デバッグ用
+    void DebugTrigger()
     {
-        bool isDamage = Input.GetKeyDown(KeyCode.D);
-        return isDamage;
+        if (Input.GetKeyDown(KeyCode.D)) Life--;
     }
 }

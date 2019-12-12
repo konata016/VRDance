@@ -45,7 +45,7 @@ public class ShaderNotes3 : MonoBehaviour
 
         //生成のタイミングをずらす
         fixTime = (startPos.z - StepDetermination.groundPosition.z) / speed;
-
+        fixTime += GameDirector.GetGameDirector.groundNotesFixTime;
 
         //ノーツが放たれる場所から自身がどれだけ離れているかの計算
         //もしかしたらstartPosにした方がいいかもしれない

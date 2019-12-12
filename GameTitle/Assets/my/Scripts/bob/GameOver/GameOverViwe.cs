@@ -19,7 +19,7 @@ public class GameOverViwe : MonoBehaviour
 
     void Update()
     {
-        if (0>PlDamageStage.life)
+        if (0>PlDamageStage.Life)
         {
             //if (onOff)
             //{
