@@ -107,10 +107,23 @@ public class StepData : MonoBehaviour
         return num;
     }
 
-    public static List<Data> GetStepData { get { return StepData_.stepData; } }     //音楽データ渡
-    public static float GetSoundPlayTime { get { return StepData_.source.time; } }  //曲の再生時間渡す
-    public static float GetSoundMaxTime { get { return StepData_.source.clip.length; } }
-    public static string GetScoreLink { get { return StepData_.fileName; } }
-    public static string GetScoreName { get { return StepData_.scoreName; } }
+    /// <summary>
+    /// テキスト内にあるデータを持ってくることができる。enumのINPUT_TEXTで配列内の各データの種類がわかる。
+    /// </summary>
+    public static List<Data> GetStepData { get { return StepData_.stepData; } }
 
+    /// <summary>
+    /// 曲の現在の再生時間を取得できる
+    /// </summary>
+    public static float GetSoundPlayTime { get { return StepData_.source.time; } }
+
+    /// <summary>
+    /// 曲の長さ(時間)
+    /// </summary>
+    public static float GetSoundMaxTime { get { return StepData_.source.clip.length; } }
+
+    /// <summary>
+    /// テキストファイルの場所
+    /// </summary>
+    public static string GetScoreLink { get { return StepData_.fileName; } }
 }
