@@ -1,22 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FootJudgment_Right : MonoBehaviour
 {
-    public static Vector3 groundPosition;             // 地面の位置
+    public static Vector3 groundPosition;       // 地面の位置
     private Vector3 myLowFootPos;               // 低い足の位置
-    private bool onGround_R, onGround_L;         // 足が地面についているか否か
-    private bool onGround_R_Old, onGround_L_Old; // 足が地面についているか否か
+    private bool onGround_R, onGround_L;        // 足が地面についているか否か
+    private bool onGround_R_Old, onGround_L_Old;// 足が地面についているか否か
     private float timeCheck;                    // 地面変更経過時間
     private float timeRegulary = 0.5f;          // 地面の位置をチェックする周期
     private Vector3 groundPosSave;              // 地面の位置(保存)
     private Vector3 groundPosSaveSave;          // 地面の位置(保存)
     private Vector3 footConPos_R, footConPos_L; // コントローラの取得
     private int roundedDown = 100;              // 小数点以下切り捨て
-    public float tweak = 0.03f;                // 微調整
+    public float tweak = 0.03f;                 // 微調整
     private bool onlyOneTime = true;            // 一度だけ読み込む
-    private bool judgment;
+    private bool judgment;                      // 足の位置を更新時にステップを踏まなくする
     // 受け渡す変数
     public enum ISGROUNDTOUCH { Landing, Stoping, Jumping }// 0:着地後 1:静止中 2:ジャンプ中
     public static ISGROUNDTOUCH isGroundTouch_R { get; set; }
@@ -80,6 +81,7 @@ public class FootJudgment_Right : MonoBehaviour
             {
                 if (myLowFootPos.y == groundPosSave.y && myLowFootPos.y == groundPosSaveSave.y)
                 {
+                    judgment = false;
                     groundPosition.y = myLowFootPos.y;
                     judgment = true;
                     isGroundTouch_R = ISGROUNDTOUCH.Stoping;
@@ -200,17 +202,51 @@ public class FootJudgment_Right : MonoBehaviour
 
     private void JumpJudgment()
     {
-        BpmMove_Cube.Set_JumpJudgment = true;
-        BpmMove_DokudoCube.Set_JumpJudgment = true;
+
+        switch (SceneManager.GetActiveScene().name){
+            case "SelectScene":
+                BpmMove_Cube.Set_JumpJudgment = true;
+                BpmMove_DokudoCube.Set_JumpJudgment = true;
+                break;
+
+            case "1":
+                
+                break;
+
+            default:break;
+        }
+
     }
     private void RightJudgment()
     {
-        BpmMove_Cube.Set_RightJudgment = true;
-        BpmMove_DokudoCube.Set_RightJudgment = true;
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "SelectScene":
+                BpmMove_Cube.Set_RightJudgment = true;
+                BpmMove_DokudoCube.Set_RightJudgment = true;
+                break;
+
+            case "1":
+
+                break;
+
+            default: break;
+        }
     }
     private void LeftJudgment()
     {
-        BpmMove_Cube.Set_LeftJudgment = true;
-        BpmMove_DokudoCube.Set_LeftJudgment = true;
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "SelectScene":
+                BpmMove_Cube.Set_LeftJudgment = true;
+                BpmMove_DokudoCube.Set_LeftJudgment = true;
+                break;
+
+            case "1":
+
+                break;
+
+            default: break;
+        }
     }
 }
