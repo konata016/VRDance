@@ -11,9 +11,9 @@ public class NoteMover : MonoBehaviour
     [SerializeField] GameObject laserNote;
     [SerializeField] GameObject throwNote;
 
-    [SerializeField] float vertcalAnimTime = 2.15f;
-    [SerializeField] float throwAnimTime = 1.85f;
-    [SerializeField] float wideAnimTime = 2.15f;
+    [SerializeField] const float vertcalAnimTime = 2.15f;
+    [SerializeField] const float throwAnimTime = 1.85f;
+    [SerializeField] const float wideAnimTime = 2.15f;
 
     private WideWaveNote wide;
     private VerticalWaveNote vertical;
@@ -174,7 +174,7 @@ public class NoteMover : MonoBehaviour
                 break;
 
             case (int)NotesType.throwCube:
-                gTime = time - vertical.generateTime;
+                gTime = time - throwCube.generateTime;
                 break;
         }
 

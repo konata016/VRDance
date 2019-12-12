@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BpmMove_Cube : MonoBehaviour
 {
@@ -105,6 +106,7 @@ public class BpmMove_Cube : MonoBehaviour
             else
             {
                 // 曲選択
+                SceneManager.LoadScene("1");
             }
         }
     }

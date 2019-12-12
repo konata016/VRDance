@@ -76,6 +76,9 @@ public class GenerateStage : MonoBehaviour
 
         musicObj = GameObject.Find("GameManager");
         music = musicObj.GetComponent<AudioSource>();
+
+        time = 0;
+        n = 0;
         //musicTime = music.clip.length;
         //leftTime = musicTime - musicObj.GetComponent<AudioSource>().time;
 
@@ -180,7 +183,7 @@ public class GenerateStage : MonoBehaviour
         //Debug.Log(textNotes[n][1]);
         //Debug.Log(type);
 
-        if (time >= noteTime)
+        if (StepData.GetSoundPlayTime >= noteTime)
         {
             switch (type)
             {
