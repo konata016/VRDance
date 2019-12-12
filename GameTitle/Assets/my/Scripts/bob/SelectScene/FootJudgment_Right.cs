@@ -14,7 +14,7 @@ public class FootJudgment_Right : MonoBehaviour
     private Vector3 groundPosSaveSave;          // 地面の位置(保存)
     private Vector3 footConPos_R, footConPos_L; // コントローラの取得
     private int roundedDown = 100;              // 小数点以下切り捨て
-    private float tweak = 0.03f;                // 微調整
+    public float tweak = 0.03f;                // 微調整
     private bool onlyOneTime = true;            // 一度だけ読み込む
     private bool judgment;
     // 受け渡す変数
