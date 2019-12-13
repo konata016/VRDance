@@ -210,7 +210,7 @@ public class FootJudgment_Right : MonoBehaviour
                 break;
 
             case "1":
-                
+                TriggerManager.SetOnTriggerFoot = true;
                 break;
 
             default:break;
@@ -227,7 +227,7 @@ public class FootJudgment_Right : MonoBehaviour
                 break;
 
             case "1":
-
+                TriggerManager.SetOnTriggerFoot = true;
                 break;
 
             default: break;
@@ -243,7 +243,7 @@ public class FootJudgment_Right : MonoBehaviour
                 break;
 
             case "1":
-
+                TriggerManager.SetOnTriggerFoot = true;
                 break;
 
             default: break;

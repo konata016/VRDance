@@ -17,7 +17,13 @@ public class SceneChangeEffect : MonoBehaviour
     public string changeSceneName;
 
     float gage;
+    float fadeOutDef = 1.8f;
+    float fadeInDef = 0.8f;
     bool onTrigger;
+
+    float sceneChangeDeltaTime;
+
+    SceneChangeBoxPos sceneChangeBoxPos;
 
     AsyncOperation async;
     // Start is called before the first frame update
@@ -25,43 +31,50 @@ public class SceneChangeEffect : MonoBehaviour
     {
         switch (fadeMode)
         {
-            case FADE_MODE.Out:gage = 1.8f; break;
-            case FADE_MODE.In: gage = 0.8f; break;
+            case FADE_MODE.Out:gage = fadeOutDef; break;
+            case FADE_MODE.In: gage = fadeInDef; break;
             default: break;
         }
         material.SetFloat("_Gauge", gage);
         async = SceneManager.LoadSceneAsync(changeSceneName);
         async.allowSceneActivation = false;
+        sceneChangeBoxPos = GetComponent<SceneChangeBoxPos>();
+        sceneChangeDeltaTime = 0;// リアルタイムの初期化
     }
 
     // Update is called once per frame
     void Update()
     {
-        OnTrigger();
-
         switch (fadeMode)
         {
             case FADE_MODE.Out:
                 if (onTrigger)
                 {
-                    if (0.8f < gage) material.SetFloat("_Gauge", gage -= Time.deltaTime * speed);
+                    if (fadeInDef < gage)
+                    {
+                        material.SetFloat("_Gauge", gage -= sceneChangeDeltaTime * speed);
+                        sceneChangeDeltaTime += (1.0f / 120);
+                    } 
                     else async.allowSceneActivation = true;
                 }
                 break;
 
             case FADE_MODE.In:
-                if (1.8f > gage) material.SetFloat("_Gauge", gage += Time.deltaTime * speed);
+                if (fadeOutDef > gage)
+                {
+                    material.SetFloat("_Gauge", gage += sceneChangeDeltaTime * speed);
+                    sceneChangeDeltaTime += (1.0f / 120);
+                    Debug.Log("sceneChangeDeltaTime : " + sceneChangeDeltaTime);
+                }
                 break;
 
             default: break;
         }
     }
 
-    void OnTrigger()
+    public void OnTrigger()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            onTrigger = true;
-        }
+        sceneChangeBoxPos.BoxPosChange();
+        onTrigger = true;
     }
 }

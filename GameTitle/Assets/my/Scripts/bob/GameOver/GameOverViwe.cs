@@ -19,7 +19,7 @@ public class GameOverViwe : MonoBehaviour
 
     void Update()
     {
-        if (0>PlDamageStage.Life)
+        if (0 > PlDamageStage.Life)
         {
             //if (onOff)
             //{
@@ -34,7 +34,6 @@ public class GameOverViwe : MonoBehaviour
             Time.timeScale = 0;
             GameObject.Find("GameOverUI").GetComponent<UnityEngine.UI.Image>().enabled = onOff;
             noiseController.noiseOnOff = onOff;
-
         }
 
         if (onOff)

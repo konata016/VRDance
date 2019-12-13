@@ -52,11 +52,9 @@ public class MusicManagement : MonoBehaviour
             MusicInformationSet();
             onlyOneTime = false;
         }
-
-        if (soundBoxList[(int)BpmMove_Cube.boxOrientation].audioSource.time == 0.0f)
-        {
-            example.timePuls = 0.0f;
-        }
+        if (BpmMove_Cube.boxOrientation >= BpmMove_Cube.BOXORIENTATION.soundBox_1 && BpmMove_Cube.boxOrientation <= BpmMove_Cube.BOXORIENTATION.soundBox_4)
+            if (soundBoxList[(int)BpmMove_Cube.boxOrientation].audioSource.time == 0.0f)
+                example.timePuls = 0.0f;
     }
 
     public void MusicInformationSet()// 回転に合わせて曲の情報をセット
