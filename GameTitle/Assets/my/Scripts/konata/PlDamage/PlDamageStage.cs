@@ -30,6 +30,8 @@ public class PlDamageStage : MonoBehaviour
             if (Life != -1) FallMove(stageObjArr[Life]);
             OnDamageTrigger = false;
         }
+
+        StageHidden();
     }
 
     //ステージが一定の距離まで動いたら非表示にする
@@ -39,7 +41,7 @@ public class PlDamageStage : MonoBehaviour
         {
             var obj = stageObjArr[i];
             var pos = obj.transform.position;
-            if (lostPoint > pos.y - 1)
+            if (lostPoint > pos.y -1f)
             {
                 obj.GetComponent<MeshRenderer>().enabled = false;
             }
