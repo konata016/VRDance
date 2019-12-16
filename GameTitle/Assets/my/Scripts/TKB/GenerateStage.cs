@@ -91,7 +91,7 @@ public class GenerateStage : MonoBehaviour
     {
         TextAsset text = new TextAsset();
 
-        text = Resources.Load("Notes/aaa", typeof(TextAsset)) as TextAsset;
+        text = Resources.Load("Notes/Hard", typeof(TextAsset)) as TextAsset;
 
         string textAll = text.text;
 

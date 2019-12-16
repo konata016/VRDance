@@ -31,7 +31,8 @@ public class StepData : MonoBehaviour
     {
         Nothing,
         WaveWide,
-        Throw
+        Throw,
+        WaveUnder
     }
 
     [System.Serializable]
