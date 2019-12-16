@@ -7,15 +7,17 @@ public class BpmMove_Cube : MonoBehaviour
 {
     private int bpmTiming = 0;
     private bool moveSwitch = true;
-    public enum BOXORIENTATION { soundBox_1, soundBox_2, soundBox_3, soundBox_4, SoundName, Bottom, Other }// 0:正面 1:右面 2:背後 3:左面 4:曲名とか 5:底面 6:その他
+    public enum BOXORIENTATION { soundBox_1, soundBox_2, soundBox_3, soundBox_4, SoundName }// 0:正面 1:右面 2:背後 3:左面 4:曲名とか
     public static BOXORIENTATION boxOrientation { get; set; }
     public BOXORIENTATION boxOrientation_Old;
     float value_Old;    //回転した差分を引く用
     private MusicManagement musicManagement;
     private CanvasAlpha canvasAlpha;
+    private SceneChangeEffect sceneChangeEffect;
     public static bool Set_LeftJudgment { private get; set; }
     public static bool Set_RightJudgment { private get; set; }
     public static bool Set_JumpJudgment { private get; set; }
+    public static bool Set_sceneChange { get; set; }// シーン移行時に操作をしないようにする
 
     void Start()
     {
@@ -24,9 +26,12 @@ public class BpmMove_Cube : MonoBehaviour
         musicManagement = GetComponent<MusicManagement>();
         GameObject childObject = transform.Find("SoundInformation").gameObject;
         canvasAlpha = childObject.GetComponent<CanvasAlpha>();
+        GameObject anotherObject = GameObject.Find("SceneChangeBox");
+        sceneChangeEffect = anotherObject.GetComponent<SceneChangeEffect>();
         Set_LeftJudgment = false;
         Set_RightJudgment = false;
         Set_JumpJudgment = false;
+        Set_sceneChange = true;
     }
     
     void Update()
@@ -53,7 +58,7 @@ public class BpmMove_Cube : MonoBehaviour
     }
     public void JumpJudgment()
     {
-        if (moveSwitch)
+        if (moveSwitch && Set_sceneChange)
         {
             // セレクトボックス回転
             if (boxOrientation != BOXORIENTATION.SoundName)
@@ -80,7 +85,7 @@ public class BpmMove_Cube : MonoBehaviour
     }
     public void RightJudgment()
     {
-        if (moveSwitch)
+        if (moveSwitch && Set_sceneChange)
         {
             // セレクトボックス回転
             if (boxOrientation != BOXORIENTATION.SoundName)
@@ -105,12 +110,14 @@ public class BpmMove_Cube : MonoBehaviour
             else
             {
                 // 曲選択
+                sceneChangeEffect.OnTrigger();
+                Set_sceneChange = false;
             }
         }
     }
     public void LeftJudgment()
     {
-        if (moveSwitch)
+        if (moveSwitch && Set_sceneChange)
         {
             // セレクトボックス回転
             if (boxOrientation != BOXORIENTATION.SoundName)

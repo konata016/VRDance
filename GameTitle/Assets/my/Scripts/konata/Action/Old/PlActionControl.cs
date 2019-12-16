@@ -173,8 +173,7 @@ public class PlActionControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha7)) num = 7;
 
         //足の入力
-        if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing ||
-            StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing)
+        if (TriggerManager.GetOnTriggerFoot)
         {
             num = FootPosCenter.hitPosNum;
         }

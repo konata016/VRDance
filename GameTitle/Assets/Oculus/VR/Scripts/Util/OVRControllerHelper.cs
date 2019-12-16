@@ -101,8 +101,8 @@ public class OVRControllerHelper : MonoBehaviour
 				break;
 		}
 
-		Debug.LogFormat("OVRControllerHelp: Active controller type: {0} for product {1}", activeControllerType, OVRPlugin.productName);
-		if ((activeControllerType != ControllerType.GearVR) && (activeControllerType != ControllerType.Go))
+        Debug.LogFormat("OVRControllerHelp: Active controller type: {0} for product {1}", activeControllerType, OVRPlugin.productName);
+        if ((activeControllerType != ControllerType.GearVR) && (activeControllerType != ControllerType.Go))
 		{
 			if (m_controller == OVRInput.Controller.LTrackedRemote)
 			{

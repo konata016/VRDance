@@ -24,15 +24,15 @@ public class GroundPos : MonoBehaviour
         Vector3 pos = transform.position;
         if (!onFriezePosX)
         {
-            pos.x = StepDetermination.groundPosition.x;
+            pos.x = FootJudgment_Right.groundPosition.x;
         }
         if (!onFriezePosY)
         {
-            pos.y = StepDetermination.groundPosition.y;
+            pos.y = FootJudgment_Right.groundPosition.y;
         }
         if (!onFriezePosZ)
         {
-            pos.z = StepDetermination.groundPosition.z;
+            pos.z = FootJudgment_Right.groundPosition.z;
         }
         transform.position = pos;
 

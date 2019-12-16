@@ -49,7 +49,7 @@ public class BpmMove_DokudoCube : MonoBehaviour
 
     public void JumpJudgment()
     {
-        if (moveSwitch)
+        if (moveSwitch && BpmMove_Cube.Set_sceneChange)
         {
             // セレクトボックス回転
             if (boxOrientation != BOXORIENTATION.SoundName)
@@ -71,7 +71,7 @@ public class BpmMove_DokudoCube : MonoBehaviour
     }
     public void RightJudgment()
     {
-        if (moveSwitch)
+        if (moveSwitch && BpmMove_Cube.Set_sceneChange)
         {
             // セレクトボックス回転
             if (boxOrientation != BOXORIENTATION.SoundName)
@@ -95,7 +95,7 @@ public class BpmMove_DokudoCube : MonoBehaviour
     }
     public void LeftJudgment()
     {
-        if (moveSwitch)
+        if (moveSwitch && BpmMove_Cube.Set_sceneChange)
         {
             // セレクトボックス回転
             if (boxOrientation != BOXORIENTATION.SoundName)
