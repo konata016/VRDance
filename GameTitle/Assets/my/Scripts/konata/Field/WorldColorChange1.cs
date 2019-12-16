@@ -65,15 +65,21 @@ public class WorldColorChange1 : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        if (OnTrigger())
+        {
+            //判定が終わったら判定を行っているスクリプトに判定が終わったことを伝える
+            NotesManager2.rank = NotesManager2.RANK.Wait;
+        }
+    }
+
     //マテリアルを入れ替える
     void ResetAlpha()
     {
         color = GetComponent<Renderer>().material.color;
         color.a = alpha;
         GetComponent<Renderer>().material.color = color;
-
-        //判定が終わったら判定を行っているスクリプトに判定が終わったことを伝える
-        NotesManager2.rank = NotesManager2.RANK.Wait;
     }
 
     //トリガーの処理をここに入れる

@@ -21,8 +21,6 @@ public class NotesManager2 : MonoBehaviour
     int stepDataCount;      //リストのカウント
     float fixTime;          //音に合うタイミングにする用
 
-    bool onStartBgm;
-
     // Start is called before the first frame update
     void Start()
     {

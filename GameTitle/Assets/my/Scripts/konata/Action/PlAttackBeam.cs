@@ -81,6 +81,14 @@ public class PlAttackBeam : MonoBehaviour
 
     bool OnTrigger()
     {
-        return Input.GetKeyDown(KeyCode.Alpha3);
+        bool on = false;
+
+        if(NotesManager2.rank==NotesManager2.RANK.Excellent||
+           NotesManager2.rank == NotesManager2.RANK.Good)
+        {
+            on=TriggerManager.GetOnTriggerFoot;
+        }
+
+        return on;
     }
 }

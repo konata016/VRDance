@@ -24,12 +24,17 @@ public class TriggerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //処理の一番最後に初期化
+        SetOnTriggerFoot = false;
+        SetOnTriggerFootL = false;
+        SetOnTriggerFootR = false;
+        SetOnTriggerJump = false;
+
         //キーボード入力用
         SetOnTriggerFoot = OnDebugTriggerFoot();
         SetOnTriggerFootL = OnDebugTriggerFootL();
         SetOnTriggerFootR = OnDebugTriggerFootR();
         SetOnTriggerJump = OnDebugTriggerJump();
-
 
         //足の判定用
         bool OnDebugTriggerFoot() { return Input.GetKeyDown(KeyCode.Space); }
@@ -44,10 +49,11 @@ public class TriggerManager : MonoBehaviour
     //Updateの処置が終わったら処理が始まる
     void LateUpdate()
     {
-        //処理の一番最後に初期化
-        SetOnTriggerFoot = false;
-        SetOnTriggerFootL = false;
-        SetOnTriggerFootR = false;
+        ////処理の一番最後に初期化
+        //SetOnTriggerFoot = false;
+        //SetOnTriggerFootL = false;
+        //SetOnTriggerFootR = false;
+        //SetOnTriggerJump = false;
     }
 
     /// <summary>
