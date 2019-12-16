@@ -70,7 +70,7 @@ public class GroundWave : MonoBehaviour
             {
                 Wideflag = false;
                 rad = 0;
-                this.transform.position = new Vector3(pos.x, StepDetermination.groundPosition.y, pos.z);
+                this.transform.position = new Vector3(pos.x, FootJudgment_Right.groundPosition.y, pos.z);
                 this.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             }
         }
@@ -88,7 +88,7 @@ public class GroundWave : MonoBehaviour
             {
                 Verflag = false;
                 rad = 0;
-                this.transform.position = new Vector3(pos.x, StepDetermination.groundPosition.y, pos.z);
+                this.transform.position = new Vector3(pos.x, FootJudgment_Right.groundPosition.y, pos.z);
                 this.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);                                           
             }
         }

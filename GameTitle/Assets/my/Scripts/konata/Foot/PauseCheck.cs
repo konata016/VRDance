@@ -37,13 +37,13 @@ public class PauseCheck : MonoBehaviour
         (
          foot.Right.transform.position,
          foot.Left.transform.position,
-        StepDetermination.groundPosition.z
+        FootJudgment_Right.groundPosition.z
         );
         footCheck.Left.transform.position = CenterPos
        (
         foot.Right.transform.position,
         foot.Left.transform.position,
-       StepDetermination.groundPosition.z
+       FootJudgment_Right.groundPosition.z
        );
 
         //足の方向を監視させる
@@ -131,13 +131,19 @@ public class PauseCheck : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow)) onL = true;
 
 
-        if (StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing)
-        {
-            onR = true;
-        }
-        if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing)
+        //if (StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing)
+        //{
+        //    onR = true;
+        //}
+        //if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing)
+        //{
+        //    onL = true;
+        //}
+
+        if (TriggerManager.GetOnTriggerFoot)
         {
             onL = true;
+            onR = true;
         }
 
         return new bool[(int)FOOT_RL.RL] { onR, onL };
@@ -145,14 +151,14 @@ public class PauseCheck : MonoBehaviour
 
     void StepEndProcess()
     {
-        if (StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing)
-        {
-            StepDetermination.isGroundTouch_R = StepDetermination.ISGROUNDTOUCH.EndProcess;
-        }
-        if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing)
-        {
-            StepDetermination.isGroundTouch_L = StepDetermination.ISGROUNDTOUCH.EndProcess;
-        }
+        //if (StepDetermination.isGroundTouch_R == StepDetermination.ISGROUNDTOUCH.Landing)
+        //{
+        //    StepDetermination.isGroundTouch_R = StepDetermination.ISGROUNDTOUCH.EndProcess;
+        //}
+        //if (StepDetermination.isGroundTouch_L == StepDetermination.ISGROUNDTOUCH.Landing)
+        //{
+        //    StepDetermination.isGroundTouch_L = StepDetermination.ISGROUNDTOUCH.EndProcess;
+        //}
     }
 
     public static bool GetOnStep { get{ return onStep; } }
