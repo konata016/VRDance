@@ -10,11 +10,13 @@ public class GroundPos : MonoBehaviour
     public bool onFriezePosX;
     public bool onFriezePosY;
     public bool onFriezePosZ;
+    public Vector3 fixPos;
+    Vector3 tmpPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        tmpPos = transform.position;
     }
 
     // Update is called once per frame
@@ -24,15 +26,15 @@ public class GroundPos : MonoBehaviour
         Vector3 pos = transform.position;
         if (!onFriezePosX)
         {
-            pos.x = FootJudgment_Right.groundPosition.x;
+            pos.x = FootJudgment_Right.groundPosition.x + tmpPos.x + fixPos.x;
         }
         if (!onFriezePosY)
         {
-            pos.y = FootJudgment_Right.groundPosition.y;
+            pos.y = FootJudgment_Right.groundPosition.y + tmpPos.y + fixPos.y;
         }
         if (!onFriezePosZ)
         {
-            pos.z = FootJudgment_Right.groundPosition.z;
+            pos.z = FootJudgment_Right.groundPosition.z + tmpPos.z + fixPos.z;
         }
         transform.position = pos;
 
