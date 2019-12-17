@@ -43,7 +43,7 @@ public class GameOverViwe : MonoBehaviour
             if (timeCount >= timeCountMax * 60)
             {
                 Time.timeScale = 1;
-                SceneManager.LoadScene("SelectSecen");
+                SceneManager.LoadScene("SelectScene");
             }
         }
     }

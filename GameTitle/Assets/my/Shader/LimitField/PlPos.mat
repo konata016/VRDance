@@ -58,7 +58,7 @@ Material:
     - Vector1_8EB32C11: 3
     - Vector1_A056799D: 5.47
     - Vector1_BD8EF95D: 0.5
-    - Vector1_D1E5CD21: 1.5
+    - Vector1_D1E5CD21: 1
     - Vector1_DB073B7E: 0
     - Vector1_E486A2B6: 0.9
     - _AlphaClip: 0
@@ -71,7 +71,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
-    - _Move: 0
+    - _Move: 0.41721174
     - _OcclusionStrength: 1
     - _ReceiveShadows: 1
     - _SmoothnessTextureChannel: 0
@@ -82,8 +82,8 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_9F93061A: {r: 0, g: 0, b: 0, a: 0}
-    - Color_F2FD2FCF: {r: 0.7216981, g: 0.9609126, b: 1, a: 0}
-    - Color_F5CAD7AA: {r: 0.1084906, g: 1, b: 0.9832301, a: 0}
+    - Color_F2FD2FCF: {r: 0.6427109, g: 0.9091515, b: 0.9528302, a: 0}
+    - Color_F5CAD7AA: {r: 0, g: 1, b: 0.98237896, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
