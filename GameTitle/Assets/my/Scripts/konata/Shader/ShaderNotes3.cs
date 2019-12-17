@@ -19,7 +19,8 @@ public class ShaderNotes3 : MonoBehaviour
     int stepDataCount;
     float fixTime;                  //音に合うタイミングにする用
 
-    class Notes
+    [System.Serializable]
+    public class Notes
     {
         public bool onTimeStart;        //シェーダー内の「_Pos」に空きがあるかどうかのフラグ
         public float setShaderFloat;    //ノーツ移動の計算用
@@ -30,7 +31,7 @@ public class ShaderNotes3 : MonoBehaviour
             setShaderFloat = startPos;
         }
     }
-    Notes[] notesArr = new Notes[4];    //最大シェーダー上で4つのノーツしか動かすことができないので4
+    public Notes[] notesArr = new Notes[4];    //最大シェーダー上で4つのノーツしか動かすことができないので4
 
     //時間のリストを読む場合、いらない
     //List<float> timeList = new List<float>();
