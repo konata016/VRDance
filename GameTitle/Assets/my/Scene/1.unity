@@ -6645,7 +6645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee36f4fd12a9f2f45b0535c25d7a7eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wideNote: {fileID: 1101465337}
+  wideNote: {fileID: 3412485536573465233, guid: 44c2dbf3737d8874797dd04d612499e7,
+    type: 3}
   verticalNoteR: {fileID: 1240050052495636740, guid: b363dc3ec39354f4cbc3779c1debba07,
     type: 3}
   verticalNoteL: {fileID: 592079562874468166, guid: 4419aa7b41fb12848bc0a7bf33b64037,
