@@ -1932,7 +1932,6 @@ GameObject:
   - component: {fileID: 826780834}
   - component: {fileID: 826780833}
   - component: {fileID: 826780835}
-  - component: {fileID: 826780836}
   m_Layer: 0
   m_Name: StageGenerater
   m_TagString: Untagged
@@ -1984,27 +1983,6 @@ MonoBehaviour:
   onFriezePosY: 0
   onFriezePosZ: 1
   fixPos: {x: 0, y: 0, z: 0}
---- !u!114 &826780836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826780832}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b8c4ce96b2ea4b44a020a585409a5f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pos:
-  - {x: 0, y: 0, z: -1.45}
-  - {x: 0, y: 0, z: 8}
-  - {x: 0, y: 0, z: 16.83}
-  - {x: 0, y: 0, z: 25}
-  shaderObj:
-  - {fileID: 995416658}
-  - {fileID: 956908853}
-  - {fileID: 2067524942}
 --- !u!1 &837352313
 GameObject:
   m_ObjectHideFlags: 0
@@ -2836,22 +2814,6 @@ MonoBehaviour:
     setShaderFloat: 0
   - onTimeStart: 0
     setShaderFloat: 0
---- !u!114 &956908858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956908853}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bee9de4be87f8a4995d573693a22319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: e01c4f079c19a9d45b7f65d095e262be, type: 2}
-  maxHp: 5
-  speed: 0.1
-  isDamage: 0
 --- !u!1 &962885502
 GameObject:
   m_ObjectHideFlags: 0
@@ -2923,22 +2885,6 @@ MonoBehaviour:
     setShaderFloat: 0
   - onTimeStart: 0
     setShaderFloat: 0
---- !u!114 &995416663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 995416658}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bee9de4be87f8a4995d573693a22319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: c0b5ab9cd5d30d14ca75986d32549104, type: 2}
-  maxHp: 5
-  speed: 0.1
-  isDamage: 0
 --- !u!4 &997288072 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 401012, guid: 57bb1872bef722a4798a272cff618d88,
@@ -4935,22 +4881,6 @@ MonoBehaviour:
     setShaderFloat: 0
   - onTimeStart: 0
     setShaderFloat: 0
---- !u!114 &1612288258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1612288253}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bee9de4be87f8a4995d573693a22319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 351dda2bd01076149ba03767c4245f2a, type: 2}
-  maxHp: 5
-  speed: 0.1
-  isDamage: 0
 --- !u!4 &1622504600 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400012, guid: 27f47ea7c7052f84db3de5e59cd0e8e4,
@@ -5765,7 +5695,6 @@ GameObject:
   - component: {fileID: 1841125314}
   - component: {fileID: 1841125313}
   - component: {fileID: 1841125312}
-  - component: {fileID: 1841125310}
   - component: {fileID: 1841125309}
   - component: {fileID: 1841125311}
   m_Layer: 0
@@ -5791,22 +5720,6 @@ MonoBehaviour:
   onFriezePosY: 0
   onFriezePosZ: 1
   fixPos: {x: 0, y: 0, z: 0}
---- !u!114 &1841125310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1841125308}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bee9de4be87f8a4995d573693a22319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 0e74297ff5c528240a01c5020e8981f7, type: 2}
-  maxHp: 5
-  speed: 0.5
-  isDamage: 0
 --- !u!114 &1841125311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6476,22 +6389,6 @@ MonoBehaviour:
     setShaderFloat: 0
   - onTimeStart: 0
     setShaderFloat: 0
---- !u!114 &2067524947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2067524942}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bee9de4be87f8a4995d573693a22319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 59ef98b34556a2b4dbbe58f8e64f20e2, type: 2}
-  maxHp: 5
-  speed: 0.1
-  isDamage: 0
 --- !u!1 &2069048947
 GameObject:
   m_ObjectHideFlags: 0
