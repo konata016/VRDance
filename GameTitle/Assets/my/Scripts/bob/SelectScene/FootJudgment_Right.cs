@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 public class FootJudgment_Right : MonoBehaviour
 {
     public static Vector3 groundPosition;       // 地面の位置
+
+    public GameObject rightHandAnchor;
+    public GameObject leftHandAnchor;
+
     private Vector3 myLowFootPos;               // 低い足の位置
     private bool onGround_R, onGround_L;        // 足が地面についているか否か
     private bool onGround_R_Old, onGround_L_Old;// 足が地面についているか否か
@@ -31,8 +35,8 @@ public class FootJudgment_Right : MonoBehaviour
 
     void Start()
     {
-        footConPos_R = GameObject.Find("RightHandAnchor").transform.position;
-        footConPos_L = GameObject.Find("LeftHandAnchor").transform.position;
+        footConPos_R = rightHandAnchor.transform.position;
+        footConPos_L = leftHandAnchor.transform.position;
         onlyOneTime = true;
         judgment = false;
         landingFlame = 0;
@@ -54,8 +58,8 @@ public class FootJudgment_Right : MonoBehaviour
             onlyOneTime = false;
             landingFlame = 0;
         }
-        footConPos_R = GameObject.Find("RightHandAnchor").transform.position;
-        footConPos_L = GameObject.Find("LeftHandAnchor").transform.position;
+        footConPos_R = rightHandAnchor.transform.position;
+        footConPos_L = leftHandAnchor.transform.position;
 
         timeCheck += Time.deltaTime;
 

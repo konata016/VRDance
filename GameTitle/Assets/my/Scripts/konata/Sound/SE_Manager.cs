@@ -39,7 +39,7 @@ public class SE_Manager : MonoBehaviour
     void Start()
     {
         //オーディオをアタッチする
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 10; i++)
         {
             gameObject.AddComponent<AudioSource>();
         }
@@ -59,7 +59,7 @@ public class SE_Manager : MonoBehaviour
     /// <param name="seType"></param>
     public static void SePlay(SE_NAME seType)
     {
-        //被って流せる音は最大4つまで
+        //被って流せる音は最大10つまで
         //再生中でないオーディオを探す
         foreach (AudioSource se in SE_Manager_.seArr)
         {

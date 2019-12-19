@@ -15,64 +15,79 @@ public class TriggerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //初期化
         SetOnTriggerFoot = false;
         SetOnTriggerFootL = false;
         SetOnTriggerFootR = false;
         SetOnTriggerJump = false;
+
+        GetOnTriggerFoot = false;
+        GetOnTriggerFootL = false;
+        GetOnTriggerFootR = false;
+        GetOnTriggerJump = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //処理の一番最後に初期化
-        SetOnTriggerFoot = false;
-        SetOnTriggerFootL = false;
-        SetOnTriggerFootR = false;
-        SetOnTriggerJump = false;
+        //足の着地判定用
+        if (SetOnTriggerFoot)
+        {
+            GetOnTriggerFoot = SetOnTriggerFoot;
+            SetOnTriggerFoot = false;
+        }
+        else GetOnTriggerFoot = false;
 
-        //キーボード入力用
-        SetOnTriggerFoot = OnDebugTriggerFoot();
-        SetOnTriggerFootL = OnDebugTriggerFootL();
-        SetOnTriggerFootR = OnDebugTriggerFootR();
-        SetOnTriggerJump = OnDebugTriggerJump();
+        //左足の着地判定用
+        if (SetOnTriggerFootL)
+        {
+            GetOnTriggerFootL = SetOnTriggerFootL;
+            SetOnTriggerFootL = false;
+        }
+        else GetOnTriggerFootL = false;
 
-        //足の判定用
-        bool OnDebugTriggerFoot() { return Input.GetKeyDown(KeyCode.Space); }
-        //左足の判定用
-        bool OnDebugTriggerFootL() { return Input.GetKeyDown(KeyCode.LeftArrow); }
-        //右足の判定用
-        bool OnDebugTriggerFootR() { return Input.GetKeyDown(KeyCode.RightArrow); }
-        //両足着地判定用
-        bool OnDebugTriggerJump() { return Input.GetKeyDown(KeyCode.DownArrow); }
-    }
+        //右足の着地判定用
+        if (SetOnTriggerFootR)
+        {
+            GetOnTriggerFootR = SetOnTriggerFootR;
+            SetOnTriggerFootR = false;
+        }
+        else GetOnTriggerFootR = false;
 
-    //Updateの処置が終わったら処理が始まる
-    void LateUpdate()
-    {
-        ////処理の一番最後に初期化
-        //SetOnTriggerFoot = false;
-        //SetOnTriggerFootL = false;
-        //SetOnTriggerFootR = false;
-        //SetOnTriggerJump = false;
+        //ジャンプした時の判定用
+        if (SetOnTriggerJump)
+        {
+            GetOnTriggerJump = SetOnTriggerJump;
+            SetOnTriggerJump = false;
+        }
+        else GetOnTriggerJump = false;
+
+
+        //デバッグ用
+        if (Input.GetKeyDown(KeyCode.Space)) GetOnTriggerFoot = true;
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) GetOnTriggerFootL = true;
+        if (Input.GetKeyDown(KeyCode.RightArrow)) GetOnTriggerFootR = true;
+        if (Input.GetKeyDown(KeyCode.UpArrow)) GetOnTriggerJump = true;
     }
 
     /// <summary>
-    /// どりらか片方の足が地面についたときの判定取得
+    /// どちらか片方の足が地面についたときの判定取得
     /// </summary>
-    public static bool GetOnTriggerFoot { get { return SetOnTriggerFoot; } }
+    public static bool GetOnTriggerFoot { get; private set; }
 
     /// <summary>
     /// 左足が地面についたときの判定取得
     /// </summary>
-    public static bool GetOnTriggerFootL { get { return SetOnTriggerFootL; } }
+    public static bool GetOnTriggerFootL { get; private set; }
 
     /// <summary>
     /// 右足が地面についたときの判定取得
     /// </summary>
-    public static bool GetOnTriggerFootR { get { return SetOnTriggerFootR; } }
+    public static bool GetOnTriggerFootR { get; private set; }
 
     /// <summary>
     /// ジャンプして着地したときの判定取得
     /// </summary>
-    public static bool GetOnTriggerJump { get { return SetOnTriggerJump; } }
+    public static bool GetOnTriggerJump { get; private set; }
+
 }

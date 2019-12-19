@@ -357,8 +357,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "\u30B3\u30F3\u30DC\u653B\u6483123"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ecc61922e6427bf44b2f82f914c21b1c, type: 2}
@@ -563,7 +561,7 @@ PrefabInstance:
     - target: {fileID: 1409486985520802357, guid: 114ebe9c94f7b85458aa9249907d7129,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1409486985520802357, guid: 114ebe9c94f7b85458aa9249907d7129,
         type: 3}
@@ -1545,8 +1543,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_fontAsset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
@@ -1689,8 +1685,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -2492,8 +2486,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2652,8 +2644,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "\u30B3\u30F3\u30DC\u653B\u6483123"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ecc61922e6427bf44b2f82f914c21b1c, type: 2}
@@ -3565,8 +3555,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "\u30B3\u30F3\u30DC\u653B\u6483123"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ecc61922e6427bf44b2f82f914c21b1c, type: 2}
@@ -3714,8 +3702,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad7851c4e527af40a028d2f7eead673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiNotesFixTime: -0.2
-  groundNotesFixTime: -0.18
+  uiNotesFixTime: -0.3
+  groundNotesFixTime: -0.28
 --- !u!1001 &1220000447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4473,8 +4461,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_fontAsset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
@@ -4578,8 +4564,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "\u30B3\u30F3\u30DC\u653B\u6483123"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ecc61922e6427bf44b2f82f914c21b1c, type: 2}
@@ -4807,7 +4791,7 @@ SphereCollider:
   m_GameObject: {fileID: 1585145209}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
@@ -5195,10 +5179,10 @@ GameObject:
   - component: {fileID: 1718596245}
   - component: {fileID: 1718596243}
   - component: {fileID: 1718596250}
-  - component: {fileID: 1718596253}
   - component: {fileID: 1718596244}
   - component: {fileID: 1718596249}
   - component: {fileID: 1718596252}
+  - component: {fileID: 1718596253}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5278,7 +5262,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1862bdbe6ff4905438c68f46fe5cd65b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.272
+  m_Volume: 0.104
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5432,6 +5416,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4ff2e556391304a87febd6aab23b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rightHandAnchor: {fileID: 481446453}
+  leftHandAnchor: {fileID: 481446450}
   tweak: 0.03
   landingFlameMax: 10
 --- !u!114 &1718596253
@@ -6299,8 +6285,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_fontAsset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
@@ -6870,8 +6854,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_fontAsset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}

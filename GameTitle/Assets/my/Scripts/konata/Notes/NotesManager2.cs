@@ -139,7 +139,7 @@ public class NotesManager2 : MonoBehaviour
                 Vector3 roll = objList[0].transform.localRotation.eulerAngles;
 
                 //回転したときに360以上になると0になってしまうため消す範囲を制限する必要があった
-                if (roll.y < 10 && roll.y > 0) return true;
+                if (roll.y < 10 && roll.y > 0.2) return true;
                 else return false;
             }
             else return false;
@@ -155,13 +155,15 @@ public class NotesManager2 : MonoBehaviour
             //生成したオブジェクトのローカル回転データ格納
             Vector3 roll = notesLeftList[0].transform.localRotation.eulerAngles;
 
+            Debug.Log("ステップ判定" + TriggerManager.GetOnTriggerFoot);
+
             //トリガーがオンになったら実行
             if (OnTrigger())
             {
                 //ランクの判定
                 if (roll.y > butPos.y && roll.y <= gootPos.y)
                 {
-                    Debug.Log("Bad!!");
+                    //Debug.Log("Bad!!");
                     rank = RANK.Bad;
 
                     //SE
@@ -169,15 +171,15 @@ public class NotesManager2 : MonoBehaviour
                 }
                 else if (roll.y > gootPos.y && roll.y <= excellentPos.y)
                 {
-                    Debug.Log("Good!!");
+                    //Debug.Log("Good!!");
                     rank = RANK.Good;
 
                     //SE
                     SE_Manager.SePlay(SE_Manager.SE_NAME.Good);
                 }
-                else if (roll.y > excellentPos.y || roll.y <= 2)
+                else if (roll.y > excellentPos.y || roll.y <= 1)
                 {
-                    Debug.Log("Excellent!!");
+                    //Debug.Log("Excellent!!");
                     rank = RANK.Excellent;
 
                     //SE
@@ -185,7 +187,7 @@ public class NotesManager2 : MonoBehaviour
                 }
 
                 //バッドからエクセレント内にある場合ノーツを消去する
-                if (roll.y > butPos.y || roll.y <= 2)
+                if (roll.y > butPos.y || roll.y <= 1)
                 {
                     DestroyNotes(notesRightList);
                     DestroyNotes(notesLeftList);
