@@ -9,9 +9,10 @@ public class NoteMover : MonoBehaviour
     [SerializeField] GameObject verticalNoteL;
     [SerializeField] GameObject punchNote;
     [SerializeField] GameObject laserNote;
+    [SerializeField] GameObject laserTrace;
     [SerializeField] GameObject throwNote;
 
-    [SerializeField] float vertcalAnimTime = 2.15f;
+    [SerializeField] float verticalAnimTime = 2.15f;
     [SerializeField] float throwAnimTime = 1.85f;
     [SerializeField] float wideAnimTime = 2.15f;
 
@@ -28,8 +29,8 @@ public class NoteMover : MonoBehaviour
     private bool laserFlag = false;
     private bool throwFlag = false;
 
-    private string TRUE = "True";
-    private string FALSE = "False";
+    private const string TRUE = "True";
+    private const string FALSE = "False";
 
     private Vector3[] notePos = new Vector3[6];
 
@@ -37,9 +38,9 @@ public class NoteMover : MonoBehaviour
     void Start()
     {
         wide = new WideWaveNote(wideAnimTime, Vector3.zero, wideNote);
-        vertical = new VerticalWaveNote(vertcalAnimTime, Vector3.zero, verticalNoteR);
+        vertical = new VerticalWaveNote(verticalAnimTime, Vector3.zero, verticalNoteR);
         punch = new PunchNote(0.0f, Vector3.zero, punchNote);
-        laser = new LaserNote(0.0f, Vector3.zero, laserNote);
+        laser = new LaserNote(0.0f, Vector3.zero, laserNote, laserTrace);
         throwCube = new ThrowCubeNote(throwAnimTime, Vector3.zero, throwNote);
 
         float x = -1.0f;
