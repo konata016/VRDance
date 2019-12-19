@@ -21,6 +21,9 @@ public class PlDamageTrigger : MonoBehaviour
         if (other.gameObject.tag == "wave" || other.gameObject.tag == "throw")
         {
             PlDamageStage.OnDamageTrigger = true;
+
+            //SE
+            SE_Manager.SePlay(SE_Manager.SE_NAME.PlAttack);
         }
     }
 }

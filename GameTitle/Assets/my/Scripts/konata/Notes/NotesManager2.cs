@@ -163,16 +163,25 @@ public class NotesManager2 : MonoBehaviour
                 {
                     Debug.Log("Bad!!");
                     rank = RANK.Bad;
+
+                    //SE
+                    SE_Manager.SePlay(SE_Manager.SE_NAME.But);
                 }
                 else if (roll.y > gootPos.y && roll.y <= excellentPos.y)
                 {
                     Debug.Log("Good!!");
                     rank = RANK.Good;
+
+                    //SE
+                    SE_Manager.SePlay(SE_Manager.SE_NAME.Good);
                 }
                 else if (roll.y > excellentPos.y || roll.y <= 2)
                 {
                     Debug.Log("Excellent!!");
                     rank = RANK.Excellent;
+
+                    //SE
+                    SE_Manager.SePlay(SE_Manager.SE_NAME.Excellent);
                 }
 
                 //バッドからエクセレント内にある場合ノーツを消去する
