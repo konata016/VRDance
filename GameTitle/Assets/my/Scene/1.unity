@@ -1856,7 +1856,7 @@ MonoBehaviour:
   notesObj: {fileID: 5376715709443363447, guid: 7d8b27ac22b8f434e878db2a8086d137,
     type: 3}
   longNotesSiz: 1.5
-  speed: 20
+  speed: 25
   angle: 45
   butObj: {fileID: 1263040555}
   goodObj: {fileID: 1969554338}
@@ -3702,8 +3702,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad7851c4e527af40a028d2f7eead673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiNotesFixTime: -0.3
-  groundNotesFixTime: -0.28
+  uiNotesFixTime: -0.2
+  groundNotesFixTime: -0.18
 --- !u!1001 &1220000447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5400,7 +5400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34401bd364ff54b4bb973fc3c93e84b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreName: Hard
+  scoreName: Easy
   fileName: Assets/Resources/Notes/
   source: {fileID: 1718596246}
   stepData: []

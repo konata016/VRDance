@@ -139,7 +139,7 @@ public class NotesManager2 : MonoBehaviour
                 Vector3 roll = objList[0].transform.localRotation.eulerAngles;
 
                 //回転したときに360以上になると0になってしまうため消す範囲を制限する必要があった
-                if (roll.y < 10 && roll.y > 0.2) return true;
+                if (roll.y < 10 && roll.y > 0) return true;
                 else return false;
             }
             else return false;
@@ -177,7 +177,7 @@ public class NotesManager2 : MonoBehaviour
                     //SE
                     SE_Manager.SePlay(SE_Manager.SE_NAME.Good);
                 }
-                else if (roll.y > excellentPos.y || roll.y <= 1)
+                else if (roll.y > excellentPos.y || roll.y <= 0.5)
                 {
                     //Debug.Log("Excellent!!");
                     rank = RANK.Excellent;
