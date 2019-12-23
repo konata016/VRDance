@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -129,7 +129,7 @@ public class WideWaveNote : Note
         {
             checkTime[0] = 0;
             noteObj[vNum] = Instantiate(colli, 
-                                        new Vector3(pos.x, StepDetermination.groundPosition.y, pos.z),
+                                        new Vector3(pos.x, GameDirector.GetGroundPos.y, pos.z),
                                         Quaternion.identity);
             vNum++;
         }
