@@ -19,14 +19,14 @@ public class PlGroundNotes : MonoBehaviour
     void Start()
     {
         //地面の調整
-        transform.position = FootJudgment_Right.groundPosition;
+        transform.position = GameDirector.GetGroundPos;
 
         //短縮用
         startPos = transform.GetChild(0).gameObject.transform.localPosition;
         endPos = transform.GetChild(1).gameObject.transform.localPosition;
 
         //差分をなくすよう
-        fixTime = (startPos.z - FootJudgment_Right.groundPosition.z) / speed;
+        fixTime = (startPos.z - GameDirector.GetGroundPos.z) / speed;
     }
 
     // Update is called once per frame

@@ -37,13 +37,13 @@ public class PauseCheck : MonoBehaviour
         (
          foot.Right.transform.position,
          foot.Left.transform.position,
-        FootJudgment_Right.groundPosition.z
+       GameDirector.GetGroundPos.z
         );
         footCheck.Left.transform.position = CenterPos
        (
         foot.Right.transform.position,
         foot.Left.transform.position,
-       FootJudgment_Right.groundPosition.z
+       GameDirector.GetGroundPos.z
        );
 
         //足の方向を監視させる

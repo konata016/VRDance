@@ -45,7 +45,7 @@ public class ShaderNotes3 : MonoBehaviour
         endPos = transform.GetChild(1).gameObject.transform.position * -1;  //子オブジェクトの頭の次にあるオブジェクトの位置をノーツのエンドポイントとする
 
         //生成のタイミングをずらす
-        fixTime = (startPos.z - FootJudgment_Right.groundPosition.z) / speed;
+        fixTime = (startPos.z - GameDirector.GetGroundPos.z) / speed;
         fixTime += GameDirector.GetGameDirector.groundNotesFixTime;
 
         //ノーツが放たれる場所から自身がどれだけ離れているかの計算

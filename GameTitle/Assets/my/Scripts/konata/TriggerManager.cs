@@ -7,6 +7,10 @@ using UnityEngine;
 /// </summary>
 public class TriggerManager : MonoBehaviour
 {
+
+    public GameObject footL;
+    public GameObject footR;
+
     public static bool SetOnTriggerFoot { private get; set; }
     public static bool SetOnTriggerFootL { private get; set; }
     public static bool SetOnTriggerFootR { private get; set; }
@@ -30,37 +34,7 @@ public class TriggerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //足の着地判定用
-        if (SetOnTriggerFoot)
-        {
-            GetOnTriggerFoot = SetOnTriggerFoot;
-            SetOnTriggerFoot = false;
-        }
-        else GetOnTriggerFoot = false;
-
-        //左足の着地判定用
-        if (SetOnTriggerFootL)
-        {
-            GetOnTriggerFootL = SetOnTriggerFootL;
-            SetOnTriggerFootL = false;
-        }
-        else GetOnTriggerFootL = false;
-
-        //右足の着地判定用
-        if (SetOnTriggerFootR)
-        {
-            GetOnTriggerFootR = SetOnTriggerFootR;
-            SetOnTriggerFootR = false;
-        }
-        else GetOnTriggerFootR = false;
-
-        //ジャンプした時の判定用
-        if (SetOnTriggerJump)
-        {
-            GetOnTriggerJump = SetOnTriggerJump;
-            SetOnTriggerJump = false;
-        }
-        else GetOnTriggerJump = false;
+        FootJudge2();
 
 
         //デバッグ用
@@ -68,6 +42,60 @@ public class TriggerManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow)) GetOnTriggerFootL = true;
         if (Input.GetKeyDown(KeyCode.RightArrow)) GetOnTriggerFootR = true;
         if (Input.GetKeyDown(KeyCode.UpArrow)) GetOnTriggerJump = true;
+
+        void FootJudge()
+        {
+            //足の着地判定用
+            if (SetOnTriggerFoot)
+            {
+                GetOnTriggerFoot = SetOnTriggerFoot;
+                SetOnTriggerFoot = false;
+            }
+            else GetOnTriggerFoot = false;
+
+            //左足の着地判定用
+            if (SetOnTriggerFootL)
+            {
+                GetOnTriggerFootL = SetOnTriggerFootL;
+                SetOnTriggerFootL = false;
+            }
+            else GetOnTriggerFootL = false;
+
+            //右足の着地判定用
+            if (SetOnTriggerFootR)
+            {
+                GetOnTriggerFootR = SetOnTriggerFootR;
+                SetOnTriggerFootR = false;
+            }
+            else GetOnTriggerFootR = false;
+
+            //ジャンプした時の判定用
+            if (SetOnTriggerJump)
+            {
+                GetOnTriggerJump = SetOnTriggerJump;
+                SetOnTriggerJump = false;
+            }
+            else GetOnTriggerJump = false;
+        }
+
+        void FootJudge2()
+        {
+            //konata足判定
+            GetOnTriggerFoot = false;
+            GetOnTriggerFoot = Event(footL, GetOnTriggerFoot);
+            GetOnTriggerFoot = Event(footR, GetOnTriggerFoot);
+
+
+            bool Event(GameObject obj,bool on)
+            {
+                if (obj.GetComponent<Foot>().Event == GroundManager.EVENT.Down)
+                {
+                    obj.GetComponent<Foot>().Event = GroundManager.EVENT.End;
+                    return true;
+                }
+                else return on;
+            }
+        }
     }
 
     /// <summary>

@@ -10,6 +10,8 @@ public class GameDirector : MonoBehaviour
 
     public static GameDirector GetGameDirector { get; private set; }
 
+    //受け渡し用
+
     private void Awake()
     {
         GetGameDirector = this;
@@ -26,4 +28,9 @@ public class GameDirector : MonoBehaviour
     {
         
     }
+
+    /// <summary>
+    /// 地面の位置(足の高さに合わせたもの)
+    /// </summary>
+    public static Vector3 GetGroundPos { get { return GroundManager.GetGroundPos; } }//FootJudgment_Right.groundPosition; } }
 }

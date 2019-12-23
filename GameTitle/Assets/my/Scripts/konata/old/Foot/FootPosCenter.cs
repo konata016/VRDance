@@ -28,7 +28,7 @@ public class FootPosCenter : MonoBehaviour
     void Update()
     {
         //両足の中間にポジションをとる
-        transform.position = new Vector3(CenterPos(transform.position).x, FootJudgment_Right.groundPosition.y, CenterPos(transform.position).z);
+        transform.position = new Vector3(CenterPos(transform.position).x, GameDirector.GetGroundPos.y, CenterPos(transform.position).z);
         
         //初めに地面についた足の方向を見る
         //GroundJudge();

@@ -100,7 +100,7 @@ public class PlAttackAction : MonoBehaviour
         RSP.swordCount = rollSwordCount;
 
         //地面の位置から計算
-        transform.position = FootJudgment_Right.groundPosition;
+        transform.position = GameDirector.GetGroundPos;
 
         //Debug.Log(targetName);
 

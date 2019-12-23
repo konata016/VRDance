@@ -20,7 +20,7 @@ public class GroundManager : MonoBehaviour
     public GameObject footL;
     public GameObject footR;
 
-    Vector3 pos;
+    static Vector3 pos;
 
     // Start is called before the first frame update
     void Start()
@@ -83,4 +83,6 @@ public class GroundManager : MonoBehaviour
             transform.position = pos;
         }
     }
+
+    public static Vector3 GetGroundPos { get { return pos; } }
 }

@@ -75,7 +75,7 @@ public class WideWaveNote : Note
         if (noteObj[wNum] == null)
         {
             checkTime[0] = 0;
-            noteObj[wNum] = Instantiate(colli, new Vector3(pos.x, FootJudgment_Right.groundPosition.y, pos.z), Quaternion.identity);
+            noteObj[wNum] = Instantiate(colli, new Vector3(pos.x, GameDirector.GetGroundPos.y, pos.z), Quaternion.identity);
             wNum++;
         }
         if (wNum >= colNum)
@@ -127,7 +127,7 @@ public class WideWaveNote : Note
         if (noteObj[vNum] == null)
         {
             checkTime[0] = 0;
-            noteObj[vNum] = Instantiate(colli, new Vector3(pos.x, FootJudgment_Right.groundPosition.y, pos.z), Quaternion.identity);
+            noteObj[vNum] = Instantiate(colli, new Vector3(pos.x, GameDirector.GetGroundPos.y, pos.z), Quaternion.identity);
             vNum++;
         }
         if (vNum >= colNum)
