@@ -204,6 +204,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GolemAuraMk_3
       objectReference: {fileID: 0}
+    - target: {fileID: 5819916919266703425, guid: 240fa1e6371e0844290ade720b53a13d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 565050704973200111, guid: 240fa1e6371e0844290ade720b53a13d,
         type: 3}
       propertyPath: m_LocalPosition.x
