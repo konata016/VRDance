@@ -23,7 +23,7 @@ public class PlDamageTrigger : MonoBehaviour
             PlDamageStage.OnDamageTrigger = true;
 
             //SE
-            SE_Manager.SePlay(SE_Manager.SE_NAME.PlAttack);
+            SE_Manager.SePlay(SE_Manager.SE_NAME.PlDamage);
         }
     }
 }
