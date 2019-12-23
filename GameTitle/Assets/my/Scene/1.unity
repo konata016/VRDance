@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6659,8 +6659,9 @@ MonoBehaviour:
     type: 3}
   verticalNoteL: {fileID: 592079562874468166, guid: 4419aa7b41fb12848bc0a7bf33b64037,
     type: 3}
-  punchNote: {fileID: 1101465337}
-  laserNote: {fileID: 1101465337}
+  punchNote: {fileID: 0}
+  laserNote: {fileID: 0}
+  laserTrace: {fileID: 0}
   throwNote: {fileID: 6624734182455286549, guid: 20e4947e52227e54dbbe29d988755ef8,
     type: 3}
 --- !u!4 &2086584538

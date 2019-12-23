@@ -11,9 +11,12 @@ public class GroundWave : MonoBehaviour
     bool Verflag = false;
     bool Wideflag = false;
 
-    [SerializeField] float speed = 5.5f;
-    [SerializeField] float max = 2.0f;
-    [SerializeField] float wideMax = 2.0f;
+    [SerializeField]
+    float speed = 5.5f;
+    [SerializeField]
+    float max = 2.0f;
+    [SerializeField]
+    float wideMax = 2.0f;
 
     Vector3 pos;
 
