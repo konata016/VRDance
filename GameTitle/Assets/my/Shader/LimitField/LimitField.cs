@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LimitField : MonoBehaviour
 {
+    public float fix = 1;
     public Material material;
     public GameObject limitFieldObj;
     float dis;
@@ -17,6 +18,13 @@ public class LimitField : MonoBehaviour
     void Update()
     {
         dis = transform.position.z - limitFieldObj.transform.position.z;
-        material.SetFloat("_Move", Mathf.Abs(dis));
+        if (Mathf.Abs(dis) > fix)
+        {
+            material.SetFloat("_Move", (Mathf.Abs(dis) * 2) - fix);
+        }
+        else
+        {
+            material.SetFloat("_Move", 0);
+        }
     }
 }
