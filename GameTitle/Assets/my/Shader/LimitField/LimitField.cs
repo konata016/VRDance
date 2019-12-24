@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーが範囲外に出そうになると警告する処理
+/// </summary>
 public class LimitField : MonoBehaviour
 {
     public float fix = 1;
@@ -17,7 +20,10 @@ public class LimitField : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //距離
         dis = transform.position.z - limitFieldObj.transform.position.z;
+
+        //一定の距離れるとシェーダーを動かす
         if (Mathf.Abs(dis) > fix)
         {
             material.SetFloat("_Move", (Mathf.Abs(dis) * 2) - fix);

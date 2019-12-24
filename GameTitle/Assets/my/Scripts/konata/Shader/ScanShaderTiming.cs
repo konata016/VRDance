@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// リズムに合わせて光る棒を出す処理
+/// (今は使っていない)
+/// </summary>
 public class ScanShaderTiming : MonoBehaviour
 {
 

@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーの攻撃(ビーム)の処理
+/// </summary>
 public class PlAttackBeam : MonoBehaviour
 {
     public GameObject targetObj;
     public GameObject beamObj;
     public float speed = 5;
     public float rad = 5;
-    public int spawnCount = 4;
+    public int spawnCount = 4;      //個々の数値を変えたら生成する数が変わる
 
     public List<GameObject> beamObjList = new List<GameObject>();
 
@@ -23,12 +26,14 @@ public class PlAttackBeam : MonoBehaviour
     {
         if (OnTrigger())
         {
+            //ビームの生成
             for (int i = 0; i < spawnCount; i++)
             {
                 beamObjList.Add(InstantCirclePos(i, spawnCount, beamObj, rad));
             }
         }
 
+        //ビームの移動
         foreach (GameObject obj in beamObjList)
         {
             Vector3 pos = obj.transform.position;
@@ -37,6 +42,7 @@ public class PlAttackBeam : MonoBehaviour
             obj.transform.position = pos;
         }
 
+        //目的地点に到達した場合
         if (beamObjList.Count != 0)
         {
             float dis = Vector3.Distance(beamObjList[0].transform.position, targetObj.transform.position);
@@ -83,6 +89,7 @@ public class PlAttackBeam : MonoBehaviour
     {
         bool on = false;
 
+        //評価がGoodExcellentの時に攻撃を出す
         if(NotesManager2.rank==NotesManager2.RANK.Excellent||
            NotesManager2.rank == NotesManager2.RANK.Good)
         {

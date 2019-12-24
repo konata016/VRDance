@@ -5,13 +5,16 @@ using System.IO;
 using System.Linq;
 using System;
 
+/// <summary>
+/// テキストデータから敵の攻撃とプレイヤーのノーツ情報を返す
+/// </summary>
 public class StepData : MonoBehaviour
 {
     public string scoreName = "aaa";
     public string fileName = "Assets/my/Scripts/konata/Notes/new/Score/";
 
-    public AudioSource source;      //サウンド
-    public enum INPUT_TEXT           //テキストデータの種類
+    public AudioSource source;          //サウンド
+    public enum INPUT_TEXT              //テキストデータの種類
     {
         MusicScore,
 
@@ -94,7 +97,11 @@ public class StepData : MonoBehaviour
     {
     }
 
-    //timeに一番近いテキスト内サウンド時間の配列番号を返す
+    /// <summary>
+    /// timeに一番近いテキスト内サウンド時間の配列番号を返す
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
     static public int GetTimeNearBeatTime(float time)
     {
         int num = 0;

@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ノーツの判定+評価の処理
+/// </summary>
 public class NotesManager2 : MonoBehaviour
 {
-    public enum RANK { Bad, Good, Excellent, Miss, Wait }           //ランクのenum
-    public static RANK rank { get; set; }               //ランクを他のスクリプトに渡すよう
+    public enum RANK { Bad, Good, Excellent, Miss, Wait }       //ランクのenum
+    public static RANK rank { get; set; }                       //ランクを他のスクリプトに渡すよう
 
-    public GameObject notesObj;                         //ノーツオブジェクト
-    public float longNotesSiz = 1.5f;                   //1小節ごとに発生するノーツの長さの初期値
-    public float speed = 30;                            //ノーツの速度
+    public GameObject notesObj;                                 //ノーツオブジェクト
+    public float longNotesSiz = 1.5f;                           //1小節ごとに発生するノーツの長さの初期値
+    public float speed = 30;                                    //ノーツの速度
     public float angle = 45;
 
-    public GameObject butObj, goodObj, excellentObj;    //評価を出すためのオブジェクト
-    Vector3 butPos, gootPos, excellentPos;              //評価のポジションだけを取得するときに使う
+    public GameObject butObj, goodObj, excellentObj;            //評価を出すためのオブジェクト
+    Vector3 butPos, gootPos, excellentPos;                      //評価のポジションだけを取得するときに使う
 
-    List<GameObject> notesRightList = new List<GameObject>(); //右のノーツを管理するよう
-    List<GameObject> notesLeftList = new List<GameObject>();//左のノーツを管理するよう
+    List<GameObject> notesRightList = new List<GameObject>();   //右のノーツを管理するよう
+    List<GameObject> notesLeftList = new List<GameObject>();    //左のノーツを管理するよう
 
     int stepDataCount;      //リストのカウント
     float fixTime;          //音に合うタイミングにする用

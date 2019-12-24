@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//シェーダーノーツを動かすやつ
-//完成形
-
+/// <summary>
+/// プレイヤーのノーツ(シェーダー)を動かす処理
+/// </summary>
 public class ShaderNotes3 : MonoBehaviour
 {
     public float speed = 10;        //ノーツの速度

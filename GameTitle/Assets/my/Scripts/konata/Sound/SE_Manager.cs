@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 流したい音をセットして、別のスクリプトで呼べるようにするやつ
+/// </summary>
 public class SE_Manager : MonoBehaviour
 {
     AudioSource[] seArr;

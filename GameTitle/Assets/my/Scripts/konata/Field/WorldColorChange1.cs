@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーのステップの評価に対して世界の色を変える
+/// </summary>
 public class WorldColorChange1 : MonoBehaviour
 {
     public float speed = 5;

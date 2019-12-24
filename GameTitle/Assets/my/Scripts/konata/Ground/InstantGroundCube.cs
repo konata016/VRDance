@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//プレイヤーのノーツを表示するため用のブロックを生成する
-
+/// <summary>
+/// プレイヤーのノーツを表示するため用のブロックを生成する
+/// </summary>
 public class InstantGroundCube : MonoBehaviour
 {
     public GameObject instantObj;

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-//BGMに合わせてオブジェクトのサイズを変える
-
+/// <summary>
+/// リズムに合わせてオブジェクトのサイズを変える
+/// </summary>
 public class SizChangeByTempo : MonoBehaviour
 {
     Vector3 baseScale;

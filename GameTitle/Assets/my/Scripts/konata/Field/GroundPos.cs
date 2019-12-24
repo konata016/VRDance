@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//地面の位置に合わせる
-
+/// <summary>
+/// 地面の位置を取得してその位置に合わせる
+/// </summary>
 public class GroundPos : MonoBehaviour
 {
 

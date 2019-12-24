@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーがどんなポーズ(足)をしたか調べる
+/// </summary>
 public class PauseCheck : MonoBehaviour
 {
     [System.Serializable]

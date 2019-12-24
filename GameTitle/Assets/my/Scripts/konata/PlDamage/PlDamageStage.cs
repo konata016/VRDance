@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+/// <summary>
+/// プレイヤーがダメージを受けた場合、ステージを落とす
+/// </summary>
 public class PlDamageStage : MonoBehaviour
 {
     public GameObject[] stageObjArr;

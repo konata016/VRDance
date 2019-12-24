@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 敵の攻撃にコリジョンが接触した場合、ダメージを受けたという信号を送る
+/// </summary>
 public class PlDamageTrigger : MonoBehaviour
 {
     // Start is called before the first frame update

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+/// <summary>
+/// リズムに合わせて、回転するやつ(ステージ上に浮かぶボックスを回転させている)
+/// </summary>
 public class StageBoxControl : MonoBehaviour
 {
     
@@ -15,6 +18,7 @@ public class StageBoxControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //子オブジェクトを  リストに格納
         for (int i = 0; i < transform.childCount; i++)
         {
             objList.Add(transform.GetChild(i).gameObject);
@@ -28,16 +32,13 @@ public class StageBoxControl : MonoBehaviour
         {
             AutoRotation(rollCount);
 
+            //回転させるオブジェクトの順番を制御
             if (rollCount != objList.Count - 1) rollCount++;
             else rollCount = 0;
         }
-        //else if (Music.IsJustChangedBeat())
-        //{
-        //    AutoRotation(count);
-        //    count++;
-        //}
     }
 
+    //一定の時間をかけて一定の角度まで回転させる
     void AutoRotation(int count)
     {
         //objArr[count].transform.DORotate(endValue: roll, duration: rollTime, mode: RotateMode.FastBeyond360);
