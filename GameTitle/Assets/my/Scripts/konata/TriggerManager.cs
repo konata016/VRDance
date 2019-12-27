@@ -85,6 +85,12 @@ public class TriggerManager : MonoBehaviour
             GetOnTriggerFoot = Event(footL, GetOnTriggerFoot);
             GetOnTriggerFoot = Event(footR, GetOnTriggerFoot);
 
+            GetOnTriggerFootR = false;
+            GetOnTriggerFootR = Event(footR, GetOnTriggerFootR);
+
+            GetOnTriggerFootL = false;
+            GetOnTriggerFootL = Event(footL, GetOnTriggerFootL);
+
 
             bool Event(GameObject obj,bool on)
             {
