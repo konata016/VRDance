@@ -21,10 +21,14 @@ public class ScoreText : MonoBehaviour
 
     private bool onlyOne = true;// 一度だけ読み込む
 
+    private ScoreTest scoreTest;
+
     void Start()
     {
-        number_TD = int.Parse(ScoreTest.totalDamage);
-        number_MC = int.Parse(ScoreTest.maxCombo);
+        scoreTest = GetComponent<ScoreTest>();
+        number_TD = scoreTest.totalDamage_Nomber;
+        number_MC = scoreTest.maxCombo_Nomber;
+        onlyOne = true;
     }
     
     void Update()
