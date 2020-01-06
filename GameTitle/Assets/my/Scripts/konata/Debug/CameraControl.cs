@@ -10,6 +10,9 @@ public class CameraControl : MonoBehaviour
     public float speed = 10;
     float xRotation;
     float yRotation;
+    Vector3 move;
+
+    //Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +20,8 @@ public class CameraControl : MonoBehaviour
         //マウスカーソルの非表示とロック
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        //rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -30,14 +35,15 @@ public class CameraControl : MonoBehaviour
             transform.rotation = Quaternion.Euler(-yRotation, xRotation, 0);
         }
 
-        float xMove = Input.GetAxis("Horizontal");
-        float zMove = Input.GetAxis("Vertical");
-        float yMove = 0;
-        if (Input.GetKey(KeyCode.Space)) yMove = 1;
-        if (Input.GetKey(KeyCode.LeftShift)) yMove = -1;
+        move.x = Input.GetAxis("Horizontal")*speed* Time.deltaTime;
+        move.z = Input.GetAxis("Vertical")* speed * Time.deltaTime;
+        move.y = 0;
+        if (Input.GetKey(KeyCode.Space)) move.y = 1* speed * Time.deltaTime;
+        if (Input.GetKey(KeyCode.LeftShift)) move.y = -1* speed * Time.deltaTime;
 
         //移動
-        transform.Translate(new Vector3(xMove, yMove, zMove) * speed * Time.deltaTime);
+        transform.Translate(move);
+        //rb.velocity = move * speed * Time.deltaTime;
 
     }
 }

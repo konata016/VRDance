@@ -38,7 +38,7 @@ public class TriggerManager : MonoBehaviour
 
 
         //デバッグ用
-        if (Input.GetKeyDown(KeyCode.Space)) GetOnTriggerFoot = true;
+        if (Input.GetKeyDown(KeyCode.Space)||Input.GetMouseButtonDown(0)) GetOnTriggerFoot = true;
         if (Input.GetKeyDown(KeyCode.LeftArrow)) GetOnTriggerFootL = true;
         if (Input.GetKeyDown(KeyCode.RightArrow)) GetOnTriggerFootR = true;
         if (Input.GetKeyDown(KeyCode.UpArrow)) GetOnTriggerJump = true;
