@@ -10,6 +10,8 @@ TagManager:
   - AudioWaveformCube
   - PikupikuCube
   - wide
+  - throw
+  - PlBeam
   layers:
   - Default
   - TransparentFX
