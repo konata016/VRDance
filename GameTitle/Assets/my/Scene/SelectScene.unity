@@ -1997,7 +1997,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014919167}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8f75e5b21a4a7441a16bd0503b6e8d2, type: 3}
   m_Name: 
@@ -2068,7 +2068,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bb8fed73b9d184aa315cd13ba7b43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowBPM: 120
   timePuls: 0
 --- !u!65 &1014919172
 BoxCollider:
@@ -2897,7 +2896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1226883380
 BoxCollider:
   m_ObjectHideFlags: 0

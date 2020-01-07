@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class Example : MonoBehaviour
 {
-    public float nowBPM = 120.0f;       // 取得するBPM
+    public static float nowBPM = 120.0f; // 取得するBPM
     private float nowBPM_Old = 120.0f;   // 取得するBPM
     public float timePuls = 0.0f;       // 経過時間
     private bool onlyOneTime = true;    // 一度だけ読み込み
     private float dondonTime;           // ４分音符の長さ
     private float memoCount_Now = 0.0f; // 記録
-    private float memoCount_Old = 60.0f; // 記録
+    private float memoCount_Old = 60.0f;// 記録
 
     private void Start()
     {

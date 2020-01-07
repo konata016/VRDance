@@ -89,7 +89,7 @@ public class MusicManagement : MonoBehaviour
                     soundBoxList[i].audioSource.clip = musicInfoList[nomberOfMusic].sampleSound;
                     soundBoxList[i].audioSource.time = 0.0f;
                     soundBoxList[i].audioSource.Play();// サンプルサウンド再生
-                    example.nowBPM = musicInfoList[nomberOfMusic].soundBPM;// ドキドキューブにBPMを教える
+                    Example.nowBPM = musicInfoList[nomberOfMusic].soundBPM;// ドキドキューブにBPMを教える
                     example.timePuls = 0.0f;
 
                 }
