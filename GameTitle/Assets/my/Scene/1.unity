@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.004059955, g: 0.00022192382, b: 0.00000005572915,
+  m_IndirectSpecularColor: {r: 0.0040599587, g: 0.00022192413, b: 0.00000005572915,
     a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -3621,7 +3621,6 @@ MonoBehaviour:
   beamObj: {fileID: 3867328836562687589, guid: ecfb6c766be35ae499ed7f0892888d1c, type: 3}
   speed: 20
   rad: 5
-  spawnCount: 4
   beamObjList: []
 --- !u!4 &1153286797
 Transform:
@@ -6498,6 +6497,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0971d0e3217815342a1f76f0a373ba95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2011055324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5987403022505998962, guid: fb35d5db456c04f41acfc28a27451a53,
+    type: 3}
+  m_PrefabInstance: {fileID: 938252179}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011055322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24953e366bc5aee418ba581b8af1c444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2011055325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011055322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f800d30605277943b022515dc9853ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: {fileID: 2011055324}
+  damagePoint: 0
+  comboCount: 0
+  totalDamage: 0
 --- !u!1 &2067524942 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100004, guid: 27f47ea7c7052f84db3de5e59cd0e8e4,

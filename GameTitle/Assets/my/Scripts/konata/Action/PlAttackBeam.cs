@@ -11,7 +11,7 @@ public class PlAttackBeam : MonoBehaviour
     public GameObject beamObj;
     public float speed = 5;
     public float rad = 5;
-    public int spawnCount = 4;      //個々の数値を変えたら生成する数が変わる
+    //public int spawnCount = 4;      //個々の数値を変えたら生成する数が変わる
 
     public List<GameObject> beamObjList = new List<GameObject>();
 
@@ -27,10 +27,7 @@ public class PlAttackBeam : MonoBehaviour
         if (OnTrigger())
         {
             //ビームの生成
-            for (int i = 0; i < spawnCount; i++)
-            {
-                beamObjList.Add(InstantCirclePos(i, spawnCount, beamObj, rad));
-            }
+            InstantBeam();
         }
 
         //ビームの移動
@@ -50,6 +47,33 @@ public class PlAttackBeam : MonoBehaviour
             {
                 beamObjList.RemoveAt(0);
             }
+        }
+    }
+
+    //ビームの生成
+    void InstantBeam()
+    {
+        switch (NotesManager2.rank)
+        {
+            case NotesManager2.RANK.Bad:
+                beamObjList.Add(InstantCirclePos(1, 1, beamObj, rad));
+                break;
+
+            case NotesManager2.RANK.Good:
+                for (int i = 0; i < 2; i++)
+                {
+                    beamObjList.Add(InstantCirclePos(i, 2, beamObj, rad));
+                }
+                break;
+
+            case NotesManager2.RANK.Excellent:
+                for (int i = 0; i < 4; i++)
+                {
+                    beamObjList.Add(InstantCirclePos(i, 4, beamObj, rad));
+                }
+                break;
+
+            default: break;
         }
     }
 
@@ -87,15 +111,6 @@ public class PlAttackBeam : MonoBehaviour
 
     bool OnTrigger()
     {
-        bool on = false;
-
-        //評価がGoodExcellentの時に攻撃を出す
-        if(NotesManager2.rank==NotesManager2.RANK.Excellent||
-           NotesManager2.rank == NotesManager2.RANK.Good)
-        {
-            on=TriggerManager.GetOnTriggerFoot;
-        }
-
-        return on;
+        return TriggerManager.GetOnTriggerFoot;
     }
 }
