@@ -94,7 +94,7 @@ public class GenerateStage : MonoBehaviour
     {
         TextAsset text = new TextAsset();
 
-        text = Resources.Load(StepData.GetScoreLink, typeof(TextAsset)) as TextAsset;
+        text = Resources.Load("Notes/Easy", typeof(TextAsset)) as TextAsset;
 
         string textAll = text.text;
 
