@@ -5290,6 +5290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1718596247}
   - component: {fileID: 1718596246}
+  - component: {fileID: 1718596248}
   - component: {fileID: 1718596245}
   - component: {fileID: 1718596243}
   - component: {fileID: 1718596250}
@@ -5375,10 +5376,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1862bdbe6ff4905438c68f46fe5cd65b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.104
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5476,6 +5477,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1718596248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718596242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9be9239835d6cc4da397d56437e71f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: {fileID: 1718596246}
 --- !u!114 &1718596249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6231,7 +6245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1940493924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6247,7 +6261,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 093825fc73062d94c8a4d8965dc65454, type: 2}
   fadeMode: 1
   speed: 0.005
-  changeSceneName: 1
+  changeSceneName: GameScore
 --- !u!114 &1940493925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6261,7 +6275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxPos: {fileID: 1940493923}
-  centerEyePos: {fileID: 0}
+  centerEyePos: {fileID: 1068411104}
 --- !u!65 &1940493926
 BoxCollider:
   m_ObjectHideFlags: 0

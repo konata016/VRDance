@@ -53,20 +53,23 @@ public class NotesManager2 : MonoBehaviour
     void SpawnNotes()
     {
         //テキストに登録されている時間が来たらノーツを生成する
-        if (StepData.GetSoundPlayTime >= StepData.GetStepData[stepDataCount].musicScore - fixTime)
+        if (StepData.GetStepData.Count != stepDataCount)
         {
-            float a = StepData.GetStepData[stepDataCount].musicScore - fixTime;
-            //Debug.Log("Sound" + StepData.GetSoundPlayTime + "テキスト" + StepData.GetStepData[stepDataCount].musicScore + "リスト" + stepDataCount);
-
-            //ステップの指示がされている場合ノーツを生成
-            if (StepData.GetStepData[stepDataCount].plStep != StepData.PL_STEP_TIMING.Nothing)
+            if (StepData.GetSoundPlayTime >= StepData.GetStepData[stepDataCount].musicScore - fixTime)
             {
-                notesRightList.Add(Spawn(angle));
-                notesLeftList.Add(Spawn(-angle));
-            }
+                float a = StepData.GetStepData[stepDataCount].musicScore - fixTime;
+                //Debug.Log("Sound" + StepData.GetSoundPlayTime + "テキスト" + StepData.GetStepData[stepDataCount].musicScore + "リスト" + stepDataCount);
 
-            //再生時間よりテキストデータの時間が遅い場合リストのカウントを進める
-            stepDataCount++;
+                //ステップの指示がされている場合ノーツを生成
+                if (StepData.GetStepData[stepDataCount].plStep != StepData.PL_STEP_TIMING.Nothing)
+                {
+                    notesRightList.Add(Spawn(angle));
+                    notesLeftList.Add(Spawn(-angle));
+                }
+
+                //再生時間よりテキストデータの時間が遅い場合リストのカウントを進める
+                stepDataCount++;
+            }
         }
 
 

@@ -63,21 +63,24 @@ public class ShaderNotes3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (StepData.GetSoundPlayTime >= StepData.GetStepData[stepDataCount].musicScore - fixTime)
+        if (StepData.GetStepData.Count != stepDataCount)
         {
-            if (StepData.GetStepData[stepDataCount].plStep != StepData.PL_STEP_TIMING.Nothing)
+            if (StepData.GetSoundPlayTime >= StepData.GetStepData[stepDataCount].musicScore - fixTime)
             {
-                //グラグが立っていないものを探す
-                for (int f = 0; f < notesArr.Length; f++)
+                if (StepData.GetStepData[stepDataCount].plStep != StepData.PL_STEP_TIMING.Nothing)
                 {
-                    if (!notesArr[f].onTimeStart)
+                    //グラグが立っていないものを探す
+                    for (int f = 0; f < notesArr.Length; f++)
                     {
-                        notesArr[f].onTimeStart = true;
-                        break;
+                        if (!notesArr[f].onTimeStart)
+                        {
+                            notesArr[f].onTimeStart = true;
+                            break;
+                        }
                     }
                 }
+                stepDataCount++;
             }
-            stepDataCount++;
         }
         
         for (int i = 0; i < notesArr.Length; i++)
