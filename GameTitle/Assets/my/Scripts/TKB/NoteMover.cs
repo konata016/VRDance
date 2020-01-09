@@ -33,6 +33,7 @@ public class NoteMover : MonoBehaviour
     private const string FALSE = "False";
 
     private Vector3[] notePos = new Vector3[6];
+    private float lastMusicTime;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,8 @@ public class NoteMover : MonoBehaviour
         punch = new PunchNote(0.0f, Vector3.zero, punchNote);
         laser = new LaserNote(0.0f, Vector3.zero, laserNote, laserTrace);
         throwCube = new ThrowCubeNote(throwAnimTime, Vector3.zero, throwNote);
+
+        lastMusicTime = -1.0f;
 
         float x = -1.0f;
         for (int i = 0; i < 6; i++)
@@ -54,30 +57,30 @@ public class NoteMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (wideFlag)
+        if (lastMusicTime != StepData.GetSoundPlayTime)
         {
-            wideFlag = wide.NoteMove(0);
+            if (wideFlag)
+            {
+                wideFlag = wide.NoteMove(0);
+            }
+            if (rightFlag)
+            {
+                rightFlag = vertical.NoteMove(1);
+            }
+            if (punchFlag)
+            {
+                punchFlag = punch.NoteMove(0);
+            }
+            if (laserFlag)
+            {
+                laserFlag = laser.NoteMove(0);
+            }
+            if (throwFlag)
+            {
+                throwFlag = throwCube.NoteMove(0);
+            }
         }
-        if (rightFlag)
-        {
-            rightFlag = vertical.NoteMove(1);
-        }
-        //if (leftFlag)
-        //{
-        //    leftFlag = vertical.NoteMove(2);
-        //}
-        if (punchFlag)
-        {
-            punchFlag = punch.NoteMove(0);
-        }
-        if (laserFlag)
-        {
-            laserFlag = laser.NoteMove(0);
-        }
-        if (throwFlag)
-        {
-            throwFlag = throwCube.NoteMove(0);
-        }
+        lastMusicTime = StepData.GetSoundPlayTime;
     }
 
     public void NoteSet(NotesType type, string[] posBool)
