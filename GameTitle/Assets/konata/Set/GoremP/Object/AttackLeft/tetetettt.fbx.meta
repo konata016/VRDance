@@ -1,0 +1,298 @@
+fileFormatVersion: 2
+guid: 077ef9d5708575446b6c5a9a1f012306
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: curve1
+    100002: curve2
+    100004: Head
+    100006: Head_Tip
+    100008: Hips
+    100010: IKGP
+    100012: LeftArm
+    100014: LeftArmIK
+    100016: LeftForeArm
+    100018: LeftForeArm2
+    100020: LeftForeArm3
+    100022: LeftForeArm4
+    100024: LeftHand
+    100026: LeftHand_Tip
+    100028: LeftHandIndex
+    100030: LeftHandIndex1
+    100032: LeftHandIndex2
+    100034: LeftHandIndex3
+    100036: LeftHandMiddle
+    100038: LeftHandMiddle1
+    100040: LeftHandMiddle2
+    100042: LeftHandMiddle3
+    100044: LeftHandPinky
+    100046: LeftHandPinky1
+    100048: LeftHandPinky2
+    100050: LeftHandPinky3
+    100052: LeftHandRing
+    100054: LeftHandRing1
+    100056: LeftHandRing2
+    100058: LeftHandRing3
+    100060: LeftHandThumb
+    100062: LeftHandThumb1
+    100064: LeftHandThumb2
+    100066: LeftHandThumb3
+    100068: LeftShoulder
+    100070: Neck
+    100072: pSphere3
+    100074: RigHips
+    100076: RightArm
+    100078: RightArmIK
+    100080: RightForeArm
+    100082: RightForeArm2
+    100084: RightForeArm3
+    100086: RightForeArm4
+    100088: RightHand
+    100090: RightHand_Tip
+    100092: RightHandIndex
+    100094: RightHandIndex1
+    100096: RightHandIndex2
+    100098: RightHandIndex3
+    100100: RightHandMiddle
+    100102: RightHandMiddle1
+    100104: RightHandMiddle2
+    100106: RightHandMiddle3
+    100108: RightHandPinky
+    100110: RightHandPinky1
+    100112: RightHandPinky2
+    100114: RightHandPinky3
+    100116: RightHandRing
+    100118: RightHandRing1
+    100120: RightHandRing2
+    100122: RightHandRing3
+    100124: RightHandThumb
+    100126: RightHandThumb1
+    100128: RightHandThumb2
+    100130: RightHandThumb3
+    100132: RightShoulder
+    100134: RigLeftElbow
+    100136: RigLeftShoulder
+    100138: RigLeftShoulderDummy
+    100140: RigNeck
+    100142: RigRightArm
+    100144: RigRightElbow
+    100146: RigRightShoulder
+    100148: RigRightShoulderDummy
+    100150: RigRoot
+    100152: RigSpine
+    100154: RigSpine3
+    100156: Spine1
+    100158: Spine2
+    100160: Spine3
+    100162: //RootNode
+    400000: curve1
+    400002: curve2
+    400004: Head
+    400006: Head_Tip
+    400008: Hips
+    400010: IKGP
+    400012: LeftArm
+    400014: LeftArmIK
+    400016: LeftForeArm
+    400018: LeftForeArm2
+    400020: LeftForeArm3
+    400022: LeftForeArm4
+    400024: LeftHand
+    400026: LeftHand_Tip
+    400028: LeftHandIndex
+    400030: LeftHandIndex1
+    400032: LeftHandIndex2
+    400034: LeftHandIndex3
+    400036: LeftHandMiddle
+    400038: LeftHandMiddle1
+    400040: LeftHandMiddle2
+    400042: LeftHandMiddle3
+    400044: LeftHandPinky
+    400046: LeftHandPinky1
+    400048: LeftHandPinky2
+    400050: LeftHandPinky3
+    400052: LeftHandRing
+    400054: LeftHandRing1
+    400056: LeftHandRing2
+    400058: LeftHandRing3
+    400060: LeftHandThumb
+    400062: LeftHandThumb1
+    400064: LeftHandThumb2
+    400066: LeftHandThumb3
+    400068: LeftShoulder
+    400070: Neck
+    400072: pSphere3
+    400074: RigHips
+    400076: RightArm
+    400078: RightArmIK
+    400080: RightForeArm
+    400082: RightForeArm2
+    400084: RightForeArm3
+    400086: RightForeArm4
+    400088: RightHand
+    400090: RightHand_Tip
+    400092: RightHandIndex
+    400094: RightHandIndex1
+    400096: RightHandIndex2
+    400098: RightHandIndex3
+    400100: RightHandMiddle
+    400102: RightHandMiddle1
+    400104: RightHandMiddle2
+    400106: RightHandMiddle3
+    400108: RightHandPinky
+    400110: RightHandPinky1
+    400112: RightHandPinky2
+    400114: RightHandPinky3
+    400116: RightHandRing
+    400118: RightHandRing1
+    400120: RightHandRing2
+    400122: RightHandRing3
+    400124: RightHandThumb
+    400126: RightHandThumb1
+    400128: RightHandThumb2
+    400130: RightHandThumb3
+    400132: RightShoulder
+    400134: RigLeftElbow
+    400136: RigLeftShoulder
+    400138: RigLeftShoulderDummy
+    400140: RigNeck
+    400142: RigRightArm
+    400144: RigRightElbow
+    400146: RigRightShoulder
+    400148: RigRightShoulderDummy
+    400150: RigRoot
+    400152: RigSpine
+    400154: RigSpine3
+    400156: Spine1
+    400158: Spine2
+    400160: Spine3
+    400162: //RootNode
+    2100000: lambert3
+    4300000: pSphere3
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: pSphere3
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert3
+    second: {fileID: 2100000, guid: e268529fc2beb324299dae5c90a64737, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tex_pasted__pasted__lambert9_BaseColor
+    second: {fileID: 2800000, guid: d9c84f8f38c01de4bbed2156145a5d64, type: 3}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -6522,9 +6522,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 2011055324}
-  damagePoint: 0
-  comboCount: 0
-  totalDamage: 0
 --- !u!1 &2067524942 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100004, guid: 27f47ea7c7052f84db3de5e59cd0e8e4,
