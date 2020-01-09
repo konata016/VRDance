@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/my/SoundEditor3/s.unity
     guid: 1948f8dff1042504c8194f7d254b8f88
+  - enabled: 1
+    path: Assets/my/Scene/GameScore.unity
+    guid: 292ca6e8056f48c45a49a15e8d0bd4ba
   m_configObjects: {}

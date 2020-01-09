@@ -32,12 +32,7 @@ public class SceneChangeEffect : MonoBehaviour
     void Start()
     {
         //フェイドアウトとフェイトインを切り替える
-        switch (fadeMode)
-        {
-            case FADE_MODE.Out:gage = fadeOutDef; break;
-            case FADE_MODE.In: gage = fadeInDef; break;
-            default: break;
-        }
+        ChangeFadeMode();
         material.SetFloat("_Gauge", gage);
         async = SceneManager.LoadSceneAsync(changeSceneName);
         async.allowSceneActivation = false;
@@ -95,5 +90,21 @@ public class SceneChangeEffect : MonoBehaviour
     {
         sceneChangeBoxPos.BoxPosChange();
         onTrigger = true;
+    }
+
+    public void ChangeFadeMode()//フェイドアウトとフェイトインを切り替える
+    {
+        switch (fadeMode)
+        {
+            case FADE_MODE.Out:
+                gage = fadeOutDef;
+                break;
+
+            case FADE_MODE.In:
+                gage = fadeInDef;
+                break;
+
+            default: break;
+        }
     }
 }

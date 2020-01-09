@@ -216,8 +216,8 @@ public class GenerateStage : MonoBehaviour
 
             if (n >= rowL - 1)
             {
-                n = 0;
-                time = 0;
+                //n = 0;
+                //time = 0;
             }
             else
             {
