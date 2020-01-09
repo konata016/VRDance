@@ -189,28 +189,32 @@ public class GenerateStage : MonoBehaviour
             {
                 case (int)NotesType.wideWave:
                     mover.NoteSet(NotesType.wideWave, textNotes[n]);
+                    
                     break;
 
                 case (int)NotesType.verticalWaveRight:
                     mover.NoteSet(NotesType.verticalWaveRight, textNotes[n]);
+
+                    AnimSpeedControl.SetOnAttack = true;    //モーションのフラグ
+
                     break;
 
                 case (int)NotesType.punch:
-                    
+
                     break;
 
                 case (int)NotesType.laser:
-                    
+
                     break;
 
                 case (int)NotesType.throwCube:
                     mover.NoteSet(NotesType.throwCube, textNotes[n]);
-                    
+
                     break;
             }
-            
-        
-            if(n >= rowL - 1)
+
+
+            if (n >= rowL - 1)
             {
                 n = 0;
                 time = 0;
