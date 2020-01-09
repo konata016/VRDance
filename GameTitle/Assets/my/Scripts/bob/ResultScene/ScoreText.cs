@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class ScoreText : MonoBehaviour
 {
     public TextMeshProUGUI title;       // 入れ物＿タイトル
     public TextMeshProUGUI totalDamage; // 入れ物＿合計ダメージ
     public TextMeshProUGUI maxCombo;    // 入れ物＿最大コンボ
+    public TextMeshProUGUI scoreName;   // 入れ物＿スコア
     public TextMeshProUGUI score;       // 入れ物＿スコア
 
     private int number_TD;      // 合計ダメージ
@@ -23,12 +25,29 @@ public class ScoreText : MonoBehaviour
 
     private ScoreTest scoreTest;
 
+    private int animationSequence = 0;
+    private bool animationNext = true;
+    private bool scoreView = false;
+
     void Start()
     {
         scoreTest = GetComponent<ScoreTest>();
         number_TD = scoreTest.totalDamage_Nomber;
         number_MC = scoreTest.maxCombo_Nomber;
         onlyOne = true;
+
+        totalDamage.alpha = 0.0f;   // 評価を初めは透明にする
+        maxCombo.alpha = 0.0f;
+        scoreName.alpha = 0.0f;
+        score.alpha = 0.0f;
+        totalDamage.transform.localScale = Vector3.one * 3.0f;// サイズを調整
+        maxCombo.transform.localScale = Vector3.one * 3.0f;
+        scoreName.transform.localScale = Vector3.one * 2.0f;
+        score.transform.localScale = Vector3.one * 3.0f;
+
+        animationSequence = 0;
+        animationNext = true;
+        scoreView = false;
     }
     
     void Update()
@@ -47,6 +66,71 @@ public class ScoreText : MonoBehaviour
             scorePlus = 0;
             timeLapse = 0;
         }
+        if(animationNext)
+        {
+            switch (animationSequence)
+            {
+                case 0:
+                    Sequence sequence1 = DOTween.Sequence()
+                    .OnStart(() =>
+                    {
+                        animationNext = false;
+                    })
+                    .Append(totalDamage.DOFade(1.0f, 1.0f).SetEase(Ease.OutCubic))
+                    .Join(totalDamage.transform.DOScale(2.0f, 0.5f).SetEase(Ease.InBack))
+                    .OnComplete(() =>
+                    {
+                        animationSequence = 1;
+                        animationNext = true;
+                    });
+                    break;
+                case 1:
+                    Sequence sequence2 = DOTween.Sequence()
+                    .OnStart(() =>
+                    {
+                        animationNext = false;
+                    })
+                    .Append(maxCombo.DOFade(1.0f, 1.0f).SetEase(Ease.OutCubic))
+                    .Join(maxCombo.transform.DOScale(2.0f, 0.5f).SetEase(Ease.InBack))
+                    .OnComplete(() =>
+                    {
+                        animationSequence = 2;
+                        animationNext = true;
+                    });
+                    break;
+                case 2:
+                    Sequence sequence3 = DOTween.Sequence()
+                    .OnStart(() =>
+                    {
+                        animationNext = false;
+                    })
+                    .Append(scoreName.DOFade(1.0f, 1.0f).SetEase(Ease.OutCubic))
+                    .Join(scoreName.transform.DOScale(1.5f, 0.5f).SetEase(Ease.InBack))
+                    .OnComplete(() =>
+                    {
+                        animationSequence = 3;
+                        animationNext = true;
+                    });
+                    break;
+                case 3:
+                    Sequence sequence4 = DOTween.Sequence()
+                    .OnStart(() =>
+                    {
+                        scoreView = true;
+                        animationNext = false;
+                    })
+                    .Append(score.DOFade(1.0f, 1.0f).SetEase(Ease.OutCubic))
+                    .Join(score.transform.DOScale(3.0f, 1.5f).SetEase(Ease.InBack))
+                    .OnComplete(() =>
+                    {
+                        animationSequence = 4;
+                        animationNext = true;
+                    });
+                    break;
+                default:
+                    break;
+            }
+        }
 
         //////////////////////////////////
         /* 表示部分 */
@@ -56,15 +140,18 @@ public class ScoreText : MonoBehaviour
         score.text = "" + scorePlus;
         //////////////////////////////////
 
-        if (scorePlus < number_SCORE)
+        if(scoreView)
         {
-            scorePlus = (number_SCORE / scoreCount) * timeLapse;
+            if (scorePlus < number_SCORE)
+            {
+                scorePlus = (number_SCORE / scoreCount) * timeLapse;
 
-            timeLapse++;
-        }
-        else if (scorePlus >= number_SCORE)// 最終スコアをオーバーした場合最終スコアに合わせる
-        {
-            scorePlus = number_SCORE;
+                timeLapse++;
+            }
+            else if (scorePlus >= number_SCORE)// 最終スコアをオーバーした場合最終スコアに合わせる
+            {
+                scorePlus = number_SCORE;
+            }
         }
     }
 }

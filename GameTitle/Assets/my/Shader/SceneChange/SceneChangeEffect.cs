@@ -23,6 +23,8 @@ public class SceneChangeEffect : MonoBehaviour
 
     float sceneChangeDeltaTime;
 
+    private bool onlyOne = true;
+
     SceneChangeBoxPos sceneChangeBoxPos;
 
     AsyncOperation async;
@@ -40,7 +42,8 @@ public class SceneChangeEffect : MonoBehaviour
         async = SceneManager.LoadSceneAsync(changeSceneName);
         async.allowSceneActivation = false;
         sceneChangeBoxPos = GetComponent<SceneChangeBoxPos>();
-        sceneChangeDeltaTime = 0;                               // リアルタイムの初期化
+        sceneChangeDeltaTime = 0;// リアルタイムの初期化
+        onlyOne = true;
     }
 
     // Update is called once per frame
@@ -56,8 +59,12 @@ public class SceneChangeEffect : MonoBehaviour
                     {
                         material.SetFloat("_Gauge", gage -= sceneChangeDeltaTime * speed);
                         sceneChangeDeltaTime += (1.0f / 120);
-                    } 
-                    else async.allowSceneActivation = true;
+                    }
+                    else
+                    {
+                        async.allowSceneActivation = true;
+                        onlyOne = true;
+                    }
                 }
                 break;
 
@@ -68,6 +75,15 @@ public class SceneChangeEffect : MonoBehaviour
                     material.SetFloat("_Gauge", gage += sceneChangeDeltaTime * speed);
                     sceneChangeDeltaTime += (1.0f / 120);
                     Debug.Log("sceneChangeDeltaTime : " + sceneChangeDeltaTime);
+                }
+                else
+                {
+                    if(onlyOne)
+                    {
+                        Time.timeScale = 1;
+                        PlayMusic.playMusic = true;
+                        onlyOne = false;
+                    }
                 }
                 break;
 
