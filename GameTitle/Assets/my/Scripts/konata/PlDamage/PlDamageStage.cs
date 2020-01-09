@@ -8,6 +8,7 @@ using DG.Tweening;
 /// </summary>
 public class PlDamageStage : MonoBehaviour
 {
+    public Material changeColor;
     public GameObject[] stageObjArr;
     public float lostPoint = -10;
     public float fallTime = 3;
@@ -54,6 +55,8 @@ public class PlDamageStage : MonoBehaviour
     //ステージが落ちるモーション
     void FallMove(GameObject obj)
     {
+        obj.GetComponent<Renderer>().material = changeColor;
+
         DOTween
                .To(value => Move(value), 0, 1, fallTime)
                .SetEase(Ease.InQuart);

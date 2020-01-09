@@ -5889,6 +5889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07f6e55e15d2bd4291c4e117b21a838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeColor: {fileID: 2100000, guid: 349dd72839e0e3f488883f4a46837603, type: 2}
   stageObjArr:
   - {fileID: 995416658}
   - {fileID: 956908853}
