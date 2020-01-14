@@ -31,14 +31,25 @@ public class SceneChangeEffect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //フェイドアウトとフェイトインを切り替える
-        ChangeFadeMode();
+        switch (fadeMode)
+        {
+            case FADE_MODE.Out:
+                gage = fadeOutDef;
+                break;
+
+            case FADE_MODE.In:
+                gage = fadeInDef;
+                break;
+
+            default: break;
+        }
         material.SetFloat("_Gauge", gage);
         async = SceneManager.LoadSceneAsync(changeSceneName);
         async.allowSceneActivation = false;
         sceneChangeBoxPos = GetComponent<SceneChangeBoxPos>();
         sceneChangeDeltaTime = 0;// リアルタイムの初期化
         onlyOne = true;
+        onTrigger = false;
     }
 
     // Update is called once per frame
@@ -97,11 +108,13 @@ public class SceneChangeEffect : MonoBehaviour
         switch (fadeMode)
         {
             case FADE_MODE.Out:
-                gage = fadeOutDef;
+                gage = fadeInDef;
+                fadeMode = FADE_MODE.In;
                 break;
 
             case FADE_MODE.In:
-                gage = fadeInDef;
+                gage = fadeOutDef;
+                fadeMode = FADE_MODE.Out;
                 break;
 
             default: break;
