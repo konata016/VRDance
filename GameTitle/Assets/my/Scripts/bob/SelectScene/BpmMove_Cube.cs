@@ -111,6 +111,7 @@ public class BpmMove_Cube : MonoBehaviour
             else
             {
                 // 曲選択
+                sceneChangeEffect.ChangeFadeMode();
                 sceneChangeEffect.OnTrigger();
                 Set_sceneChange = false;
             }

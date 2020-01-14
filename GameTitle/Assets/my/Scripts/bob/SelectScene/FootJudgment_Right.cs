@@ -218,6 +218,10 @@ public class FootJudgment_Right : MonoBehaviour
                 TriggerManager.SetOnTriggerJump = true;
                 break;
 
+            case "GameScore":
+                ScoreController.Set_JumpJudgment = true;
+                break;
+
             default:break;
         }
 

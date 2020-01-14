@@ -125,6 +125,7 @@ public class ScoreText : MonoBehaviour
                     {
                         animationSequence = 4;
                         animationNext = true;
+                        ScoreController.moveSwitch = true;
                     });
                     break;
                 default:
