@@ -25,6 +25,9 @@ public class GroundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //初期化
+        transform.position = GetGroundPos;
+
         //〇秒後に呼び出され、〇秒ごとに呼び出される
         InvokeRepeating("GroundPosUpdate", groundPosCheckStartTime, groundPosCheckUpdateTime);
     }
