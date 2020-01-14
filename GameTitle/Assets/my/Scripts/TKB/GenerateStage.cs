@@ -21,7 +21,6 @@ public class GenerateStage : MonoBehaviour
     private string VERTICAL_L = "vl";
     private const string PUNCH = "p";
     private const string LASER = "l";
-    
 
     private struct Data
     {
@@ -31,13 +30,13 @@ public class GenerateStage : MonoBehaviour
 
     [SerializeField] GameObject groundCube;
 
-    private List<Note> noteTime = new List<Note>();
-    private List<Data> noteDates = new List<Data>();
-    private Data[] dates = new Data[256];
+    //private List<Note> noteTime = new List<Note>();
+    //private List<Data> noteDates = new List<Data>();
+    //private Data[] dates = new Data[256];
 
-    private Vector3[] wavePositionPreset = new Vector3[3];
-    private Vector3[,] punchPositionPreset = new Vector3[3, 3];
-    private Vector3[] laserPositionPreset = new Vector3[3];
+    //private Vector3[] wavePositionPreset = new Vector3[3];
+    //private Vector3[,] punchPositionPreset = new Vector3[3, 3];
+    //private Vector3[] laserPositionPreset = new Vector3[3];
 
     private string[] notes;
     private string[] textLoad;    //１行毎
@@ -49,10 +48,10 @@ public class GenerateStage : MonoBehaviour
     private int n = 0;      //譜面の何番目？
     private float time = 0; //経過時間
 
-    WideWaveNote wide;
-    VerticalWaveNote vertical;
-    PunchNote punch;
-    LaserNote laser;
+    //WideWaveNote wide;
+    //VerticalWaveNote vertical;
+    //PunchNote punch;
+    //LaserNote laser;
 
     GameObject nmo;
     NoteMover mover;
@@ -79,6 +78,9 @@ public class GenerateStage : MonoBehaviour
 
         time = 0;
         n = 0;
+
+        Debug.Log(StepData.GetScoreLink);
+
         //musicTime = music.clip.length;
         //leftTime = musicTime - musicObj.GetComponent<AudioSource>().time;
 
@@ -93,8 +95,16 @@ public class GenerateStage : MonoBehaviour
     void LoadNotes()
     {
         TextAsset text = new TextAsset();
+        string[] splitText;
+        string passText;
+        string[] antiDotText;
 
-        text = Resources.Load("Notes/Easy", typeof(TextAsset)) as TextAsset;
+        splitText = StepData.GetScoreLink.Split('/');
+        antiDotText = splitText[3].Split('.');
+        passText = splitText[2] + '/' + antiDotText[0];
+        Debug.Log(passText);
+
+        text = Resources.Load(passText, typeof(TextAsset)) as TextAsset;
 
         string textAll = text.text;
 
@@ -114,8 +124,7 @@ public class GenerateStage : MonoBehaviour
             textNotes[i] = new string[colL];
 
             for (int j = 0; j < colL; j++)
-            {            
-                
+            {                    
                 textNotes[i][j] = tempNote[j];
                 //Debug.Log(textNotes[i][0]);
             }
@@ -212,7 +221,6 @@ public class GenerateStage : MonoBehaviour
 
                     break;
             }
-
 
             if (n >= rowL - 1)
             {
