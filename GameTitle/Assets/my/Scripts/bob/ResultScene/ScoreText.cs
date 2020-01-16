@@ -32,8 +32,10 @@ public class ScoreText : MonoBehaviour
     void Start()
     {
         scoreTest = GetComponent<ScoreTest>();
-        number_TD = scoreTest.totalDamage_Nomber;
-        number_MC = scoreTest.maxCombo_Nomber;
+        number_TD = PL.GetTotalDamage;
+        number_MC = PL.GetMaxComboCount;
+        //number_TD = scoreTest.totalDamage_Nomber;
+        //number_MC = scoreTest.maxCombo_Nomber;
         onlyOne = true;
 
         totalDamage.alpha = 0.0f;   // 評価を初めは透明にする
