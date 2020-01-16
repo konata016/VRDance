@@ -34,7 +34,6 @@ public class PlayMusic : MonoBehaviour
             {
                 if(onlyOne)
                 {
-                    sceneChangeEffect.fadeMode = SceneChangeEffect.FADE_MODE.Out;
                     sceneChangeEffect.ChangeFadeMode();
                     sceneChangeEffect.OnTrigger();
                     onlyOne = false;

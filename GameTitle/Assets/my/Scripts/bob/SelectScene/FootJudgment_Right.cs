@@ -42,6 +42,8 @@ public class FootJudgment_Right : MonoBehaviour
         landingFlame = 0;
         bpmMove_Cube = GetComponent<BpmMove_Cube>();
         bpmMove_DokudoCube = GetComponent<BpmMove_DokudoCube>();
+        isGroundTouch_R = ISGROUNDTOUCH.Stoping;
+        isGroundTouch_L = ISGROUNDTOUCH.Stoping;
         isGroundTouch_R_Old = isGroundTouch_R;
         isGroundTouch_L_Old = isGroundTouch_L;
     }
@@ -202,6 +204,7 @@ public class FootJudgment_Right : MonoBehaviour
         {
             //Debug.Log(isGroundTouch_L);
         }
+        Debug.Log("groundPosition : " + groundPosition);
     }
 
     private void JumpJudgment()
