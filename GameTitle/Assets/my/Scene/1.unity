@@ -5414,7 +5414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34401bd364ff54b4bb973fc3c93e84b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreName: Easy
+  scoreName: 
   fileName: Assets/Resources/Notes/
   source: {fileID: 1718596246}
   stepData: []

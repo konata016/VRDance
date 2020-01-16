@@ -58,7 +58,14 @@ public class StepData : MonoBehaviour
     {
         int count = 0;
         stepData.Clear();
-        fileName += scoreName + ".txt";
+        if (scoreName == "")
+        {
+            fileName += MusicManagement.GetSoundScore + ".txt";
+        }
+        else
+        {
+            fileName += scoreName + ".txt";
+        }
 
         //Debug.Log(File.Exists(fileName));
 

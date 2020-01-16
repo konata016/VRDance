@@ -1217,7 +1217,7 @@ MonoBehaviour:
     jacketImage: {fileID: 21300000, guid: 3c19cd5ea5eb1334ea22799017ecec25, type: 3}
     sampleSound: {fileID: 8300000, guid: 09c5198cd27d6fb4ab1983de08a577b2, type: 3}
     soundBPM: 132
-    soundScore: 
+    soundScore: Hard
   - soundName: song3
     difficultyLevel: level3
     jacketImage: {fileID: 21300000, guid: 702fecd126ad5f641b4baf7476c71157, type: 3}
