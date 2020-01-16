@@ -211,6 +211,7 @@ public class FootJudgment_Right : MonoBehaviour
             case "SelectScene":
                 BpmMove_Cube.Set_JumpJudgment = true;
                 BpmMove_DokudoCube.Set_JumpJudgment = true;
+                
                 break;
 
             case "1":

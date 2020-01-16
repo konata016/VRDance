@@ -40,10 +40,13 @@ public class BpmMove_DokudoCube : MonoBehaviour
         {
             JumpJudgment();
             Set_JumpJudgment = false;
+            if (SelectSceneUiManager.checkScene) SelectSceneUiManager.checkScene = false;
+            else SelectSceneUiManager.checkScene =true;
         }
         else if (Input.GetKeyDown(KeyCode.S))// 戻る
         {
             LeftJudgment();
+            SelectSceneUiManager.checkScene = false;
         }
     }
 
