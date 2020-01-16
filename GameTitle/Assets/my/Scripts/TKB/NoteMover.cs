@@ -63,7 +63,7 @@ public class NoteMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (0 < PlDamageStage.Life)
+        if (-1 < PlDamageStage.Life)
         {
             if (wideFlag)
             {
