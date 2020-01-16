@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// LoadSceneを管理する
+/// </summary>
 public class LoadSceneManager : MonoBehaviour
 {
     public GameObject panel;

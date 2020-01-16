@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// フェイドインフェイドアウトする
+/// (シーンチェンジとタイムスケールをいじる)
+/// </summary>
 public class SceneChangeEffect : MonoBehaviour
 {
     public enum FADE_MODE
@@ -13,6 +17,9 @@ public class SceneChangeEffect : MonoBehaviour
     public Material material;
     public FADE_MODE fadeMode;
     public float speed = 0.2f;
+
+    //フェイドインしたとき、タイムスケールをもとに戻すときに間を開ける用
+    public float timeScaleWaitTime = 0;
 
     public string changeSceneName;
 
@@ -86,8 +93,8 @@ public class SceneChangeEffect : MonoBehaviour
                 {
                     if(onlyOne)
                     {
-                        Time.timeScale = 1;
-                        PlayMusic.playMusic = true;
+                        //何秒か待ってからタイムスケールを戻す
+                        StartCoroutine(TimeScaleWait(timeScaleWaitTime));
                         onlyOne = false;
                     }
                 }
@@ -97,13 +104,8 @@ public class SceneChangeEffect : MonoBehaviour
         }
     }
 
-    public void OnTrigger()
-    {
-        sceneChangeBoxPos.BoxPosChange();
-        onTrigger = true;
-    }
-
-    public void ChangeFadeMode()//フェイドアウトとフェイトインを切り替える
+    //フェイドアウトとフェイトインを切り替える
+    public void ChangeFadeMode()
     {
         switch (fadeMode)
         {
@@ -119,5 +121,20 @@ public class SceneChangeEffect : MonoBehaviour
 
             default: break;
         }
+    }
+
+    //タイムスケールを戻す
+    IEnumerator TimeScaleWait(float waitTime)
+    {
+        yield return new WaitForSecondsRealtime(waitTime);
+
+        Time.timeScale = 1;
+        PlayMusic.playMusic = true;
+    }
+
+    public void OnTrigger()
+    {
+        sceneChangeBoxPos.BoxPosChange();
+        onTrigger = true;
     }
 }

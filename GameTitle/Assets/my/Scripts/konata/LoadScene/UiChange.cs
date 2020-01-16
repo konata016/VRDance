@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// LoadSceneのUIの切り替えをする
+/// </summary>
 public class UiChange : MonoBehaviour
 {
     public GameObject processNow;
@@ -19,10 +22,13 @@ public class UiChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //UIの切り替え
         if (LoadSceneManager.GetEndProcess)
         {
             processNow.SetActive(false);
             processEnd.SetActive(true);
+
+            //何秒か待ってからフェイドアウトする
             Invoke("DissolveControl", 2f);
         }
         else
@@ -32,6 +38,7 @@ public class UiChange : MonoBehaviour
         }
     }
 
+    //フェイドアウトする
     void DissolveControl()
     {
         sceneChangeObj.GetComponent<SceneChangeEffect>().fadeMode = SceneChangeEffect.FADE_MODE.Out;

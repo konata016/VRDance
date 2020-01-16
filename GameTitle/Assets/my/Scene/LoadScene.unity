@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1108,5 +1108,10 @@ PrefabInstance:
       propertyPath: centerEyePos
       value: 
       objectReference: {fileID: 2049252947}
+    - target: {fileID: 3888075968504105495, guid: d0310372540ea224cb4f276895b2ed3f,
+        type: 3}
+      propertyPath: timeScaleWaitTime
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0310372540ea224cb4f276895b2ed3f, type: 3}
