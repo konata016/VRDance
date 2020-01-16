@@ -16,6 +16,9 @@ public class NoteMover : MonoBehaviour
     [SerializeField] float throwAnimTime = 1.85f;
     [SerializeField] float wideAnimTime = 2.15f;
 
+    GameObject musicObj;
+    AudioSource music;
+
     private WideWaveNote wide;
     private VerticalWaveNote vertical;
     private PunchNote punch;
@@ -44,6 +47,9 @@ public class NoteMover : MonoBehaviour
         laser = new LaserNote(0.0f, Vector3.zero, laserNote, laserTrace);
         throwCube = new ThrowCubeNote(throwAnimTime, Vector3.zero, throwNote);
 
+        musicObj = GameObject.Find("GameManager");
+        music = musicObj.GetComponent<AudioSource>();
+
         lastMusicTime = -1.0f;
 
         float x = -1.0f;
@@ -57,7 +63,7 @@ public class NoteMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lastMusicTime != StepData.GetSoundPlayTime)
+        if (0 < PlDamageStage.Life)
         {
             if (wideFlag)
             {
@@ -80,7 +86,6 @@ public class NoteMover : MonoBehaviour
                 throwFlag = throwCube.NoteMove(0);
             }
         }
-        lastMusicTime = StepData.GetSoundPlayTime;
     }
 
     public void NoteSet(NotesType type, string[] posBool)

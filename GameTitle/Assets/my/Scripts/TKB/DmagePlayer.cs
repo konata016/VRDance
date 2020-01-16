@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DmagePlayer : MonoBehaviour
 {
+    [SerializeField]
+    GameObject damagePre;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,14 @@ public class DmagePlayer : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "PlBeam")
+        {         
+            Instantiate(damagePre, other.transform);
+
+        }
     }
 }
