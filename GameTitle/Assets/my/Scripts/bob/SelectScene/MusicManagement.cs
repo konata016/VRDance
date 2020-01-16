@@ -24,12 +24,14 @@ public class MusicManagement : MonoBehaviour
         public Sprite jacketImage;      // ジェケットの画像
         public AudioClip sampleSound;   // サンプルサウンド
         public float soundBPM;          // 曲のBPM（テンポ）
+        public string soundScore;       // 譜面の名前
     }
     public List<MusicInfo> musicInfoList = new List<MusicInfo>();
     public int nomberOfMusic; // 見えている曲
     private int nomberOfMusic_Old;
     private bool onlyOneTime = true;
     private Example example;
+    public static string GetSoundScore { get; private set; }
 
 
     void Start()
@@ -90,6 +92,7 @@ public class MusicManagement : MonoBehaviour
                     soundBoxList[i].audioSource.time = 0.0f;
                     soundBoxList[i].audioSource.Play();// サンプルサウンド再生
                     Example.nowBPM = musicInfoList[nomberOfMusic].soundBPM;// ドキドキューブにBPMを教える
+                    GetSoundScore = musicInfoList[nomberOfMusic].soundScore;// 選択されてる曲の譜面
                     example.timePuls = 0.0f;
 
                 }
