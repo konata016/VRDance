@@ -10,6 +10,8 @@ TagManager:
   - AudioWaveformCube
   - PikupikuCube
   - wide
+  - throw
+  - TestCamera
   layers:
   - Default
   - TransparentFX
