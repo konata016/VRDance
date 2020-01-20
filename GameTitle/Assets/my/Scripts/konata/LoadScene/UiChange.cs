@@ -44,4 +44,5 @@ public class UiChange : MonoBehaviour
         sceneChangeObj.GetComponent<SceneChangeEffect>().fadeMode = SceneChangeEffect.FADE_MODE.Out;
         sceneChangeObj.GetComponent<SceneChangeEffect>().OnTrigger();
     }
+
 }
