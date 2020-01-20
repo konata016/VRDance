@@ -30,6 +30,8 @@ public class BpmMove_DokudoCube : MonoBehaviour
         {
             LeftJudgment();
             Set_LeftJudgment = false;
+
+            SelectSceneUiManager.checkScene = false;
         }
         else if (Input.GetKeyDown(KeyCode.D) || Set_RightJudgment)// 上から見て反時計回転
         {
@@ -40,8 +42,7 @@ public class BpmMove_DokudoCube : MonoBehaviour
         {
             JumpJudgment();
             Set_JumpJudgment = false;
-            if (SelectSceneUiManager.checkScene) SelectSceneUiManager.checkScene = false;
-            else SelectSceneUiManager.checkScene =true;
+            SelectSceneUiManager.checkScene = true;
         }
         else if (Input.GetKeyDown(KeyCode.S))// 戻る
         {
