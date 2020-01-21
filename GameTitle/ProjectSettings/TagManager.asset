@@ -12,6 +12,7 @@ TagManager:
   - wide
   - throw
   - PlBeam
+  - PageNum
   layers:
   - Default
   - TransparentFX
