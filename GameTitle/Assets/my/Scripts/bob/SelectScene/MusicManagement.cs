@@ -91,6 +91,7 @@ public class MusicManagement : MonoBehaviour
                     soundBoxList[i].audioSource.clip = musicInfoList[nomberOfMusic].sampleSound;
                     soundBoxList[i].audioSource.time = 0.0f;
                     soundBoxList[i].audioSource.Play();// サンプルサウンド再生
+                    ScoreText.soundTitle= musicInfoList[nomberOfMusic].soundName;// Resultにタイトルを教える
                     Example.nowBPM = musicInfoList[nomberOfMusic].soundBPM;// ドキドキューブにBPMを教える
                     GetSoundScore = musicInfoList[nomberOfMusic].soundScore;// 選択されてる曲の譜面
                     example.timePuls = 0.0f;

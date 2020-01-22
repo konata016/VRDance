@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Example : MonoBehaviour
 {
-    public static float nowBPM = 120.0f; // 取得するBPM
-    private float nowBPM_Old = 120.0f;   // 取得するBPM
+    public static float nowBPM {private get; set; } // 取得するBPM
+    [SerializeField] float nowBPM_Old = 120.0f;   // 取得するBPM
     public float timePuls = 0.0f;       // 経過時間
     private bool onlyOneTime = true;    // 一度だけ読み込み
     private float dondonTime;           // ４分音符の長さ
@@ -15,7 +15,7 @@ public class Example : MonoBehaviour
 
     private void Start()
     {
-        nowBPM = 120.0f;
+        //nowBPM = 120.0f;
         nowBPM_Old = nowBPM;
         timePuls = 0.0f;
         onlyOneTime = true;

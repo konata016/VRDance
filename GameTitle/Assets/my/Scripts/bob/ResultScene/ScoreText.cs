@@ -12,6 +12,7 @@ public class ScoreText : MonoBehaviour
     public TextMeshProUGUI scoreName;   // 入れ物＿スコア
     public TextMeshProUGUI score;       // 入れ物＿スコア
 
+    public static string soundTitle;
     private int number_TD;      // 合計ダメージ
     private int number_MC;      // 最大コンボ
     private int number_SCORE;   // 最終スコア
@@ -137,7 +138,7 @@ public class ScoreText : MonoBehaviour
 
         //////////////////////////////////
         /* 表示部分 */
-        title.text = ScoreTest.title;
+        title.text = soundTitle;
         totalDamage.text = "" + number_TD;
         maxCombo.text = "" + number_MC;
         score.text = "" + scorePlus;
