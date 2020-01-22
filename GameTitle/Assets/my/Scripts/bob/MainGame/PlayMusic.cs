@@ -28,12 +28,13 @@ public class PlayMusic : MonoBehaviour
             playMusic = false;
             changeScene = true;
         }
-        if(changeScene)
+        if (changeScene)
         {
-            if(!music.isPlaying)
+            if (!music.isPlaying && music.time == 0)
             {
-                if(onlyOne)
+                if (onlyOne)
                 {
+                    sceneChangeEffect.changeSceneName = "GameScore";
                     sceneChangeEffect.ChangeFadeMode();
                     sceneChangeEffect.OnTrigger();
                     onlyOne = false;

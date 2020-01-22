@@ -11,6 +11,8 @@ public class GameOverViwe : MonoBehaviour
     private NoiseController noiseController;
     public AudioSource MainSound;
 
+    public GameObject sceneChangeObj;
+
     void Start()
     {
         GameObject childObject = transform.Find("GameOverUI").gameObject;
@@ -29,9 +31,9 @@ public class GameOverViwe : MonoBehaviour
             if(!onOff)
             {
                 onOff = true;
-                MainSound.volume = 0.0f;
+                MainSound.Pause();
             }
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             GameObject.Find("GameOverUI").GetComponent<UnityEngine.UI.Image>().enabled = onOff;
             noiseController.noiseOnOff = onOff;
         }
@@ -43,8 +45,16 @@ public class GameOverViwe : MonoBehaviour
             if (timeCount >= timeCountMax * 60)
             {
                 Time.timeScale = 1;
-                SceneManager.LoadScene("SelectScene");
+                DissolveControl();
+                //SceneManager.LoadScene("SelectScene");
             }
         }
+    }
+    //フェイドアウトする
+    void DissolveControl()
+    {
+        sceneChangeObj.GetComponent<SceneChangeEffect>().changeSceneName = "SelectScene";
+        sceneChangeObj.GetComponent<SceneChangeEffect>().fadeMode = SceneChangeEffect.FADE_MODE.Out;
+        sceneChangeObj.GetComponent<SceneChangeEffect>().OnTrigger();
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.004059955, g: 0.00022192382, b: 0.00000005572915,
+  m_IndirectSpecularColor: {r: 0.0040599587, g: 0.00022192413, b: 0.00000005572915,
     a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -357,7 +357,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "\u30B3\u30F3\u30DC\u653B\u6483123"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ecc61922e6427bf44b2f82f914c21b1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 21461693045332840, guid: ecc61922e6427bf44b2f82f914c21b1c,
     type: 2}
   m_fontSharedMaterials: []
@@ -433,13 +433,13 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
   m_isInputParsingRequired: 0
   m_inputSource: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 2142806025}
@@ -3696,7 +3696,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "\u30B3\u30F3\u30DC\u653B\u6483123"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ecc61922e6427bf44b2f82f914c21b1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 21461693045332840, guid: ecc61922e6427bf44b2f82f914c21b1c,
     type: 2}
   m_fontSharedMaterials: []
@@ -3772,13 +3772,13 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
   m_isInputParsingRequired: 0
   m_inputSource: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 1948476902}
@@ -4796,7 +4796,7 @@ Transform:
   m_GameObject: {fileID: 1585145209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 481446454}
   m_RootOrder: 2
@@ -5760,6 +5760,7 @@ GameObject:
   - component: {fileID: 1841670651}
   - component: {fileID: 1841670650}
   - component: {fileID: 1841670649}
+  - component: {fileID: 1841670653}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -5784,7 +5785,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1160, y: 665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1841670649
@@ -5801,6 +5802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeCountMax: 5
   MainSound: {fileID: 1718596246}
+  sceneChangeObj: {fileID: 1940493923}
 --- !u!114 &1841670650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5861,6 +5863,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1841670653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841670647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fda0df84b922942bd35ef7f1f4fd8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headDisplay: {fileID: 1068411104}
+  fixPos: {x: 0, y: 0, z: 0}
+  onFreezeX: 1
+  onFreezeY: 0
+  onFreezeZ: 1
 --- !u!1 &1878307756
 GameObject:
   m_ObjectHideFlags: 0

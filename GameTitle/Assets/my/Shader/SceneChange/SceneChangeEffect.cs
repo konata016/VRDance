@@ -33,8 +33,8 @@ public class SceneChangeEffect : MonoBehaviour
     private bool onlyOne = true;
 
     SceneChangeBoxPos sceneChangeBoxPos;
+    //AsyncOperation async;
 
-    AsyncOperation async;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,8 +51,8 @@ public class SceneChangeEffect : MonoBehaviour
             default: break;
         }
         material.SetFloat("_Gauge", gage);
-        async = SceneManager.LoadSceneAsync(changeSceneName);
-        async.allowSceneActivation = false;
+        //async = SceneManager.LoadSceneAsync(changeSceneName);
+        //async.allowSceneActivation = false;
         sceneChangeBoxPos = GetComponent<SceneChangeBoxPos>();
         sceneChangeDeltaTime = 0;// リアルタイムの初期化
         onlyOne = true;
@@ -75,7 +75,8 @@ public class SceneChangeEffect : MonoBehaviour
                     }
                     else
                     {
-                        async.allowSceneActivation = true;
+                        //async.allowSceneActivation = true;
+                        SceneManager.LoadScene(changeSceneName);
                         onlyOne = true;
                     }
                 }
