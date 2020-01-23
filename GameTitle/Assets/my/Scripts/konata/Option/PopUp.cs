@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 目的地までの移動と元の場所に戻るプログラム
@@ -10,33 +11,25 @@ public class PopUp : MonoBehaviour
 {
     public GameObject headDisplay;
     public float fallTime = 3;
+
+    public PageInstant pageInstant;
+    public string nextSceneName = "SelectScene";
+
     Vector3 tmpPos;
-    bool change;
 
     // Start is called before the first frame update
     void Start()
     {
         tmpPos = transform.position;
+
+        //目的地まで移動する
+        Move(gameObject, headDisplay.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (OnTrigger())
-        {
-            if (!change)
-            {
-                //目的地まで移動する
-                Move(gameObject, headDisplay.transform.position);
-                change = true;
-            }
-            else
-            {
-                //元の位置に戻る
-                Move(gameObject, tmpPos);
-                change = false;
-            }
-        }
+        NextScene();
     }
 
     //移動
@@ -54,8 +47,30 @@ public class PopUp : MonoBehaviour
         }
     }
 
+    //最後のページまで行ったらシーンを切り替えることができる
+    void NextScene()
+    {
+        if (pageInstant.num == pageInstant.pageNumObjList.Count - 1)
+        {
+            if (OnTrigger())
+            {
+                Move(gameObject, tmpPos);
+                StartCoroutine(TimeScaleWait(1f));
+            }
+        }
+    }
+
+    //タイムスケールを戻す
+    IEnumerator TimeScaleWait(float waitTime)
+    {
+        yield return new WaitForSecondsRealtime(waitTime);
+
+        SceneManager.LoadScene(nextSceneName);
+    }
+
+
     bool OnTrigger()
     {
-        return Input.GetKeyDown(KeyCode.Space);
+        return TriggerManager.GetOnTriggerJump;
     }
 }

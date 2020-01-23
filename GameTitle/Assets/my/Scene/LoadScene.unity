@@ -865,7 +865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bb1fc9fe4c2ce4c9f144236567ded9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxPos: {fileID: 0}
+  boxPos: {fileID: 1121189925}
   centerEyePos: {fileID: 2049252947}
 --- !u!1001 &2049252941
 PrefabInstance:
@@ -1160,6 +1160,11 @@ PrefabInstance:
         type: 3}
       propertyPath: timeScaleWaitTime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888075968504105495, guid: d0310372540ea224cb4f276895b2ed3f,
+        type: 3}
+      propertyPath: changeSceneName
+      value: ManualScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0310372540ea224cb4f276895b2ed3f, type: 3}

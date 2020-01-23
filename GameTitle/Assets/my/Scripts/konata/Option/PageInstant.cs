@@ -14,15 +14,15 @@ public class PageInstant : MonoBehaviour
     public float space = 0.08f;
     //public int instantCount = 7;  //最大ページ数
 
-    [Header ("ページアイコンの色")]
+    [Header("ページアイコンの色")]
     public Material on;
     public Material off;
 
     [Header("表示するもの")]
     public GameObject[] panelArr;
 
-    List<GameObject> pageNumObjList = new List<GameObject>();
-    int num;
+    [HideInInspector] public List<GameObject> pageNumObjList = new List<GameObject>();
+    [HideInInspector] public int num;
 
     // Start is called before the first frame update
     void Start()
@@ -65,15 +65,16 @@ public class PageInstant : MonoBehaviour
 
             panelArr[num].SetActive(true);      //ページ番号と同じ場所のパネルを表示
         }
+
     }
 
     bool OnTriggerNext()
     {
-        return Input.GetKeyDown(KeyCode.RightArrow);
+        return TriggerManager.GetOnTriggerFootR;
     }
 
     bool OnTriggerBack()
     {
-        return Input.GetKeyDown(KeyCode.LeftArrow);
+        return TriggerManager.GetOnTriggerFootL;
     }
 }
