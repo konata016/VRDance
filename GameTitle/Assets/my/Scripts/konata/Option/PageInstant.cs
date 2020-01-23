@@ -24,6 +24,10 @@ public class PageInstant : MonoBehaviour
     [HideInInspector] public List<GameObject> pageNumObjList = new List<GameObject>();
     [HideInInspector] public int num;
 
+    public static bool OnTriggerFootR { get; set; }
+    public static bool OnTriggerFootL { get; set; }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,17 +68,20 @@ public class PageInstant : MonoBehaviour
             pageNumObjList[num].GetComponent<Renderer>().material = on;
 
             panelArr[num].SetActive(true);      //ページ番号と同じ場所のパネルを表示
+
+            OnTriggerFootR = false;
+            OnTriggerFootL = false;
         }
 
     }
 
     bool OnTriggerNext()
     {
-        return TriggerManager.GetOnTriggerFootR;
+        return OnTriggerFootR;
     }
 
     bool OnTriggerBack()
     {
-        return TriggerManager.GetOnTriggerFootL;
+        return OnTriggerFootL;
     }
 }

@@ -1698,7 +1698,7 @@ public class OVRManager : MonoBehaviour
 		{
 			try
 			{
-				Debug.Log("[OVRManager] TrackingLost event");
+				//Debug.Log("[OVRManager] TrackingLost event");
 				if (TrackingLost != null)
 					TrackingLost();
 			}
@@ -1712,13 +1712,13 @@ public class OVRManager : MonoBehaviour
 		{
 			try
 			{
-				Debug.Log("[OVRManager] TrackingAcquired event");
+				//Debug.Log("[OVRManager] TrackingAcquired event");
 				if (TrackingAcquired != null)
 					TrackingAcquired();
 			}
 			catch (Exception e)
 			{
-				Debug.LogError("Caught Exception: " + e);
+				//Debug.LogError("Caught Exception: " + e);
 			}
 		}
 
@@ -1772,7 +1772,7 @@ public class OVRManager : MonoBehaviour
 			{
 				if (!suppressDisableMixedRealityBecauseOfNoMainCameraWarning)
 				{
-					Debug.LogWarning("Main Camera is not set, Mixed Reality disabled");
+					//Debug.LogWarning("Main Camera is not set, Mixed Reality disabled");
 					suppressDisableMixedRealityBecauseOfNoMainCameraWarning = true;
 				}
 			}

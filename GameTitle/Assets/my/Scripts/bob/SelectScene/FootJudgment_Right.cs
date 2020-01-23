@@ -14,7 +14,7 @@ public class FootJudgment_Right : MonoBehaviour
     private bool onGround_R, onGround_L;        // 足が地面についているか否か
     private bool onGround_R_Old, onGround_L_Old;// 足が地面についているか否か
     private float timeCheck;                    // 地面変更経過時間
-    private float timeRegulary = 0.5f;          // 地面の位置をチェックする周期
+    private float timeRegulary = 4.0f;          // 地面の位置をチェックする周期
     private Vector3 groundPosSave;              // 地面の位置(保存)
     private Vector3 groundPosSaveSave;          // 地面の位置(保存)
     private Vector3 footConPos_R, footConPos_L; // コントローラの取得
@@ -28,7 +28,7 @@ public class FootJudgment_Right : MonoBehaviour
     public static ISGROUNDTOUCH isGroundTouch_R_Old { get; set; }
     public static ISGROUNDTOUCH isGroundTouch_L { get; set; }
     public static ISGROUNDTOUCH isGroundTouch_L_Old { get; set; }
-    public float landingFlameMax = 10;// ジャンプの判定フレーム数
+    [SerializeField] float landingFlameMax = 0.05f;// ジャンプの判定秒数
     private float landingFlame = 0;   // ジャンプの判定フレーム数計算用
     private BpmMove_Cube bpmMove_Cube;
     private BpmMove_DokudoCube bpmMove_DokudoCube;
@@ -107,7 +107,10 @@ public class FootJudgment_Right : MonoBehaviour
             if (isGroundTouch_R == ISGROUNDTOUCH.Landing)
             {
                 if(judgment)
+                {
                     RightJudgment();
+                    //Debug.Log("はなしたな！");
+                }
 
                 isGroundTouch_R = ISGROUNDTOUCH.Jumping;
             }
@@ -141,7 +144,10 @@ public class FootJudgment_Right : MonoBehaviour
                 if (landingFlame >= landingFlameMax)
                 {
                     if (judgment)
+                    {
                         RightJudgment();
+                        //Debug.Log("ついたとき！");
+                    }
 
                     isGroundTouch_R = ISGROUNDTOUCH.Stoping;
                 }
@@ -196,15 +202,16 @@ public class FootJudgment_Right : MonoBehaviour
             }
         }
 
-        if (isGroundTouch_R_Old != isGroundTouch_R)
-        {
-            //Debug.Log(isGroundTouch_R);
-        }
-        if (isGroundTouch_L_Old != isGroundTouch_L)
-        {
-            //Debug.Log(isGroundTouch_L);
-        }
-        Debug.Log("groundPosition : " + groundPosition);
+        //if (isGroundTouch_R_Old != isGroundTouch_R)
+        //{
+        //    Debug.Log("isGroundTouch_R : " + isGroundTouch_R);
+        //}
+        //if (isGroundTouch_L_Old != isGroundTouch_L)
+        //{
+        //    Debug.Log("isGroundTouch_L : " + isGroundTouch_L);
+        //}
+        //Debug.Log("groundPosition : " + groundPosition);
+
     }
 
     private void JumpJudgment()
@@ -217,7 +224,8 @@ public class FootJudgment_Right : MonoBehaviour
                 
                 break;
 
-            case "1":
+            case "ManualScene":
+                PopUp.OnTriggerJump = true;
                 break;
 
             case "GameScore":
@@ -237,7 +245,8 @@ public class FootJudgment_Right : MonoBehaviour
                 BpmMove_DokudoCube.Set_RightJudgment = true;
                 break;
 
-            case "1":
+            case "ManualScene":
+                PageInstant.OnTriggerFootR = true;
                 break;
 
             default: break;
@@ -252,7 +261,8 @@ public class FootJudgment_Right : MonoBehaviour
                 BpmMove_DokudoCube.Set_LeftJudgment = true;
                 break;
 
-            case "1":
+            case "ManualScene":
+                PageInstant.OnTriggerFootL = true;
                 break;
 
             default: break;

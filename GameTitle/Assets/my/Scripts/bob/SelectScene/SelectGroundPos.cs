@@ -22,15 +22,15 @@ public class SelectGroundPos : MonoBehaviour
         Vector3 pos = transform.position;
         if (!onFriezePosX)
         {
-            pos.x = GameDirector.GetGroundPos.x;
+            pos.x = FootJudgment_Right.groundPosition.x;
         }
         if (!onFriezePosY)
         {
-            pos.y = GameDirector.GetGroundPos.y;
+            pos.y = FootJudgment_Right.groundPosition.y;
         }
         if (!onFriezePosZ)
         {
-            pos.z = GameDirector.GetGroundPos.z;
+            pos.z = FootJudgment_Right.groundPosition.z;
         }
         transform.position = pos;
 

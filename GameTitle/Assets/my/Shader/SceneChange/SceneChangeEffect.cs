@@ -88,7 +88,7 @@ public class SceneChangeEffect : MonoBehaviour
                 {
                     material.SetFloat("_Gauge", gage += sceneChangeDeltaTime * speed);
                     sceneChangeDeltaTime += (1.0f / 120);
-                    Debug.Log("sceneChangeDeltaTime : " + sceneChangeDeltaTime);
+                    //Debug.Log("sceneChangeDeltaTime : " + sceneChangeDeltaTime);
                 }
                 else
                 {

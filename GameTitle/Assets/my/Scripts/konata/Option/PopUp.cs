@@ -15,6 +15,8 @@ public class PopUp : MonoBehaviour
     public PageInstant pageInstant;
     public string nextSceneName = "SelectScene";
 
+    public static bool OnTriggerJump {private get; set; }
+
     Vector3 tmpPos;
 
     // Start is called before the first frame update
@@ -54,8 +56,11 @@ public class PopUp : MonoBehaviour
         {
             if (OnTrigger())
             {
+                Debug.Log("J" + OnTrigger());
                 Move(gameObject, tmpPos);
                 StartCoroutine(TimeScaleWait(1f));
+
+                OnTriggerJump = false;
             }
         }
     }
@@ -71,6 +76,6 @@ public class PopUp : MonoBehaviour
 
     bool OnTrigger()
     {
-        return TriggerManager.GetOnTriggerJump;
+        return OnTriggerJump;
     }
 }

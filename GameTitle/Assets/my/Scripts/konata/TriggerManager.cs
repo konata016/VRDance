@@ -38,11 +38,6 @@ public class TriggerManager : MonoBehaviour
 
         void FootJudge2()
         {
-            //どの足でも反応
-            GetOnTriggerFoot = false;
-            GetOnTriggerFoot = Event(footL, GetOnTriggerFoot);
-            GetOnTriggerFoot = Event(footR, GetOnTriggerFoot);
-
             //右足に反応
             GetOnTriggerFootR = false;
             GetOnTriggerFootR = Event(footR, GetOnTriggerFootR);
@@ -52,6 +47,10 @@ public class TriggerManager : MonoBehaviour
             GetOnTriggerFootL = false;
             GetOnTriggerFootL = Event(footL, GetOnTriggerFootL);
             if (!tmpL) tmpL = GetOnTriggerFootL;
+
+            //どの足でも反応
+            GetOnTriggerFoot = false;
+            GetOnTriggerFoot = GetOnTriggerFootL || GetOnTriggerFootR;
 
             //ジャンプに反応
             if (GetOnTriggerJump)

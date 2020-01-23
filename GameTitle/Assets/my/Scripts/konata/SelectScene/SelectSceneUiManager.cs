@@ -12,7 +12,7 @@ public class SelectSceneUiManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        checkScene = false;
     }
 
     // Update is called once per frame

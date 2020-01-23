@@ -15,7 +15,7 @@ public class BpmMove_Cube : MonoBehaviour
     private MusicManagement musicManagement;
     private CanvasAlpha canvasAlpha;
     private SceneChangeEffect sceneChangeEffect;
-    public static bool Set_LeftJudgment { private get; set; }
+    public static bool Set_LeftJudgment {private get; set; }
     public static bool Set_RightJudgment { private get; set; }
     public static bool Set_JumpJudgment { private get; set; }
     public static bool Set_sceneChange { get; set; }// シーン移行時に操作をしないようにする
