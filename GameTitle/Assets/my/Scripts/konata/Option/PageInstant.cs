@@ -77,11 +77,11 @@ public class PageInstant : MonoBehaviour
 
     bool OnTriggerNext()
     {
-        return OnTriggerFootR;
+        return OnTriggerFootR || Input.GetKeyDown(KeyCode.RightArrow);
     }
 
     bool OnTriggerBack()
     {
-        return OnTriggerFootL;
+        return OnTriggerFootL|| Input.GetKeyDown(KeyCode.LeftArrow);
     }
 }

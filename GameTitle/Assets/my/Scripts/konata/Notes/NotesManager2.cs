@@ -45,7 +45,7 @@ public class NotesManager2 : MonoBehaviour
         RankJudge();
         OverNotes();
 
-        DebugPanel.text4 = ""+rank;
+        //DebugPanel.text4 = ""+rank;
         //Debug.Log(StepData.GetSoundPlayTime);
     }
 
@@ -89,15 +89,15 @@ public class NotesManager2 : MonoBehaviour
             return obj;
         }
 
-        //1小節ごとに生成されるオブジェクトのサイズを変えるやつ
-        GameObject SpawnLongNotes(GameObject obj)
-        {
-            Vector3 v3 = obj.transform.localScale;
-            v3.y += longNotesSiz;
-            obj.transform.localScale = v3;
+        ////1小節ごとに生成されるオブジェクトのサイズを変えるやつ
+        //GameObject SpawnLongNotes(GameObject obj)
+        //{
+        //    Vector3 v3 = obj.transform.localScale;
+        //    v3.y += longNotesSiz;
+        //    obj.transform.localScale = v3;
 
-            return obj;
-        }
+        //    return obj;
+        //}
     }
 
     //ノーツの移動処理
@@ -160,8 +160,6 @@ public class NotesManager2 : MonoBehaviour
         {
             //生成したオブジェクトのローカル回転データ格納
             Vector3 roll = notesLeftList[0].transform.localRotation.eulerAngles;
-
-            Debug.Log("ステップ判定" + TriggerManager.GetOnTriggerFoot);
 
             //トリガーがオンになったら実行
             if (OnTrigger())

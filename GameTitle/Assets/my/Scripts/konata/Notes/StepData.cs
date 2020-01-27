@@ -11,7 +11,7 @@ using System;
 public class StepData : MonoBehaviour
 {
     public string scoreName = "aaa";
-    public string fileName = "Assets/my/Scripts/konata/Notes/new/Score/";
+    public string fileName = "Assets/Resources/Notes/";
 
     public AudioSource source;          //サウンド
     public enum INPUT_TEXT              //テキストデータの種類

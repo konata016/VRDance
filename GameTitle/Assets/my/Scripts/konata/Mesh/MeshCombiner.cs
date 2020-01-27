@@ -30,7 +30,7 @@ public class MeshCombiner : MonoBehaviour
 
         transform.GetComponent<MeshFilter>().mesh = new Mesh();
         transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
-        transform.gameObject.SetActive(true);
+        //transform.gameObject.SetActive(true);
 
         //マテリアルを再設定
         transform.gameObject.GetComponent<Renderer>().material = materialObj.GetComponent<Renderer>().materials[1];

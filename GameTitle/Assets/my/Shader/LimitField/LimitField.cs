@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class LimitField : MonoBehaviour
 {
-    public float fix = 1;
+    public float fix = 0.3f;
     public Material material;
     public GameObject limitFieldObj;
     float dis;

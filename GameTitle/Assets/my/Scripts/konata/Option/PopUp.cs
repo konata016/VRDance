@@ -76,6 +76,6 @@ public class PopUp : MonoBehaviour
 
     bool OnTrigger()
     {
-        return OnTriggerJump;
+        return OnTriggerJump || Input.GetKeyDown(KeyCode.UpArrow);
     }
 }
