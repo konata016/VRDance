@@ -8,12 +8,13 @@ using DG.Tweening;
 /// </summary>
 public class StageBoxControl : MonoBehaviour
 {
-    
+    public float fixTime;
     public float rotationAmountZ;
     public float rollTime = 1f;
 
     List<GameObject> objList = new List<GameObject>();
     int rollCount;
+    int stepDataCount;
 
     // Start is called before the first frame update
     void Start()
@@ -28,13 +29,19 @@ public class StageBoxControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Music.IsJustChangedBeat())
+        if (StepData.GetStepData.Count != stepDataCount)
         {
-            AutoRotation(rollCount);
+            if (StepData.GetSoundPlayTime >= StepData.GetStepData[stepDataCount].musicScore - fixTime)
+            {
+                if (stepDataCount % 4 == 0)
+                {
+                    AutoRotation(rollCount);
 
-            //回転させるオブジェクトの順番を制御
-            if (rollCount != objList.Count - 1) rollCount++;
-            else rollCount = 0;
+                    //回転させるオブジェクトの順番を制御
+                    if (rollCount != objList.Count - 1) rollCount++;
+                    else rollCount = 0;
+                }
+            }
         }
     }
 

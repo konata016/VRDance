@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5194,7 +5194,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1862bdbe6ff4905438c68f46fe5cd65b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: aaa3692972fd58149a5ca04f68fc9422, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.104
   m_Pitch: 1
@@ -5319,7 +5319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34401bd364ff54b4bb973fc3c93e84b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreName: 
+  scoreName: Dub_Hard
   fileName: Assets/Resources/Notes/
   source: {fileID: 1718596246}
   stepData: []
@@ -6221,6 +6221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f544a44114de0468714befc294c72f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fixTime: 0
   rotationAmountZ: 90
   rollTime: 3
 --- !u!1 &1969554338 stripped
