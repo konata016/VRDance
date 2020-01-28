@@ -71,7 +71,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
-    - _Move: 1.5984983
+    - _Move: 0.63684773
     - _OcclusionStrength: 1
     - _ReceiveShadows: 1
     - _SmoothnessTextureChannel: 0
