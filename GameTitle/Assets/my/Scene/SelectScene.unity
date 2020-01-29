@@ -237,8 +237,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
@@ -311,8 +309,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
@@ -386,8 +382,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 'Name_3
 
 '
@@ -550,8 +544,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9785385b534d4ba4892e1cba91f66e23, type: 2}
@@ -711,8 +703,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -786,8 +776,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9785385b534d4ba4892e1cba91f66e23, type: 2}
@@ -918,19 +906,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557411299}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.001, y: 0.001, z: 0.5}
+  m_LocalScale: {x: 0.002000001, y: 0.002, z: 1}
   m_Children:
   - {fileID: 1839631951}
   - {fileID: 786353763}
   - {fileID: 2029242069}
-  m_Father: {fileID: 748344592}
+  m_Father: {fileID: 1494850612}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.6, y: 0}
+  m_AnchoredPosition: {x: 1.2, y: 0}
   m_SizeDelta: {x: 900, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557411301
@@ -1243,8 +1231,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 'Name_1
 
 '
@@ -1445,10 +1431,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 3}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
-  - {fileID: 1757807459}
-  - {fileID: 557411300}
-  - {fileID: 1870132884}
-  - {fileID: 1784359675}
+  - {fileID: 1494850612}
   - {fileID: 1551402440}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -1482,42 +1465,46 @@ MonoBehaviour:
     difficultyLevel: {fileID: 531942160}
     jacketImage: {fileID: 1486506852}
     audioSource: {fileID: 748344594}
+  soundInformationList:
+  - soundName: {fileID: 1024077618}
+    difficultyLevel: {fileID: 1156869842}
+    jacketImage: {fileID: 1389785532}
   musicInfoList:
   - soundName: Disco Legend
     difficultyLevel: level1
     jacketImage: {fileID: 21300000, guid: 275c12c10b544ac4d93bd6ecc3691803, type: 3}
-    sampleSound: {fileID: 8300000, guid: d89b48f21c3e88a4aadfb9966d9d78c1, type: 3}
+    sampleSound: {fileID: 8300000, guid: dc5a561c606416148abb5437727e32d2, type: 3}
     soundBPM: 120
     soundScore: Easy
-  - soundName: song2
+  - soundName: Disco Legend
     difficultyLevel: level2
-    jacketImage: {fileID: 21300000, guid: 3c19cd5ea5eb1334ea22799017ecec25, type: 3}
-    sampleSound: {fileID: 8300000, guid: 09c5198cd27d6fb4ab1983de08a577b2, type: 3}
-    soundBPM: 132
+    jacketImage: {fileID: 21300000, guid: 275c12c10b544ac4d93bd6ecc3691803, type: 3}
+    sampleSound: {fileID: 8300000, guid: dc5a561c606416148abb5437727e32d2, type: 3}
+    soundBPM: 120
     soundScore: Hard
-  - soundName: song3
+  - soundName: Secret Town
     difficultyLevel: level3
-    jacketImage: {fileID: 21300000, guid: 702fecd126ad5f641b4baf7476c71157, type: 3}
-    sampleSound: {fileID: 8300000, guid: e528e16fb39fe714d8d6ab390066eb60, type: 3}
-    soundBPM: 126
+    jacketImage: {fileID: 21300000, guid: 088fb917a067ce44bb5e4dc6bb2689ff, type: 3}
+    sampleSound: {fileID: 8300000, guid: b6136843bd3d61646ae1991ceb7571f0, type: 3}
+    soundBPM: 160
     soundScore: 
-  - soundName: song4
+  - soundName: Secret Town
     difficultyLevel: level4
-    jacketImage: {fileID: 21300000, guid: f274699b94a4f784e9cfd2c98ed2fa61, type: 3}
-    sampleSound: {fileID: 8300000, guid: f7e5ac8116d56a746a7a7e779cbf13f6, type: 3}
-    soundBPM: 140
+    jacketImage: {fileID: 21300000, guid: 088fb917a067ce44bb5e4dc6bb2689ff, type: 3}
+    sampleSound: {fileID: 8300000, guid: b6136843bd3d61646ae1991ceb7571f0, type: 3}
+    soundBPM: 160
     soundScore: 
-  - soundName: song5
+  - soundName: Forbidden Fruit
     difficultyLevel: level5
-    jacketImage: {fileID: 21300000, guid: 8e8588ea12980d3488971f73cd0b8e0c, type: 3}
-    sampleSound: {fileID: 8300000, guid: 5daeeaffbe863394d96fd52f1d5897ee, type: 3}
+    jacketImage: {fileID: 21300000, guid: f794bdbe005d6144b8718d9769680bef, type: 3}
+    sampleSound: {fileID: 8300000, guid: aed0c55fcce1b0747a35db141d205d8e, type: 3}
     soundBPM: 128
     soundScore: 
-  - soundName: song6
+  - soundName: Forbidden Fruit
     difficultyLevel: level6
-    jacketImage: {fileID: 21300000, guid: dfc38c23cfdca9c4eb3b8c45939e10f0, type: 3}
-    sampleSound: {fileID: 8300000, guid: d9de8fcb14ec3e747bc928c133ad60dd, type: 3}
-    soundBPM: 162
+    jacketImage: {fileID: 21300000, guid: f794bdbe005d6144b8718d9769680bef, type: 3}
+    sampleSound: {fileID: 8300000, guid: aed0c55fcce1b0747a35db141d205d8e, type: 3}
+    soundBPM: 128
     soundScore: 
   nomberOfMusic: 0
 --- !u!82 &748344594
@@ -1725,6 +1712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxOrientation_Old: 0
+  soundBoxes: {fileID: 1494850611}
 --- !u!82 &748344597
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2051,8 +2039,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2125,8 +2111,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
@@ -2339,8 +2323,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: EXIT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9785385b534d4ba4892e1cba91f66e23, type: 2}
@@ -2739,7 +2721,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014919167}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdb5987d5e1d9a54eac1f4d50d98e502, type: 3}
   m_Name: 
@@ -2786,8 +2768,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: -80}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0, y: -100}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1024077618
 MonoBehaviour:
@@ -2807,8 +2789,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 'Name
 
 '
@@ -2971,8 +2951,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9785385b534d4ba4892e1cba91f66e23, type: 2}
@@ -3111,7 +3089,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: -170}
+  m_AnchoredPosition: {x: 0, y: -200}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1156869842
@@ -3132,8 +3110,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9785385b534d4ba4892e1cba91f66e23, type: 2}
@@ -3365,8 +3341,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
@@ -3440,8 +3414,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Name_4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9785385b534d4ba4892e1cba91f66e23, type: 2}
@@ -3666,8 +3638,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
@@ -3825,7 +3795,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389785530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 1551402440}
@@ -3833,7 +3803,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: 200}
+  m_AnchoredPosition: {x: 0, y: 180}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1389785532
@@ -3854,8 +3824,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -4029,8 +3997,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -4048,6 +4014,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486506850}
   m_CullTransparentMesh: 0
+--- !u!1 &1494850611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1494850612}
+  m_Layer: 0
+  m_Name: AlphaBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1494850612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494850611}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children:
+  - {fileID: 1757807459}
+  - {fileID: 557411300}
+  - {fileID: 1870132884}
+  - {fileID: 1784359675}
+  m_Father: {fileID: 748344592}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1497845220
 GameObject:
   m_ObjectHideFlags: 0
@@ -4103,8 +4103,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
@@ -4161,7 +4159,7 @@ RectTransform:
   - {fileID: 960633489}
   - {fileID: 1900153281}
   m_Father: {fileID: 748344592}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4637,13 +4635,13 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757807458}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.6}
-  m_LocalScale: {x: 0.001, y: 0.001, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: -1.2}
+  m_LocalScale: {x: 0.002, y: 0.002, z: 1}
   m_Children:
   - {fileID: 621210017}
   - {fileID: 447866741}
   - {fileID: 429367296}
-  m_Father: {fileID: 748344592}
+  m_Father: {fileID: 1494850612}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4794,19 +4792,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1784359674}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.001, y: 0.001, z: 0.5}
+  m_LocalScale: {x: 0.002000001, y: 0.002, z: 1}
   m_Children:
   - {fileID: 1216288051}
   - {fileID: 1486506851}
   - {fileID: 531942159}
-  m_Father: {fileID: 748344592}
+  m_Father: {fileID: 1494850612}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.6, y: 0}
+  m_AnchoredPosition: {x: -1.2, y: 0}
   m_SizeDelta: {x: 900, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1784359676
@@ -4924,8 +4922,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
@@ -4998,8 +4994,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -5073,8 +5067,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 'Name_2
 
 '
@@ -5207,14 +5199,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1870132883}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0.6}
-  m_LocalScale: {x: 0.001, y: 0.001, z: 0.5}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.1999998}
+  m_LocalScale: {x: 0.002, y: 0.002, z: 1}
   m_Children:
   - {fileID: 415106914}
   - {fileID: 1811048965}
   - {fileID: 1125389234}
-  m_Father: {fileID: 748344592}
+  m_Father: {fileID: 1494850612}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5337,8 +5329,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
@@ -5411,8 +5401,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: PLAY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9785385b534d4ba4892e1cba91f66e23, type: 2}
@@ -5573,8 +5561,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9785385b534d4ba4892e1cba91f66e23, type: 2}

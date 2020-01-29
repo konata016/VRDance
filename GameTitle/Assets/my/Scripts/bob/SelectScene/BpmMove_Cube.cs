@@ -20,6 +20,8 @@ public class BpmMove_Cube : MonoBehaviour
     public static bool Set_JumpJudgment { private get; set; }
     public static bool Set_sceneChange { get; set; }// シーン移行時に操作をしないようにする
 
+    [SerializeField] GameObject soundBoxes;
+
     void Start()
     {
         boxOrientation = BOXORIENTATION.soundBox_1;
@@ -75,6 +77,7 @@ public class BpmMove_Cube : MonoBehaviour
 
                     .OnUpdate(() => {// 対象の値が変更される度によばれる
                             canvasAlpha.MusicInformation_Alpha(0.4f);
+                        soundBoxes.SetActive(false);
                     })
                     .OnComplete(() => {
                         boxOrientation_Old = boxOrientation;
@@ -84,7 +87,7 @@ public class BpmMove_Cube : MonoBehaviour
             }
         }
     }
-    public void RightJudgment()
+    public void LeftJudgment()
     {
         if (moveSwitch && Set_sceneChange)
         {
@@ -110,14 +113,25 @@ public class BpmMove_Cube : MonoBehaviour
             }
             else
             {
-                // 曲選択
-                sceneChangeEffect.ChangeFadeMode();
-                sceneChangeEffect.OnTrigger();
-                Set_sceneChange = false;
+                DOTween
+                    .To(value => Reset_AxisRotate(value), 0, 270, 0.5f)
+                    .SetEase(Ease.OutBack)
+                    .OnStart(() => {
+                        moveSwitch = false;
+                        value_Old = 0;
+                    })
+                    .OnUpdate(() => {// 対象の値が変更される度によばれる
+                        canvasAlpha.MusicInformation_Alpha(-0.4f);
+                        soundBoxes.SetActive(true);
+                    })
+                    .OnComplete(() => {
+                        boxOrientation = boxOrientation_Old;
+                        moveSwitch = true;
+                    });
             }
         }
     }
-    public void LeftJudgment()
+    public void RightJudgment()
     {
         if (moveSwitch && Set_sceneChange)
         {
@@ -143,20 +157,10 @@ public class BpmMove_Cube : MonoBehaviour
             }
             else
             {
-                DOTween
-                    .To(value => Reset_AxisRotate(value), 0, 270, 0.5f)
-                    .SetEase(Ease.OutBack)
-                    .OnStart(() => {
-                        moveSwitch = false;
-                        value_Old = 0;
-                    })
-                    .OnUpdate(() => {// 対象の値が変更される度によばれる
-                            canvasAlpha.MusicInformation_Alpha(-0.4f);
-                    })
-                    .OnComplete(() => {
-                        boxOrientation = boxOrientation_Old;
-                        moveSwitch = true;
-                    });
+                // 曲選択
+                sceneChangeEffect.ChangeFadeMode();
+                sceneChangeEffect.OnTrigger();
+                Set_sceneChange = false;
             }
         }
     }

@@ -73,7 +73,7 @@ public class BpmMove_DokudoCube : MonoBehaviour
             }
         }
     }
-    public void RightJudgment()
+    public void LeftJudgment()
     {
         if (moveSwitch && BpmMove_Cube.Set_sceneChange)
         {
@@ -93,11 +93,21 @@ public class BpmMove_DokudoCube : MonoBehaviour
             }
             else
             {
-                // 曲選択
+                DOTween
+                    .To(value => Reset_AxisRotate(value), 0, 270, 0.5f)
+                    .SetEase(Ease.OutBack)
+                    .OnStart(() => {
+                        moveSwitch = false;
+                        value_Old = 0;
+                    })
+                    .OnComplete(() => {
+                        boxOrientation = boxOrientation_Old;
+                        moveSwitch = true;
+                    });
             }
         }
     }
-    public void LeftJudgment()
+    public void RightJudgment()
     {
         if (moveSwitch && BpmMove_Cube.Set_sceneChange)
         {
@@ -115,20 +125,10 @@ public class BpmMove_DokudoCube : MonoBehaviour
                             moveSwitch = true;
                     });
             }
-            else
-            {
-                DOTween
-                    .To(value => Reset_AxisRotate(value), 0, 270, 0.5f)
-                    .SetEase(Ease.OutBack)
-                    .OnStart(() => {
-                        moveSwitch = false;
-                        value_Old = 0;
-                    })
-                    .OnComplete(() => {
-                        boxOrientation = boxOrientation_Old;
-                        moveSwitch = true;
-                    });
-            }
+        }
+        else
+        {
+            // 曲選択
         }
     }
 

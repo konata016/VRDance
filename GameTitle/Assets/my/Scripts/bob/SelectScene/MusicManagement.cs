@@ -17,6 +17,15 @@ public class MusicManagement : MonoBehaviour
     public List<SoundBox> soundBoxList = new List<SoundBox>();
 
     [System.Serializable]
+    public class SoundInformation
+    {
+        public TextMeshProUGUI soundName;       // 曲名
+        public TextMeshProUGUI difficultyLevel; // 難易度
+        public Image jacketImage;               // ジェケットの画像
+    }
+    public List<SoundInformation> soundInformationList = new List<SoundInformation>();
+
+    [System.Serializable]
     public class MusicInfo
     {
         public string soundName;        // 曲名
@@ -95,7 +104,9 @@ public class MusicManagement : MonoBehaviour
                     Example.nowBPM = musicInfoList[nomberOfMusic].soundBPM;// ドキドキューブにBPMを教える
                     GetSoundScore = musicInfoList[nomberOfMusic].soundScore;// 選択されてる曲の譜面
                     example.timePuls = 0.0f;
-
+                    soundInformationList[0].soundName.text = musicInfoList[nomberOfMusic].soundName;
+                    soundInformationList[0].difficultyLevel.text = musicInfoList[nomberOfMusic].difficultyLevel;
+                    soundInformationList[0].jacketImage.sprite = musicInfoList[nomberOfMusic].jacketImage;
                 }
                 else if (i == (int)BpmMove_Cube.boxOrientation + 1 || i == (int)BpmMove_Cube.boxOrientation - 3)// 左面の時だけ別例
                 {

@@ -69,7 +69,7 @@ public class ScoreText : MonoBehaviour
             scorePlus = 0;
             timeLapse = 0;
         }
-        if(animationNext)
+        if (animationNext)
         {
             switch (animationSequence)
             {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Example : MonoBehaviour
 {
@@ -22,10 +23,12 @@ public class Example : MonoBehaviour
         dondonTime = 60 * 1 / (float)nowBPM;
         memoCount_Now = 0.0f;
         memoCount_Old = 60.0f;
+        if (SceneManager.GetActiveScene().name == "GameScore")
+            nowBPM = 160.0f;
     }
     private void Update()
     {
-        if(nowBPM_Old != nowBPM)
+        if (nowBPM_Old != nowBPM)
         {
             dondonTime = 60 * 1 / (float)nowBPM;
             nowBPM_Old = nowBPM;
