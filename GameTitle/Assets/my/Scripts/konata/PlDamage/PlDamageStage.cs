@@ -21,6 +21,8 @@ public class PlDamageStage : MonoBehaviour
     void Start()
     {
         Life = stageObjArr.Length;
+        OnDamageTrigger = false;
+        GetNoDamageTrigger = false;
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class PlDamageStage : MonoBehaviour
         if (OnDamageTrigger)
         {
             Life--;
-            if (Life != -1) FallMove(stageObjArr[Life]);
+            if (Life > -1) FallMove(stageObjArr[Life]);
             OnDamageTrigger = false;
             GetNoDamageTrigger = true;
         }

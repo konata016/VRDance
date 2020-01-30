@@ -58,6 +58,8 @@ public class BpmMove_DokudoCube : MonoBehaviour
             // セレクトボックス回転
             if (boxOrientation != BOXORIENTATION.SoundName)
             {
+                SE_Manager.SePlay(SE_Manager.SE_NAME.Jump);
+
                 DOTween
                     .To(value => SoundName_AxisRotate(value), 0, 270, 0.5f)
                     .SetEase(Ease.OutBack)
@@ -80,6 +82,8 @@ public class BpmMove_DokudoCube : MonoBehaviour
             // セレクトボックス回転
             if (boxOrientation != BOXORIENTATION.SoundName)
             {
+                SE_Manager.SePlay(SE_Manager.SE_NAME.Step);
+
                 DOTween
                     .To(value => Y_AxisRotate(value, -1), 0, 90, 0.4f)
                     .SetEase(Ease.OutBack)
@@ -93,6 +97,8 @@ public class BpmMove_DokudoCube : MonoBehaviour
             }
             else
             {
+                SE_Manager.SePlay(SE_Manager.SE_NAME.Cancel);
+
                 DOTween
                     .To(value => Reset_AxisRotate(value), 0, 270, 0.5f)
                     .SetEase(Ease.OutBack)
@@ -111,6 +117,8 @@ public class BpmMove_DokudoCube : MonoBehaviour
     {
         if (moveSwitch && BpmMove_Cube.Set_sceneChange)
         {
+            SE_Manager.SePlay(SE_Manager.SE_NAME.Step);
+
             // セレクトボックス回転
             if (boxOrientation != BOXORIENTATION.SoundName)
             {
@@ -129,6 +137,7 @@ public class BpmMove_DokudoCube : MonoBehaviour
         else
         {
             // 曲選択
+            SE_Manager.SePlay(SE_Manager.SE_NAME.SceneChange);
         }
     }
 

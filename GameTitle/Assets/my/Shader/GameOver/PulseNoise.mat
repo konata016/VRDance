@@ -33,5 +33,5 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Amount: -0.000000017484556
-    - _Random: 0.88496834
+    - _Random: 0.18444023
     m_Colors: []

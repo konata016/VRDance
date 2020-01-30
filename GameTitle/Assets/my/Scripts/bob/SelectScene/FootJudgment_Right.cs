@@ -225,7 +225,6 @@ public class FootJudgment_Right : MonoBehaviour
             case "SelectScene":
                 BpmMove_Cube.Set_JumpJudgment = true;
                 BpmMove_DokudoCube.Set_JumpJudgment = true;
-                Debug.Log("来てます");
                 break;
 
             case "ManualScene":
@@ -236,8 +235,7 @@ public class FootJudgment_Right : MonoBehaviour
                 ScoreController.Set_JumpJudgment = true;
                 break;
 
-            default:
-                Debug.Log("来てます"); break;
+            default: break;
         }
 
     }
@@ -248,15 +246,13 @@ public class FootJudgment_Right : MonoBehaviour
             case "SelectScene":
                 BpmMove_Cube.Set_RightJudgment = true;
                 BpmMove_DokudoCube.Set_RightJudgment = true;
-                Debug.Log("来てます");
                 break;
 
             case "ManualScene":
                 PageInstant.OnTriggerFootR = true;
                 break;
 
-            default:
-                Debug.Log("来てます"); break;
+            default: break;
         }
     }
     private void LeftJudgment()
@@ -266,15 +262,13 @@ public class FootJudgment_Right : MonoBehaviour
             case "SelectScene":
                 BpmMove_Cube.Set_LeftJudgment = true;
                 BpmMove_DokudoCube.Set_LeftJudgment = true;
-                Debug.Log("来てます");
                 break;
 
             case "ManualScene":
                 PageInstant.OnTriggerFootL = true;
                 break;
 
-            default:
-                Debug.Log("来てます"); break;
+            default: break;
         }
     }
 }

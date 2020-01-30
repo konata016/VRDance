@@ -30,6 +30,7 @@ public class ScoreController : MonoBehaviour
     {
         if (moveSwitch　&& Set_sceneChange)
         {
+            SE_Manager.SePlay(SE_Manager.SE_NAME.SceneChange);
             sceneChangeEffect.ChangeFadeMode();
             sceneChangeEffect.OnTrigger();
             Set_sceneChange = false;
