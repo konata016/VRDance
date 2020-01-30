@@ -14,8 +14,14 @@ public class SE_Manager : MonoBehaviour
     /// </summary>
     public enum SE_NAME
     {
+        //メインゲーム
         Excellent, Good, But, Miss,
-        PlDamage, PlAttack
+        PlDamage, PlAttack,
+
+        //セレクト画面
+        LoadComplete,
+        Step,Jump,Cancel,
+        SceneChange
     }
 
     [System.Serializable]
@@ -27,13 +33,22 @@ public class SE_Manager : MonoBehaviour
     public List<SeData> seDataList = new List<SeData>()
     {
         //リストの初期化
+        //メインゲーム
         new SeData{name=SE_NAME.Excellent.ToString(),audio=null},
         new SeData{name=SE_NAME.Good.ToString(),audio=null},
         new SeData{name=SE_NAME.But.ToString(),audio=null},
         new SeData{name=SE_NAME.Miss.ToString(),audio=null},
 
         new SeData{name=SE_NAME.PlDamage.ToString(),audio=null},
-        new SeData{name=SE_NAME.PlAttack.ToString(),audio=null}
+        new SeData{name=SE_NAME.PlAttack.ToString(),audio=null},
+
+        //セレクト
+        new SeData{name=SE_NAME.LoadComplete.ToString(),audio=null},
+        new SeData{name=SE_NAME.Step.ToString(),audio=null},
+        new SeData{name=SE_NAME.Jump.ToString(),audio=null},
+        new SeData{name=SE_NAME.Cancel.ToString(),audio=null},
+        new SeData{name=SE_NAME.SceneChange.ToString(),audio=null}
+
     };
 
     static SE_Manager SE_Manager_;
