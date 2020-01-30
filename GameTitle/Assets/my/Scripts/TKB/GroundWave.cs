@@ -98,7 +98,8 @@ public class GroundWave : MonoBehaviour
 
         if (colorT > 0.0f && (Verflag == false && Wideflag == false))
         {
-            colorT -= Time.deltaTime * colorSpeed;
+            //colorT -= Time.deltaTime * colorSpeed;
+            colorT = 0f;
             mColor = Color.Lerp(startC, endColor, colorT);
             this.GetComponent<Renderer>().material.SetColor("_EmissionColor", mColor * 0.005f);
 

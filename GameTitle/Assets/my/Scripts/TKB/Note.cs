@@ -85,7 +85,7 @@ public class WideWaveNote : Note
     }
 }
 
-    public class VerticalWaveNote : Note
+public class VerticalWaveNote : Note
 {
     //private float vertPos = 0;
     private const float animTime = 3.0f;
@@ -95,7 +95,7 @@ public class WideWaveNote : Note
     int colNum = 40;
     int vNum = 0;
 
-    public VerticalWaveNote(float reachTime, Vector3 position, GameObject note) 
+    public VerticalWaveNote(float reachTime, Vector3 position, GameObject note)
         : base(reachTime, position, note)
     {
         generateTime = reachTime;
@@ -110,13 +110,13 @@ public class WideWaveNote : Note
             if (noteObj[i] != null)
             {
                 if (noteObj[i].transform.position.z < -2.0f)
-                {                 
+                {
                     Destroy(noteObj[i]);
                 }
                 else
                 {
                     checkTime[0] += Time.deltaTime;
-                    noteObj[i].transform.position -= new Vector3(0, 0, Time.deltaTime * noteSpeed);                
+                    noteObj[i].transform.position -= new Vector3(0, 0, Time.deltaTime * noteSpeed);
                 }
             }
         }
@@ -128,7 +128,7 @@ public class WideWaveNote : Note
         if (noteObj[vNum] == null)
         {
             checkTime[0] = 0;
-            noteObj[vNum] = Instantiate(colli, 
+            noteObj[vNum] = Instantiate(colli,
                                         new Vector3(pos.x, GameDirector.GetGroundPos.y, pos.z),
                                         Quaternion.identity);
             vNum++;
