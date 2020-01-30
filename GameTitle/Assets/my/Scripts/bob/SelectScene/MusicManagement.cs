@@ -32,6 +32,7 @@ public class MusicManagement : MonoBehaviour
         public string difficultyLevel;  // 難易度
         public Sprite jacketImage;      // ジェケットの画像
         public AudioClip sampleSound;   // サンプルサウンド
+        public AudioClip MainBGM;       // メインゲームで流れる曲
         public float soundBPM;          // 曲のBPM（テンポ）
         public string soundScore;       // 譜面の名前
     }
@@ -107,6 +108,8 @@ public class MusicManagement : MonoBehaviour
                     soundInformationList[0].soundName.text = musicInfoList[nomberOfMusic].soundName;
                     soundInformationList[0].difficultyLevel.text = musicInfoList[nomberOfMusic].difficultyLevel;
                     soundInformationList[0].jacketImage.sprite = musicInfoList[nomberOfMusic].jacketImage;
+
+                    StepData.SetClip = musicInfoList[nomberOfMusic].MainBGM;
                 }
                 else if (i == (int)BpmMove_Cube.boxOrientation + 1 || i == (int)BpmMove_Cube.boxOrientation - 3)// 左面の時だけ別例
                 {

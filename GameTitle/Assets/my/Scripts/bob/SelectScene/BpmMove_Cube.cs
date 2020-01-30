@@ -13,13 +13,13 @@ public class BpmMove_Cube : MonoBehaviour
     public BOXORIENTATION boxOrientation_Old;
     float value_Old;    //回転した差分を引く用
     private MusicManagement musicManagement;
-    private CanvasAlpha canvasAlpha;
     private SceneChangeEffect sceneChangeEffect;
     public static bool Set_LeftJudgment {private get; set; }
     public static bool Set_RightJudgment { private get; set; }
     public static bool Set_JumpJudgment { private get; set; }
     public static bool Set_sceneChange { get; set; }// シーン移行時に操作をしないようにする
 
+    [SerializeField] GameObject SoundInformation;
     [SerializeField] GameObject soundBoxes;
 
     void Start()
@@ -28,7 +28,6 @@ public class BpmMove_Cube : MonoBehaviour
         boxOrientation_Old = boxOrientation;
         musicManagement = GetComponent<MusicManagement>();
         GameObject childObject = transform.Find("SoundInformation").gameObject;
-        canvasAlpha = childObject.GetComponent<CanvasAlpha>();
         GameObject anotherObject = GameObject.Find("SceneChangeBox");
         sceneChangeEffect = anotherObject.GetComponent<SceneChangeEffect>();
         Set_LeftJudgment = false;
@@ -76,7 +75,7 @@ public class BpmMove_Cube : MonoBehaviour
 
 
                     .OnUpdate(() => {// 対象の値が変更される度によばれる
-                            canvasAlpha.MusicInformation_Alpha(0.4f);
+                        SoundInformation.SetActive(true);
                         soundBoxes.SetActive(false);
                     })
                     .OnComplete(() => {
@@ -121,7 +120,7 @@ public class BpmMove_Cube : MonoBehaviour
                         value_Old = 0;
                     })
                     .OnUpdate(() => {// 対象の値が変更される度によばれる
-                        canvasAlpha.MusicInformation_Alpha(-0.4f);
+                        SoundInformation.SetActive(false);
                         soundBoxes.SetActive(true);
                     })
                     .OnComplete(() => {

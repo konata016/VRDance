@@ -18,10 +18,12 @@ public class SoundLoop : MonoBehaviour
         introAudioSource.clip = bgmIntroAudioClip;
         introAudioSource.loop = false;
         introAudioSource.playOnAwake = false;
+        introAudioSource.volume = 0.5f;
 
         loopAudioSource.clip = bgmLoopAudioClip;
         loopAudioSource.loop = true;
         loopAudioSource.playOnAwake = false;
+        loopAudioSource.volume = 0.5f;
 
         PlayBGM();
     }

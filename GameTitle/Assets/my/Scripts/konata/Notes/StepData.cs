@@ -14,6 +14,9 @@ public class StepData : MonoBehaviour
     public string fileName = "Assets/Resources/Notes/";
 
     public AudioSource source;          //サウンド
+
+    public static AudioClip SetClip {private get; set; }
+
     public enum INPUT_TEXT              //テキストデータの種類
     {
         MusicScore,
@@ -56,6 +59,9 @@ public class StepData : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        source.clip = SetClip;
+
+
         int count = 0;
         stepData.Clear();
         if (scoreName == "")
