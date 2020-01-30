@@ -15,6 +15,7 @@ public class PlDamageStage : MonoBehaviour
 
     public static int Life { get;private set; }
     public static bool OnDamageTrigger { private get; set; }
+    public static bool GetNoDamageTrigger { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class PlDamageStage : MonoBehaviour
             Life--;
             if (Life != -1) FallMove(stageObjArr[Life]);
             OnDamageTrigger = false;
+            GetNoDamageTrigger = true;
         }
 
         StageHidden();
@@ -48,6 +50,7 @@ public class PlDamageStage : MonoBehaviour
             if (lostPoint > pos.y -1f)
             {
                 obj.GetComponent<MeshRenderer>().enabled = false;
+                GetNoDamageTrigger = false;
             }
         }
     }
