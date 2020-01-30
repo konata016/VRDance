@@ -38,7 +38,7 @@ public class FootJudgment_Right : MonoBehaviour
         footConPos_R = rightHandAnchor.transform.position;
         footConPos_L = leftHandAnchor.transform.position;
         onlyOneTime = true;
-        judgment = false;
+        judgment = true;
         landingFlame = 0;
         bpmMove_Cube = GetComponent<BpmMove_Cube>();
         bpmMove_DokudoCube = GetComponent<BpmMove_DokudoCube>();
@@ -50,55 +50,59 @@ public class FootJudgment_Right : MonoBehaviour
 
     void Update()
     {
-        if (onlyOneTime)
-        {
-            if (footConPos_R.y <= footConPos_L.y)// 地面の位置を取得（初期値）
-                groundPosition.y = Mathf.Floor(footConPos_R.y * roundedDown) / roundedDown;
-            else
-                groundPosition.y = Mathf.Floor(footConPos_L.y * roundedDown) / roundedDown;
+        //if (onlyOneTime)
+        //{
+        //    if (footConPos_R.y <= footConPos_L.y)// 地面の位置を取得（初期値）
+        //        groundPosition.y = Mathf.Floor(footConPos_R.y * roundedDown) / roundedDown;
+        //    else
+        //        groundPosition.y = Mathf.Floor(footConPos_L.y * roundedDown) / roundedDown;
 
-            onlyOneTime = false;
-            landingFlame = 0;
-        }
+        //    onlyOneTime = false;
+        //    landingFlame = 0;
+        //}
         footConPos_R = rightHandAnchor.transform.position;
         footConPos_L = leftHandAnchor.transform.position;
 
+        groundPosition.y = Mathf.Floor(GroundManager.GetGroundPos.y * roundedDown) / roundedDown;
+
+        Debug.Log("groundPosition : " + groundPosition);
+
         timeCheck += Time.deltaTime;
 
-        if (timeCheck >= timeRegulary)// 地面の位置を取得（更新）
-        {
-            timeCheck = 0.0f;
+        //if (timeCheck >= timeRegulary)// 地面の位置を取得（更新）
+        //{
+        //    timeCheck = 0.0f;
 
-            if (footConPos_R.y <= footConPos_L.y)
-            {
-                myLowFootPos.y = Mathf.Floor(footConPos_R.y * roundedDown) / roundedDown;
-            }
-            else
-            {
-                myLowFootPos.y = Mathf.Floor(footConPos_L.y * roundedDown) / roundedDown;
-            }
+        //    if (footConPos_R.y <= footConPos_L.y)
+        //    {
+        //        myLowFootPos.y = Mathf.Floor(footConPos_R.y * roundedDown) / roundedDown;
+        //    }
+        //    else
+        //    {
+        //        myLowFootPos.y = Mathf.Floor(footConPos_L.y * roundedDown) / roundedDown;
+        //    }
 
-            if (myLowFootPos.y == groundPosition.y)// 地面と足の位置が同じとき
-            {
-                groundPosSave.y = myLowFootPos.y;
-                groundPosSaveSave.y = myLowFootPos.y;
-            }
-            else// 地面と足の位置が違うとき
-            {
-                if (myLowFootPos.y == groundPosSave.y && myLowFootPos.y == groundPosSaveSave.y)
-                {
-                    judgment = false;
-                    groundPosition.y = myLowFootPos.y;
-                    judgment = true;
-                    isGroundTouch_R = ISGROUNDTOUCH.Stoping;
-                    isGroundTouch_L = ISGROUNDTOUCH.Stoping;
-                }
-                else if (myLowFootPos.y == groundPosSave.y)
-                    groundPosSaveSave.y = myLowFootPos.y;
-                else
-                    groundPosSave.y = myLowFootPos.y;
-            }
-        }
+        //    if (myLowFootPos.y == groundPosition.y)// 地面と足の位置が同じとき
+        //    {
+        //        groundPosSave.y = myLowFootPos.y;
+        //        groundPosSaveSave.y = myLowFootPos.y;
+        //    }
+        //    else// 地面と足の位置が違うとき
+        //    {
+        //        if (myLowFootPos.y == groundPosSave.y && myLowFootPos.y == groundPosSaveSave.y)
+        //        {
+        //            judgment = false;
+        //            groundPosition.y = myLowFootPos.y;
+        //            judgment = true;
+        //            isGroundTouch_R = ISGROUNDTOUCH.Stoping;
+        //            isGroundTouch_L = ISGROUNDTOUCH.Stoping;
+        //        }
+        //        else if (myLowFootPos.y == groundPosSave.y)
+        //            groundPosSaveSave.y = myLowFootPos.y;
+        //        else
+        //            groundPosSave.y = myLowFootPos.y;
+        //    }
+        //}
 
         onGround_R_Old = onGround_R;
         if (groundPosition.y + tweak < Mathf.Floor(footConPos_R.y * roundedDown) / roundedDown)// 地面の高さ+α < 自分の足の位置　// 右足を上げている
@@ -221,7 +225,7 @@ public class FootJudgment_Right : MonoBehaviour
             case "SelectScene":
                 BpmMove_Cube.Set_JumpJudgment = true;
                 BpmMove_DokudoCube.Set_JumpJudgment = true;
-                
+                Debug.Log("来てます");
                 break;
 
             case "ManualScene":
@@ -232,7 +236,8 @@ public class FootJudgment_Right : MonoBehaviour
                 ScoreController.Set_JumpJudgment = true;
                 break;
 
-            default:break;
+            default:
+                Debug.Log("来てます"); break;
         }
 
     }
@@ -243,13 +248,15 @@ public class FootJudgment_Right : MonoBehaviour
             case "SelectScene":
                 BpmMove_Cube.Set_RightJudgment = true;
                 BpmMove_DokudoCube.Set_RightJudgment = true;
+                Debug.Log("来てます");
                 break;
 
             case "ManualScene":
                 PageInstant.OnTriggerFootR = true;
                 break;
 
-            default: break;
+            default:
+                Debug.Log("来てます"); break;
         }
     }
     private void LeftJudgment()
@@ -259,13 +266,15 @@ public class FootJudgment_Right : MonoBehaviour
             case "SelectScene":
                 BpmMove_Cube.Set_LeftJudgment = true;
                 BpmMove_DokudoCube.Set_LeftJudgment = true;
+                Debug.Log("来てます");
                 break;
 
             case "ManualScene":
                 PageInstant.OnTriggerFootL = true;
                 break;
 
-            default: break;
+            default:
+                Debug.Log("来てます"); break;
         }
     }
 }

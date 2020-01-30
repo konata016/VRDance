@@ -236,7 +236,7 @@ MonoBehaviour:
   rightHandAnchor: {fileID: 2049252943}
   leftHandAnchor: {fileID: 2049252944}
   tweak: 0.03
-  landingFlameMax: 10
+  landingFlameMax: 0.05
 --- !u!4 &601078984
 Transform:
   m_ObjectHideFlags: 0
