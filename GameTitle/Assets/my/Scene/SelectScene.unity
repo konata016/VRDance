@@ -1519,19 +1519,19 @@ MonoBehaviour:
     soundBPM: 160
     soundScore: Dub_Hard
   - soundName: Forbidden Fruit
-    difficultyLevel: level0
+    difficultyLevel: level1
     jacketImage: {fileID: 21300000, guid: f794bdbe005d6144b8718d9769680bef, type: 3}
     sampleSound: {fileID: 8300000, guid: aed0c55fcce1b0747a35db141d205d8e, type: 3}
-    MainBGM: {fileID: 0}
+    MainBGM: {fileID: 8300000, guid: 5da95849141957d45b634596e6fb9d32, type: 3}
     soundBPM: 128
-    soundScore: 
+    soundScore: ForbiddenFruit_Easy
   - soundName: Forbidden Fruit
-    difficultyLevel: level0
+    difficultyLevel: level3
     jacketImage: {fileID: 21300000, guid: f794bdbe005d6144b8718d9769680bef, type: 3}
     sampleSound: {fileID: 8300000, guid: aed0c55fcce1b0747a35db141d205d8e, type: 3}
-    MainBGM: {fileID: 0}
+    MainBGM: {fileID: 8300000, guid: 5da95849141957d45b634596e6fb9d32, type: 3}
     soundBPM: 128
-    soundScore: 
+    soundScore: ForbiddenFruit_Hard
   nomberOfMusic: 0
 --- !u!82 &748344594
 AudioSource:

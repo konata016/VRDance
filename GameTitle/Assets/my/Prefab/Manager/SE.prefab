@@ -45,11 +45,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seDataList:
   - name: Excellent
-    audio: {fileID: 8300000, guid: 5b56a16c4cedb13438767c3ef37a69f7, type: 3}
+    audio: {fileID: 8300000, guid: 73a10702f933cff409209287348cdee6, type: 3}
   - name: Good
-    audio: {fileID: 8300000, guid: 8ca0c9259e08bd54abae998527b9a8b4, type: 3}
+    audio: {fileID: 8300000, guid: 584f5b38a934b7440974326e155b240f, type: 3}
   - name: But
-    audio: {fileID: 8300000, guid: 30965bc3f39ff6048b214204d2432cf2, type: 3}
+    audio: {fileID: 8300000, guid: 7b22478146b945c4384e558b92135f2f, type: 3}
   - name: Miss
     audio: {fileID: 0}
   - name: PlDamage
@@ -57,12 +57,12 @@ MonoBehaviour:
   - name: PlAttack
     audio: {fileID: 0}
   - name: LoadComplete
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: b900f534f0a1b75418df936112a9d257, type: 3}
   - name: Step
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 2feeaf81e7bdd7d4aacf23245d92de49, type: 3}
   - name: Jump
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 2e040c1f22cc9bb42991a4006d247a23, type: 3}
   - name: Cancel
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 0df261494836ea64ab118100f77e8935, type: 3}
   - name: SceneChange
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: df9cf47cf871fff4b86ed2b022359618, type: 3}
