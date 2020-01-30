@@ -65,7 +65,7 @@ public class FootJudgment_Right : MonoBehaviour
 
         groundPosition.y = Mathf.Floor(GroundManager.GetGroundPos.y * roundedDown) / roundedDown;
 
-        Debug.Log("groundPosition : " + groundPosition);
+       
 
         //timeCheck += Time.deltaTime;
 

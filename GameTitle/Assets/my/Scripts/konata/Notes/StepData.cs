@@ -15,7 +15,7 @@ public class StepData : MonoBehaviour
 
     public AudioSource source;          //サウンド
 
-    public static AudioClip SetClip {private get; set; }
+    public static AudioClip SetClip { private get; set; }
 
     public enum INPUT_TEXT              //テキストデータの種類
     {
@@ -76,26 +76,29 @@ public class StepData : MonoBehaviour
         //Debug.Log(File.Exists(fileName));
 
         //テキストの読み込み
-        if (File.Exists(fileName))
+        TextAsset text = new TextAsset();
+        text = Resources.Load("Notes/" + MusicManagement.GetSoundScore, typeof(TextAsset)) as TextAsset;
+
+        string textAll = text.text;
+        string[] textLoad = textAll.Split('\n');
+
+        foreach (string str in textLoad)
         {
-            foreach (string str in File.ReadLines(fileName))
+            string[] arr = str.Split(',');                           //（,）カンマで分ける
+            stepData.Add(new Data());
+
+            textTime.Add(float.Parse(arr[(int)INPUT_TEXT.MusicScore]));
+
+            stepData[count].musicScore = float.Parse(arr[(int)INPUT_TEXT.MusicScore]);
+            stepData[count].ememyAttackType = (ENEMY_ATTACK_TYPE)int.Parse(arr[(int)INPUT_TEXT.EnemyAttackType]);
+            stepData[count].plStep = (PL_STEP_TIMING)int.Parse(arr[(int)INPUT_TEXT.PlStep]);
+
+            for (int i = (int)INPUT_TEXT.EnemyAttackLane0; i <= (int)INPUT_TEXT.EnemyAttackLane5; i++)
             {
-                string[] arr = str.Split(',');                           //（,）カンマで分ける
-                stepData.Add(new Data());
-
-                textTime.Add(float.Parse(arr[(int)INPUT_TEXT.MusicScore]));
-
-                stepData[count].musicScore = float.Parse(arr[(int)INPUT_TEXT.MusicScore]);
-                stepData[count].ememyAttackType = (ENEMY_ATTACK_TYPE)int.Parse(arr[(int)INPUT_TEXT.EnemyAttackType]);
-                stepData[count].plStep = (PL_STEP_TIMING)int.Parse(arr[(int)INPUT_TEXT.PlStep]);
-
-                for (int i = (int)INPUT_TEXT.EnemyAttackLane0; i <= (int)INPUT_TEXT.EnemyAttackLane5; i++)
-                {
-                    stepData[count].enemyAttackPos[i - (int)INPUT_TEXT.EnemyAttackLane0] = bool.Parse(arr[i]);
-                }
-
-                count++;
+                stepData[count].enemyAttackPos[i - (int)INPUT_TEXT.EnemyAttackLane0] = bool.Parse(arr[i]);
             }
+
+            count++;
         }
 
         StepData_ = this;   //初期化と数値の代入(thisしないとバグる)

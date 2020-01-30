@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4820200547284434092}
   - component: {fileID: 3482469873120432938}
   - component: {fileID: 8395116429205753481}
-  - component: {fileID: 3955384706740079888}
+  - component: {fileID: 8122315663345986797}
   m_Layer: 0
   m_Name: GroundContentsCube
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &3955384706740079888
+--- !u!114 &8122315663345986797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,6 +87,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1345070118713686279}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb7abbc2d3178284a9c021f94e3090d5, type: 3}
+  m_Script: {fileID: 11500000, guid: bed88e67441e17d4897f76a18d050bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
