@@ -28,6 +28,8 @@ public class UiChange : MonoBehaviour
             processNow.SetActive(false);
             processEnd.SetActive(true);
 
+            SE_Manager.SePlay(SE_Manager.SE_NAME.LoadComplete);
+
             //何秒か待ってからフェイドアウトする
             Invoke("DissolveControl", 2f);
         }

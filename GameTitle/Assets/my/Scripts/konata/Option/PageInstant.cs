@@ -53,8 +53,16 @@ public class PageInstant : MonoBehaviour
     void Update()
     {
         //切り替え
-        if (OnTriggerNext() && num < pageNumObjList.Count - 1) num++;
-        if (OnTriggerBack() && num > 0) num--;
+        if (OnTriggerNext() && num < pageNumObjList.Count - 1)
+        {
+            SE_Manager.SePlay(SE_Manager.SE_NAME.Step);
+            num++;
+        }
+        if (OnTriggerBack() && num > 0)
+        {
+            SE_Manager.SePlay(SE_Manager.SE_NAME.Step);
+            num--;
+        }
 
         //トリガーがひかれた場合、マテリアルの差し替え
         if (OnTriggerNext() || OnTriggerBack())

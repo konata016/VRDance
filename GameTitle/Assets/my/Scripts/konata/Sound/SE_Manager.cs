@@ -60,8 +60,12 @@ public class SE_Manager : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             gameObject.AddComponent<AudioSource>();
+
         }
         seArr = GetComponents<AudioSource>();
+
+        for (int i = 0; i < 10; i++)
+            seArr[i].volume = 0.5f;
 
         SE_Manager_ = this;
     }

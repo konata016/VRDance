@@ -56,9 +56,11 @@ public class PopUp : MonoBehaviour
         {
             if (OnTrigger())
             {
-                Debug.Log("J" + OnTrigger());
                 Move(gameObject, tmpPos);
                 StartCoroutine(TimeScaleWait(1f));
+
+                //SE
+                SE_Manager.SePlay(SE_Manager.SE_NAME.SceneChange);
 
                 OnTriggerJump = false;
             }
