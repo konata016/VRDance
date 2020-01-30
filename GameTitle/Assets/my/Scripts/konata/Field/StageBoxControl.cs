@@ -41,6 +41,7 @@ public class StageBoxControl : MonoBehaviour
                     if (rollCount != objList.Count - 1) rollCount++;
                     else rollCount = 0;
                 }
+                stepDataCount++;
             }
         }
     }

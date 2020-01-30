@@ -9,7 +9,10 @@ public class PL : MonoBehaviour
 {
     public Status status;
 
-    int comboCount;
+    /// <summary>
+    /// コンボ数を取得
+    /// </summary>
+    public static int GetComboCount { get; private set; }
 
     /// <summary>
     /// 敵に与えるダメージを取得
@@ -29,7 +32,10 @@ public class PL : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComboCount = 0;
+        GetDamagePoint = 0;
+        GetTotalDamage = 0;
+        GetMaxComboCount = 0;
     }
 
     // Update is called once per frame
@@ -39,20 +45,20 @@ public class PL : MonoBehaviour
         {
             switch (NotesManager2.rank)
             {
-                case NotesManager2.RANK.Bad: comboCount = 0; break;
-                case NotesManager2.RANK.Good: comboCount++; break;
-                case NotesManager2.RANK.Excellent: comboCount++; break;
+                case NotesManager2.RANK.Bad: GetComboCount = 0; break;
+                case NotesManager2.RANK.Good: GetComboCount++; break;
+                case NotesManager2.RANK.Excellent: GetComboCount++; break;
                 default: break;
             }
 
             //敵に与えるダメージ計算
-            GetDamagePoint = ((int)NotesManager2.rank + (int)status.STR) * (comboCount / 5);
+            GetDamagePoint = ((int)NotesManager2.rank + (int)status.STR) * (GetComboCount / 5);
             GetTotalDamage += GetDamagePoint;
 
             //最大コンボ数更新
-            if (GetMaxComboCount < comboCount)
+            if (GetMaxComboCount < GetComboCount)
             {
-                GetMaxComboCount = comboCount;
+                GetMaxComboCount = GetComboCount;
             }
         }
     }
