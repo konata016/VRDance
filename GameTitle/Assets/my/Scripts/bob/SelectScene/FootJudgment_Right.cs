@@ -38,7 +38,7 @@ public class FootJudgment_Right : MonoBehaviour
         footConPos_R = rightHandAnchor.transform.position;
         footConPos_L = leftHandAnchor.transform.position;
         onlyOneTime = true;
-        judgment = true;
+        judgment = false;
         landingFlame = 0;
         bpmMove_Cube = GetComponent<BpmMove_Cube>();
         bpmMove_DokudoCube = GetComponent<BpmMove_DokudoCube>();
@@ -205,6 +205,9 @@ public class FootJudgment_Right : MonoBehaviour
                 }
             }
         }
+
+        if (judgment == false)
+            judgment = true;
 
         //if (isGroundTouch_R_Old != isGroundTouch_R)
         //{
