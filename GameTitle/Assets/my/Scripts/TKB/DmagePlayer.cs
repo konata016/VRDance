@@ -19,12 +19,19 @@ public class DmagePlayer : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.collider.tag == "PlBeam")
+        {
+            Instantiate(damagePre, other.transform);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "PlBeam")
         {         
-            Instantiate(damagePre, other.transform);
-
+            Instantiate(damagePre, other.transform.position,Quaternion.identity);
         }
     }
 }
