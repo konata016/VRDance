@@ -7,31 +7,14 @@ public class DmagePlayer : MonoBehaviour
     [SerializeField]
     GameObject damagePre;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.collider.tag == "PlBeam")
-        {
-            Instantiate(damagePre, other.transform);
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "PlBeam")
         {         
-            Instantiate(damagePre, other.transform.position,Quaternion.identity);
+            Instantiate(damagePre, new Vector3(other.transform.position.x + Random.Range(-0.5f, 0.5f),
+                                               other.transform.position.y + Random.Range(0.0f, 1.0f),
+                                               other.transform.position.z),
+                                               Quaternion.identity);
         }
     }
 }

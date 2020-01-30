@@ -47,6 +47,7 @@ public class PL : MonoBehaviour
 
             //敵に与えるダメージ計算
             GetDamagePoint = ((int)NotesManager2.rank + (int)status.STR) * (comboCount / 5);
+            GetDamagePoint = (GetDamagePoint + 7) * 43;
             GetTotalDamage += GetDamagePoint;
 
             //最大コンボ数更新

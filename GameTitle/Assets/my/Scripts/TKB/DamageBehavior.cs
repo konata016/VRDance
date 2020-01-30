@@ -26,8 +26,10 @@ public class DamageBehavior : MonoBehaviour
 
     private void Initialize()
     {
-        moveScale = 0.01f;
-        plDamageText = "Hit!";
+        plDamageValue = PL.GetDamagePoint;
+        Debug.Log(PL.GetDamagePoint);
+        moveScale = 0.03f;
+        plDamageText = plDamageValue.ToString();
         damageTMPro.text = plDamageText;
         damageTMPro.color = new Color(1f, 1f, 1f, 0.1f);
         moveRad = 0f;
