@@ -8,7 +8,8 @@ using UnityEngine;
 public class AnimSpeedControl : MonoBehaviour
 {
     public Animator animator;
-    public int tempo = 120;
+
+    public static int SetTempo { set; get; }
 
     float multiple;
     float barTime;
@@ -20,7 +21,7 @@ public class AnimSpeedControl : MonoBehaviour
     void Start()
     {
         //テンポによって再生速度が変わる
-        barTime = 60 * 4 * 1 / tempo;
+        barTime = 60 * 4 * 1 / SetTempo;
         multiple = 1 / barTime;
         animator.SetFloat("Speed", multiple * 2);
     }
@@ -54,7 +55,7 @@ public class AnimSpeedControl : MonoBehaviour
             animator.SetBool("Right", false);
             animator.SetBool("Left", false);
             animator.SetBool("Default", true);
-            
+
         }
     }
 }

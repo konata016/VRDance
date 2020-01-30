@@ -134,7 +134,7 @@ public class BpmMove_DokudoCube : MonoBehaviour
                     });
             }
         }
-        else
+        else if(moveSwitch)
         {
             // 曲選択
             SE_Manager.SePlay(SE_Manager.SE_NAME.SceneChange);

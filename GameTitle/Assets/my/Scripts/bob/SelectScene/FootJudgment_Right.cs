@@ -67,7 +67,7 @@ public class FootJudgment_Right : MonoBehaviour
 
         Debug.Log("groundPosition : " + groundPosition);
 
-        timeCheck += Time.deltaTime;
+        //timeCheck += Time.deltaTime;
 
         //if (timeCheck >= timeRegulary)// 地面の位置を取得（更新）
         //{
@@ -113,7 +113,6 @@ public class FootJudgment_Right : MonoBehaviour
                 if(judgment)
                 {
                     RightJudgment();
-                    //Debug.Log("はなしたな！");
                 }
 
                 isGroundTouch_R = ISGROUNDTOUCH.Jumping;
@@ -150,7 +149,6 @@ public class FootJudgment_Right : MonoBehaviour
                     if (judgment)
                     {
                         RightJudgment();
-                        //Debug.Log("ついたとき！");
                     }
 
                     isGroundTouch_R = ISGROUNDTOUCH.Stoping;
@@ -207,7 +205,11 @@ public class FootJudgment_Right : MonoBehaviour
         }
 
         if (judgment == false)
+        {
             judgment = true;
+            isGroundTouch_R = ISGROUNDTOUCH.Stoping;
+            isGroundTouch_L = ISGROUNDTOUCH.Stoping;
+        }
 
         //if (isGroundTouch_R_Old != isGroundTouch_R)
         //{

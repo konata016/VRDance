@@ -1199,8 +1199,41 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.63
       objectReference: {fileID: 0}
+    - target: {fileID: 4700264163654583897, guid: 68d9d438053fd324b86fe52dfadc61e4,
+        type: 3}
+      propertyPath: animaBody
+      value: 
+      objectReference: {fileID: 542855657}
+    - target: {fileID: 4700264163654583897, guid: 68d9d438053fd324b86fe52dfadc61e4,
+        type: 3}
+      propertyPath: animaL
+      value: 
+      objectReference: {fileID: 542855656}
+    - target: {fileID: 4700264163654583897, guid: 68d9d438053fd324b86fe52dfadc61e4,
+        type: 3}
+      propertyPath: animaR
+      value: 
+      objectReference: {fileID: 542855655}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68d9d438053fd324b86fe52dfadc61e4, type: 3}
+--- !u!95 &542855655 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5365656269100408322, guid: 68d9d438053fd324b86fe52dfadc61e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 542855654}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &542855656 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2601808842420272494, guid: 68d9d438053fd324b86fe52dfadc61e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 542855654}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &542855657 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5427424869841514649, guid: 68d9d438053fd324b86fe52dfadc61e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 542855654}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &576292495
 GameObject:
   m_ObjectHideFlags: 0
@@ -4595,7 +4628,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720687052}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.366, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 481446451}
@@ -5321,7 +5354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913698219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.366, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 481446452}
@@ -5806,9 +5839,9 @@ MonoBehaviour:
     type: 3}
   throwNote: {fileID: 6624734182455286549, guid: 20e4947e52227e54dbbe29d988755ef8,
     type: 3}
-  verticalAnimTime: 2.15
-  throwAnimTime: 1.85
-  wideAnimTime: 2.15
+  verticalAnimTime: 2
+  throwAnimTime: 5
+  wideAnimTime: 10
 --- !u!4 &2086584538
 Transform:
   m_ObjectHideFlags: 0

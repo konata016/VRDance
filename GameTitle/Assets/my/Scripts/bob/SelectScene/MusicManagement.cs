@@ -110,6 +110,7 @@ public class MusicManagement : MonoBehaviour
                     soundInformationList[0].jacketImage.sprite = musicInfoList[nomberOfMusic].jacketImage;
 
                     StepData.SetClip = musicInfoList[nomberOfMusic].MainBGM;
+                    AnimSpeedControl.SetTempo = (int)musicInfoList[nomberOfMusic].soundBPM;
                 }
                 else if (i == (int)BpmMove_Cube.boxOrientation + 1 || i == (int)BpmMove_Cube.boxOrientation - 3)// 左面の時だけ別例
                 {
