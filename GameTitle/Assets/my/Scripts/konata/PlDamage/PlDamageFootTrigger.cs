@@ -23,7 +23,7 @@ public class PlDamageFootTrigger : MonoBehaviour
     {
         if (!PlDamageStage.GetNoDamageTrigger)
         {
-            if (other.gameObject.tag == "underWave")
+            if (other.gameObject.tag == "wide")
             {
                 PlDamageStage.OnDamageTrigger = true;
 
