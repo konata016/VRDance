@@ -36,7 +36,7 @@ public class PlDamageStage : MonoBehaviour
             Life--;
             if (Life > -1) FallMove(stageObjArr[Life]);
             OnDamageTrigger = false;
-            GetNoDamageTrigger = true;
+            if(!GetNoDamageTrigger) GetNoDamageTrigger = true;
         }
 
         StageHidden();
