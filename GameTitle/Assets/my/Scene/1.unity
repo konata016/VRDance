@@ -1036,37 +1036,19 @@ PrefabInstance:
         type: 3}
       propertyPath: animaBody
       value: 
-      objectReference: {fileID: 542855657}
+      objectReference: {fileID: 0}
     - target: {fileID: 4700264163654583897, guid: 68d9d438053fd324b86fe52dfadc61e4,
         type: 3}
       propertyPath: animaL
       value: 
-      objectReference: {fileID: 542855656}
+      objectReference: {fileID: 0}
     - target: {fileID: 4700264163654583897, guid: 68d9d438053fd324b86fe52dfadc61e4,
         type: 3}
       propertyPath: animaR
       value: 
-      objectReference: {fileID: 542855655}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68d9d438053fd324b86fe52dfadc61e4, type: 3}
---- !u!95 &542855655 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5365656269100408322, guid: 68d9d438053fd324b86fe52dfadc61e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 542855654}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &542855656 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2601808842420272494, guid: 68d9d438053fd324b86fe52dfadc61e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 542855654}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &542855657 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5427424869841514649, guid: 68d9d438053fd324b86fe52dfadc61e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 542855654}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &576292495
 GameObject:
   m_ObjectHideFlags: 0
@@ -4961,7 +4943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 093825fc73062d94c8a4d8965dc65454, type: 2}
   fadeMode: 1
-  speed: 0.0005
+  speed: 0.002
   timeScaleWaitTime: 0
   changeSceneName: GameScore
 --- !u!114 &1940493925

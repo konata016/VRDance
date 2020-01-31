@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 093825fc73062d94c8a4d8965dc65454, type: 2}
   fadeMode: 1
-  speed: 0.0005
+  speed: 0.002
   timeScaleWaitTime: 0
   changeSceneName: SelectScene
 --- !u!114 &3888075968504105494

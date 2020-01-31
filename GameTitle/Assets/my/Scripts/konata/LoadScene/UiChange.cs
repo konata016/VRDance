@@ -11,6 +11,7 @@ public class UiChange : MonoBehaviour
     public GameObject processEnd;
 
     public GameObject sceneChangeObj;
+    bool on;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,11 @@ public class UiChange : MonoBehaviour
             processNow.SetActive(false);
             processEnd.SetActive(true);
 
-            SE_Manager.SePlay(SE_Manager.SE_NAME.LoadComplete);
+            if (!on)
+            {
+                SE_Manager.SePlay(SE_Manager.SE_NAME.LoadComplete);
+                on = true;
+            }
 
             //何秒か待ってからフェイドアウトする
             Invoke("DissolveControl", 2f);
