@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1036,37 +1036,19 @@ PrefabInstance:
         type: 3}
       propertyPath: animaBody
       value: 
-      objectReference: {fileID: 542855657}
+      objectReference: {fileID: 0}
     - target: {fileID: 4700264163654583897, guid: 68d9d438053fd324b86fe52dfadc61e4,
         type: 3}
       propertyPath: animaL
       value: 
-      objectReference: {fileID: 542855656}
+      objectReference: {fileID: 0}
     - target: {fileID: 4700264163654583897, guid: 68d9d438053fd324b86fe52dfadc61e4,
         type: 3}
       propertyPath: animaR
       value: 
-      objectReference: {fileID: 542855655}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68d9d438053fd324b86fe52dfadc61e4, type: 3}
---- !u!95 &542855655 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5365656269100408322, guid: 68d9d438053fd324b86fe52dfadc61e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 542855654}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &542855656 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2601808842420272494, guid: 68d9d438053fd324b86fe52dfadc61e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 542855654}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &542855657 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5427424869841514649, guid: 68d9d438053fd324b86fe52dfadc61e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 542855654}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &576292495
 GameObject:
   m_ObjectHideFlags: 0
@@ -4124,7 +4106,7 @@ Transform:
   m_GameObject: {fileID: 1720687052}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.25, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 481446451}
   m_RootOrder: 2
@@ -4149,7 +4131,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720687052}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -4850,7 +4832,7 @@ Transform:
   m_GameObject: {fileID: 1913698219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.25, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 481446452}
   m_RootOrder: 2
@@ -4875,7 +4857,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913698219}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -4961,7 +4943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 093825fc73062d94c8a4d8965dc65454, type: 2}
   fadeMode: 1
-  speed: 0.0005
+  speed: 0.002
   timeScaleWaitTime: 0
   changeSceneName: GameScore
 --- !u!114 &1940493925
